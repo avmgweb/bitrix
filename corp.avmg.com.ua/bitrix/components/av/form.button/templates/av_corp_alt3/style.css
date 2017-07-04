@@ -1,0 +1,28 @@
+.av-form-button-corp-alt3,
+.av-form-button-corp-alt3:visited
+	{
+	background: #B7C0C9;
+	border: 1px solid #B7C0C9;
+	border-radius: 2px;
+	color: #FFF !important;
+	cursor: pointer;
+	display: inline-block;
+	font-weight: bold;
+	line-height: 26px;
+	outline: none;
+	padding: 0 7px;
+	margin: 0;
+	transition: .3s;
+	text-align: center;
+	text-decoration: none !important;
+	}
+.av-form-button-corp-alt3[disabled],
+.av-form-button-corp-alt3:hover,
+.av-form-button-corp-alt3:focus,
+.av-form-button-corp-alt3:active
+	{
+	background: #FFF;
+	border-color: #717A84;
+	color: #717A84 !important;
+	text-decoration: none !important;
+	}

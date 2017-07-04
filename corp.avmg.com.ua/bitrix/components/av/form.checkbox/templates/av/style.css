@@ -1,0 +1,13 @@
+.av-form-checkbox       {align-items: center;display: flex}
+.av-form-checkbox label {cursor: pointer}
+.av-form-checkbox input {display: none}
+.av-form-checkbox input + label
+	{
+	background-image: url(images/unchecked.png);
+	background-size: cover;
+	margin-right: 6px;
+	width:  22px;
+	height: 22px;
+	}
+.av-form-checkbox input[checked] + label {background-image: url(images/checked.png)}
+.av-form-checkbox input + label + label  {max-width: calc(100% - 28px)}

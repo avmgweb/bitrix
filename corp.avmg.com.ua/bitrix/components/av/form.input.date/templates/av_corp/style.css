@@ -1,0 +1,51 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-input-date-corp label
+	{
+	background: transparent;
+	border:  none;
+	color: inherit;
+	font-weight: normal;
+	margin:  0;
+	padding: 0;
+	outline: none;
+	}
+.av-form-input-date-corp input {display: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ input ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-input-date-corp
+	{
+	border: 1px solid #DCE1E4;
+	border-radius: 2px;
+	height: 26px;
+	padding: 0 5px 0 7px;
+	}
+.av-form-input-date-corp .placeholder,
+.av-form-input-date-corp .value
+	{
+	display: inline-block;
+	line-height: 28px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: calc(100% - 9px);
+	}
+.av-form-input-date-corp .picker,
+.av-form-input-date-corp .clear-value
+	{
+	display: inline-block;
+	float: right;
+	width:  9px;
+	height: 28px;
+	}
+.av-form-input-date-corp .clear-value       {background: url(images/cancel.svg) center center no-repeat;background-size: 7px}
+.av-form-input-date-corp .picker            {background: url(images/arrow.svg)  center center no-repeat;background-size: 9px}
+.av-form-input-date-corp:not(.disabled),
+.av-form-input-date-corp:not(.disabled) > * {cursor: pointer}
+
+.av-form-input-date-corp:not(.alert-input):not(.disabled):hover,
+.av-form-input-date-corp:not(.alert-input):not(.disabled).active {border-color: #B6CBD0}
+.av-form-input-date-corp.alert-input                             {border-color: #CC0000}
+.av-form-input-date-corp.disabled                                {background: #F5F6F7}

@@ -1,0 +1,11 @@
+.av-edu-login-registration-form .title
+	{
+	color: #333;
+	font-size: 120%;
+	text-transform: uppercase;
+	}
+.av-edu-login-registration-form .title,
+.av-edu-login-registration-form .field-row              {margin-bottom: 10px}
+.av-edu-login-registration-form .field-row .field-title {font-size: 85%;font-weight: bold;margin: 0 0 2px 5px}
+.av-edu-login-registration-form .captcha img            {width: 180px}
+.av-edu-login-registration-form .submit-button          {display: none}

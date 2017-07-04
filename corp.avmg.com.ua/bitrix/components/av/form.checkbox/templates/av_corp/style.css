@@ -1,0 +1,13 @@
+.av-form-checkbox-corp       {align-items: center;display: flex;justify-content: space-between}
+.av-form-checkbox-corp label {cursor: pointer}
+.av-form-checkbox-corp input {display: none}
+.av-form-checkbox-corp input + label
+	{
+	background: center center no-repeat;
+	background-size: contain;
+	width:  22px;
+	height: 18px;
+	}
+.av-form-checkbox-corp input:not([checked]) + label {background-image: url(images/unchecked.svg)}
+.av-form-checkbox-corp input[checked]       + label {background-image: url(images/checked.svg)}
+.av-form-checkbox-corp input + label + label        {width: calc(100% - 27px)}

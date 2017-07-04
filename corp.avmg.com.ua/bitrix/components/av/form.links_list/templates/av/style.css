@@ -1,0 +1,74 @@
+/* -------------------------------------------------------------------- */
+/* --------------------------- clear style ---------------------------- */
+/* -------------------------------------------------------------------- */
+.av-links-list a,
+.av-links-list a:hover,
+.av-links-list a:focus,
+.av-links-list a:active,
+.av-links-list a:visited {color: inherit;text-decoration: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- label ------------------------------ */
+/* -------------------------------------------------------------------- */
+.av-links-list .title-label
+	{
+	align-items: center;
+	border: 1px solid #B6C0C6;
+	border-radius: 2px;
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	padding: 12px 3px 12px 10px;
+	}
+.av-links-list .title-label > *:nth-child(1)
+	{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: calc(100% - 24px);
+	}
+.av-links-list .title-label > *:nth-child(2)
+	{
+	background: url(images/arrow.png) center center no-repeat;
+	background-size: cover;
+	transition: .3s;
+	width:  24px;
+	height: 24px;
+	}
+/* -------------------------------------------------------------------- */
+/* -------------------------- drop-down menu -------------------------- */
+/* -------------------------------------------------------------------- */
+.av-links-list .list
+	{
+	background: #FAFAFA;
+	border-right:  1px solid #B6C0C6;
+	border-bottom: 1px solid #B6C0C6;
+	border-bottom-right-radius: 2px;
+	border-bottom-left-radius:  2px;
+	display: none;
+	max-height: 200px;
+	margin-top: -2px;
+	position: absolute;
+	z-index: 10;
+	}
+.av-links-list .list .list-item
+	{
+	border-left: 1px solid #B6C0C6;
+	display: block;
+	overflow: hidden;
+	padding: 12px 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------- activities/hovers ------------------------ */
+/* -------------------------------------------------------------------- */
+.av-links-list.active            .title-label > *:nth-child(2) {transform: rotate(-180deg)}
+.av-links-list.active            .title-label,
+.av-links-list:not(.alert-input) .title-label:hover,
+.av-links-list.active            .list,
+.av-links-list.active            .list .list-item              {border-color: #868B8D}
+.av-links-list.alert-input       .title-label,
+.av-links-list.alert-input       .list,
+.av-links-list.alert-input       .list .list-item              {border-color: #CC0000}
+.av-links-list .list             .list-item:hover,
+.av-links-list .list:not(:hover) .list-item.selected           {background: #4C5255;border-color: #4C5255;color: #FFF}

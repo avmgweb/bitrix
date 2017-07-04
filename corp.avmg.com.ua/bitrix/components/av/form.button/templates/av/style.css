@@ -1,0 +1,26 @@
+.av-form-button,
+.av-form-button:visited
+	{
+	background: #CC0000;
+	border: 1px solid #CC0000;
+	border-radius: 2px;
+	color: #FFF !important;
+	cursor: pointer;
+	display: inline-block;
+	font-weight: bold;
+	outline: none;
+	padding: 7px 10px;
+	margin: 0;
+	transition: .3s;
+	text-align: center;
+	text-decoration: none !important;
+	}
+.av-form-button:hover,
+.av-form-button:focus,
+.av-form-button:active
+	{
+	background: #FFF;
+	box-shadow: 0 2px 4px rgba(76,82,85,0.25);
+	color: #CC0000 !important;
+	text-decoration: none !important;
+	}

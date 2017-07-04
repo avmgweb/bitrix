@@ -1,0 +1,26 @@
+.av-form-select-alt select {display: none}
+
+.av-form-select-alt [data-label-value]
+	{
+	background: url(images/arrow.png) center right no-repeat;
+	background-size: 24px;
+	border-bottom: 1px solid #FFF;
+	cursor: pointer;
+	overflow: hidden;
+	padding: 13px 24px 12px 12px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	}
+.av-form-select-alt [data-label-value]:not(:last-child) {border-bottom-color: #B6C0C6}
+.av-form-select-alt [data-label-value].selected         {color: #CC0000}
+.av-form-select-alt [data-label-value]:hover
+	{
+	box-shadow: 0 2px 4px rgba(76, 82, 85, 0.25);
+	color: #CC0000;
+	}
+.av-form-select-alt [data-label-value]:active
+	{
+	background: #CC0000 url(images/arrow_active.png) center right no-repeat;
+	box-shadow: 0 2px 4px rgba(76, 82, 85, 0.25);
+	color: #FFF;
+	}

@@ -1,0 +1,13 @@
+.av-edu-login-auth-form .title
+	{
+	color: #333;
+	font-size: 120%;
+	text-transform: uppercase;
+	}
+.av-edu-login-auth-form .title,
+.av-edu-login-auth-form .text,
+.av-edu-login-auth-form .field-row              {margin-bottom: 10px}
+.av-edu-login-auth-form .text                   {text-align: justify}
+.av-edu-login-auth-form .field-row .field-title {font-size: 85%;font-weight: bold;margin: 0 0 2px 5px}
+.av-edu-login-auth-form .captcha img            {width: 180px}
+.av-edu-login-auth-form .submit-button          {display: none}

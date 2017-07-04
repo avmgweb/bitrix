@@ -1,0 +1,48 @@
+/* -------------------------------------------------------------------- */
+/* ------------------------------- label ------------------------------ */
+/* -------------------------------------------------------------------- */
+.av-form-select-corp-learning        {cursor: pointer}
+.av-form-select-corp-learning select {display: none !important}
+.av-form-select-corp-learning .title-label
+	{
+	align-items: center;
+	display: flex;
+	height: 28px;
+	justify-content: center;
+	padding: 0 7px 0 21px;
+	}
+.av-form-select-corp-learning .title-label > *:nth-child(2)
+	{
+	background: url(images/arrow.svg) center center no-repeat;
+	background-size: 9px;
+	margin-left: 5px;
+	transition: .3s;
+	width:  9px;
+	height: 9px;
+	}
+
+.av-form-select-corp-learning.active .title-label > *:nth-child(2) {transform: rotate(-180deg)}
+/* -------------------------------------------------------------------- */
+/* -------------------------- drop-down menu -------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-select-corp-learning .list
+	{
+	background: #FFF;
+	border: 1px solid #DCE1E4;
+	border-radius: 2px;
+	display: none;
+	position: absolute;
+	z-index: 10;
+	}
+.av-form-select-corp-learning .list [data-list-value]
+	{
+	line-height: 26px;
+	overflow: hidden;
+	padding: 0 7px;
+	text-align: center;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	}
+.av-form-select-corp-learning .list             [data-list-value]:not(:last-child) {border-bottom: 1px solid #DCE1E4;}
+.av-form-select-corp-learning .list             [data-list-value]:hover,
+.av-form-select-corp-learning .list:not(:hover) [data-list-value].selected         {background: #E4E8EB}

@@ -1,0 +1,66 @@
+/* -------------------------------------------------------------------- */
+/* --------------------------- clear styles --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-select-corp select {display: none !important}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- label ------------------------------ */
+/* -------------------------------------------------------------------- */
+.av-form-select-corp .title-label
+	{
+	border: 1px solid #DCE1E4;
+	border-radius: 2px;
+	height: 26px;
+	padding-left: 7px;
+	}
+.av-form-select-corp .title-label > * {display: inline-block}
+.av-form-select-corp .title-label > *:nth-child(1)
+	{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: calc(100% - 32px);
+	line-height: 28px;
+	}
+.av-form-select-corp .title-label > *:nth-child(2)
+	{
+	background: url(images/arrow.svg) center center no-repeat;
+	background-size: 9px;
+	transition: .3s;
+	width:  28px;
+	height: 28px;
+	}
+.av-form-select-corp:not(.disabled)                                                 {cursor: pointer}
+.av-form-select-corp.active                           .title-label > *:nth-child(2) {transform: rotate(-180deg)}
+.av-form-select-corp.active                           .title-label,
+.av-form-select-corp:not(.disabled):not(.alert-input) .title-label:hover            {border-color: #B6CBD0}
+.av-form-select-corp.disabled                         .title-label                  {background: #F5F6F7}
+.av-form-select-corp.alert-input                      .title-label                  {border-color: #CC0000}
+/* -------------------------------------------------------------------- */
+/* -------------------------- drop-down menu -------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-select-corp .list
+	{
+	background: #FFF;
+	border-right:  1px solid #B6CBD0;
+	border-bottom: 1px solid #B6CBD0;
+	border-bottom-right-radius: 2px;
+	border-bottom-left-radius:  2px;
+	display: none;
+	min-height: 10px;
+	max-height: 150px;
+	margin-top: -2px;
+	position: absolute;
+	z-index: 10;
+	}
+.av-form-select-corp .list [data-list-value]
+	{
+	border-left: 1px solid #B6CBD0;
+	overflow: hidden;
+	padding: 6px 7px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	}
+.av-form-select-corp.alert-input .list,
+.av-form-select-corp.alert-input .list             [data-list-value]          {border-color: #CC0000}
+.av-form-select-corp             .list             [data-list-value]:hover,
+.av-form-select-corp             .list:not(:hover) [data-list-value].selected {background: #717A84;border-color: #717A84;color: #FFF}

@@ -1,0 +1,68 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-iblock-search-element input
+	{
+	border:  none;
+	margin:  0;
+	padding: 0;
+	}
+.av-form-iblock-search-element .input-native {display: none}
+/* -------------------------------------------------------------------- */
+/* --------------------------- search input --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-iblock-search-element .input-label
+	{
+	align-items: center;
+	border: 1px solid #B6C0C6;
+	border-radius: 2px;
+	cursor: text;
+	display: flex;
+	justify-content: space-between;
+	padding: 12px 4px 12px 10px;
+	}
+.av-form-iblock-search-element .input-label input,
+.av-form-iblock-search-element .input-label .placeholder
+	{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: calc(100% - 20px);
+	}
+.av-form-iblock-search-element .input-label .icon
+	{
+	background: url(images/search.png) center center no-repeat;
+	background-size: cover;
+	width:  18px;
+	height: 18px;
+	}
+/* -------------------------------------------------------------------- */
+/* --------------------------- search result -------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-iblock-search-element .list
+	{
+	background: #FAFAFA;
+	display: none;
+	margin-top: -2px;
+	}
+.av-form-iblock-search-element .list .list-item
+	{
+	border-left:  1px solid #B6C0C6;
+	border-right: 1px solid #B6C0C6;
+	cursor: pointer;
+	padding: 12px 10px;
+	}
+.av-form-iblock-search-element .list .list-item:last-child
+	{
+	border-bottom: 1px solid #B6C0C6;
+	border-bottom-right-radius: 2px;
+	border-bottom-left-radius:  2px;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------- activities/hovers ------------------------ */
+/* -------------------------------------------------------------------- */
+.av-form-iblock-search-element        .input-label:hover,
+.av-form-iblock-search-element.active .input-label,
+.av-form-iblock-search-element.active .list .list-item          {border-color: #868B8D}
+.av-form-iblock-search-element        .list .list-item:hover,
+.av-form-iblock-search-element        .list .list-item.selected {background: #4C5255;border-color: #4C5255;color: #FFF}
