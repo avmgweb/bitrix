@@ -1,3 +1,27 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-button-alt
+	{
+	background: transparent;
+	border: none;
+	color: inherit;
+	font-weight: normal;
+	margin:  0;
+	padding: 0;
+	}
+.av-form-button-alt,
+.av-form-button-alt:hover,
+.av-form-button-alt:focus,
+.av-form-button-alt:active,
+.av-form-button-alt:visited
+	{
+	outline: none;
+	text-decoration: none;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ button ------------------------------ */
+/* -------------------------------------------------------------------- */
 .av-form-button-alt,
 .av-form-button-alt:visited
 	{
@@ -7,14 +31,13 @@
 	color: #CC0000 !important;
 	cursor: pointer;
 	display: inline-block;
-	outline: none;
-	padding: 7px 10px;
-	margin: 0;
+	height: 34px;
+	line-height: 34px;
+	padding: 0 10px;
 	transition: .3s;
 	text-align: center;
-	text-decoration: none !important;
 	}
 .av-form-button-alt:hover,
 .av-form-button-alt:active,
-.av-form-button-alt:focus   {box-shadow: 0 2px 4px rgba(76,82,85,0.25);text-decoration: none !important}
+.av-form-button-alt:focus   {box-shadow: 0 2px 4px rgba(76,82,85,0.25)}
 .av-form-button-alt:active  {background: #CC0000;color: #FFF !important}

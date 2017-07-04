@@ -1,3 +1,27 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-button-alt2
+	{
+	background: transparent;
+	border: none;
+	color: inherit;
+	font-weight: normal;
+	margin:  0;
+	padding: 0;
+	}
+.av-form-button-alt2,
+.av-form-button-alt2:hover,
+.av-form-button-alt2:focus,
+.av-form-button-alt2:active,
+.av-form-button-alt2:visited
+	{
+	outline: none;
+	text-decoration: none;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ button ------------------------------ */
+/* -------------------------------------------------------------------- */
 .av-form-button-alt2,
 .av-form-button-alt2:visited,
 .av-form-button-alt2:hover,
@@ -11,10 +35,9 @@
 	cursor: pointer;
 	display: block;
 	font-weight: bold;
-	margin: 0;
-	padding: 7px 10px;
+	height: 34px;
+	line-height: 34px;
+	padding: 0 10px;
 	text-align: center;
-	text-decoration: none !important;
 	transition: .3s;
-	width: 100%;
 	}

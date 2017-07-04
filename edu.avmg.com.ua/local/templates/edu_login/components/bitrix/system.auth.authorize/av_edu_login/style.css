@@ -11,3 +11,10 @@
 .av-edu-login-auth-form .field-row .field-title {font-size: 85%;font-weight: bold;margin: 0 0 2px 5px}
 .av-edu-login-auth-form .captcha img            {width: 180px}
 .av-edu-login-auth-form .submit-button          {display: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- media ------------------------------ */
+/* -------------------------------------------------------------------- */
+@media (max-width: 767px)
+	{
+	.av-edu-login-auth-form .title {text-align: center}
+	}

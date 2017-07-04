@@ -13,6 +13,7 @@
 	outline: none;
 	}
 .av-form-input-password input:-webkit-autofill {-webkit-box-shadow: 0 0 0 1000px white inset !important}
+.av-form-input-password input::-ms-clear       {display: none}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ input ------------------------------- */
 /* -------------------------------------------------------------------- */
@@ -20,14 +21,20 @@
 	{
 	border: 1px solid #B6C0C6;
 	border-radius: 2px;
-	padding: 0 10px;
+	display: flex;
+	height: 34px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	}
-.av-form-input-password > *                {line-height: 34px;width: 100%}
-.av-form-input-password:not(.disabled),
-.av-form-input-password:not(.disabled) > * {cursor: text}
+.av-form-input-password input,
+.av-form-input-password label
+	{
+	cursor: text;
+	line-height: 34px;
+	padding: 0 10px;
+	width: 100%;
+	}
 
 .av-form-input-password:not(.alert-input):not(.disabled):hover,
 .av-form-input-password:not(.alert-input):not(.disabled).active {border-color: #868B8D}

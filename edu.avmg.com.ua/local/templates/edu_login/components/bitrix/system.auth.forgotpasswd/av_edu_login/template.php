@@ -1,4 +1,17 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
+<?
+/* -------------------------------------------------------------------- */
+/* -------------------------------- JS -------------------------------- */
+/* -------------------------------------------------------------------- */
+?>
+<script>
+	BX.message({"AV_EDU_LOGIN_FORGOTPASS_VALIDATION_ALERT": '<?=GetMessage("AV_EDU_LOGIN_FORGOTPASS_VALIDATION_ALERT")?>'});
+</script>
+<?
+/* -------------------------------------------------------------------- */
+/* ------------------------------- form ------------------------------- */
+/* -------------------------------------------------------------------- */
+?>
 <form class="av-edu-login-forgotpass-form" name="bform" method="post" action="<?=$arResult["AUTH_URL"]?>">
 	<?
 	/* ------------------------------------------- */
@@ -30,8 +43,9 @@
 				(
 				"av:form.input", "av",
 					[
-					"NAME"  => 'USER_LOGIN',
-					"VALUE" => $arResult["LAST_LOGIN"]
+					"NAME"     => 'USER_LOGIN',
+					"REQUIRED" => 'Y',
+					"VALUE"    => $arResult["LAST_LOGIN"]
 					]
 				);
 			?>
@@ -54,6 +68,7 @@
 			"av:form.input", "av",
 				[
 				"NAME"        => 'captcha_word',
+				"REQUIRED"    => 'Y',
 				"PLACEHOLDER" => GetMessage("AV_EDU_LOGIN_FORGOTPASS_FORM_CAPTCHA")
 				]
 			);

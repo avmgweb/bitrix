@@ -11,3 +11,10 @@
 .av-edu-login-forgotpass-form .field-row .field-title {font-size: 85%;font-weight: bold;margin: 0 0 2px 5px}
 .av-edu-login-forgotpass-form .captcha img            {width: 180px}
 .av-edu-login-forgotpass-form .submit-button          {display: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- media ------------------------------ */
+/* -------------------------------------------------------------------- */
+@media (max-width: 767px)
+	{
+	.av-edu-login-forgotpass-form .title {text-align: center}
+	}
