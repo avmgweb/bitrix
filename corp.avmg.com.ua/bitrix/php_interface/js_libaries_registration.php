@@ -2,13 +2,14 @@
 CJSCore::RegisterExt("bootstrap",           ["css" => '/bitrix/css/av_site/bootstrap.css']);
 CJSCore::RegisterExt("first_on_event",      ["js"  => '/bitrix/js/av_site/first_on_event.js']);
 CJSCore::RegisterExt("jquery_mobile_click", ["js"  => '/bitrix/js/av_site/jquery_mobile_click.js']);
+CJSCore::RegisterExt("jquery_cookie",       ["js"  => '/bitrix/js/av_site/jquery_cookie.js']);
 CJSCore::RegisterExt
 	(
 	"av_site",
 		[
 		"js"  => '/bitrix/js/av_site/main.js',
 		"css" => '/bitrix/css/av_site/main.css',
-		"rel" => ["jquery", "first_on_event", "jquery_mobile_click"]
+		"rel" => ["jquery", "first_on_event", "jquery_mobile_click", "jquery_cookie"]
 		]
 	);
 CJSCore::RegisterExt

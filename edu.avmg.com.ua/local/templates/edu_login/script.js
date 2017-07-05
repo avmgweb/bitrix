@@ -118,24 +118,40 @@ $(function()
 		.on("vclick", '.main-window [data-submit-form]', function()
 			{
 			var
-				$form         = $(this).closest('.main-window').find('.forms-block > .'+$(this).attr("data-submit-form")),
+				formType      = $(this).attr("data-submit-form"),
+				$form         = $(this).closest('.main-window').find('.forms-block > .'+formType),
 				$submitButton = $form.find('[type="submit"]');
 			if(!$form.length) return;
 
 			if($submitButton.length) $submitButton.click();
 			else                     $form.find('form').submit();
+			Cookies.set("AV_EDU_LOGIN_LAST_TAB", formType);
 			})
 		.find('.background').waitForImages(function()
 			{
 			setTimeout(function()
 				{
-				$('#av-edu-login').find('.main-window')
+				var
+					$mainWindow = $('#av-edu-login').find('.main-window'),
+					lastTab     = Cookies.get("AV_EDU_LOGIN_LAST_TAB");
+
+				$mainWindow
 					.css
 						({
 						"display": 'flex',
 						"opacity": '0'
 						})
 					.animate({"opacity": '1'}, 500);
+
+				if
+					(
+					$mainWindow.find('.top-block').length
+					&&
+					lastTab && lastTab != 'auth'
+					&&
+					$mainWindow.find('.forms-block .'+lastTab).length
+					)
+					$mainWindow.find('[data-call-form="'+lastTab+'"]:visible').click();
 				}, 500);
 			});
 	/* ------------------------------------------- */
