@@ -1,5 +1,5 @@
 <?
-$sSectionName    = 'Проволока металлическая';
+$sSectionName    = 'Дріт металевий';
 $arDirProperties = array(
    "TITLE_BACKGROUND"     => '/upload/medialibrary/c45/1.png',
    "TITLE_BACKGROUND_ALT" => '/upload/medialibrary/c3a/provolka.png',

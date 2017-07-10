@@ -51,13 +51,12 @@ if($arResult["VARIABLES"]["PARENT_SECTION_ID"] || $arResult["VARIABLES"]["PARENT
 		["ID", "CODE", "NAME", "DESCRIPTION"]
 		)->GetNext();
 
-$urlTemplates = $arResult["URL_TEMPLATES"];
-$pageType     = 'list';
+$urlTemplates    = $arResult["URL_TEMPLATES"];
+$pageType        = 'list';
+$currentListPage = $_GET["PAGEN_1"] ? $_GET["PAGEN_1"] : 1;
 
 if($elementInfo["ID"] || $elementInfo["CODE"])         $pageType = 'detail';
 elseif($sectionInfo["ID"] || $parentSectionInfo["ID"]) $pageType = 'section';
-
-$currentListPage = $_GET["PAGEN_1"] ? $_GET["PAGEN_1"] : 1;
 /* -------------------------------------------------------------------- */
 /* --------------------------- filter html ---------------------------- */
 /* -------------------------------------------------------------------- */
@@ -255,6 +254,9 @@ if(in_array($pageType, ["section", "subsection"]) && $currentListPage == 1)
 /* -------------------------------------------------------------------- */
 if($arParams["ADD_SUBSECTIONS_CHAIN"] == 'Y' && $arParams["ADD_SECTIONS_CHAIN"] != 'Y')
 	{
+	if(count($sectionInfo) || count($parentSectionInfo))
+		$APPLICATION->SetTitle($sectionInfo["NAME"]);
+
 	if(count($parentSectionInfo))
 		$APPLICATION->AddChainItem
 			(

@@ -1,3 +1,2 @@
 <?
-$sSectionName="Реквизиты";
-?>
+$sSectionName = 'Реквізити';

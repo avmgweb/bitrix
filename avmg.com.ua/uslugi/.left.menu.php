@@ -1,8 +1,8 @@
 <?
 $aMenuLinks = array(
-	array("Газовая резка металла",              "/uslugi/gazovaya-rezka-metalla/"),
-	array("Плазменная резка металла",           "/uslugi/plazmennaya-rezka-metalla/"),
-	array("Резка на ленточнопильном станке",    "/uslugi/rezka-na-lentopilnom-stanke/"),
-	array("Продольная резка рулонного металла", "/uslugi/prodolnaya-rezka-metalla/"),
-	array("Грузоперевозки",                     "/uslugi/dostavka/")
+	array("Газове різання металу",             "/uslugi/gazovaya-rezka-metalla/"),
+	array("Плазмова порізка металу",           "/uslugi/plazmennaya-rezka-metalla/"),
+	array("Різка на стрічкопильному верстаті", "/uslugi/rezka-na-lentopilnom-stanke/"),
+	array("Поздовжня різка рулонного металу",  "/uslugi/prodolnaya-rezka-metalla/"),
+	array("Вантажоперевезення",                "/uslugi/gruzoperevozka/")
 	);

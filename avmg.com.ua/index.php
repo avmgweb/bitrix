@@ -1,8 +1,9 @@
 <?
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
-$APPLICATION->SetTitle("АВ металл групп - корпоративный сайт компании");
-$APPLICATION->SetPageProperty("title", "АВ металл групп ведущая компания Украины на рынке металлопроката | Официальный сайт avmg.com.ua ✔ Адрес г. Днепр, ул. Шолом-Алейхема, 5 ☎ телефон (056) 790-01-22");
-$APPLICATION->SetPageProperty("description", "АВ металл групп ™ крупнейший металлотрейдер Украины ✔ г. Днепр, ул. Шолом-Алейхема, 5 Звоните! ☎ (056)790-01-22");
+
+$APPLICATION->SetTitle("АВ метал груп - корпоративний сайт компанії");
+$APPLICATION->SetPageProperty("title",       "АВ метал груп провідна компанія України на ринку металопрокату | Официальный сайт avmg.com.ua ✔ Адрес г. Днепр, ул. Шолом-Алейхема, 5 ☎ телефон (056) 790-01-22");
+$APPLICATION->SetPageProperty("description", "АВ метал груп ™ крупнейший металлотрейдер Украины ✔ г. Днепр, ул. Шолом-Алейхема, 5 Звоните! ☎ (056)790-01-22");
 
 CJSCore::Init(["bootstrap"]);
 $APPLICATION->SetAdditionalCSS('/bitrix/css/av_site/pages/index.css');
@@ -44,7 +45,7 @@ $APPLICATION->IncludeComponent
 ?>
 <div class="av-index-block">
 	<div class="container">
-		<a class="av-page-title av-index-title-link" href="/products/">Основные направления</a>
+		<a class="av-page-title av-index-title-link" href="/products/">Основні напрямки</a>
 		<?
 		$APPLICATION->IncludeComponent
 			(
@@ -60,14 +61,14 @@ $APPLICATION->IncludeComponent
 			<?
 			$APPLICATION->IncludeComponent
 				(
-				"av:form_elements", "av_site",
+				"av:form.button", "av",
 					array(
-					"TYPE"        => 'button',
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => '/products/',
-					"TITLE"       => 'Все направления',
+					"TITLE"       => 'Усі напрямки',
 					"ATTR"        => ["rel" => 'nofollow']
-					)
+					),
+				'', array("HIDE_ICONS" => 'Y')
 				);
 			?>
 		</div>
@@ -85,18 +86,18 @@ $APPLICATION->IncludeComponent
 				<source srcset="/upload/av_site/index/proizvodstvo.jpg"     media="(min-width: 992px)">
 				<source srcset="/upload/av_site/index/proizvodstvo_med.jpg" media="(min-width: 768px) and (max-width: 991px)">
 				<source srcset="/upload/av_site/index/proizvodstvo_sm.jpg"  media="(max-width: 767px)">
-				<img src="/upload/av_site/index/proizvodstvo.jpg" alt="Производство" title="Производство">
+				<img src="/upload/av_site/index/proizvodstvo.jpg" alt="Виробництво" title="Виробництво">
 			</picture>
-			<a href="/proizvodstvo/">Производство</a>
+			<a href="/proizvodstvo/">Виробництво</a>
 		</div>
 		<div>
 			<picture>
 				<source srcset="/upload/av_site/index/uslugi.jpg"     media="(min-width: 992px)">
 				<source srcset="/upload/av_site/index/uslugi_med.jpg" media="(min-width: 768px) and (max-width: 991px)">
 				<source srcset="/upload/av_site/index/uslugi_sm.jpg"  media="(max-width: 767px)">
-				<img src="/upload/av_site/index/uslugi.jpg" alt="Услуги" title="Услуги">
+				<img src="/upload/av_site/index/uslugi.jpg" alt="Послуги" title="Послуги">
 			</picture>
-			<a href="/uslugi/">Услуги</a>
+			<a href="/uslugi/">Послуги</a>
 		</div>
 		<div>
 			<picture>
@@ -112,9 +113,9 @@ $APPLICATION->IncludeComponent
 				<source srcset="/upload/av_site/index/kariera.jpg"     media="(min-width: 992px)">
 				<source srcset="/upload/av_site/index/kariera_med.jpg" media="(min-width: 768px) and (max-width: 991px)">
 				<source srcset="/upload/av_site/index/kariera_sm.jpg"  media="(max-width: 767px)">
-				<img src="/upload/av_site/index/kariera.jpg" alt="Карьера" title="Карьера">
+				<img src="/upload/av_site/index/kariera.jpg" alt="Кар’єра" title="Кар’єра">
 			</picture>
-			<a href="/career/">Карьера</a>
+			<a href="/career/">Кар’єра</a>
 		</div>
 	</div>
 </div>
@@ -125,7 +126,7 @@ $APPLICATION->IncludeComponent
 ?>
 <div class="av-index-block">
 	<div class="container av-index-bases-block">
-		<a class="av-page-title av-index-title-link" href="/metallobaza/">Филиалы и металлобазы</a>
+		<a class="av-page-title av-index-title-link" href="/metallobaza/">Філії та металобази</a>
 		<?
 		$APPLICATION->IncludeComponent
 			(
@@ -165,14 +166,14 @@ $APPLICATION->IncludeComponent
 			<?
 			$APPLICATION->IncludeComponent
 				(
-				"av:form_elements", "av_site",
+				"av:form.button", "av",
 					array(
-					"TYPE"        => 'button',
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => '/metallobaza/',
-					"TITLE"       => 'Посмотреть все',
+					"TITLE"       => 'Подивитись усі',
 					"ATTR"        => ["rel" => 'nofollow']
-					)
+					),
+				'', array("HIDE_ICONS" => 'Y')
 				);
 			?>
 		</div>
@@ -194,7 +195,7 @@ $APPLICATION->IncludeComponent
 				"AJAX_MODE" => 'N',
 
 				"IBLOCK_TYPE" => 'news',
-				"IBLOCK_ID"   => 50,
+				"IBLOCK_ID"   => 61,
 				"NEWS_COUNT"  => 4,
 
 				"SORT_BY1"    => 'ACTIVE_FROM',
@@ -233,14 +234,14 @@ $APPLICATION->IncludeComponent
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site",
+			"av:form.button", "av",
 				array(
-				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'link',
 				"LINK"        => '/about/blog/',
-				"TITLE"       => 'Читать больше',
+				"TITLE"       => 'Читати більше',
 				"ATTR"        => ["rel" => 'nofollow']
-				)
+				),
+			'', array("HIDE_ICONS" => 'Y')
 			);
 		?>
 	</div>
@@ -253,8 +254,8 @@ $APPLICATION->IncludeComponent
 <div class="av-index-block">
 	<div class="container">
 		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
-			<div class="av-page-title">Заказать прайс-лист</div>
-			Чтобы сделать заказ, заполните форму или напишите по <a href="mailto:office@avmg.com.ua">электронной почте</a>.
+			<div class="av-page-title">Замовити прайс-лист</div>
+			Щоб зробити замовлення, заповніть форму або напишіть по <a href="mailto:office@avmg.com.ua">електронній пошті</a>.
 			<div class="av-index-feadback-form">
 				<?
 				$APPLICATION->IncludeComponent
@@ -267,7 +268,7 @@ $APPLICATION->IncludeComponent
 						"AJAX_OPTION_HISTORY" => 'N',
 
 						"SEF_MODE"    => 'N',
-						"WEB_FORM_ID" => 24,
+						"WEB_FORM_ID" => 43,
 
 						"START_PAGE"     => 'new',
 						"SHOW_LIST_PAGE" => 'N',

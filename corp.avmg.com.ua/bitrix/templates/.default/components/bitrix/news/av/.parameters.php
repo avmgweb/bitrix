@@ -65,7 +65,6 @@ $arTemplateParameters["LIST_TEMPLATE"] =
 	"REFRESH" => 'Y'
 	];
 if($arCurrentValues["LIST_TEMPLATE"] == 'av')
-	{
 	$arTemplateParameters["LIST_MARKUP_TYPE"] =
 		[
 		"NAME"   => GetMessage("AV_NEWS_PARAMS_LIST_MARKUP_TYPE"),
@@ -76,7 +75,6 @@ if($arCurrentValues["LIST_TEMPLATE"] == 'av')
 			"SMALLER"  => GetMessage("AV_NEWS_PARAMS_LIST_MARKUP_TYPE_SMALLER")
 			]
 		];
-	}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ detail ------------------------------ */
 /* -------------------------------------------------------------------- */
@@ -90,6 +88,16 @@ $arTemplateParameters["SAME_ARTICLES_SEARCH_IN_SECTION"] =
 	[
 	"NAME" => GetMessage("AV_NEWS_PARAMS_SAME_ARTICLES_SEARCH_IN_SECTION"),
 	"TYPE" => 'CHECKBOX'
+	];
+$arTemplateParameters["ADD_SUBSECTIONS_CHAIN"] =
+	[
+	"NAME" => GetMessage("AV_NEWS_PARAMS_ADD_SUBSECTIONS_CHAIN"),
+	"TYPE" => 'CHECKBOX'
+	];
+$arTemplateParameters["FILTER_SUBSECTION_TITLE"] =
+	[
+	"NAME" => GetMessage("AV_NEWS_PARAMS_FILTER_SUBSECTION_TITLE"),
+	"TYPE" => 'STRING'
 	];
 if(in_array($arCurrentValues["DETAIL_TEMPLATE"], ["av", "av_career"]))
 	{
@@ -117,29 +125,18 @@ if(in_array($arCurrentValues["DETAIL_TEMPLATE"], ["av", "av_career"]))
 		];
 	}
 /* -------------------------------------------------------------------- */
-/* ------------------------------ other ------------------------------- */
+/* ------------------------------ bases ------------------------------- */
 /* -------------------------------------------------------------------- */
-$arTemplateParameters["ADD_SUBSECTIONS_CHAIN"] =
-	[
-	"NAME" => GetMessage("AV_NEWS_PARAMS_ADD_SUBSECTIONS_CHAIN"),
-	"TYPE" => 'CHECKBOX'
-	];
 if($arCurrentValues["LIST_TEMPLATE"] == 'av_bases' || $arCurrentValues["DETAIL_TEMPLATE"] == 'av_bases')
 	{
-	$arTemplateParameters["TABLET_MENU_PATH"] =
+	$iblockList = [];
+	$queryList = CIBlock::GetList(["ID" => 'ASC']);
+	while($queryElement = $queryList->GetNext()) $iblockList[$queryElement["ID"]] = $queryElement["NAME"];
+
+	$arTemplateParameters["AV_BASES_STREAMS_INFO_IBLOCK"] =
 		[
-		"NAME" => GetMessage("AV_NEWS_PARAMS_TABLET_MENU_PATH"),
-		"TYPE" => 'STRING'
-		];
-	$arTemplateParameters["TABLET_MENU_TYPE"] =
-		[
-		"NAME" => GetMessage("AV_NEWS_PARAMS_TABLET_MENU_TYPE"),
-		"TYPE" => 'STRING'
-		];
-	$arTemplateParameters["TABLET_MENU_VALUES"] =
-		[
-		"NAME"     => GetMessage("AV_NEWS_PARAMS_TABLET_MENU_VALUES"),
-		"TYPE"     => 'STRING',
-		"MULTIPLE" => 'Y'
+		"NAME"   => GetMessage("AV_NEWS_PARAMS_AV_BASES_STREAMS_INFO_IBLOCK"),
+		"TYPE"   => 'LIST',
+		"VALUES" => $iblockList
 		];
 	}

@@ -1,11 +1,11 @@
 <?
 $aMenuLinks = array(
-	array("Чёрный металлопрокат",         "/products/black-metal/"),
-	array("Нержавеющий металлопрокат",    "/products/stainless-steel-metal/"),
-	array("Оцинкованный металлопрокат",   "/products/galvanized-metal/"),
-	array("Машиностроительный крепеж",    "/products/ironwares/"),
-	array("Профнастил и металлочерепица", "/products/profnastil-metallocherepitsa/"),
-	array("Строительный крепеж",          "/products/building-hardware/"),
-	array("Электроды сварочные",          "/products/elektrody-svarochnye/"),
-	array("Сетка",                        "/products/setka/")
+	array("Чорний металопрокат",         "/products/black-metal/"),
+	array("Нержавіючий металопрокат",    "/products/stainless-steel-metal/"),
+	array("Оцинкований металопрокат",    "/products/galvanized-metal/"),
+	array("Машинобудівне кріплення",     "/products/ironwares/"),
+	array("Профнастил і металочерепиця", "/products/profnastil-metallocherepitsa/"),
+	array("Будівельне кріплення",        "/products/building-hardware/"),
+	array("Електроди зварювальні",       "/products/elektrody-svarochnye/"),
+	array("Сітка і огорожі",             "/products/setka/")
 	);

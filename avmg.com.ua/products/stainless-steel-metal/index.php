@@ -4,7 +4,7 @@ require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 $APPLICATION->SetPageProperty("keywords", "нержавейка лист цена, нержавейка купить, нержавейка цена, нержавейка труба, нержавеющая сталь купить, нержавейка лист цена");
 $APPLICATION->SetPageProperty("description", "Нержавейка ассортимент и цены ▻ АВ металл групп ™ ✓Широкий выбор ✓Металлобазы и доставка по всей Украине ☎ (056)790-01-22");
 $APPLICATION->SetPageProperty("title", "Нержавеющий металл ► купить нержавейку цена в Украине: Днепр, Киев, Харьков, Львов, Одесса, опт, розница | Направление АВ металл групп ™ avmg.com.ua");
-$APPLICATION->SetTitle("Нержавеющий металлопрокат");
+$APPLICATION->SetTitle("Нержавіючий металопрокат");
 
 $APPLICATION->IncludeComponent
 	(
@@ -20,7 +20,7 @@ $APPLICATION->IncludeComponent
 		"AJAX_OPTION_HISTORY" => '',
 
 		"IBLOCK_TYPE" => 'catalog',
-		"IBLOCK_ID"   => 36,
+		"IBLOCK_ID"   => 127,
 		"NEWS_COUNT"  => 50,
 		"USE_SEARCH"  => 'N',
 
@@ -59,7 +59,7 @@ $APPLICATION->IncludeComponent
 		"SORT_ORDER2" => 'ASC',
 		"CHECK_DATES" => 'Y',
 
-		"PARENT_SECTION"           => 727,
+		"PARENT_SECTION"           => 2319,
 		"PREVIEW_TRUNCATE_LEN"     => '',
 		"LIST_ACTIVE_DATE_FORMAT"  => '',
 		"LIST_FIELD_CODE"          => array("NAME","PREVIEW_TEXT","PREVIEW_PICTURE"),
@@ -129,8 +129,8 @@ $APPLICATION->IncludeComponent
 		"LIST_MARKUP_TYPE"                    => 'SMALLER',
 		"DETAIL_TEMPLATE"                     => 'av_products',
 		"DETAIL_PAGE_ADDITIONAL_LINKS"        => array('/metallobaza/'),
-		"DETAIL_PAGE_ADDITIONAL_LINKS_TITLES" => array('Металлобазы в вашем городе'),
-		"DETAIL_PAGE_WEBFORM_ID"              => 24,
+		"DETAIL_PAGE_ADDITIONAL_LINKS_TITLES" => array('Металобази у вашому місті'),
+		"DETAIL_PAGE_WEBFORM_ID"              => 43,
 		"DETAIL_PAGE_WEBFORM_TEMPLATE"        => 'av'
 		)
 	);

@@ -1,5 +1,5 @@
 <?
-$sSectionName    = 'Строительный крепеж';
+$sSectionName    = 'Будівельні кріплення';
 $arDirProperties = array(
    "TITLE_BACKGROUND"      => '/upload/medialibrary/65a/stroy-krepeg.jpg',
    "TITLE_BACKGROUND_ALT"  => '/upload/medialibrary/f9b/metiz.png',

@@ -1,0 +1,6 @@
+<?
+$MESS["AV_AUTH_MOBILE_LOGIN_TEXT"]    = 'Вхід';
+$MESS["AV_AUTH_MOBILE_LOGIN_TITLE"]   = 'Зареєструватися';
+$MESS["AV_AUTH_MOBILE_PROFILE_LINK"]  = 'Мій профіль';
+$MESS["AV_AUTH_MOBILE_BASKET_LINK"]   = 'Кошик';
+$MESS["AV_AUTH_MOBILE_LOGOUT_BUTTON"] = 'Вийти';

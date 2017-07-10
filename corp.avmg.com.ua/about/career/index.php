@@ -7,7 +7,7 @@ $APPLICATION->IncludeComponent
 	"bitrix:news", "av",
 		array(
 		"SEF_MODE"          => 'Y',
-		"SEF_FOLDER"        => '/about/career/',
+		"SEF_FOLDER"        => '/career/',
 		"SEF_URL_TEMPLATES" =>
 			array(
 			"detail" => '#ELEMENT_CODE#/',
@@ -98,7 +98,7 @@ $APPLICATION->IncludeComponent
 		"USE_SHARE"               => 'Y',
 		"SHARE_HIDE"              => '',
 		"SHARE_TEMPLATE"          => 'av',
-		"SHARE_HANDLERS"          => array("facebook", "gplus", "twitter", "vk"),
+		"SHARE_HANDLERS"          => array("facebook", "gplus", "twitter"),
 		"SHARE_SHORTEN_URL_LOGIN" => '',
 		"SHARE_SHORTEN_URL_KEY"   => '',
 

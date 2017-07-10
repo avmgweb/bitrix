@@ -1,5 +1,5 @@
 <?
-$sSectionName    = 'Черный металлопрокат';
+$sSectionName    = 'Чорний металопрокат';
 $arDirProperties = array(
    "TITLE_BACKGROUND"      => '/upload/medialibrary/f9d/chorniy-metal.jpg',
    "TITLE_BACKGROUND_ALT"  => '/upload/medialibrary/bb1/blackmetal.png',

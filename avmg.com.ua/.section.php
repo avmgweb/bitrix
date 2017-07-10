@@ -1,2 +1,2 @@
 <?
-$sSectionName = 'АВ металл групп';
+$sSectionName = 'АВ метал груп';

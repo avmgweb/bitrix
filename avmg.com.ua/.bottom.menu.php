@@ -1,7 +1,7 @@
 <?
 $aMenuLinks = array(
-	array("О нас",        "/about/"),
-	array("Продукция",    "/products/"),
-	array("Производство", "/proizvodstvo/"),
-	array("Услуги",       "/uslugi/")
+	array("Про нас",     "/about/"),
+	array("Продукція",   "/products/"),
+	array("Виробництво", "/proizvodstvo/"),
+	array("Послуги",     "/uslugi/")
 	);

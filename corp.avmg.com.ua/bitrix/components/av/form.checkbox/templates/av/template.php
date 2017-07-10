@@ -1,7 +1,10 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
 <div
 	data-av-form-item="checkbox"
-	class="av-form-checkbox<?if($arResult["REQUIRED"]):?> required<?endif?>"
+	class="
+		av-form-checkbox
+		<?if($arResult["REQUIRED"]):?>required<?endif?>
+		"
 	<?=$arResult["ATTR"]?>
 >
 	<input

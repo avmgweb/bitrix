@@ -1,9 +1,9 @@
 <?
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
-$APPLICATION->SetPageProperty("description", "Металлобазы АВ металл групп в Украине ✓Широкий выбор ✓Оптимальные цены ➣ ☎ (056) 790-01-22 Звоните!");
-$APPLICATION->SetPageProperty("title", "Филиалы и металлобазы АВ металл групп в Украине | Адреса филиалов где можно купить металлопрокат | Телефон: ☎ (056) 790-01-22");
-$APPLICATION->SetTitle("Филиалы и металлобазы");
+$APPLICATION->SetTitle("Філії та металобази");
+$APPLICATION->SetPageProperty("title",       "Філії та металобази АВ метал груп в Україні | Адреси філій де можна купити металопрокат | Телефон: ☎ (056) 790-01-22");
+$APPLICATION->SetPageProperty("description", "Металобази АВ метал груп в Україні ✓Шірокій вибір ✓Оптімальние ціни ➣ ☎ (056) 790-01-22 Телефонуйте!");
 
 $APPLICATION->IncludeComponent
 	(
@@ -58,7 +58,7 @@ $APPLICATION->IncludeComponent
 		"USE_FILTER"           => 'Y',
 		"FILTER_NAME"          => 'AV_BASES_FILTER',
 		"FILTER_FIELD_CODE"    => array("SECTION_ID", "SUBSECTION"),
-		"FILTER_PROPERTY_CODE" => array("type_bases"),
+		"FILTER_PROPERTY_CODE" => array("type_bases", "streams"),
 
 		"SORT_BY1"    => 'PROPERTY_type_bases',
 		"SORT_ORDER1" => 'ASC',
@@ -69,7 +69,7 @@ $APPLICATION->IncludeComponent
 		"PREVIEW_TRUNCATE_LEN"     => '',
 		"LIST_ACTIVE_DATE_FORMAT"  => '',
 		"LIST_FIELD_CODE"          => array(),
-		"LIST_PROPERTY_CODE"       => array("address", "phone", "closed", "cordinate_x", "cordinate_y"),
+		"LIST_PROPERTY_CODE"       => array("address", "phone", "closed", "cordinate_x", "cordinate_y", "streams"),
 		"HIDE_LINK_WHEN_NO_DETAIL" => 'N',
 
 		"DISPLAY_NAME"              => 'Y',
@@ -79,7 +79,7 @@ $APPLICATION->IncludeComponent
 		"DETAIL_SET_CANONICAL_URL"  => 'N',
 		"DETAIL_ACTIVE_DATE_FORMAT" => '',
 		"DETAIL_FIELD_CODE"         => array(),
-		"DETAIL_PROPERTY_CODE"      => array("address", "phone", "open_houres", "current_action", "price_file", "additional_title", "closed", "cordinate_x", "cordinate_y"),
+		"DETAIL_PROPERTY_CODE"      => array("address", "phone", "open_houres", "current_action", "price_file", "additional_title", "closed", "cordinate_x", "cordinate_y", "streams"),
 
 		"SET_LAST_MODIFIED"           => 'N',
 		"SET_TITLE"                   => 'N',
@@ -105,12 +105,12 @@ $APPLICATION->IncludeComponent
 		"USE_SHARE"               => 'Y',
 		"SHARE_HIDE"              => '',
 		"SHARE_TEMPLATE"          => 'av',
-		"SHARE_HANDLERS"          => array("facebook", "gplus", "twitter", "vk"),
+		"SHARE_HANDLERS"          => array("facebook", "gplus", "twitter"),
 		"SHARE_SHORTEN_URL_LOGIN" => '',
 		"SHARE_SHORTEN_URL_KEY"   => '',
 
 		"CACHE_TYPE"   => 'A',
-		"CACHE_TIME"   => 360000,
+		"CACHE_TIME"   => 108000,
 		"CACHE_FILTER" => 'Y',
 		"CACHE_GROUPS" => 'Y',
 
@@ -131,15 +131,14 @@ $APPLICATION->IncludeComponent
 		"MESSAGE_404"    => '',
 		"FILE_404"       => '',
 
-		"FILTER_TEMPLATE"    => 'av',
-		"FILTER_FIELDS_SORT" => array("SUBSECTION", "SECTION_ID", "type_bases"),
-		"LIST_TEMPLATE"      => 'av_bases',
-		"DETAIL_TEMPLATE"    => 'av_bases',
+		"FILTER_TEMPLATE"           => 'av',
+		"FILTER_FIELDS_SORT"        => array("SUBSECTION", "SECTION_ID", "type_bases", "streams"),
+		"FILTER_FIELDS_CHANGE_TYPE" => array("streams" => 'SELECT_MULTIPLE'),
+		"LIST_TEMPLATE"             => 'av_bases',
+		"DETAIL_TEMPLATE"           => 'av_bases',
 
-		"TABLET_MENU_PATH"                => '/products/',
-		"TABLET_MENU_TYPE"                => 'left',
-		"TABLET_MENU_VALUES"              => array("/products/black-metal/", "/products/stainless-steel-metal/", "/products/galvanized-metal/", "/products/ironwares/", "/products/profnastil-metallocherepitsa/", "/products/building-hardware/", "/products/elektrody-svarochnye/", "/products/plenka-i-upakovka/", "/products/setka/"),
-		"FILTER_SUBSECTION_TITLE"         => 'Город',
+		"AV_BASES_STREAMS_INFO_IBLOCK"    => 93,
+		"FILTER_SUBSECTION_TITLE"         => 'Місто',
 		"SAME_ARTICLES_SEARCH_IN_SECTION" => 'Y',
 		"ADD_SUBSECTIONS_CHAIN"           => 'Y'
 		)

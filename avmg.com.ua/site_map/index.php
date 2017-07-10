@@ -1,7 +1,7 @@
 <?
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
-$APPLICATION->SetTitle("Карта сайта");
+$APPLICATION->SetTitle("Карта сайту");
 
 $APPLICATION->IncludeComponent
 	(

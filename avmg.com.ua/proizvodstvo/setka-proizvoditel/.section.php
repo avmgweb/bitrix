@@ -1,5 +1,5 @@
 <?
-$sSectionName    = 'Кладочная сетка';
+$sSectionName    = 'Сітка кладки';
 $arDirProperties = array(
    "TITLE_BACKGROUND"     => '/upload/medialibrary/c45/1.png',
    "TITLE_BACKGROUND_ALT" => '/upload/medialibrary/453/setka-metal.png',

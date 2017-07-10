@@ -7,4 +7,3 @@ $MESS["AV_FORM_CAREER_COMMENTS_TRIGGER"]  = 'Добавить сопроводи
 $MESS["AV_FORM_CAREER_FORM_VALIDATION_ALERT"]     = 'Необходимо заполнить все обязательные поля!';
 $MESS["AV_FORM_CAREER_FORM_VALIDATION_FILE_SIZE"] = 'Размер файла не должен превышать #SIZE# мб.';
 $MESS["AV_FORM_CAREER_FORM_VALIDATION_FILE_TYPE"] = 'Допустимые типы файлов: #TYPE#';
-?>

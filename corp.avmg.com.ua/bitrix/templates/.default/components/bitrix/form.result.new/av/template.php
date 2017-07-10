@@ -77,26 +77,16 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 	<?if($arResult["isFormNote"] == 'Y'):?>
 	AvBlurScreen("on", 1000);
-	var $avFomrPopUpOk =
-		CreateAvAlertPopup(BX.message("AV_FORM_RESULT_OK_MESSAGE"), "ok")
-			.positionCenter(1100)
-			.on("remove", function() {AvBlurScreen("off")});
-
-	$(document)
-		.on("vclick", function()
+	CreateAvAlertPopup
+		(
+		BX.message("AV_FORM_RESULT_OK_MESSAGE"),
+		"ok",
 			{
-			if($avFomrPopUpOk.isClicked()) return;
-			$avFomrPopUpOk.remove();
-			AvBlurScreen("off");
-			});
-	$(window)
-		.scroll(function()
-			{
-			$avFomrPopUpOk.positionCenter();
-			})
-		.resize(function()
-			{
-			$avFomrPopUpOk.positionCenter();
-			});
+			"hide_on_clickout" : 'Y',
+			"centering"        : 'Y',
+			"z_index"          : 1100
+			}
+		)
+		.on("remove", function() {AvBlurScreen("off")});
 	<?endif?>
 </script>

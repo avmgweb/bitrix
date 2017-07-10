@@ -1,8 +1,8 @@
 <?
 $aMenuLinks = array(
-	array("Блог",                        "/about/blog/"),
-	array("Партнерство",                 "/about/partnersavmg/"),
-	array("Наши реквизиты",              "/about/essentials/"),
-	array("Пользовательское соглашение", "/user_agreement/"),
-	array("Карта сайта",                 "/site_map/")
+	array("Блог",              "/about/blog/"),
+	array("Партнерство",       "/about/partnersavmg/"),
+	array("Наші реквізити",    "/about/essentials/"),
+	array("Угода користувача", "/user_agreement/"),
+	array("Карта сайту",       "/site_map/")
 	);

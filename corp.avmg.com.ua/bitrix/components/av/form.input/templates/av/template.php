@@ -5,13 +5,13 @@
 		av-form-input
 		<?if($arResult["REQUIRED"]):?>required<?endif?>
 		<?if($arResult["DISABLED"]):?>disabled<?endif?>
+		<?if($arResult["PLACEHOLDER"] && !$arResult["VALUE"]):?>placeholder-on<?endif?>
+		<?if($arResult["PLACEHOLDER"] &&  $arResult["VALUE"]):?>placeholder-off<?endif?>
 		"
 	title="<?=$arResult["TITLE"]?>"
 >
 	<?if($arResult["PLACEHOLDER"]):?>
-	<label <?if($arResult["VALUE"]):?>style="display: none"<?endif?>>
-		<?=$arResult["PLACEHOLDER"]?>
-	</label>
+	<label><?=$arResult["PLACEHOLDER"]?></label>
 	<?endif?>
 
 	<input
@@ -22,7 +22,8 @@
 		<?if($arResult["DISABLED"]):?>disabled<?endif?>
 
 		data-avat="form-input-<?=$arResult["NAME"]?>"
-		<?if($arResult["PLACEHOLDER"] && !$arResult["VALUE"]):?>style="display: none"<?endif?>
 		<?=$arResult["ATTR"]?>
 	>
+
+	<div class="height-controller">&nbsp;</div>
 </div>

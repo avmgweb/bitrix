@@ -118,26 +118,16 @@ CJSCore::Init(["av_form_elements"]);
 
 	<?if($arResult["isFormNote"] == 'Y'):?>
 	AvBlurScreen("on", 1000);
-	var $avFomrCareerPopUpOk =
-		CreateAvAlertPopup(BX.message("AV_FORM_CAREER_RESULT_OK_MESSAGE"), "ok")
-			.positionCenter(1100)
-			.on("remove", function() {AvBlurScreen("off")});
-
-	$(document)
-		.on("vclick", function()
+	CreateAvAlertPopup
+		(
+		BX.message("AV_FORM_CAREER_RESULT_OK_MESSAGE"),
+		"ok",
 			{
-			if($avFomrCareerPopUpOk.isClicked()) return;
-			$avFomrCareerPopUpOk.remove();
-			AvBlurScreen("off");
-			});
-	$(window)
-		.scroll(function()
-			{
-			$avFomrCareerPopUpOk.positionCenter();
-			})
-		.resize(function()
-			{
-			$avFomrCareerPopUpOk.positionCenter();
-			});
+			"hide_on_clickout" : 'Y',
+			"centering"        : 'Y',
+			"z_index"          : 1100
+			}
+		)
+		.on("remove", function() {AvBlurScreen("off")});
 	<?endif?>
 </script>

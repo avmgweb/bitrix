@@ -1,5 +1,5 @@
 <?
-$sSectionName    = 'Квадрат и полоса';
+$sSectionName    = 'Квадрат і смуга';
 $arDirProperties = array(
    "TITLE_BACKGROUND"     => '/upload/medialibrary/c45/1.png',
    "TITLE_BACKGROUND_ALT" => '/upload/medialibrary/b65/polosa.png',

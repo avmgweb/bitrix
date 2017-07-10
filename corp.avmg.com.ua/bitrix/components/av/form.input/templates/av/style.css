@@ -22,19 +22,20 @@
 	border: 1px solid #B6C0C6;
 	border-radius: 2px;
 	display: flex;
-	height: 34px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
 	}
 .av-form-input input,
 .av-form-input label
 	{
 	cursor: text;
-	line-height: 34px;
-	padding: 0 10px;
-	width: 100%;
+	overflow: hidden;
+	padding: 7px 0 7px 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: calc(100% - 20px);
 	}
+.av-form-input .height-controller    {padding: 7px 0;width: 10px}
+.av-form-input.placeholder-on  input,
+.av-form-input.placeholder-off label {display: none}
 
 .av-form-input:not(.alert-input):not(.disabled):hover,
 .av-form-input:not(.alert-input):not(.disabled).active {border-color: #868B8D}

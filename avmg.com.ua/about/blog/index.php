@@ -1,9 +1,9 @@
 <?
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
-$APPLICATION->SetTitle("Новости");
-$APPLICATION->SetPageProperty("description", "Новости АВ металл групп ™ ✓Выгодная партнерская программа ✓Широкая региональная сеть ✓Доставка по Украине");
-$APPLICATION->SetPageProperty("title", "Новости и события компании АВ металл групп | ™ avmg.com.ua");
+$APPLICATION->SetTitle("Новини");
+$APPLICATION->SetPageProperty("title",       "Новини та події компанії АВ метал груп | ™ avmg.com.ua");
+$APPLICATION->SetPageProperty("description", "Новини АВ метал груп ™ ✓Вигодная партнерська програма ✓Шірокая регіональна мережа ✓Доставка по Україні");
 
 $APPLICATION->IncludeComponent
 	(
@@ -23,7 +23,7 @@ $APPLICATION->IncludeComponent
 		"AJAX_OPTION_HISTORY" => '',
 
 		"IBLOCK_TYPE" => 'news',
-		"IBLOCK_ID"   => 50,
+		"IBLOCK_ID"   => 61,
 		"NEWS_COUNT"  => 5,
 		"USE_SEARCH"  => 'Y',
 
@@ -37,7 +37,7 @@ $APPLICATION->IncludeComponent
 		"VOTE_NAMES" => array(1, 2, 3, 4, 5),
 
 		"USE_CATEGORIES"       => 'Y',
-		"CATEGORY_IBLOCK"      => array(50),
+		"CATEGORY_IBLOCK"      => array(61),
 		"CATEGORY_CODE"        => 'SECTIONS_ARTICLES',
 		"CATEGORY_ITEMS_COUNT" => 3,
 

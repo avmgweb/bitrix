@@ -30,10 +30,9 @@
 										(
 										"bitrix:eshop.socnet.links", "av_mail",
 											array(
-											"FACEBOOK"  => 'https://www.facebook.com/avmg.com.ua/',
-											"GOOGLE"    => 'https://plus.google.com/u/2/114220723367013333669',
-											"TWITTER"   => 'https://twitter.com/avmgua',
-											"VKONTAKTE" => 'https://vk.com/avmgua'
+											"FACEBOOK" => 'https://www.facebook.com/avmg.com.ua/',
+											"GOOGLE"   => 'https://plus.google.com/u/2/114220723367013333669',
+											"TWITTER"  => 'https://twitter.com/avmgua'
 											)
 										);
 									?><br>

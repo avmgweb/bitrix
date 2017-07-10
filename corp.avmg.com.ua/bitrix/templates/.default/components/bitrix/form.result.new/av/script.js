@@ -1,23 +1,25 @@
 $(function()
 	{
 	SetFormElementsCurrentLibrary("av_site");
-	var $avFomrPopUpAlert = $();
 
 	$(document)
 		.on("vclick", '.av-form [type="submit"]', function()
 			{
-			if($(this).closest('form').checkFormValidation()) return true;
-			$avFomrPopUpAlert = CreateAvAlertPopup(BX.message("AV_FORM_FORM_VALIDATION_ALERT"), "alert").positionCenter(1000);
-			return false;
-			})
-		.on("vclick", function()
-			{
-			if(!$avFomrPopUpAlert.isClicked()) $avFomrPopUpAlert.remove();
-			});
-
-	$(window)
-		.resize(function()
-			{
-			$avFomrPopUpAlert.positionCenter();
+			if($(this).closest('form').checkFormValidation())
+				return true;
+			else
+				{
+				CreateAvAlertPopup
+					(
+					BX.message("AV_FORM_FORM_VALIDATION_ALERT"),
+					"alert",
+						{
+						"hide_on_clickout" : 'Y',
+						"centering"        : 'Y',
+						"z_index"          : 1000
+						}
+					);
+				return false;
+				}
 			});
 	});

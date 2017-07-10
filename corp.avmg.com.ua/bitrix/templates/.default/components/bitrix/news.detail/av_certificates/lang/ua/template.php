@@ -1,0 +1,3 @@
+<?
+$MESS["AV_CERTIFICATES_DETAIL_CLOSE"]  = 'закрити';
+$MESS["AV_CERTIFICATES_DETAIL_UPLOAD"] = 'завантажити';

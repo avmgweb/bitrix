@@ -31,9 +31,7 @@
 	color: #868B8D !important;
 	cursor: pointer;
 	display: inline-block;
-	height: 34px;
-	line-height: 34px;
-	padding: 0 10px;
+	padding: 7px 10px;
 	transition: .3s;
 	text-align: center;
 	}

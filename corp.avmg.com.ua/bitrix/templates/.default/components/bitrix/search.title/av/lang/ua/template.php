@@ -1,0 +1,2 @@
+<?
+$MESS["AV_SEARCH_TITLE_INPUT_PLACEHOLDER"] = 'Пошук';

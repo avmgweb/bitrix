@@ -1,5 +1,5 @@
 <?
-$sSectionName    = 'Труба электросварная прямошовная';
+$sSectionName    = 'Труби електрозварні прямошовні';
 $arDirProperties = array(
    "TITLE_BACKGROUND"     => '/upload/medialibrary/c45/1.png',
    "TITLE_BACKGROUND_ALT" => '/upload/medialibrary/26f/truba.png',

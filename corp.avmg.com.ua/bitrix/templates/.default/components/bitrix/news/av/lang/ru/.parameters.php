@@ -16,15 +16,14 @@ $MESS["AV_NEWS_PARAMS_LIST_MARKUP_TYPE"]          = 'Список новосте
 $MESS["AV_NEWS_PARAMS_LIST_MARKUP_TYPE_STANDART"] = 'Стандартный';
 $MESS["AV_NEWS_PARAMS_LIST_MARKUP_TYPE_SMALLER"]  = 'Уменьшеный';
 
-$MESS["AV_NEWS_PARAMS_DETAIL_TEMPLATE"]                     = 'Новость детально: шаблон компонента';
-$MESS["AV_NEWS_PARAMS_SAME_ARTICLES_SEARCH_IN_SECTION"]     = 'Материалы по теме: искать в разделе';
+$MESS["AV_NEWS_PARAMS_DETAIL_TEMPLATE"]                 = 'Новость детально: шаблон компонента';
+$MESS["AV_NEWS_PARAMS_SAME_ARTICLES_SEARCH_IN_SECTION"] = 'Материалы по теме: искать в разделе';
+$MESS["AV_NEWS_PARAMS_ADD_SUBSECTIONS_CHAIN"]           = 'Навигация: подразделы';
+$MESS["AV_NEWS_PARAMS_FILTER_SUBSECTION_TITLE"]         = 'Заголовок свойства "подраздел"';
+
 $MESS["AV_NEWS_PARAMS_DETAIL_PAGE_ADDITIONAL_LINKS"]        = 'Новость детально - дополнительные ссылки';
 $MESS["AV_NEWS_PARAMS_DETAIL_PAGE_ADDITIONAL_LINKS_TITLES"] = 'Новость детально - дополнительные ссылки(титулы)';
 $MESS["AV_NEWS_PARAMS_DETAIL_PAGE_WEBFORM_ID"]              = 'Новость детально - ID вебформы';
 $MESS["AV_NEWS_PARAMS_DETAIL_PAGE_WEBFORM_TEMPLATE"]        = 'Новость детально - шаблон вебформы';
 
-$MESS["AV_NEWS_PARAMS_TABLET_MENU_TYPE"]   = 'Плиточное меню - тип подключаемого меню';
-$MESS["AV_NEWS_PARAMS_TABLET_MENU_PATH"]   = 'Плиточное меню - путь к каталогу';
-$MESS["AV_NEWS_PARAMS_TABLET_MENU_VALUES"] = 'Плиточное меню - пункты меню';
-
-$MESS["AV_NEWS_PARAMS_ADD_SUBSECTIONS_CHAIN"] = 'Навигация: подразделы';
+$MESS["AV_NEWS_PARAMS_AV_BASES_STREAMS_INFO_IBLOCK"] = 'Инфоблок информации по металлобазам';

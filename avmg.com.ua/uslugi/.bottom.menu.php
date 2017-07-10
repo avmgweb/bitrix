@@ -1,10 +1,10 @@
 <?
 $aMenuLinks = array(
-	array("Газовая резка металла",           "/uslugi/gazovaya-rezka-metalla/"),
-	array("Плазменная резка металла",        "/uslugi/plazmennaya-rezka-metalla/"),
-	array("Резка на ленточнопильном станке", "/uslugi/rezka-na-lentopilnom-stanke/"),
-	array("Поперечная резка металла",        "/uslugi/prodolnaya-rezka-metalla/"),
-	array("Грузоперевозки",                  "/uslugi/dostavka/"),
-	array("Металлобазы",                     "/metallobaza/",  array(), array("important" => 'Y', "space" => 'top')),
-	array("Карьера",                         "/about/career/", array(), array("important" => 'Y'))
+	array("Газове різання металу",                      "/uslugi/gazovaya-rezka-metalla/"),
+	array("Плазмова порізка металу",                    "/uslugi/plazmennaya-rezka-metalla/"),
+	array("Різання металу на стрічкопильному верстаті", "/uslugi/rezka-na-lentopilnom-stanke/"),
+	array("Поздовжня різання металу",                   "/uslugi/prodolnaya-rezka-metalla/"),
+	array("Вантажоперевезення",                         "/uslugi/gruzoperevozka/"),
+	array("Металобази",                                 "/metallobaza/",  array(), array("important" => 'Y', "space" => 'top')),
+	array("Кар’єра",                                    "/career/", array(), array("important" => 'Y'))
 	);

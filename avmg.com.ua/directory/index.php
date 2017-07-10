@@ -1,14 +1,14 @@
 <?
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
-$APPLICATION->SetTitle("Справочники продукции");
+$APPLICATION->SetTitle("Довідники продукції");
 
 $APPLICATION->IncludeComponent
 	(
 	"av:directories", "",
 		array(
 		"IBLOCK_TYPE"     => 'references',
-		"IBLOCK_ID"       => array(43, 44, 45, 46),
+		"IBLOCK_ID"       => array(95, 96, 97, 98),
 		"FILTER_VAR_NAME" => '',
 
 		"SORT_FIELD"          => 'NAME',

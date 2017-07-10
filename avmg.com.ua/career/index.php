@@ -1,9 +1,9 @@
 <?
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
-$APPLICATION->SetPageProperty("description", "Хотите работать в АВ Металл Групп? Открыта вакания: Менеджер по продажам во Львове");
-$APPLICATION->SetPageProperty("title", "АВ металл групп Вакансии | Работа в АВ металл групп: Днепр, Киев, Львов, Харьков, Одесса, Запорожье, Полтава, Сумы | ☎ (056) 794-55-24 ™ avmg.com.ua");
-$APPLICATION->SetTitle("Карьера");
+$APPLICATION->SetTitle("Кар’єра");
+$APPLICATION->SetPageProperty("title",       "АВ метал груп Вакансії | Робота в АВ метал груп: Дніпро, Київ, Львів, Харьків, Одеса, Запоріжжя, Полтава, Суми | ☎ (056) 794-55-24 ™ avmg.com.ua");
+$APPLICATION->SetPageProperty("description", "Хочете працювати в АВ Метал Груп? Відкрита вакансія: Менеджер з продажу у Львові");
 
 $APPLICATION->IncludeComponent
 	(
@@ -23,7 +23,7 @@ $APPLICATION->IncludeComponent
 		"AJAX_OPTION_HISTORY" => '',
 
 		"IBLOCK_TYPE" => 'services',
-		"IBLOCK_ID"   => 59,
+		"IBLOCK_ID"   => 92,
 		"NEWS_COUNT"  => 10,
 		"USE_SEARCH"  => 'N',
 
@@ -37,7 +37,7 @@ $APPLICATION->IncludeComponent
 		"VOTE_NAMES" => array(),
 
 		"USE_CATEGORIES"       => 'Y',
-		"CATEGORY_IBLOCK"      => array(59),
+		"CATEGORY_IBLOCK"      => array(92),
 		"CATEGORY_CODE"        => 'city',
 		"CATEGORY_ITEMS_COUNT" => 25,
 
@@ -101,7 +101,7 @@ $APPLICATION->IncludeComponent
 		"USE_SHARE"               => 'Y',
 		"SHARE_HIDE"              => '',
 		"SHARE_TEMPLATE"          => 'av',
-		"SHARE_HANDLERS"          => array("facebook", "gplus", "twitter", "vk"),
+		"SHARE_HANDLERS"          => array("facebook", "gplus", "twitter"),
 		"SHARE_SHORTEN_URL_LOGIN" => '',
 		"SHARE_SHORTEN_URL_KEY"   => '',
 
@@ -128,8 +128,8 @@ $APPLICATION->IncludeComponent
 		"FILE_404"       => '',
 
 		"MARKUP_TYPE"                     => 'TWO_COLUMNS',
-		"MARKUP_TYPE_FIRST_COLUMN_TITLE"  => 'Открытые вакансии',
-		"MARKUP_TYPE_SECOND_COLUMN_TITLE" => 'Карьерные возможности',
+		"MARKUP_TYPE_FIRST_COLUMN_TITLE"  => 'Відкриті вакансії',
+		"MARKUP_TYPE_SECOND_COLUMN_TITLE" => 'Кар’єрні можливості',
 
 		"FILTER_TEMPLATE"                 => 'av',
 		"FILTER_FIELDS_SORT"              => array("SECTION_ID", "city"),
@@ -137,7 +137,7 @@ $APPLICATION->IncludeComponent
 
 		"LIST_TEMPLATE"                   => 'av_career',
 		"DETAIL_TEMPLATE"                 => 'av_career',
-		"DETAIL_PAGE_WEBFORM_ID"          => 19,
+		"DETAIL_PAGE_WEBFORM_ID"          => 38,
 		"DETAIL_PAGE_WEBFORM_TEMPLATE"    => 'av_career',
 		"SAME_ARTICLES_SEARCH_IN_SECTION" => 'Y',
 		"CATEGORY_ADDITIONAL_FILTER"      => ["!PROPERTY_type_vacancy" => 389]

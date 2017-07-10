@@ -1,23 +1,23 @@
 <?
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
-$APPLICATION->SetPageProperty("title", "АВ металл групп контакты компании | ☎ телефон (056) 790-01-22 | 🏠 Адрес: г. Днепр, ул.Шолом-Алейхема, 5");
-$APPLICATION->SetPageProperty("description", "АВ металл групп крупнейший металлотрейдер Украины ☎ (056) 790-01-22, 🏠 г. Днепр, ул.Шолом-Алейхема, 5");
-$APPLICATION->SetTitle("Контакты");
+$APPLICATION->SetTitle("Контакти");
+$APPLICATION->SetPageProperty("title",       "АВ метал груп контакти компанії | ☎ телефон (056) 790-01-22 | 🏠 Адреса: м. Дніпро, вул.Шолом-Алейхема, 5");
+$APPLICATION->SetPageProperty("description", "АВ метал груп найбільший металотрейдер України ☎ (056) 790-01-22, 🏠 м. Дніпро, вул.Шолом-Алейхема, 5");
 
 CJSCore::Init(["bootstrap"]);
 $APPLICATION->SetAdditionalCSS('/bitrix/css/av_site/pages/contacts.css');
 ?>
 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 av-contacts-page-block first-column">
-	<h3>Головной офис</h3>
+	<h3>Головний офіс</h3>
 	<p>
-		Украина, Днепр,<br>
-		ул.Шолом-Алейхема, 5<br>
+		Україна, Дніпро,<br>
+		вул.Шолом-Алейхема, 5<br>
 		тел.: +38 (056) 790-01-22<br>
 		тел.: +38 (056) 790-73-00<br>
 		e-mail: <a href="mailto:office@avmg.com.ua">office@avmg.com.ua</a>
 	</p>
-	<h3>Обратная связь</h3>
+	<h3>Зворотній зв'язок</h3>
 	<?
 	$APPLICATION->IncludeComponent
 		(
@@ -29,7 +29,7 @@ $APPLICATION->SetAdditionalCSS('/bitrix/css/av_site/pages/contacts.css');
 			"AJAX_OPTION_HISTORY" => 'N',
 
 			"SEF_MODE"    => 'N',
-			"WEB_FORM_ID" => 24,
+			"WEB_FORM_ID" => 43,
 
 			"START_PAGE"     => 'new',
 			"SHOW_LIST_PAGE" => 'N',
@@ -52,34 +52,34 @@ $APPLICATION->SetAdditionalCSS('/bitrix/css/av_site/pages/contacts.css');
 	?>
 </div>
 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 av-contacts-page-block second-column">
-	<h3>Департаменты</h3>
+	<h3>Департаменти</h3>
 	<p>
-		<b><a href="/products/black-metal/">Черный металлопрокат</a></b><br>
+		<b><a href="/products/black-metal/">Чорний металопрокат</a></b><br>
 		тел./факс: +38 (056) 790-01-22<br>
 		тел./факс: +38 (056) 790-73-00<br>
 		e-mail: <a href="mailto:bmetal@avmg.com.ua">bmetal@avmg.com.ua</a>
 	</p>
 	<p>
-		<b><a href="/products/stainless-steel-metal/">Нержавеющий металлопрокат</a></b><br>
+		<b><a href="/products/stainless-steel-metal/">Нержавіючий металопрокат</a></b><br>
 		<b><a href="/products/galvanized-metal/">Оцинковка</a></b><br>
 		тел./факс: +38 (056) 790-73-02<br>
 		e-mail: <a href="mailto:stainless@avmg.com.ua">stainless@avmg.com.ua</a>
 	</p>
 	<p>
-		<b><a href="/products/building-hardware/">Строительный крепеж</a></b><br>
+		<b><a href="/products/building-hardware/">Будівельні кріплення</a></b><br>
 		тел./факс: +38 (056) 376-79-94<br>
 		e-mail: <a href="mailto:sk@avmg.com.ua">sk@avmg.com.ua</a>
 	</p>
 		<p>
-		<b><a href="/products/ironwares/">Машиностроительный крепеж</a></b><br>
+		<b><a href="/products/ironwares/">Машинобудівельні кріплення</a></b><br>
 		тел./факс: +38 (056) 790-73-04<br>
 		e-mail: <a href="mailto:metiz@avmg.com.ua">metiz@avmg.com.ua</a>
 	</p>
 </div>
 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 av-contacts-page-block third-column">
-	<h3>Подразделения</h3>
+	<h3>Підрозділи</h3>
 	<p>
-		<b><a href="/products/elektrody-svarochnye/">Электроды сварочные</a></b><br>
+		<b><a href="/products/elektrody-svarochnye/">Електроди зварювальні</a></b><br>
 		тел./факс: +38 (056) 790-01-22<br>
 		e-mail: <a href="mailto:bmetal@avmg.com.ua">bmetal@avmg.com.ua</a>
 	</p>
@@ -89,7 +89,7 @@ $APPLICATION->SetAdditionalCSS('/bitrix/css/av_site/pages/contacts.css');
 		e-mail:&nbsp;<a href="mailto:profnasteel@avmg.com.ua">profnasteel@avmg.com.ua</a><br>
 	</p>
 	<p>
-		<b><a href="/products/setka/">Сетка</a></b><br>
+		<b><a href="/products/setka/">Сітка</a></b><br>
 		тел./факс: +38 (056) 790-01-22<br>
 		e-mail: <a href="mailto:bmetal@avmg.com.ua">bmetal@avmg.com.ua</a>
 	</p>

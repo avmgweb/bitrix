@@ -1,5 +1,5 @@
 <?
-$sSectionName    = 'Нержавеющий металлопрокат';
+$sSectionName    = 'Нержавіючий металопрокат';
 $arDirProperties = array(
    "TITLE_BACKGROUND"      => '/upload/medialibrary/f5a/nergaveyka.jpg',
    "TITLE_BACKGROUND_ALT"  => '/upload/medialibrary/75a/nergav.png',

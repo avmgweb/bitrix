@@ -1,5 +1,5 @@
 <?
-$sSectionName    = 'Оцинкованный металлопрокат';
+$sSectionName    = 'Оцинкований металопрокат';
 $arDirProperties = array(
    "TITLE_BACKGROUND"      => '/upload/medialibrary/9af/ocinkovka.jpg',
    "TITLE_BACKGROUND_ALT"  => '/upload/medialibrary/d79/acinkowka.png',

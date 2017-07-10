@@ -1,5 +1,5 @@
 <?
-$sSectionName    = 'Профнастил и металлочерепица';
+$sSectionName    = 'Профнастил і металочерепиця';
 $arDirProperties = array(
    "TITLE_BACKGROUND"      => '/upload/medialibrary/26d/profstil.jpg',
    "TITLE_BACKGROUND_ALT"  => '/upload/medialibrary/ae4/profstil.png',

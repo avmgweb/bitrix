@@ -1,11 +1,11 @@
 <?
 $aMenuLinks = array(
-	array("Арматура горячекатаная", "/proizvodstvo/armatura-proizvoditel/"),
-	array("Проволока",              "/proizvodstvo/provoloka-proizvoditel/"),
-	array("Круглый прокат",         "/proizvodstvo/krug-proizvoditel/"),
-	array("Труба электросварная",   "/proizvodstvo/profilnaya-truba-proizvoditel/"),
-	array("Профилированные листы",  "/proizvodstvo/proflist-proizvoditel/"),
-	array("Полоса и квадрат",       "/proizvodstvo/polosa-proizvoditel/"),
-	array("Cетка металлическая",    "/proizvodstvo/setka-proizvoditel/"),
-	array("Просечно-вытяжной лист", "/proizvodstvo/prosechno-vytyazhnoy-list/")
+	array("Арматура гарячекатана",  "/proizvodstvo/armatura-proizvoditel/"),
+	array("Дріт",                   "/proizvodstvo/provoloka-proizvoditel/"),
+	array("Круглий прокат",         "/proizvodstvo/krug-proizvoditel/"),
+	array("Труби електрозварні",    "/proizvodstvo/profilnaya-truba-proizvoditel/"),
+	array("Профільовані листи",     "/proizvodstvo/proflist-proizvoditel/"),
+	array("Смуга і квадрат",        "/proizvodstvo/polosa-proizvoditel/"),
+	array("Сітка металева",         "/proizvodstvo/setka-proizvoditel/"),
+	array("Просічно-витяжний лист", "/proizvodstvo/prosechno-vytyazhnoy-list/")
 	);

@@ -1,0 +1,4 @@
+<?
+$MESS["AV_DIRECTORIES_FILTER_IBLOCK_LIST_DEFAULT"] = 'Всі довідники';
+$MESS["AV_DIRECTORIES_FILTER_CANCEL_BUTTON"]       = 'Очистити усі фільтри';
+$MESS["AV_DIRECTORIES_FILTER_SEARCH_PLACEHOLDER"]  = 'Пошук по довідникам';

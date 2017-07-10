@@ -47,8 +47,8 @@ $APPLICATION->IncludeComponent
 		"FILTER_NAME"    => '',
 
 		"arrFILTER"                    => array("main", "iblock_news", "iblock_services", "iblock_catalog", "iblock_references", "iblock_av_storages"),
-		"arrFILTER_iblock_news"        => array(50),
-		"arrFILTER_iblock_services"    => array(59),
+		"arrFILTER_iblock_news"        => array(61),
+		"arrFILTER_iblock_services"    => array(92),
 		"arrFILTER_iblock_catalog"     => array("all"),
 		"arrFILTER_iblock_references"  => array("all"),
 		"arrFILTER_iblock_av_storages" => array("all"),

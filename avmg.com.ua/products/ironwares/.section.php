@@ -1,5 +1,5 @@
 <?
-$sSectionName    = 'Метизы';
+$sSectionName    = 'Машинобудівне кріплення';
 $arDirProperties = array(
    "TITLE_BACKGROUND"      => '/upload/medialibrary/948/metiz.jpg',
    "TITLE_BACKGROUND_ALT"  => '/upload/medialibrary/d2c/bolt.png',
