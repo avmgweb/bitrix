@@ -1,45 +1,45 @@
 /* -------------------------------------------------------------------- */
-/* ----------------------------- functions ---------------------------- */
+/* ------------------------ preloader function ------------------------ */
 /* -------------------------------------------------------------------- */
-// preloader
 function AvWaitingScreen(value)
 	{
-	var $waitingScreen = $('#av-waiting-screen');
+	if(value != 'on' && value != 'off') return;
+	$('#av-waiting-screen').remove();
 
 	if(value == 'on')
 		setTimeout(function()
 			{
-			$waitingScreen.remove();
 			$('<div id="av-waiting-screen"><div></div></div>').appendTo('body');
 			}, 10);
-	else if(value == 'off')
-		$waitingScreen.remove();
 	}
-// blur screen
+/* -------------------------------------------------------------------- */
+/* ----------------------- blur screen function ----------------------- */
+/* -------------------------------------------------------------------- */
 function AvBlurScreen(value, zIndex)
 	{
 	var $blurScreen = $('#av-blur-screen');
-	if(!zIndex) zIndex = '100';
 
 	if(value == 'on' && !$blurScreen.length)
 		setTimeout(function()
 			{
 			$('<div id="av-blur-screen"></div>')
-				.css("z-index", zIndex)
+				.css("z-index", zIndex ? zIndex : '100')
 				.appendTo('body')
 				.fadeTo(500, 0.7);
 			}, 50);
 	else if(value == 'off')
 		$blurScreen.fadeTo(500, 0, function() {$blurScreen.remove()});
 	}
-// alert popup
+/* -------------------------------------------------------------------- */
+/* ----------------------- alert popup function ----------------------- */
+/* -------------------------------------------------------------------- */
 function CreateAvAlertPopup(alertText, type, options)
 	{
 	var
-		$popUpHider = $(),
-		$popUp      =
-			$(
-			'<div class="av-alert-popup" type="'+type+'">'+
+		$popUpHider = $('<div class="av-alert-popup-hider"></div>'),
+		$popUp      = $
+			(
+			'<div class="av-alert-popup" type="'+(type ? type : 'simple')+'">'+
 				'<div class="content">'+
 					'<div class="image"></div>'+
 					'<div class="text">'+alertText+'</div>'+
@@ -48,12 +48,13 @@ function CreateAvAlertPopup(alertText, type, options)
 			'</div>'
 			)
 			.appendTo('body')
-			.on("vclick", '.close-form-button', function() {$(this).closest('.av-alert-popup').remove()}),
+			.on("vclick", '.close-form-button', function() {$(this).getAvAlertPopup().remove()})
+			.on("remove",                       function() {$popUpHider.remove()}),
 		popUpOptions =
 			{
-			"hide_on_clickout" : 'N',
-			"centering"        : 'N',
-			"z_index"          : 1000
+			"hide_on_clickout": 'N',
+			"centering"       : 'N',
+			"z_index"         : 1000
 			};
 
 	$.extend(popUpOptions, options);
@@ -69,7 +70,7 @@ function CreateAvAlertPopup(alertText, type, options)
 
 	if(popUpOptions.hide_on_clickout == 'Y')
 		{
-		$popUpHider = $('<div></div>')
+		$popUpHider
 			.css
 				({
 				"position": 'fixed',
@@ -82,7 +83,7 @@ function CreateAvAlertPopup(alertText, type, options)
 			.appendTo('body');
 		setTimeout(function()
 			{
-			$popUpHider.on("vclick", function() {$(this).add($popUp).remove()});
+			$popUpHider.on("vclick", function() {$popUp.remove()});
 			}, 300);
 		}
 
@@ -114,38 +115,34 @@ function CreateAvAlertPopup(alertText, type, options)
 		return !!($objectDate && $objectDate.clicked);
 		};
 	/* ------------------------------------------- */
+	/* ---------------- get popup ---------------- */
+	/* ------------------------------------------- */
+	jQuery.fn.getAvAlertPopup = function()
+		{
+		return this.closest('.av-alert-popup');
+		};
+	/* ------------------------------------------- */
 	/* --------- object position center ---------- */
 	/* ------------------------------------------- */
 	jQuery.fn.positionCenter = function(zIndex)
 		{
-		if(this.css("position") != 'absolute') this.css("position", 'absolute');
-
 		var
+			currentZIndex = this.css("z-index"),
+			setedZIndex   = parseInt(zIndex ? zIndex : 100),
 			screenWidth   = $(window).width(),
 			screenHeight  = $(window).height(),
 			scrollTop     = $(window).scrollTop(),
 			scrollLeft    = $(window).scrollLeft(),
-			formWidth     = this.outerWidth(),
-			formHeight    = this.outerHeight(),
-			cssParams     =
-				{
-				"z-index": parseInt(this.css("z-index")),
-				"left"   : '',
-				"right"  : '',
-				"top"    : '',
-				"bottom" : ''
-				};
+			formWidth     = this.css("position", 'absolute').outerWidth(),
+			formHeight    = this                            .outerHeight();
 
-		if(!cssParams["z-index"] || cssParams["z-index"] < 1) cssParams["z-index"] = parseInt(zIndex);
-		if(!cssParams["z-index"] || cssParams["z-index"] < 1) cssParams["z-index"] = 100;
-
-		if(screenWidth <= formWidth + 5) cssParams["left"]  = 0;
-		else                             cssParams["left"]  = scrollLeft + (screenWidth - formWidth)/2;
-		if(formHeight < screenHeight)    cssParams["top"]   = scrollTop + (screenHeight - formHeight)/2;
-		else                             cssParams["top"]   = scrollTop + 50;
-		if(!cssParams["left"])           cssParams["right"] = 0;
-
-		return this.css(cssParams);
+		return this.css
+			({
+			"z-index": currentZIndex && currentZIndex > 1 ? currentZIndex  : setedZIndex,
+			"top"    : formHeight    >  screenHeight      ? scrollTop + 50 : scrollTop  + (screenHeight - formHeight) / 2,
+			"left"   : screenWidth   <= formWidth + 5     ? 0              : scrollLeft + (screenWidth  - formWidth)  / 2,
+			"right"  : screenWidth   <= formWidth + 5     ? 0              : ''
+			});
 		};
 	/* ------------------------------------------- */
 	/* --------------- flood image --------------- */

@@ -23,20 +23,20 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form.button", "av_corp",
-				[
-				"BUTTON_TYPE" => 'label',
-				"TITLE"       => '#CANCEL_TEXT#',
-				"ATTR"        => 'data-cancel-button'
-				]
-			);
-		$APPLICATION->IncludeComponent
-			(
 			"av:form.button", "av_corp_alt3",
 				[
 				"BUTTON_TYPE" => 'label',
 				"TITLE"       => '#ACCEPT_TEXT#',
 				"ATTR"        => 'data-apply-button'
+				]
+			);
+		$APPLICATION->IncludeComponent
+			(
+			"av:form.button", "av_corp",
+				[
+				"BUTTON_TYPE" => 'label',
+				"TITLE"       => '#CANCEL_TEXT#',
+				"ATTR"        => 'data-cancel-button'
 				]
 			);
 		?>
@@ -134,7 +134,7 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 										"NAME"        => 'answer[]',
 										"LIST"        => $list,
 										"VALUE"       => $arResult["QBAR"][$currentQuestion]["RESPONSE"][$index],
-										"EMPTY_TITLE" => GetMessage("AV_LEARNING_TEST_SELF_SORTING_EMPTY_TITLE")
+										"EMPTY_TITLE" => GetMessage("AV_LEARNING_TEST_SORTING_EMPTY_TITLE")
 										]
 									);
 								?>

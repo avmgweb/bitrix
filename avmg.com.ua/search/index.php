@@ -1,7 +1,7 @@
 <?
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
-$APPLICATION->SetTitle("Результаты поиска");
+$APPLICATION->SetTitle("Результати пошуку");
 
 $APPLICATION->IncludeComponent
 	(
@@ -46,12 +46,12 @@ $APPLICATION->IncludeComponent
 		"DEFAULT_SORT"   => 'rank',
 		"FILTER_NAME"    => '',
 
-		"arrFILTER"                    => array("main", "iblock_news", "iblock_services", "iblock_catalog", "iblock_references", "iblock_av_storages"),
-		"arrFILTER_iblock_news"        => array(61),
-		"arrFILTER_iblock_services"    => array(92),
-		"arrFILTER_iblock_catalog"     => array("all"),
-		"arrFILTER_iblock_references"  => array("all"),
-		"arrFILTER_iblock_av_storages" => array("all"),
+		"arrFILTER"                       => array("main", "iblock_news", "iblock_services", "iblock_catalog_ua", "iblock_references", "iblock_av_storages_ua"),
+		"arrFILTER_iblock_news"           => array(61),
+		"arrFILTER_iblock_services"       => array(92),
+		"arrFILTER_iblock_catalog_ua"     => array("all"),
+		"arrFILTER_iblock_references"     => array(95, 96, 97, 98, 116),
+		"arrFILTER_iblock_av_storages_ua" => array(134),
 
 		"SHOW_WHERE"        => 'N',
 		"arrWHERE"          => '',

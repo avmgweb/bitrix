@@ -7,15 +7,15 @@ $(function()
 				$chapter = $(this).closest('.chapter'),
 				$subMenu = $chapter.children('ul');
 
-			if(!$subMenu.is(':visible'))
-				{
-				$subMenu.slideDown();
-				$chapter.addClass("open");
-				}
-			else
+			if($subMenu.is(':visible'))
 				{
 				$subMenu.slideUp();
 				$chapter.removeClass("open");
+				}
+			else
+				{
+				$subMenu.slideDown();
+				$chapter.addClass("open");
 				}
 			});
 	});

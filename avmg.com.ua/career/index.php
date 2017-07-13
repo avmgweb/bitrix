@@ -3,7 +3,7 @@ require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
 $APPLICATION->SetTitle("Кар’єра");
 $APPLICATION->SetPageProperty("title",       "АВ метал груп Вакансії | Робота в АВ метал груп: Дніпро, Київ, Львів, Харьків, Одеса, Запоріжжя, Полтава, Суми | ☎ (056) 794-55-24 ™ avmg.com.ua");
-$APPLICATION->SetPageProperty("description", "Хочете працювати в АВ Метал Груп? Відкрита вакансія: Менеджер з продажу у Львові");
+$APPLICATION->SetPageProperty("description", "Хочете працювати в АВ Метал Груп? Відкрита вакансія: Менеджер з продажу. Підсобний робітник. Завідувач складом.");
 
 $APPLICATION->IncludeComponent
 	(
@@ -57,7 +57,7 @@ $APPLICATION->IncludeComponent
 		"FILTER_PROPERTY_CODE" => array("city"),
 
 		"SORT_BY1"    => 'PROPERTY_type_vacancy',
-		"SORT_ORDER1" => 'DESC',
+		"SORT_ORDER1" => 'ASC',
 		"SORT_BY2"    => 'SORT',
 		"SORT_ORDER2" => 'ASC',
 		"CHECK_DATES" => 'Y',

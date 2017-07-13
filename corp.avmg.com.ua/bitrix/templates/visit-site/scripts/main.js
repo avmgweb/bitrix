@@ -31,7 +31,7 @@ function AvSiteSearchFieldBehavior(workType)
 	var
 		$head             = $('#av-vst').find('header'),
         $searchInput      = $head.find('.desktop-search-cell input[type=text]'),
-		$hideElements     = $head.find('.desktop-phone-cell'),
+		$hideElements     = $head.find('.desktop-phone-cell, .desktop-lang-twister-cell'),
         searchInputActive = !!$searchInput.attr("activate"),
 		workSpeed         = 400;
 

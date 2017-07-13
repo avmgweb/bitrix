@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="a48fb17d-4b2f-4900-a1a3-ed042beb931d" name=" test" url="http://192.168.3.93">
-        <fileTransfer host="192.168.3.93" port="22" rootFolder="/home/bitrix/ext_www" accessType="SFTP">
+      <webServer id="a48fb17d-4b2f-4900-a1a3-ed042beb931d" name=" test" url="http://192.168.3.85">
+        <fileTransfer host="192.168.3.85" port="22" rootFolder="/home/bitrix/ext_www" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

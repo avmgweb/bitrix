@@ -35,7 +35,7 @@
 /* -------------------------------------------------------------------- */
 /* -------------------------- questions block ------------------------- */
 /* -------------------------------------------------------------------- */
-.av-learning-test-self .questions-bar .title {font-weight: bold;margin-bottom: 5px;text-align: right}
+.av-learning-test-self .questions-bar .title {font-weight: bold;margin-bottom: 10px;text-align: right}
 .av-learning-test-self .questions-bar .bar   {display: flex;flex-wrap: wrap;margin: 0 -5px -5px 0}
 .av-learning-test-self .questions-bar .bar > *
 	{

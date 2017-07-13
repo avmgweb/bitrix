@@ -15,28 +15,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 	<h3><?=GetMessage("AV_LEARNING_SEARCH_TITLE")?>: <span><?=$arResult["q"]?></span></h3>
 
-	<div class="selector">
-		<?
-		/*
-		$arResult["WHERE"]["C"] = GetMessage("AV_LEARNING_SEARCH_LIST_COURSE");
-		$arResult["WHERE"]["H"] = GetMessage("AV_LEARNING_SEARCH_LIST_CHAPTER");
-		$arResult["WHERE"]["L"] = GetMessage("AV_LEARNING_SEARCH_LIST_LESSON");
-
-		$APPLICATION->IncludeComponent
-			(
-			"av:form.select", "av_corp_learning",
-				[
-				"NAME"        => 'where',
-				"LIST"        => $arResult["WHERE"],
-				"VALUE"       => $arResult["where"],
-				"EMPTY_TITLE" => GetMessage("AV_LEARNING_SEARCH_LIST_DEFAULT")
-				]
-			);
-		*/
-		?>
-	</div>
-
-	<div class="searcher">
+	<div>
 		<?
 		$APPLICATION->IncludeComponent
 			(
@@ -44,9 +23,9 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 				[
 				"NAME"         => 'q',
 				"VALUE"        => $arResult["q"],
-				"TITLE"        => GetMessage("AV_LEARNING_LIST_SEARCH_TITLE"),
-				"PLACEHOLDER"  => GetMessage("AV_LEARNING_LIST_SEARCH_PLACEHOLDER"),
-				"SEARCH_TITLE" => GetMessage("AV_LEARNING_LIST_SEARCH_BUTTON_TITLE")
+				"TITLE"        => GetMessage("AV_LEARNING_SEARCH_FORM_TITLE"),
+				"PLACEHOLDER"  => GetMessage("AV_LEARNING_SEARCH_FORM_PLACEHOLDER"),
+				"SEARCH_TITLE" => GetMessage("AV_LEARNING_SEARCH_FORM_BUTTON_TITLE")
 				]
 			);
 		?>

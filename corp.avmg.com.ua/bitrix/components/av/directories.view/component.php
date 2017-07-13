@@ -77,7 +77,7 @@ if
 	/* ------------------------------------------- */
 	if(!count($GLOBALS["AV_DIRECTORIES_IBLOCKS_INFO"][$arParams["IBLOCK_ID"]]))
 		{
-		$queryList = CIBlock::GetList([], ["ID" => $arParams["IBLOCK_ID"], "ACTIVE" => 'Y']);
+		$queryList = CIBlock::GetList([], ["ID" => $arParams["IBLOCK_ID"], "ACTIVE" => 'Y', "SITE_ID" => SITE_ID]);
 		while($queryInfo = $queryList->GetNext()) $GLOBALS["AV_DIRECTORIES_IBLOCKS_INFO"][$queryInfo["ID"]] = $queryInfo;
 		}
 	$iblockInfo = $GLOBALS["AV_DIRECTORIES_IBLOCKS_INFO"][$arParams["IBLOCK_ID"]];

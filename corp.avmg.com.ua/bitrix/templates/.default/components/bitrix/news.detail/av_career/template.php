@@ -148,36 +148,37 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 	<div class="form-cell">
 		<h3><?=GetMessage("AV_CAREER_VIEW_FORM_CELL_TITLE")?></h3>
 		<?
-		$APPLICATION->IncludeComponent
-			(
-			"bitrix:form.result.new", "av_career",
-				[
-				"AJAX_MODE"           => 'Y',
-				"AJAX_OPTION_JUMP"    => 'N',
-				"AJAX_OPTION_STYLE"   => 'N',
-				"AJAX_OPTION_HISTORY" => 'N',
+		if($arParams["WEBFORM_ID"])
+			$APPLICATION->IncludeComponent
+				(
+				"bitrix:form.result.new", $arParams["WEBFORM_TEMPLATE"],
+					[
+					"AJAX_MODE"           => 'Y',
+					"AJAX_OPTION_JUMP"    => 'N',
+					"AJAX_OPTION_STYLE"   => 'N',
+					"AJAX_OPTION_HISTORY" => 'N',
 
-				"SEF_MODE"    => 'N',
-				"WEB_FORM_ID" => 19,
+					"SEF_MODE"    => 'N',
+					"WEB_FORM_ID" => $arParams["WEBFORM_ID"],
 
-				"START_PAGE"     => 'new',
-				"SHOW_LIST_PAGE" => 'N',
-				"SHOW_EDIT_PAGE" => 'N',
-				"SHOW_VIEW_PAGE" => 'N',
-				"SUCCESS_URL"    => $APPLICATION->GetCurPage(false),
+					"START_PAGE"     => 'new',
+					"SHOW_LIST_PAGE" => 'N',
+					"SHOW_EDIT_PAGE" => 'N',
+					"SHOW_VIEW_PAGE" => 'N',
+					"SUCCESS_URL"    => $APPLICATION->GetCurPage(false),
 
-				"SHOW_ANSWER_VALUE"      => 'N',
-				"SHOW_ADDITIONAL"        => 'N',
-				"SHOW_STATUS"            => 'N',
-				"EDIT_ADDITIONAL"        => 'N',
-				"EDIT_STATUS"            => 'N',
-				"IGNORE_CUSTOM_TEMPLATE" => 'N',
-				"USE_EXTENDED_ERRORS"    => 'N',
+					"SHOW_ANSWER_VALUE"      => 'N',
+					"SHOW_ADDITIONAL"        => 'N',
+					"SHOW_STATUS"            => 'N',
+					"EDIT_ADDITIONAL"        => 'N',
+					"EDIT_STATUS"            => 'N',
+					"IGNORE_CUSTOM_TEMPLATE" => 'N',
+					"USE_EXTENDED_ERRORS"    => 'N',
 
-				"CACHE_TYPE" => 'A',
-				"CACHE_TIME" => 360000
-				]
-			)
+					"CACHE_TYPE" => 'A',
+					"CACHE_TIME" => 360000
+					]
+				)
 		?>
 		<div class="support-text">
 			<?=GetMessage("AV_CAREER_VIEW_FORM_SUPPORT_TEXT")?>

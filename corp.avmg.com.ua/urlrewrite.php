@@ -9,8 +9,8 @@ $arUrlRewrite = array(
 		"PATH"      => "/about/news/index.php",
 	),
 	array(
-		"CONDITION" => "#^/career/#",
-		"PATH"      => "/career/index.php",
+		"CONDITION" => "#^/about/career/#",
+		"PATH"      => "/about/career/index.php",
 	),
 	array(
 		"CONDITION" => "#^/docs/pub/(?<hash>[0-9a-f]{32})/(?<action>[0-9a-zA-Z]+)/\\?#",

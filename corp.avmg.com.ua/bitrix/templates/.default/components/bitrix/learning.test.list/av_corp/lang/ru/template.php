@@ -9,5 +9,5 @@ $MESS["AV_LEARNING_TESTS_LIST_PASSAGE_FOLLOW_EDIT"]       = 'разрешен п
 $MESS["AV_LEARNING_TESTS_LIST_PASSAGE_FOLLOW_NO_EDIT"]    = 'разрешен переход к следующему вопросу без ответа на текущий вопрос, <b>нельзя</b> изменять свои ответы.';
 $MESS["AV_LEARNING_TESTS_LIST_PASSAGE_NO_FOLLOW_NO_EDIT"] = 'запрещен переход к следующему вопросу без ответа на текущий вопрос, <b>нельзя</b> изменять свои ответы.';
 
-$MESS["AV_LEARNING_TESTS_LIST_START"]    = 'НАЧАТЬ';
+$MESS["AV_LEARNING_TESTS_LIST_START"]    = 'НАЧАТЬ ТЕСТ';
 $MESS["AV_LEARNING_TESTS_LIST_CONTINUE"] = 'ПРОДОЛЖИТЬ';

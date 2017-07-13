@@ -18,7 +18,7 @@ $APPLICATION->IncludeComponent
 		"AJAX_OPTION_STYLE"   => '',
 		"AJAX_OPTION_HISTORY" => '',
 
-		"IBLOCK_TYPE" => 'catalog',
+		"IBLOCK_TYPE" => 'catalog_ua',
 		"IBLOCK_ID"   => 126,
 		"NEWS_COUNT"  => 50,
 		"USE_SEARCH"  => 'N',

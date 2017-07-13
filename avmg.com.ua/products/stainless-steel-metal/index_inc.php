@@ -25,7 +25,7 @@
 	<li>BRG</li>
 </ul><br>
 
-<a title="АВ металл групп" target="_blank" href="/">АВ метал груп</a> гарантує якість сортового прокату і дроту, так як здійснюємо поставки від кращих виробників Індії:
+<a title="АВ метал груп" target="_blank" href="/">АВ метал груп</a> гарантує якість сортового прокату і дроту, так як здійснюємо поставки від кращих виробників Індії:
 <ul>
 	<li>VIRAJ</li>
 	<li>MACROBARS</li>
@@ -43,15 +43,11 @@
 <h3>Склади нержавіючого металопрокату</h3>
 Наші склади розташовані в наступних містах і працюють з доставкою&nbsp;по всій Україні:
 <ul>
-	<li><a title="Нержавеющий металл в Днепре (Днепропетровск)" target="_blank" href="/metallobaza/dnepr-obl/dnepr-filial-2/">Склад в Дніпрі</a></li>
-	<li>
-		<a title="Нержавеющий металл в Киеве" target="_blank" href="/metallobaza/kiev-obl/kiev-filial-1/">Склад в К</a>
-		<a title="Нержавеющий металл в Киеве" target="_blank" href="/metallobaza/kiev-obl/kiev-filial-1/">иеве</a>
-		<a title="Нержавеющий металл в Киеве" target="_blank" href="/metallobaza/kiev-obl/kiev-filial-1/"></a>
-	</li>
-	<li><a title="Нержавеющий металл в Одессе"    target="_blank" href="/metallobaza/odessa-obl/odessa-metallobaza-4/">Склад в Одесі</a></li>
-	<li><a title="Нержавеющий металл в Черкассах" target="_blank" href="/metallobaza/cherkassy-obl/cherkassy-metallobaza-3/">Склад в Черкасах</a></li>
-	<li><a title="Нержавеющий металл в Запорожье" target="_blank" href="/metallobaza/zaporozhe-obl/zaporozhe-filial-1/">Склад в Запоріжжі</a></li>
-	<li><a title="Нержавеющий металл в Харькове"  target="_blank" href="/metallobaza/kharkov-obl/kharkov-minimarket-sk-21/">Склад в Харкові</a></li>
-	<li><a title="Нержавеющий металл во Львове"   target="_blank" href="/metallobaza/lvov-obl/lvov-filial-1/">Склад у Львові</a></li>
+	<li><a title="Нержавіючий метал у Дніпрі (Дніпропетровськ)" target="_blank" href="/metallobaza/dnepr-obl/dnepr-filial-2/">Склад в Дніпрі</a></li>
+	<li><a title="Нержавіючий метал у Києві"                    target="_blank" href="/metallobaza/kiev-obl/kiev-filial-1/">Склад в Киеве</a></li>
+	<li><a title="Нержавіючий метал у Одесі"                    target="_blank" href="/metallobaza/odessa-obl/odessa-metallobaza-4/">Склад в Одесі</a></li>
+	<li><a title="Нержавіючий метал у Черкасах"                 target="_blank" href="/metallobaza/cherkassy-obl/cherkassy-metallobaza-3/">Склад в Черкасах</a></li>
+	<li><a title="Нержавіючий метал у Запоріжжя"                target="_blank" href="/metallobaza/zaporozhe-obl/zaporozhe-filial-1/">Склад в Запоріжжі</a></li>
+	<li><a title="Нержавіючий метал у Харкові"                  target="_blank" href="/metallobaza/kharkov-obl/kharkov-minimarket-sk-21/">Склад в Харкові</a></li>
+	<li><a title="Нержавіючий метал у Львові"                   target="_blank" href="/metallobaza/lvov-obl/lvov-filial-1/">Склад у Львові</a></li>
 </ul>

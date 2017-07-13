@@ -130,7 +130,7 @@ if(in_array($arCurrentValues["DETAIL_TEMPLATE"], ["av", "av_career"]))
 if($arCurrentValues["LIST_TEMPLATE"] == 'av_bases' || $arCurrentValues["DETAIL_TEMPLATE"] == 'av_bases')
 	{
 	$iblockList = [];
-	$queryList = CIBlock::GetList(["ID" => 'ASC']);
+	$queryList = CIBlock::GetList(["ID" => 'ASC'], ["ACTIVE" => 'Y']);
 	while($queryElement = $queryList->GetNext()) $iblockList[$queryElement["ID"]] = $queryElement["NAME"];
 
 	$arTemplateParameters["AV_BASES_STREAMS_INFO_IBLOCK"] =

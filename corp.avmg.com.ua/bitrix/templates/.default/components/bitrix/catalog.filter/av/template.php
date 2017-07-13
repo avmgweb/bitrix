@@ -14,47 +14,72 @@
 	<?foreach($arResult["FIELDS"] as $field => $fieldInfo):?>
 	<div class="field-row">
 		<?
-		$componenTemplate = '.default';
-		$componentParams  =
-			[
-			"TYPE"  => 'input',
-			"NAME"  => $fieldInfo["INPUT_NAME"],
-			"VALUE" => $fieldInfo["INPUT_VALUE"],
-			"TITLE" => $fieldInfo["NAME"]
-			];
-
-		switch($fieldInfo["TYPE"])
-			{
-			case "RADIO":
-				$componentParams["TYPE"]  = 'select';
-				$componentParams["LIST"]  = $fieldInfo["VALUE_LIST"];
-				$componentParams["TITLE"] = GetMessage("AV_FILTER_LIST_DEFAULT");
-				$componenTemplate         = 'default_alt';
-				break;
-			case "SELECT":
-				$componentParams["TYPE"]        = 'select';
-				$componentParams["LIST"]        = $fieldInfo["VALUE_LIST"];
-				$componentParams["EMPTY_TITLE"] = $fieldInfo["NAME"] ? $fieldInfo["NAME"] : GetMessage("AV_FILTER_LIST_DEFAULT");
-				break;
-			case "IBLOCK_ELEMENT":
-				$componentParams["TYPE"]               = 'iblock_element_search';
-				$componentParams["IBLOCK_ID"]          = $fieldInfo["IBLOCK_ID"];
-				$componentParams["SEARCH_TYPE"]        = $fieldInfo["SEARCH_TYPE"];
-				$componentParams["PARENT_SECTION"]     = $fieldInfo["PARENT_SECTION"];
-				$componentParams["EMPTY_RESULT_TITLE"] = GetMessage("AV_FILTER_IBLOCK_EMPTY_RESULT");
-				break;
-			case "SEARCH":
-				$componentParams["TYPE"]        = 'element_search';
-				$componentParams["PLACEHOLDER"] = GetMessage("AV_FILTER_SEARCH_PLACEHOLDER");
-				break;
-			case "LINKS_LIST":
-				$componentParams["TYPE"] = 'select';
-				$componentParams["LIST"] = $fieldInfo["VALUE_LIST"];
-				$componenTemplate        = 'av_site_alt';
-				break;
-			}
-
-		$APPLICATION->IncludeComponent("av:form_elements", $componenTemplate, $componentParams);
+		if($fieldInfo["TYPE"] == 'IBLOCK_ELEMENT')
+			$APPLICATION->IncludeComponent
+				(
+				"av:form.iblock.search.element", 'av',
+					[
+					"NAME"              => $fieldInfo["INPUT_NAME"],
+					"VALUE"             => $fieldInfo["INPUT_VALUE"],
+					"TITLE"             => $fieldInfo["NAME"],
+					"IBLOCK_ID"         => $fieldInfo["IBLOCK_ID"],
+					"EMPTY_RESULT_TEXT" => GetMessage("AV_FILTER_IBLOCK_EMPTY_RESULT")
+					]
+				);
+		elseif($fieldInfo["TYPE"] == 'SELECT')
+			$APPLICATION->IncludeComponent
+				(
+				"av:form.select", 'av',
+					[
+					"NAME"  => $fieldInfo["INPUT_NAME"],
+					"VALUE" => $fieldInfo["INPUT_VALUE"],
+					"TITLE" => $fieldInfo["NAME"],
+					"LIST"  => $fieldInfo["VALUE_LIST"]
+					]
+				);
+		elseif($fieldInfo["TYPE"] == 'SELECT_MULTIPLE')
+			$APPLICATION->IncludeComponent
+				(
+				"av:form.select.multiple", 'av',
+					[
+					"NAME"  => $fieldInfo["INPUT_NAME"],
+					"VALUE" => $fieldInfo["INPUT_VALUE"],
+					"TITLE" => $fieldInfo["NAME"],
+					"LIST"  => $fieldInfo["VALUE_LIST"]
+					]
+				);
+		elseif($fieldInfo["TYPE"] == 'RADIO')
+			$APPLICATION->IncludeComponent
+				(
+				"av:form.select", 'av_alt',
+					[
+					"NAME"  => $fieldInfo["INPUT_NAME"],
+					"VALUE" => $fieldInfo["INPUT_VALUE"],
+					"TITLE" => $fieldInfo["NAME"],
+					"LIST"  => $fieldInfo["VALUE_LIST"]
+					]
+				);
+		elseif($fieldInfo["TYPE"] == 'LINKS_LIST')
+			$APPLICATION->IncludeComponent
+				(
+				"av:form.links_list", 'av',
+					[
+					"VALUE" => $fieldInfo["INPUT_VALUE"],
+					"TITLE" => $fieldInfo["NAME"],
+					"LIST"  => $fieldInfo["VALUE_LIST"]
+					]
+				);
+		elseif($fieldInfo["TYPE"] == 'SEARCH')
+			$APPLICATION->IncludeComponent
+				(
+				"av:form.input", 'av_search',
+					[
+					"NAME"        => $fieldInfo["INPUT_NAME"],
+					"VALUE"       => $fieldInfo["INPUT_VALUE"],
+					"TITLE"       => $fieldInfo["NAME"],
+					"PLACEHOLDER" => GetMessage("AV_FILTER_SEARCH_PLACEHOLDER")
+					]
+				);
 		?>
 	</div>
 	<?endforeach?>

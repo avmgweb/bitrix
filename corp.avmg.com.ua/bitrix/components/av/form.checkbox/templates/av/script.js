@@ -6,7 +6,13 @@
 	jQuery.fn.getFormElememtNameCheckboxAv     = function()      {return this.find('input').attr("name")};
 	jQuery.fn.setFormElememtNameCheckboxAv     = function(value) {this.find('input').attr("name", value)};
 	jQuery.fn.getFormElememtValueCheckboxAv    = function()      {return this.find('input').is('[checked]')};
-	jQuery.fn.setFormElememtValueCheckboxAv    = function(value) {this.find('input').prop("checked", !!value).trigger("change")};
+	jQuery.fn.setFormElememtValueCheckboxAv    = function(value)
+		{
+		var $checkbox = this.find('input');
+		if(value) $checkbox.attr("checked", true).prop("checked", true);
+		else      $checkbox.removeAttr("checked").prop("checked", false);
+		$checkbox.trigger("change");
+		};
 	jQuery.fn.getFormElememtRequiredCheckboxAv = function()      {return this.hasClass("required")};
 	jQuery.fn.setFormElememtRequiredCheckboxAv = function(value)
 		{

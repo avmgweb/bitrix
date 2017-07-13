@@ -2,8 +2,8 @@
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
 $APPLICATION->SetTitle("Чорний металопрокат");
-$APPLICATION->SetPageProperty("title",       "Чорний метал ► купити чорний металопрокат в Україні: Дніпро, Київ, Харків, Львів, Одеса, опт, роздріб, ціни на метал, прайс металолопрокат | Напрямок АВ метал груп ™ avmg.com.ua");
-$APPLICATION->SetPageProperty("description", "Чорний метал асортимент і ціни ▻ АВ метал груп ™ ✓Шірокій вибір ✓Металлобази і доставка по всій Україні ☎ (056) 790-01-22");
+$APPLICATION->SetPageProperty("title",       "Чорний метал ► купити чорний металопрокат в Україні: Дніпро, Київ, Харків, Львів, Одеса, опт, роздріб, ціни на метал, прайс металолопрокат | АВ метал груп ™ avmg.com.ua");
+$APPLICATION->SetPageProperty("description", "Чорний метал асортимент і ціни ▻ АВ метал груп ™ ✓Широкий вибір ✓Металлобази і доставка по всій Україні ☎ (056) 790-01-22");
 
 $APPLICATION->IncludeComponent
 	(
@@ -18,7 +18,7 @@ $APPLICATION->IncludeComponent
 		"AJAX_OPTION_STYLE"   => '',
 		"AJAX_OPTION_HISTORY" => '',
 
-		"IBLOCK_TYPE" => 'catalog',
+		"IBLOCK_TYPE" => 'catalog_ua',
 		"IBLOCK_ID"   => 123,
 		"NEWS_COUNT"  => 50,
 		"USE_SEARCH"  => 'N',

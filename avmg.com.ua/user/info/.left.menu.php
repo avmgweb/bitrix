@@ -1,14 +1,14 @@
 <?
 $aMenuLinks = Array(
 	Array(
-		"Персональные данные", 
+		"Персональні дані", 
 		"/user/info/", 
 		Array(), 
 		Array(), 
 		"" 
 	),
 	Array(
-		"Мои обращения", 
+		"Мої звернення", 
 		"/user/support/", 
 		Array(), 
 		Array(), 

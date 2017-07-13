@@ -1,9 +1,9 @@
 <?
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
-$APPLICATION->SetPageProperty("description", "Профлисты ассортимент и цены ▻ АВ металл групп ™ ✓Широкий выбор ✓Металлобазы и доставка по всей Украине ☎ (056)790-01-22");
-$APPLICATION->SetPageProperty("title", "Профлист ► купить профнастил и металлочерепицу в Украине: Днепр, Киев, Харьков, Львов, Одесса, опт, розница | Направление АВ металл групп ™ ru.avmg.com.ua");
 $APPLICATION->SetTitle("Профнастил и металлочерепица");
+$APPLICATION->SetPageProperty("title",       "Профлист ► купить профнастил и металлочерепицу в Украине: Днепр, Киев, Харьков, Львов, Одесса, опт, розница | Направление АВ металл групп ™ ru.avmg.com.ua");
+$APPLICATION->SetPageProperty("description", "Профлисты ассортимент и цены ▻ АВ металл групп ™ ✓Широкий выбор ✓Металлобазы и доставка по всей Украине ☎ (056)790-01-22");
 
 $APPLICATION->IncludeComponent
 	(

@@ -1,6 +1,5 @@
 <?
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-IncludeTemplateLangFile(__FILE__);
 /* ============================================================================================= */
 /* ========================================= COUNTINGS ========================================= */
 /* ============================================================================================= */
@@ -87,7 +86,22 @@ if($workAreaType == 'full_screen_page')          $useBreadcrumbs = false;
 		?>
 		<header>
 			<div class="hidden-lg hidden-md mobile-first-row">
-				<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => 'file', "PATH" => '/include/hot_line.php'))?>
+				<div>
+					<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => 'file', "PATH" => '/include/hot_line.php'))?>
+				</div>
+				<div>
+					<?
+					$APPLICATION->IncludeComponent
+						(
+						"bitrix:main.site.selector", "av",
+							array(
+							"SITE_LIST"  => array("RU","AV"),
+							"CACHE_TIME" => 3600000,
+							"CACHE_TYPE" => 'A'
+							)
+						);
+					?>
+				</div>
 			</div>
 
 			<div class="container">
@@ -104,44 +118,26 @@ if($workAreaType == 'full_screen_page')          $useBreadcrumbs = false;
 
 				<div class="col-lg-10 col-md-10 hidden-sm hidden-xs desktop-right-col">
 					<div class="desktop-gadgets-row">
+						<div class="desktop-lang-twister-cell">
+							<?
+							$APPLICATION->IncludeComponent
+								(
+								"bitrix:main.site.selector", "av",
+									array(
+									"SITE_LIST"  => array("RU","AV"),
+									"CACHE_TIME" => 3600000,
+									"CACHE_TYPE" => 'A'
+									)
+								);
+							?>
+						</div>
+
 						<div class="desktop-phone-cell">
 							<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => 'file', "PATH" => '/include/hot_line.php'))?>
 						</div>
 
 						<div class="desktop-search-cell">
-							<?
-							$APPLICATION->IncludeComponent
-								(
-								"bitrix:search.title", "av",
-									array(
-									"INPUT_ID"             => 'title-search-input',
-									"CONTAINER_ID"         => 'title-search',
-									"PREVIEW_TRUNCATE_LEN" => 150,
-									"PAGE"                 => '#SITE_DIR#search/index.php',
-
-									"NUM_CATEGORIES"     => 3,
-									"TOP_COUNT"          => 5,
-									"ORDER"              => 'date',
-									"USE_LANGUAGE_GUESS" => 'Y',
-									"CHECK_DATES"        => 'Y',
-									"SHOW_OTHERS"        => 'N',
-
-									"CATEGORY_0_TITLE"           => 'Основное',
-									"CATEGORY_0"                 => array("main", "iblock_news", "iblock_services"),
-									"CATEGORY_0_iblock_news"     => array(50),
-									"CATEGORY_0_iblock_services" => array(59),
-
-									"CATEGORY_1_TITLE"             => 'Продукция',
-									"CATEGORY_1"                   => array("iblock_catalog", "iblock_references"),
-									"CATEGORY_1_iblock_catalog"    => array("all"),
-									"CATEGORY_1_iblock_references" => array("all"),
-
-									"CATEGORY_2_TITLE"              => 'Металлобазы',
-									"CATEGORY_2"                    => array("iblock_av_storages"),
-									"CATEGORY_2_iblock_av_storages" => array("all")
-									)
-								);
-							?>
+							<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => 'file', "PATH" => '/include/search.php'))?>
 						</div>
 
 						<div>
@@ -213,39 +209,7 @@ if($workAreaType == 'full_screen_page')          $useBreadcrumbs = false;
 					<?if($currentPage != SITE_DIR):?></a><?endif?>
 
 					<div class="mobile-search-cell">
-						<?
-						$APPLICATION->IncludeComponent
-							(
-							"bitrix:search.title", "av_mobile",
-								array(
-								"INPUT_ID"             => 'title-search-input-mobile',
-								"CONTAINER_ID"         => 'title-search-mobile',
-								"PREVIEW_TRUNCATE_LEN" => 150,
-								"PAGE"                 => '#SITE_DIR#search/index.php',
-
-								"NUM_CATEGORIES"     => 3,
-								"TOP_COUNT"          => 5,
-								"ORDER"              => 'date',
-								"USE_LANGUAGE_GUESS" => 'Y',
-								"CHECK_DATES"        => 'Y',
-								"SHOW_OTHERS"        => 'N',
-
-								"CATEGORY_0_TITLE"           => 'Основное',
-								"CATEGORY_0"                 => array("main", "iblock_news", "iblock_services"),
-								"CATEGORY_0_iblock_news"     => array(50),
-								"CATEGORY_0_iblock_services" => array(59),
-
-								"CATEGORY_1_TITLE"             => 'Продукция',
-								"CATEGORY_1"                   => array("iblock_catalog", "iblock_references"),
-								"CATEGORY_1_iblock_catalog"    => array("all"),
-								"CATEGORY_1_iblock_references" => array("all"),
-
-								"CATEGORY_2_TITLE"              => 'Металлобазы',
-								"CATEGORY_2"                    => array("iblock_av_storages"),
-								"CATEGORY_2_iblock_av_storages" => array("all")
-								)
-							)
-						?>
+						<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => 'file', "PATH" => '/include/search_mobile.php'))?>
 					</div>
 				</div>
 			</div>

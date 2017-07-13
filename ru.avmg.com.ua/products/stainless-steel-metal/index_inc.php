@@ -44,14 +44,10 @@
 Наши склады расположены в следующих городах и работают с доставкой&nbsp;по всей Украине:
 <ul>
 	<li><a title="Нержавеющий металл в Днепре (Днепропетровск)" target="_blank" href="/metallobaza/dnepr-obl/dnepr-filial-2/">Склад в Днепре</a></li>
-	<li>
-		<a title="Нержавеющий металл в Киеве" target="_blank" href="/metallobaza/kiev-obl/kiev-filial-1/">Склад в К</a>
-		<a title="Нержавеющий металл в Киеве" target="_blank" href="/metallobaza/kiev-obl/kiev-filial-1/">иеве</a>
-		<a title="Нержавеющий металл в Киеве" target="_blank" href="/metallobaza/kiev-obl/kiev-filial-1/"></a>
-	</li>
-	<li><a title="Нержавеющий металл в Одессе"    target="_blank" href="/metallobaza/odessa-obl/odessa-metallobaza-4/">Склад в Одессе</a></li>
-	<li><a title="Нержавеющий металл в Черкассах" target="_blank" href="/metallobaza/cherkassy-obl/cherkassy-metallobaza-3/">Склад в Черкассах</a></li>
-	<li><a title="Нержавеющий металл в Запорожье" target="_blank" href="/metallobaza/zaporozhe-obl/zaporozhe-filial-1/">Склад в Запорожье</a></li>
-	<li><a title="Нержавеющий металл в Харькове"  target="_blank" href="/metallobaza/kharkov-obl/kharkov-minimarket-sk-21/">Склад в Харькове</a></li>
-	<li><a title="Нержавеющий металл во Львове"   target="_blank" href="/metallobaza/lvov-obl/lvov-filial-1/">Склад во Львове</a></li>
+	<li><a title="Нержавеющий металл в Киеве"                   target="_blank" href="/metallobaza/kiev-obl/kiev-filial-1/">Склад в Киеве</a></li>
+	<li><a title="Нержавеющий металл в Одессе"                  target="_blank" href="/metallobaza/odessa-obl/odessa-metallobaza-4/">Склад в Одессе</a></li>
+	<li><a title="Нержавеющий металл в Черкассах"               target="_blank" href="/metallobaza/cherkassy-obl/cherkassy-metallobaza-3/">Склад в Черкассах</a></li>
+	<li><a title="Нержавеющий металл в Запорожье"               target="_blank" href="/metallobaza/zaporozhe-obl/zaporozhe-filial-1/">Склад в Запорожье</a></li>
+	<li><a title="Нержавеющий металл в Харькове"                target="_blank" href="/metallobaza/kharkov-obl/kharkov-minimarket-sk-21/">Склад в Харькове</a></li>
+	<li><a title="Нержавеющий металл во Львове"                 target="_blank" href="/metallobaza/lvov-obl/lvov-filial-1/">Склад во Львове</a></li>
 </ul>

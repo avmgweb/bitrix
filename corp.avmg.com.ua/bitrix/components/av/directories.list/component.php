@@ -57,7 +57,7 @@ if
 
 	if(count($iblockNeedQuery))
 		{
-		$queryList = CIBlock::GetList(["SORT" => 'ASC'], ["ID" => $iblockNeedQuery, "ACTIVE" => 'Y']);
+		$queryList = CIBlock::GetList(["SORT" => 'ASC'], ["ID" => $iblockNeedQuery, "ACTIVE" => 'Y', "SITE_ID" => SITE_ID]);
 		while($queryInfo = $queryList->GetNext()) $GLOBALS["AV_DIRECTORIES_IBLOCKS_INFO"][$queryInfo["ID"]] = $queryInfo;
 		}
 

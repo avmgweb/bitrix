@@ -1,8 +1,8 @@
 <div class="av-products-image-link">
 	<a href="/uslugi/plazmennaya-rezka-metalla/" rel="nofollow">
-		<img src="/upload/medialibrary/621/plazmorezka.jpg" alt="плазмова порізка металу" title="плазмова порізка металу">
+		<img src="/upload/medialibrary/621/plazmorezka.jpg" alt="плазмова різка металу" title="плазмова різка металу">
 	</a>
-	<a href="/uslugi/plazmennaya-rezka-metalla/">Плазмова порізка металу</a>
+	<a href="/uslugi/plazmennaya-rezka-metalla/">Плазмова різка металу</a>
 </div>
 
 <br><br>

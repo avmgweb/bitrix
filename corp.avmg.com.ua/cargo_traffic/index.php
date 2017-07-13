@@ -6,7 +6,7 @@ $APPLICATION->IncludeComponent
 	(
 	"av_cargo_traffic_light:lists.list", "",
 		array(
-		"IBLOCK_TYPE_ID"   => 'av_cargo_trafic_light',
+		"IBLOCK_TYPE_ID"   => 'av_cargo_traffic_light',
 		"IBLOCK_ID"        => 114,
 		"SECTION_ID"       => '',
 		"LIST_URL"         => '/cargo_traffic/',

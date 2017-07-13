@@ -1,6 +1,6 @@
 <?
 $aMenuLinks = array(
-	array("Арматура горячекатана",  "/proizvodstvo/armatura-proizvoditel/"),
+	array("Арматура гарячекатана",  "/proizvodstvo/armatura-proizvoditel/"),
 	array("Дріт",                   "/proizvodstvo/provoloka-proizvoditel/"),
 	array("Круглий прокат",         "/proizvodstvo/krug-proizvoditel/"),
 	array("Профільна труба",        "/proizvodstvo/profilnaya-truba-proizvoditel/"),

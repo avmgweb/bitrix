@@ -164,7 +164,7 @@ $APPLICATION->SetTitle("Реквізити");
 	</tr>
 	<tr>
 		<td>Інформація про здійснення зв'язку з юридичною особою</td>
-		<td>Веб сторінка: <a href="/">ru.avmg.com.ua</a></td>
+		<td>Веб сторінка: <a href="/">avmg.com.ua</a></td>
 	</tr>
 </table>
 <?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php';?>

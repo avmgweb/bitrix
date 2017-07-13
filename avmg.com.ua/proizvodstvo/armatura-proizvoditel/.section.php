@@ -1,5 +1,5 @@
 <?
-$sSectionName    = 'Горячекатана арматура';
+$sSectionName    = 'Гарячекатана арматура';
 $arDirProperties = array(
    "TITLE_BACKGROUND"     => '/upload/medialibrary/c45/1.png',
    "TITLE_BACKGROUND_ALT" => '/upload/medialibrary/ff4/armatura.png',

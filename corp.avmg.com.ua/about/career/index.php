@@ -7,7 +7,7 @@ $APPLICATION->IncludeComponent
 	"bitrix:news", "av",
 		array(
 		"SEF_MODE"          => 'Y',
-		"SEF_FOLDER"        => '/career/',
+		"SEF_FOLDER"        => '/about/career/',
 		"SEF_URL_TEMPLATES" =>
 			array(
 			"detail" => '#ELEMENT_CODE#/',

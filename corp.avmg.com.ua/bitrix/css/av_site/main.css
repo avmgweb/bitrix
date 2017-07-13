@@ -12,8 +12,7 @@
 	}
 #av-waiting-screen > div
 	{
-	animation:         spin 2s linear infinite;
-	-webkit-animation: spin 2s linear infinite;
+	animation: spin 2s linear infinite;
 	border: 2px solid transparent;
 	border-top-color: #335261;
 	border-radius: 50%;
@@ -26,8 +25,7 @@
 	}
 #av-waiting-screen > div::before
 	{
-	animation:         spin 3s linear infinite;
-	-webkit-animation: spin 3s linear infinite;
+	animation: spin 3s linear infinite;
 	border: 2px solid transparent;
 	border-top-color: #CC0000;
 	border-radius: 50%;
@@ -40,8 +38,7 @@
 	}
 #av-waiting-screen > div::after
 	{
-	animation:         spin 1.5s linear infinite;
-	-webkit-animation: spin 1.5s linear infinite;
+	animation: spin 1.5s linear infinite;
 	border: 2px solid transparent;
 	border-top-color: #8BA2AF;
 	border-radius: 50%;
@@ -55,33 +52,13 @@
 
 @-webkit-keyframes spin
 	{
-	0%
-		{
-		-webkit-transform: rotate(0deg);
-		    -ms-transform: rotate(0deg);
-		        transform: rotate(0deg);
-		}
-	100%
-		{
-		-webkit-transform: rotate(360deg);
-		    -ms-transform: rotate(360deg);
-		        transform: rotate(360deg);
-		}
+	0%   {transform: rotate(0deg)}
+	100% {transform: rotate(360deg)}
 	}
 @keyframes spin
 	{
-	0%
-		{
-		-webkit-transform: rotate(0deg);
-		    -ms-transform: rotate(0deg);
-		        transform: rotate(0deg);
-		}
-	100%
-		{
-		-webkit-transform: rotate(360deg);
-		    -ms-transform: rotate(360deg);
- 		        transform: rotate(360deg);
-		}
+	0%   {transform: rotate(0deg)}
+	100% {transform: rotate(360deg)}
 	}
 /* -------------------------------------------------------------------- */
 /* ---------------------------- blur screen --------------------------- */
@@ -108,8 +85,8 @@
 	max-width: 500px;
 	}
 
-.av-alert-popup                .content {align-items: center;display: flex}
-.av-alert-popup:not([type=""]) .image
+.av-alert-popup                    .content {align-items: center;display: flex}
+.av-alert-popup:not([type=simple]) .image
 	{
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -117,10 +94,10 @@
 	width:  64px;
 	height: 64px;
 	}
-.av-alert-popup[type=ok]       .image   {background-image: url(/bitrix/images/av_site/alert_popup_ok.png)}
-.av-alert-popup[type=alert]    .image   {background-image: url(/bitrix/images/av_site/alert_popup_alert.png)}
-.av-alert-popup:not([type=""]) .text    {width: calc(100% - 84px)}
-.av-alert-popup                .close-form-button
+.av-alert-popup[type=ok]           .image   {background-image: url(/bitrix/images/av_site/alert_popup_ok.png)}
+.av-alert-popup[type=alert]        .image   {background-image: url(/bitrix/images/av_site/alert_popup_alert.png)}
+.av-alert-popup:not([type=simple]) .text    {width: calc(100% - 84px)}
+.av-alert-popup                    .close-form-button
 	{
 	background: url(/bitrix/images/av_site/alert_popup_close.png) center center no-repeat;
 	background-size: 16px;

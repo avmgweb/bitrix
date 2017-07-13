@@ -30,7 +30,7 @@
 
 .av-list > div       .content-cell .element-title            {display: block;font-weight: bold}
 .av-list > div:hover .content-cell .element-title            {color: #CC0000}
-.av-list > div       .content-cell .element-text             {color: #757575}
+.av-list > div       .content-cell .element-text             {color: #757575;text-align: justify}
 .av-list > div       .content-cell .read-more-link           {color: #CC0000 !important; display: block}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ other ------------------------------- */
@@ -57,8 +57,9 @@
 	}
 @media (max-width:767px)
 	{
-	.av-list > div                             {margin-left: auto;margin-right: auto;max-width: 450px}
-	.av-list:not(.smaller) > div .image-link   {margin-bottom: 12px;width: 150px;height: 150px}
-	.av-list.smaller       > div .image-link   {margin-bottom: 12px;width: 120px;height: 120px}
-	.av-list:not(.smaller) > div .content-cell {width: 100%}
+	.av-list               > div                              {margin-left: auto;margin-right: auto;max-width: 450px}
+	.av-list               > div .content-cell .element-title {text-align: center}
+	.av-list:not(.smaller) > div .image-link                  {margin-bottom: 12px;width: 150px;height: 150px}
+	.av-list.smaller       > div .image-link                  {margin-bottom: 12px;width: 120px;height: 120px}
+	.av-list:not(.smaller) > div .content-cell                {width: 100%}
 	}

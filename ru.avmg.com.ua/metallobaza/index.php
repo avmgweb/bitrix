@@ -60,9 +60,9 @@ $APPLICATION->IncludeComponent
 		"FILTER_FIELD_CODE"    => array("SECTION_ID", "SUBSECTION"),
 		"FILTER_PROPERTY_CODE" => array("type_bases", "streams"),
 
-		"SORT_BY1"    => 'PROPERTY_type_bases',
+		"SORT_BY1"    => 'PROPERTY_NAME',
 		"SORT_ORDER1" => 'ASC',
-		"SORT_BY2"    => 'PROPERTY_number_object',
+		"SORT_BY2"    => 'PROPERTY_type_bases',
 		"SORT_ORDER2" => 'ASC',
 		"CHECK_DATES" => 'Y',
 
@@ -137,7 +137,7 @@ $APPLICATION->IncludeComponent
 		"LIST_TEMPLATE"             => 'av_bases',
 		"DETAIL_TEMPLATE"           => 'av_bases',
 
-		"AV_BASES_STREAMS_INFO_IBLOCK"    => 93,
+		"AV_BASES_STREAMS_INFO_IBLOCK"    => 114,
 		"FILTER_SUBSECTION_TITLE"         => 'Город',
 		"SAME_ARTICLES_SEARCH_IN_SECTION" => 'Y',
 		"ADD_SUBSECTIONS_CHAIN"           => 'Y'

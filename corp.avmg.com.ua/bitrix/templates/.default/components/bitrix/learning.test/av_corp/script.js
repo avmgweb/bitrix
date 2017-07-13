@@ -3,10 +3,6 @@
 /* -------------------------------------------------------------------- */
 $(function()
 	{
-	var
-		$nextButtonPopup   = $(),
-		$submitButtonPopup = $();
-
 	$(document)
 		/* ------------------------------------------- */
 		/* ----------- next button behavior ---------- */
@@ -39,17 +35,28 @@ $(function()
 			if(!result)
 				{
 				AvBlurScreen("on", 900);
-				$nextButtonPopup = CreateAvAlertPopup
+				CreateAvAlertPopup
 					(
 					'<div class="av-learning-test-detail-popup next-button">'+
 						$('.av-learning-test-detail-popup-content').html()
 							.replace('#TEXT#',        alertMessage)
 							.replace('#CANCEL_TEXT#', BX.message("AV_LEARNING_TEST_SKIP_QUESTION_CANCEL"))
 							.replace('#ACCEPT_TEXT#', BX.message("AV_LEARNING_TEST_SKIP_QUESTION_CONFIRM"))+
-					'</div>'
+					'</div>',
+					'',
+						{
+						"hide_on_clickout" : 'Y',
+						"centering"        : 'Y',
+						"z_index"          : 1000
+						}
 					)
-					.positionCenter(1000)
-					.on("remove", function() {AvBlurScreen("off")});
+					.on("vclick", '[data-apply-button]',  function()
+						{
+						$('.av-learning-test-detail [data-next-button-type]').removeAttr("data-next-button-type").click();
+						$(this).getAvAlertPopup().remove();
+						})
+					.on("vclick", '[data-cancel-button]', function() {$(this).getAvAlertPopup().remove()})
+					.on("remove",                         function() {AvBlurScreen("off")});
 				return false;
 				}
 
@@ -61,70 +68,35 @@ $(function()
 		.on("vclick", '.av-learning-test-detail [name="finish"]:not([confirmed])', function()
 			{
 			AvBlurScreen("on", 900);
-			$submitButtonPopup = CreateAvAlertPopup
+			CreateAvAlertPopup
 				(
 				'<div class="av-learning-test-detail-popup finish-button">'+
 					$('.av-learning-test-detail-popup-content').html()
 						.replace('#TEXT#',        BX.message("AV_LEARNING_TEST_FINISH_TEST"))
 						.replace('#CANCEL_TEXT#', BX.message("AV_LEARNING_TEST_FINISH_TEST_CANCEL"))
 						.replace('#ACCEPT_TEXT#', BX.message("AV_LEARNING_TEST_FINISH_TEST_CONFIRM"))+
-				'</div>'
+				'</div>',
+				'',
+					{
+					"hide_on_clickout" : 'Y',
+					"centering"        : 'Y',
+					"z_index"          : 1000
+					}
 				)
-				.positionCenter(1000)
-				.on("remove", function() {AvBlurScreen("off")});
+				.on("vclick", '[data-apply-button]',  function()
+					{
+					$('.av-learning-test-detail [name="finish"]').attr("confirmed", true).click();
+					$(this).getAvAlertPopup().remove();
+					})
+				.on("vclick", '[data-cancel-button]', function() {$(this).getAvAlertPopup().remove()})
+				.on("remove",                         function() {AvBlurScreen("off")});
 			return false;
-			})
-		/* ------------------------------------------- */
-		/* -------------- popup behavior ------------- */
-		/* ------------------------------------------- */
-		.on("vclick", '.av-learning-test-detail-popup [data-cancel-button]', function()
-			{
-			$nextButtonPopup  .remove();
-			$submitButtonPopup.remove();
-			})
-		.on("vclick", '.av-learning-test-detail-popup.next-button [data-apply-button]', function()
-			{
-			$('.av-learning-test-detail [data-next-button-type]').removeAttr("data-next-button-type").click();
-			$nextButtonPopup.remove();
-			})
-		.on("vclick", '.av-learning-test-detail-popup.finish-button [data-apply-button]', function()
-			{
-			$('.av-learning-test-detail [name="finish"]').attr("confirmed", true).click();
-			$submitButtonPopup.remove();
 			})
 		/* ------------------------------------------- */
 		/* --------------- form submit --------------- */
 		/* ------------------------------------------- */
-		.on("submit", '.av-learning-test-detail form', function()
-			{
-			AvWaitingScreen("on");
-			})
-		.on("vclick", '.av-learning-test-detail .buttons-block a', function()
-			{
-			AvWaitingScreen("on");
-			})
-		/* ------------------------------------------- */
-		/* ------------- on click hiding ------------- */
-		/* ------------------------------------------- */
-		.on("vclick", function()
-			{
-			if(!$nextButtonPopup.isClicked()   && !$('.av-learning-test-detail [data-next-button-type]').isClicked()) $nextButtonPopup  .remove();
-			if(!$submitButtonPopup.isClicked() && !$('.av-learning-test-detail [name="finish"]')        .isClicked()) $submitButtonPopup.remove();
-			});
-		/* ------------------------------------------- */
-		/* -------------- scroll/resize -------------- */
-		/* ------------------------------------------- */
-	$(window)
-		.scroll(function()
-			{
-			$nextButtonPopup  .positionCenter();
-			$submitButtonPopup.positionCenter();
-			})
-		.resize(function()
-			{
-			$nextButtonPopup  .positionCenter();
-			$submitButtonPopup.positionCenter();
-			});
+		.on("submit", '.av-learning-test-detail form',             function() {AvWaitingScreen("on")})
+		.on("vclick", '.av-learning-test-detail .buttons-block a', function() {AvWaitingScreen("on")});
 	});
 /* -------------------------------------------------------------------- */
 /* ------------------------------- timer ------------------------------ */

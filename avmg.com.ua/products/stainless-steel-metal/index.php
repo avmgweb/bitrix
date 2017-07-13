@@ -1,10 +1,10 @@
 <?
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
-$APPLICATION->SetPageProperty("keywords", "нержавейка лист цена, нержавейка купить, нержавейка цена, нержавейка труба, нержавеющая сталь купить, нержавейка лист цена");
-$APPLICATION->SetPageProperty("description", "Нержавейка ассортимент и цены ▻ АВ металл групп ™ ✓Широкий выбор ✓Металлобазы и доставка по всей Украине ☎ (056)790-01-22");
-$APPLICATION->SetPageProperty("title", "Нержавеющий металл ► купить нержавейку цена в Украине: Днепр, Киев, Харьков, Львов, Одесса, опт, розница | Направление АВ металл групп ™ avmg.com.ua");
 $APPLICATION->SetTitle("Нержавіючий металопрокат");
+$APPLICATION->SetPageProperty("title",       "Нержавіючий метал ► купити нержавійку ціна в Україні: Дніпро, Київ, Харків, Львів, Одеса, опт, роздріб | Напрямок АВ метал груп ™ avmg.com.ua");
+$APPLICATION->SetPageProperty("description", "Нержавійка асортимент і ціни ▻ АВ метал груп ™ ✓Шірокій вибір ✓Металлобази і доставка по всій Україні ☎ (056) 790-01-22");
+$APPLICATION->SetPageProperty("keywords",    "нержавейка лист ціна, нержавіюча купити, нержавійка ціна, нержавіюча труба, нержавіюча сталь купити, нержавіюча лист ціна");
 
 $APPLICATION->IncludeComponent
 	(
@@ -19,7 +19,7 @@ $APPLICATION->IncludeComponent
 		"AJAX_OPTION_STYLE"   => '',
 		"AJAX_OPTION_HISTORY" => '',
 
-		"IBLOCK_TYPE" => 'catalog',
+		"IBLOCK_TYPE" => 'catalog_ua',
 		"IBLOCK_ID"   => 127,
 		"NEWS_COUNT"  => 50,
 		"USE_SEARCH"  => 'N',

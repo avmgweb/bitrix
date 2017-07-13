@@ -39,7 +39,7 @@
 		display: none;
 	}
 .av-vs-banner-text > div {
-	font-size: 18px;
+	font-size: 18px !important;
 }
 .av-vs-banner-text h2 {
     font-size: 35px;

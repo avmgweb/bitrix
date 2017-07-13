@@ -30,8 +30,6 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 <div class="av-learning-list">
 	<?foreach($arResult["COURSES"] as $courseInfo):?>
 	<?
-	$courseInfo["NAME"]         = htmlspecialchars_decode($courseInfo["NAME"]);
-	$courseInfo["PREVIEW_TEXT"] = strip_tags($courseInfo["PREVIEW_TEXT"]);
 	$titleCutLength = 80;
 	$textCutLength  = 320;
 	?>

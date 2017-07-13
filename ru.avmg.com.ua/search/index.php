@@ -50,8 +50,8 @@ $APPLICATION->IncludeComponent
 		"arrFILTER_iblock_news"        => array(50),
 		"arrFILTER_iblock_services"    => array(59),
 		"arrFILTER_iblock_catalog"     => array("all"),
-		"arrFILTER_iblock_references"  => array("all"),
-		"arrFILTER_iblock_av_storages" => array("all"),
+		"arrFILTER_iblock_references"  => array(43, 44, 45, 46, 47),
+		"arrFILTER_iblock_av_storages" => array(58),
 
 		"SHOW_WHERE"        => 'N',
 		"arrWHERE"          => '',

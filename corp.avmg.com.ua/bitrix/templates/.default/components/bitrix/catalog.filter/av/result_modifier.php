@@ -24,12 +24,12 @@ $currentSubsectionUrl =
 			$arParams["SUBSECTION_URL"]
 			)
 		: '';
-$rootSectionArray = [];
+$rootSectionsArray = [];
 if(in_array('SECTION_ID', $arParams["FIELD_CODE"]) || in_array('SUBSECTION', $arParams["FIELD_CODE"]))
 	{
 	$queryList = CIBlockSection::GetList(["NAME" => 'ASC'], ["IBLOCK_ID" => $arParams["IBLOCK_ID"], "SECTION_ID" => false], false, ["ID", "CODE", "NAME"]);
 	while($queryElement = $queryList->GetNext())
-		$rootSectionArray[$queryElement["ID"]] =
+		$rootSectionsArray[$queryElement["ID"]] =
 			[
 			"NAME" => $queryElement["NAME"],
 			"CODE" => $queryElement["CODE"]
@@ -154,6 +154,20 @@ $arResult["FIELDS"] = [];
 foreach($arParams["FIELDS_SORT"] as $field)
 	$arResult["FIELDS"][$field] = count($arResult["ITEMS"][$field]) ? $arResult["ITEMS"][$field] : $arResult["arrProp"][$field];
 /* -------------------------------------------------------------------- */
+/* ------------------------ props refactoring ------------------------- */
+/* -------------------------------------------------------------------- */
+foreach($arParams["FIELDS_CHANGE_TYPE"] as $field => $newType)
+	if(count($arResult["FIELDS"][$field]))
+		{
+		if(in_array($newType, ["SELECT", "RADIO", "SELECT_MULTIPLE"]) && $arResult["FIELDS"][$field]["TYPE"] == 'IBLOCK_ELEMENT')
+			{
+			$arResult["FIELDS"][$field]["VALUE_LIST"] = [];
+			$queryList = CIBlockElement::GetList(["SORT" => 'ASC'], ["IBLOCK_ID" => $arResult["FIELDS"][$field]["IBLOCK_ID"]], false, false, ["ID", "NAME"]);
+			while($queryElement = $queryList->GetNext()) $arResult["FIELDS"][$field]["VALUE_LIST"][$queryElement["ID"]] = $queryElement["NAME"];
+			$arResult["FIELDS"][$field]["TYPE"] = $newType;
+			}
+		}
+/* -------------------------------------------------------------------- */
 /* -------------------------- section filter -------------------------- */
 /* -------------------------------------------------------------------- */
 if(count($arResult["FIELDS"]["SECTION_ID"]))
@@ -168,7 +182,7 @@ if(count($arResult["FIELDS"]["SECTION_ID"]))
 		if($arParams["PARENT_SECTION"])
 			$arResult["FIELDS"]["SECTION_ID"]["VALUE_LIST"][$arParams["LIST_URL"]] = $arResult["FIELDS"]["SECTION_ID"]["NAME"];
 
-		foreach($rootSectionArray as $sectiionId => $sectionInfo)
+		foreach($rootSectionsArray as $sectiionId => $sectionInfo)
 			{
 			$link = str_replace(['#SECTION_ID#', '#SECTION_CODE#'], [$sectiionId, $sectionInfo["CODE"]], $arParams["SECTION_URL"]);
 			$arResult["FIELDS"]["SECTION_ID"]["VALUE_LIST"][$link] = $sectionInfo["NAME"];
@@ -200,7 +214,7 @@ if(array_key_exists('SUBSECTION', $arResult["FIELDS"]))
 		$link = str_replace
 			(
 			["#PARENT_SECTION_ID#",              "#PARENT_SECTION_CODE#",                                       "#SECTION_ID#",      "#SECTION_CODE#"],
-			[$queryElement["IBLOCK_SECTION_ID"], $rootSectionArray[$queryElement["IBLOCK_SECTION_ID"]]["CODE"], $queryElement["ID"], $queryElement["CODE"]],
+			[$queryElement["IBLOCK_SECTION_ID"], $rootSectionsArray[$queryElement["IBLOCK_SECTION_ID"]]["CODE"], $queryElement["ID"], $queryElement["CODE"]],
 			$arParams["SUBSECTION_URL"]
 			);
 		$arResult["FIELDS"]["SUBSECTION"]["VALUE_LIST"][$link] = $queryElement["NAME"];

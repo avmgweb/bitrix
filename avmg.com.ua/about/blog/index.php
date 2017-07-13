@@ -3,7 +3,7 @@ require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
 $APPLICATION->SetTitle("Новини");
 $APPLICATION->SetPageProperty("title",       "Новини та події компанії АВ метал груп | ™ avmg.com.ua");
-$APPLICATION->SetPageProperty("description", "Новини АВ метал груп ™ ✓Вигодная партнерська програма ✓Шірокая регіональна мережа ✓Доставка по Україні");
+$APPLICATION->SetPageProperty("description", "Новини АВ метал груп ™ ✓Вигідна партнерська програма ✓Широка регіональна мережа ✓Доставка по Україні");
 
 $APPLICATION->IncludeComponent
 	(

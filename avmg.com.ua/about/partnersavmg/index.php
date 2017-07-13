@@ -3,7 +3,7 @@ require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
 $APPLICATION->SetTitle("Партнерство");
 $APPLICATION->SetPageProperty("title",       "Співпраця з компанією АВ метал груп | Партнерська програма Україна: Дніпро, Київ, Харків, Львів, Одеса, ☎ (056) 790-01-22 | ™ avmg.com.ua");
-$APPLICATION->SetPageProperty("description", "Співпраця з компанією АВ метал груп ™ ✓Вигодная партнерська програма ✓Шірокая регіональна мережа ☎ (056) 790-01-22 Телефонуйте!");
+$APPLICATION->SetPageProperty("description", "Співпраця з компанією АВ метал груп ™ ✓Вигідна партнерська програма ✓Широка регіональна мережа ☎ (056) 790-01-22 Телефонуйте!");
 
 CJSCore::Init(["bootstrap"]);
 $APPLICATION->SetAdditionalCSS('/bitrix/css/av_site/pages/partners.css');

@@ -2,8 +2,8 @@
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
 $APPLICATION->SetTitle("Філії та металобази");
-$APPLICATION->SetPageProperty("title",       "Філії та металобази АВ метал груп в Україні | Адреси філій де можна купити металопрокат | Телефон: ☎ (056) 790-01-22");
-$APPLICATION->SetPageProperty("description", "Металобази АВ метал груп в Україні ✓Шірокій вибір ✓Оптімальние ціни ➣ ☎ (056) 790-01-22 Телефонуйте!");
+$APPLICATION->SetPageProperty("title",       "Філії та металобази АВ метал груп в Україні | Металопрокат придбати. Адреси філій де можна купити металопрокат | Телефон: ☎ (056) 790-01-22");
+$APPLICATION->SetPageProperty("description", "Металобази металопрокату АВ метал груп в Україні ✓ Широкий вибір ✓ Оптимальні ціни ➣ ☎ (056) 790-01-22 Телефонуйте!");
 
 $APPLICATION->IncludeComponent
 	(
@@ -26,8 +26,8 @@ $APPLICATION->IncludeComponent
 		"AJAX_OPTION_STYLE"   => '',
 		"AJAX_OPTION_HISTORY" => '',
 
-		"IBLOCK_TYPE" => 'av_storages',
-		"IBLOCK_ID"   => 58,
+		"IBLOCK_TYPE" => 'av_storages_ua',
+		"IBLOCK_ID"   => 134,
 		"NEWS_COUNT"  => 10,
 		"USE_SEARCH"  => 'N',
 
@@ -41,7 +41,7 @@ $APPLICATION->IncludeComponent
 		"VOTE_NAMES" => array(),
 
 		"USE_CATEGORIES"       => 'Y',
-		"CATEGORY_IBLOCK"      => array(58),
+		"CATEGORY_IBLOCK"      => array(134),
 		"CATEGORY_CODE"        => '',
 		"CATEGORY_ITEMS_COUNT" => '',
 
@@ -60,9 +60,9 @@ $APPLICATION->IncludeComponent
 		"FILTER_FIELD_CODE"    => array("SECTION_ID", "SUBSECTION"),
 		"FILTER_PROPERTY_CODE" => array("type_bases", "streams"),
 
-		"SORT_BY1"    => 'PROPERTY_type_bases',
+		"SORT_BY1"    => 'PROPERTY_NAME',
 		"SORT_ORDER1" => 'ASC',
-		"SORT_BY2"    => 'PROPERTY_number_object',
+		"SORT_BY2"    => 'PROPERTY_type_bases',
 		"SORT_ORDER2" => 'ASC',
 		"CHECK_DATES" => 'Y',
 
@@ -137,7 +137,7 @@ $APPLICATION->IncludeComponent
 		"LIST_TEMPLATE"             => 'av_bases',
 		"DETAIL_TEMPLATE"           => 'av_bases',
 
-		"AV_BASES_STREAMS_INFO_IBLOCK"    => 93,
+		"AV_BASES_STREAMS_INFO_IBLOCK"    => 136,
 		"FILTER_SUBSECTION_TITLE"         => 'Місто',
 		"SAME_ARTICLES_SEARCH_IN_SECTION" => 'Y',
 		"ADD_SUBSECTIONS_CHAIN"           => 'Y'

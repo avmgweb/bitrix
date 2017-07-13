@@ -12,7 +12,7 @@ $APPLICATION->IncludeComponent
 			array(
 				array(
 				"url"           => '/metallobaza/',
-				"iblock_id"     => 58,
+				"iblock_id"     => 134,
 				"path_template" => '/metallobaza/#SECTION_CODE#/'
 				)
 			)

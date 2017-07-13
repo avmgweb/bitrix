@@ -107,7 +107,8 @@ if($pageType != 'detail' && $arParams["USE_FILTER"] == 'Y')
 			"SECTION_URL"        => $urlTemplates["section"]    ? $arResult["FOLDER"].$urlTemplates["section"]    : '',
 			"SUBSECTION_URL"     => $urlTemplates["subsection"] ? $arResult["FOLDER"].$urlTemplates["subsection"] : '',
 			"FILTER_URL_PARAMS"  => $arResult["VARIABLES"]["FILTER_PARAMS"],
-			"SUBSECTION_TITLE"   => $arParams["FILTER_SUBSECTION_TITLE"]
+			"SUBSECTION_TITLE"   => $arParams["FILTER_SUBSECTION_TITLE"],
+			"FIELDS_CHANGE_TYPE" => $arParams["FILTER_FIELDS_CHANGE_TYPE"]
 			]
 		);
 	$arResult["FILTER_HTML"] = ob_get_contents();

@@ -1,9 +1,9 @@
 <?
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
-$APPLICATION->SetPageProperty("description", "Профлисты ассортимент и цены ▻ АВ металл групп ™ ✓Широкий выбор ✓Металлобазы и доставка по всей Украине ☎ (056)790-01-22");
-$APPLICATION->SetPageProperty("title", "Профлист ► купить профнастил и металлочерепицу в Украине: Днепр, Киев, Харьков, Львов, Одесса, опт, розница | Направление АВ металл групп ™ avmg.com.ua");
-$APPLICATION->SetTitle("Профнастил и металлочерепица");
+$APPLICATION->SetTitle("Профнастил і металочерепиця");
+$APPLICATION->SetPageProperty("title",       "Профлист ► купити профнастил та металочерепицю в Україні: Дніпро, Київ, Харків, Львів, Одеса, опт, роздріб | Напрямок АВ метал груп ™ avmg.com.ua");
+$APPLICATION->SetPageProperty("description", "Профлисти асортимент і ціни ▻ АВ метал груп ™ ✓Шірокій вибір ✓Металлобази і доставка по всій Україні ☎ (056) 790-01-22");
 
 $APPLICATION->IncludeComponent
 	(
@@ -18,7 +18,7 @@ $APPLICATION->IncludeComponent
 		"AJAX_OPTION_STYLE"   => '',
 		"AJAX_OPTION_HISTORY" => '',
 
-		"IBLOCK_TYPE" => 'catalog',
+		"IBLOCK_TYPE" => 'catalog_ua',
 		"IBLOCK_ID"   => 130,
 		"NEWS_COUNT"  => 50,
 		"USE_SEARCH"  => 'N',
@@ -58,7 +58,7 @@ $APPLICATION->IncludeComponent
 		"SORT_ORDER2" => 'ASC',
 		"CHECK_DATES" => 'Y',
 
-		"PARENT_SECTION"           => 2337,
+		"PARENT_SECTION"           => 2341,
 		"PREVIEW_TRUNCATE_LEN"     => '',
 		"LIST_ACTIVE_DATE_FORMAT"  => '',
 		"LIST_FIELD_CODE"          => array("NAME","PREVIEW_TEXT","PREVIEW_PICTURE"),

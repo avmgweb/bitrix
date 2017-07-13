@@ -2,8 +2,8 @@
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
 $APPLICATION->SetTitle("АВ метал груп - корпоративний сайт компанії");
-$APPLICATION->SetPageProperty("title",       "АВ метал груп провідна компанія України на ринку металопрокату | Официальный сайт avmg.com.ua ✔ Адрес г. Днепр, ул. Шолом-Алейхема, 5 ☎ телефон (056) 790-01-22");
-$APPLICATION->SetPageProperty("description", "АВ метал груп ™ крупнейший металлотрейдер Украины ✔ г. Днепр, ул. Шолом-Алейхема, 5 Звоните! ☎ (056)790-01-22");
+$APPLICATION->SetPageProperty("title",       "АВ метал груп провідна компанія України на ринку металопрокату | Официальный сайт avmg.com.ua ✔ Адрес г. Дніпро, ул. Шолом-Алейхема, 5 ☎ Телефон (056) 790-01-22");
+$APPLICATION->SetPageProperty("description", "АВ метал груп ™ найбільший металотрейдер України ✔ г. Дніпро, ул. Шолом-Алейхема, 5 Телефонуйте! ☎ (056)790-01-22");
 
 CJSCore::Init(["bootstrap"]);
 $APPLICATION->SetAdditionalCSS('/bitrix/css/av_site/pages/index.css');
@@ -135,8 +135,8 @@ $APPLICATION->IncludeComponent
 				"VIEW_MODE"        => '',
 				"SHOW_PARENT_NAME" => '',
 
-				"IBLOCK_TYPE"  => 'av_storages',
-				"IBLOCK_ID"    => 58,
+				"IBLOCK_TYPE"  => 'av_storages_ua',
+				"IBLOCK_ID"    => 134,
 				"SECTION_ID"   => '',
 				"SECTION_CODE" => '',
 
@@ -255,7 +255,7 @@ $APPLICATION->IncludeComponent
 	<div class="container">
 		<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
 			<div class="av-page-title">Замовити прайс-лист</div>
-			Щоб зробити замовлення, заповніть форму або напишіть по <a href="mailto:office@avmg.com.ua">електронній пошті</a>.
+			Щоб зробити замовлення, заповніть форму або напишіть на <a href="mailto:office@avmg.com.ua">електронну пошту</a>.
 			<div class="av-index-feadback-form">
 				<?
 				$APPLICATION->IncludeComponent

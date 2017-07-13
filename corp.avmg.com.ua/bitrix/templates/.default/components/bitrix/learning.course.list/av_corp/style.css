@@ -7,17 +7,12 @@
 	font-size: 15px;
 	color: #444;
 	}
-.av-learning-list-search-form h3,
-.av-learning-list-search-form input[type=text]
+.av-learning-list-search-form h3
 	{
-	background: transparent;
-	border: none;
-	color: inherit;
 	font-weight: normal;
 	margin:  0;
 	padding: 0;
 	}
-.av-learning-list-search-form input[type=text]:-webkit-autofill {-webkit-box-shadow: 0 0 0 1000px white inset !important}
 /* -------------------------------------------------------------------- */
 /* ---------------------------- search form --------------------------- */
 /* -------------------------------------------------------------------- */
@@ -79,7 +74,7 @@
 	align-items: center;
 	color: inherit;
 	display: flex;
-	height: calc((100% - 22px)/4);
+	height: calc((100% - 22px) / 4);
 	justify-content: center;
 	overflow: hidden;
 	padding: 5px 15px 0 15px;
@@ -115,11 +110,11 @@
 /* -------------------------------------------------------------------- */
 @media (min-width: 1200px)
 	{
-	.av-learning-list > div {width: calc((100% - 20px*3)/3);height: 200px}
+	.av-learning-list > div {width: calc((100% - 20px*3) / 3);height: 200px}
 	}
 @media (min-width: 768px) and (max-width: 1199px)
 	{
-	.av-learning-list > div {width: calc((100% - 20px*2)/2);height: 250px}
+	.av-learning-list > div {width: calc((100% - 20px*2) / 2);height: 250px}
 	}
 @media (max-width: 767px)
 	{

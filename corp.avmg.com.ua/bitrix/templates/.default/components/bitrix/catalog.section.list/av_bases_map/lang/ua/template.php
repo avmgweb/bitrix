@@ -1,2 +1,29 @@
 <?
+$MESS["AV_BASES_MAP_REGION_VINNYTSIA"]       = 'Вінниця';
+$MESS["AV_BASES_MAP_REGION_LUTSK"]           = 'Луцьк';
+$MESS["AV_BASES_MAP_REGION_DNEPR"]           = 'Дніпро';
+$MESS["AV_BASES_MAP_REGION_DONETSK"]         = 'Донецьк';
+$MESS["AV_BASES_MAP_REGION_ZUTOMIR"]         = 'Житомир';
+$MESS["AV_BASES_MAP_REGION_UZGOROD"]         = 'Ужгород';
+$MESS["AV_BASES_MAP_REGION_ZAPOROZJE"]       = 'Запоріжжя';
+$MESS["AV_BASES_MAP_REGION_IVANOFRANKOVSK1"] = 'Івано-';
+$MESS["AV_BASES_MAP_REGION_IVANOFRANKOVSK2"] = 'Франківськ';
+$MESS["AV_BASES_MAP_REGION_KIEV"]            = 'Київ';
+$MESS["AV_BASES_MAP_REGION_KROPIVNITSKIY"]   = 'Кропивницький';
+$MESS["AV_BASES_MAP_REGION_LUGANSK"]         = 'Луганськ';
+$MESS["AV_BASES_MAP_REGION_LVOV"]            = 'Львів';
+$MESS["AV_BASES_MAP_REGION_NIKOLAEV"]        = 'Миколаїв';
+$MESS["AV_BASES_MAP_REGION_ODESSA"]          = 'Одеса';
+$MESS["AV_BASES_MAP_REGION_POLTAVA"]         = 'Полтава';
+$MESS["AV_BASES_MAP_REGION_ROVNO"]           = 'Рівне';
+$MESS["AV_BASES_MAP_REGION_SUMI"]            = 'Суми';
+$MESS["AV_BASES_MAP_REGION_TERNOPOL"]        = 'Тернопіль';
+$MESS["AV_BASES_MAP_REGION_HARKOV"]          = 'Харків';
+$MESS["AV_BASES_MAP_REGION_HERSON"]          = 'Херсон';
+$MESS["AV_BASES_MAP_REGION_HMELNITSKIY"]     = 'Хмельницький';
+$MESS["AV_BASES_MAP_REGION_CHERKASSI"]       = 'Черкаси';
+$MESS["AV_BASES_MAP_REGION_CHERNIGOV"]       = 'Чернігів';
+$MESS["AV_BASES_MAP_REGION_CHERNOVTSI"]      = 'Чернівці';
+$MESS["AV_BASES_MAP_REGION_SIMFEROPOL"]      = 'Сімферополь';
+
 $MESS["AV_BASES_MAP_REGION_PAGE_LINK"] = 'перейти до баз області';
