@@ -10,7 +10,6 @@ $arResult["LIST_HTML"]               = '';
 $arResult["SHARING_HTML"]            = '';
 $arResult["CATEGORY_APPLIED_FILTER"] = [];
 $arResult["LIST_DESCRIPTION"]        = '';
-$arResult["SECTION_DESCRIPTION"]     = '';
 /* -------------------------------------------------------------------- */
 /* ---------------------------- variables ----------------------------- */
 /* -------------------------------------------------------------------- */
@@ -248,7 +247,7 @@ if(in_array($pageType, ["section", "subsection"]) && $currentListPage == 1)
 	{
 	$sectionSeoInfo = (new \Bitrix\Iblock\InheritedProperty\SectionValues($arParams["IBLOCK_ID"], $sectionInfo["ID"]))->getValues();
 	$APPLICATION->SetTitle($sectionSeoInfo["SECTION_PAGE_TITLE"]);
-	$arResult["SECTION_DESCRIPTION"] = CIBlockSection::GetList([], ["ID" => $sectionInfo["ID"]], false, ["ID", "DESCRIPTION"])->GetNext()["DESCRIPTION"];
+	$arResult["LIST_DESCRIPTION"] = CIBlockSection::GetList([], ["ID" => $sectionInfo["ID"]], false, ["ID", "DESCRIPTION"])->GetNext()["DESCRIPTION"];
 	}
 /* -------------------------------------------------------------------- */
 /* ------------------------- navigation chain ------------------------- */

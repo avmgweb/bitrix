@@ -1,3 +1,2 @@
 <?
-$PERM["essentials"]["*"]="D";
-?>
+$PERM["essentials"]["*"] = 'D';

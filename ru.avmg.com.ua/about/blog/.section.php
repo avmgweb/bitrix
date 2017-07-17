@@ -1,2 +1,2 @@
 <?
-$sSectionName = "Новости";
+$sSectionName = 'Новости';

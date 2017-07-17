@@ -1,9 +1,9 @@
 <?
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
-$APPLICATION->SetPageProperty("description", "Потрібна профільна труба від виробника? Виготовимо і доставимо ➨ АВ метал груп: ✓Якість ✓Низька ціна ☎ (056) 790-01-22 Телефонуйте!");
-$APPLICATION->SetPageProperty("title",       "Труба профільна від виробника | АВ метал груп Україна, Дніпро виробник круглої, квадратної, прямокутної сталевої труби | Купити профільну трубу оптом: телефон для замовлення ☎ (056) 790-01-22");
 $APPLICATION->SetTitle("Труби електрозварні прямошовні");
+$APPLICATION->SetPageProperty("title",       "Труба профільна від виробника | АВ метал груп Україна, Дніпро виробник круглої, квадратної, прямокутної сталевої труби | Купити профільну трубу оптом: телефон для замовлення ☎ (056) 790-01-22");
+$APPLICATION->SetPageProperty("description", "Потрібна профільна труба від виробника? Виготовимо і доставимо ➨ АВ метал груп: ✓Якість ✓Низька ціна ☎ (056) 790-01-22 Телефонуйте!");
 ?>
 <h3>Виробництво труб</h3>
 <p>Виробництво сталевих труб может здійснюватись кількома способами.</p>
@@ -24,8 +24,13 @@ $APPLICATION->SetTitle("Труби електрозварні прямошовн
 	<li>Шов проварюється. Застосовується кілька типів зварювання: дугова, індукційними струмами, лазером, плазмою і пучками електронів.</li>
 </ul><br>
 
-<p>Найбільш широко застосовуються два методи зварювання шва - TIG (електродугове зварювання вольфрамовим електродом в середовищі інертного газу) і HF (зварювання індукційними струмами високої частоти).</p>
-<p>Шов, виконаний першим методом зварювання, міцніший; зате другим - приблизно в 20 разів швидший. Відповідно зварені HF труби помітно дешевші.</p>
+<p>
+	Найбільш широко застосовуються два методи зварювання шва - TIG (електродугове зварювання вольфрамовим електродом в середовищі інертного газу) і HF (зварювання індукційними струмами високої частоти).
+</p>
+<p>
+	Шов, виконаний першим методом зварювання, міцніший; зате другим - приблизно в 20 разів швидший.
+	Відповідно зварені HF труби помітно дешевші.
+</p>
 <ul>
 	<li>Потім сталева кругла труба калібрується в вальцях;</li>
 	<li>Проходить неруйнівний контроль шва вихровими струмами або ультразвуком;</li>
@@ -33,7 +38,10 @@ $APPLICATION->SetTitle("Труби електрозварні прямошовн
 </ul><br>
 
 <h3>Електрозварні спіралешовні</h3>
-<p>Саме виробництво цих труб виглядає приблизно так само, як у прямошовних, проте стрічка заготовки згортається не в трубку, а в спіраль. Спіральний шов забезпечує трубі велику міцність на розрив.</p>
+<p>
+	Саме виробництво цих труб виглядає приблизно так само, як у прямошовних, проте стрічка заготовки згортається не в трубку, а в спіраль.
+	Спіральний шов забезпечує трубі велику міцність на розрив.
+</p>
 
 <h3>Безшовні гарячодеформовані</h3>
 Безшовна (або, як її ще називають, цільнотягнута) труба методом гарячої деформації виготовляється з циліндричної монолітної заготовки:
@@ -91,762 +99,218 @@ $APPLICATION->SetTitle("Труби електрозварні прямошовн
 	<li>80х40х1,8-2,0-3 мм</li>
 </ul><br>
 
-<img style="width: 100%" src="/upload/medialibrary/39b/3.jpg" alt="3.jpg" title="3.jpg"><br>
+<p><img style="width: 100%" src="/upload/medialibrary/39b/3.jpg" alt="3.jpg" title="3.jpg"></p>
 
 <h3>Сортамент:</h3>
 <table width="100%">
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				Розмір, мм
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				Товщина стінки, мм
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				Розмір, мм
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				Товщина стінки, мм
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				Розмір, мм
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				Товщина стінки, мм
-			</p>
-		</td>
+		<td>Розмір, мм</td>
+		<td>Товщина стінки, мм</td>
+		<td>Розмір, мм</td>
+		<td>Товщина стінки, мм</td>
+		<td>Розмір, мм</td>
+		<td>Товщина стінки, мм</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				15х15<br>
-				15х15<br>
-				15х15
-			</p>
+		<td>
+			15х15<br>
+			15х15<br>
+			15х15
 		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1 (1,2)<br>
-				1,0<br>
-				1,2
-			</p>
+		<td>
+			1 (1,2)<br>
+			1,0<br>
+			1,2
 		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				30х30
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,7
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				50х30
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,5
-			</p>
-		</td>
+		<td>30х30</td>
+		<td>1,7</td>
+		<td>50х30</td>
+		<td>1,5</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				15х15
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,5
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				30х30
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,8
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				50х30
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,7
-			</p>
-		</td>
+		<td>15х15</td>
+		<td>1,5</td>
+		<td>30х30</td>
+		<td>1,8</td>
+		<td>50х30</td>
+		<td>1,7</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				15х15
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,7
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				30х30
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				2
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				50х30
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,8
-			</p>
-		</td>
+		<td>15х15</td>
+		<td>1,7</td>
+		<td>30х30</td>
+		<td>2</td>
+		<td>50х30</td>
+		<td>1,8</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				15х15
-			</p>
-		</td><td style="text-align: center;" bgcolor="#ffffff">
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,8
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				40х20
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,2
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				50х30
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				2
-			</p>
-		</td>
+		<td>15х15</td>
+		<td>1,8</td>
+		<td>40х20</td>
+		<td>1,2</td>
+		<td>50х30</td>
+		<td>2</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				15х15
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				2
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				40х20
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,5
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				50х30
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				2,8
-			</p>
-		</td>
+		<td>15х15</td>
+		<td>2</td>
+		<td>40х20</td>
+		<td>1,5</td>
+		<td>50х30</td>
+		<td>2,8</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				17х17<br>
-				20х20<br>
-				20х20
-			</p>
+		<td>
+			17х17<br>
+			20х20<br>
+			20х20
 		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1 (1,2-2)<br>
-				1,0<br>
-				1,2
-			</p>
+		<td>
+			1 (1,2-2)<br>
+			1,0<br>
+			1,2
 		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				<br><br>
-				40х20
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				<br><br>
-				1,7
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				<br><br>
-				50х30
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				<br><br>
-				3
-			</p>
-		</td>
+		<td>40х20</td>
+		<td>1,7</td>
+		<td>50х30</td>
+		<td>3</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				20х20
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,5
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				40х20
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,8
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				50х50
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,5
-			</p>
-		</td>
+		<td>20х20</td>
+		<td>1,5</td>
+		<td>40х20</td>
+		<td>1,8</td>
+		<td>50х50</td>
+		<td>1,5</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				20х20
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,7
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				40х20
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				2
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				50х50
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,7
-			</p>
-		</td>
+		<td>20х20</td>
+		<td>1,7</td>
+		<td>40х20</td>
+		<td>2</td>
+		<td>50х50</td>
+		<td>1,7</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				20х20
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,8
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				40х25
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,5
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				50х50
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,8
-			</p>
-		</td>
+		<td>20х20</td>
+		<td>1,8</td>
+		<td>40х25</td>
+		<td>1,5</td>
+		<td>50х50</td>
+		<td>1,8</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				20х20
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				2
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				40х25
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,7
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				50х50
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				2
-			</p>
-		</td>
+		<td>20х20</td>
+		<td>2</td>
+		<td>40х25</td>
+		<td>1,7</td>
+		<td>50х50</td>
+		<td>2</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				25х25
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,2
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				40х25
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,8
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				50х50
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				2,8
-			</p>
-		</td>
+		<td>25х25</td>
+		<td>1,2</td>
+		<td>40х25</td>
+		<td>1,8</td>
+		<td>50х50</td>
+		<td>2,8</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				25х25
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,5
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				40х25
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				2
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				50х50
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				3
-			</p>
-		</td>
+		<td>25х25</td>
+		<td>1,5</td>
+		<td>40х25</td>
+		<td>2</td>
+		<td>50х50</td>
+		<td>3</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				25х25
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,7
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				40х40
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,5
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				60х40
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,5
-			</p>
-		</td>
+		<td>25х25</td>
+		<td>1,7</td>
+		<td>40х40</td>
+		<td>1,5</td>
+		<td>60х40</td>
+		<td>1,5</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				25х25
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,8
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				40х40
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,7
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				60х40
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,7
-			</p>
-		</td>
+		<td>25х25</td>
+		<td>1,8</td>
+		<td>40х40</td>
+		<td>1,7</td>
+		<td>60х40</td>
+		<td>1,7</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				25х25
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				2
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				40х40
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,8
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				60х40
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,8
-			</p>
-		</td>
+		<td>25х25</td>
+		<td>2</td>
+		<td>40х40</td>
+		<td>1,8</td>
+		<td>60х40</td>
+		<td>1,8</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				30х20
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,2
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				40х40
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				2
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				60х40
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				2
-			</p>
-		</td>
+		<td>30х20</td>
+		<td>1,2</td>
+		<td>40х40</td>
+		<td>2</td>
+		<td>60х40</td>
+		<td>2</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				30х20
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,5
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				40х40
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				2,8
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				60х40
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				2,8
-			</p>
-		</td>
+		<td>30х20</td>
+		<td>1,5</td>
+		<td>40х40</td>
+		<td>2,8</td>
+		<td>60х40</td>
+		<td>2,8</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				30х20
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,7
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				40х40
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				3
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				60х40
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				3
-			</p>
-		</td>
+		<td>30х20</td>
+		<td>1,7</td>
+		<td>40х40</td>
+		<td>3</td>
+		<td>60х40</td>
+		<td>3</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				30х20
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,8
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				50х25
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,5
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				60х60
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,8
-			</p>
-		</td>
+		<td>30х20</td>
+		<td>1,8</td>
+		<td>50х25</td>
+		<td>1,5</td>
+		<td>60х60</td>
+		<td>1,8</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				30х20
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				2
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				50х25
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,7
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				60х60
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				2
-			</p>
-		</td>
+		<td>30х20</td>
+		<td>2</td>
+		<td>50х25</td>
+		<td>1,7</td>
+		<td>60х60</td>
+		<td>2</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				30х30
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,2
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				50х25
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,8
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				60х60
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				2,8
-			</p>
-		</td>
+		<td>30х30</td>
+		<td>1,2</td>
+		<td>50х25</td>
+		<td>1,8</td>
+		<td>60х60</td>
+		<td>2,8</td>
 	</tr>
 	<tr>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				30х30
-			</p>
+		<td>30х30</td>
+		<td>1,5</td>
+		<td>50х25</td>
+		<td>2</td>
+		<td>
+			60х60<br>
+			80х60<br>
+			80х40<br>
+			80х40
 		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				1,5
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				50х25
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				2
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				60х60<br>
-				80х60<br>
-				80х40<br>
-				80х40<br>
-			</p>
-		</td>
-		<td style="text-align: center;" bgcolor="#ffffff">
-			<p align="center">
-				3 <br>
-				1,8<br>
-				2<br>
-				2,8 (3)
-			</p>
+		<td>
+			3<br>
+			1,8<br>
+			2<br>
+			2,8 (3)
 		</td>
 	</tr>
 </table><br>
@@ -857,7 +321,11 @@ $APPLICATION->SetTitle("Труби електрозварні прямошовн
 </ul><br>
 
 <b>Загальна характеристика виробництва Birlik Makine ВТМ 120Н</b>
-<p>На сьогоднішній день встановлено та введено в експлуатацію стан Birlik Makine, на якому виготовляється електрозварні круглі і профільні труби. Вид зварювання - високочастотний (ВЧС). Також виготовляються квадратні і прямокутні зварні профільні труби та круглі водогазопровідні і конструкційні труби, з гарячекатаної і холоднокатаної рулонної сталі.</p>
-<img style="width: 100%" src="/upload/medialibrary/77f/2.jpg" alt="2.jpg" title="2.jpg"><br><br>
-<img style="width: 100%" src="/upload/medialibrary/e09/1.jpg" alt="1.jpg" title="1.jpg"><br>
+<p>
+	На сьогоднішній день встановлено та введено в експлуатацію стан Birlik Makine, на якому виготовляється електрозварні круглі і профільні труби.
+	Вид зварювання - високочастотний (ВЧС).
+	Також виготовляються квадратні і прямокутні зварні профільні труби та круглі водогазопровідні і конструкційні труби, з гарячекатаної і холоднокатаної рулонної сталі.
+</p>
+<p><img style="width: 100%" src="/upload/medialibrary/77f/2.jpg" alt="2.jpg" title="2.jpg"></p>
+<p><img style="width: 100%" src="/upload/medialibrary/e09/1.jpg" alt="1.jpg" title="1.jpg"></p>
 <?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>

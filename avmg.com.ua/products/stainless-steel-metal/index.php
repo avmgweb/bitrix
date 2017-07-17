@@ -4,7 +4,7 @@ require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 $APPLICATION->SetTitle("Нержавіючий металопрокат");
 $APPLICATION->SetPageProperty("title",       "Нержавіючий метал ► купити нержавійку ціна в Україні: Дніпро, Київ, Харків, Львів, Одеса, опт, роздріб | Напрямок АВ метал груп ™ avmg.com.ua");
 $APPLICATION->SetPageProperty("description", "Нержавійка асортимент і ціни ▻ АВ метал груп ™ ✓Шірокій вибір ✓Металлобази і доставка по всій Україні ☎ (056) 790-01-22");
-$APPLICATION->SetPageProperty("keywords",    "нержавейка лист ціна, нержавіюча купити, нержавійка ціна, нержавіюча труба, нержавіюча сталь купити, нержавіюча лист ціна");
+$APPLICATION->SetPageProperty("keywords",    "нержавійка лист ціна, нержавіюча купити, нержавійка ціна, нержавіюча труба, нержавіюча сталь купити, нержавіюча лист ціна");
 
 $APPLICATION->IncludeComponent
 	(

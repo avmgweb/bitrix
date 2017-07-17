@@ -43,6 +43,24 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 				<?if($arItem["PROPERTIES"]["phone"]["VALUE"][0]):?>
 				<div><?=implode(', ', $arItem["PROPERTIES"]["phone"]["VALUE"])?></div>
 				<?endif?>
+
+				<?if($arItem["PROPERTIES"]["streams"]["VALUE"][0]):?>
+				<div>
+					<?foreach($arItem["PROPERTIES"]["streams"]["VALUE"] as $stream):?>
+						<?if(count($arResult["STREAMS_INFO"][$stream])):?>
+						<div
+							title="<?=$arResult["STREAMS_INFO"][$stream]["NAME"]?>"
+							style="
+								width:  <?=$arResult["STREAMS_INFO"][$stream]["SVG_WIDTH"]?>px;
+								height: <?=$arResult["STREAMS_INFO"][$stream]["SVG_HEIGHT"]?>px
+								"
+						>
+							<?=$arResult["STREAMS_INFO"][$stream]["SVG_CONTENT"]?>
+						</div>
+						<?endif?>
+					<?endforeach?>
+				</div>
+				<?endif?>
 			</div>
 		</div>
 		<?if($cordinateX && $cordinateY):?>

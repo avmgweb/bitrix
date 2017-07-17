@@ -14,11 +14,9 @@ $APPLICATION->SetPageProperty("description", "Різання металу газ
 <p>
 	Газове різання має цілу низку безперечних переваг: воно досить легко проводиться, не вимагає наявності складного обладнання, а також не потребує будь-яких джерел енергії.
 	Цей вид різання працює під управлінням системи ЧПУ зі швидкісним потужним приводом.
-	Тому наше обладнання дозволяє швидко і якісно виконати листове різання <a title="чорний метал" target="_blank" href="/products/black-metal/">метала чорного</a> та <a title="кольоровий_метал" target="_blank" href="/products/stainless-steel-metal/">кольорового металу</a>.
+	Тому наше обладнання дозволяє швидко і якісно виконати листове різання <a title="чорний метал" target="_blank" href="/products/black-metal/">метала чорного</a> та <a title="кольоровий метал" target="_blank" href="/products/stainless-steel-metal/">кольорового металу</a>.
 </p>
-<p>
-	<img style="width: 100%" alt="газова_різка_металу" title="газова_різка_металу" src="/upload/medialibrary/27b/gazovaia_rezka_metalla.jpg">
-</p>
+<p><img style="width: 100%" alt="газова_різка_металу" title="газова різка металу" src="/upload/medialibrary/27b/gazovaia_rezka_metalla.jpg"></p>
 
 <h3>Технічні характеристики:</h3>
 <ul>

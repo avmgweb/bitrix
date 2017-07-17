@@ -167,4 +167,4 @@ $APPLICATION->SetTitle("Реквизиты");
 		<td>Веб сторінка: <a href="/">ru.avmg.com.ua</a></td>
 	</tr>
 </table>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php';?>
+<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>

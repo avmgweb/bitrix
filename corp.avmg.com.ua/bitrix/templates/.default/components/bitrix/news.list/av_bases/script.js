@@ -6,29 +6,31 @@ function initGoogleMap($mapObject)
 	var
 		coordinateX = parseFloat($mapObject.attr("data-cordinate-x")),
 		coordinateY = parseFloat($mapObject.attr("data-cordinate-y")),
-		title       = $mapObject.attr("data-store-name");
-	if(!coordinateX || !coordinateY || !title) return;
+		title       = $mapObject.attr("data-store-name"),
+		map         =
+		    coordinateX && coordinateY
+		    ? new google.maps.Map
+				(
+				$mapObject[0],
+					{
+					zoom                  :12,
+					draggable             : true,
+					disableDefaultUI      : true,
+					disableDoubleClickZoom: true,
+					scrollwheel           : true,
+					mapTypeId             : google.maps.MapTypeId.ROADMAP,
+					center                : new google.maps.LatLng(coordinateX, coordinateY)
+					}
+				)
+		    : false;
 
-	var map = new google.maps.Map
-		(
-		$mapObject[0],
-			{
-			zoom                  :12,
-			draggable             : true,
-			disableDefaultUI      : true,
-			disableDoubleClickZoom: true,
-			scrollwheel           : true,
-			mapTypeId             : google.maps.MapTypeId.ROADMAP,
-			center                : new google.maps.LatLng(coordinateX, coordinateY)
-			}
-		);
-
-	new google.maps.Marker
-		({
-		position: {lat: coordinateX, lng: coordinateY},
-		map     : map,
-		title   : title
-		});
+	if(map && title)
+		new google.maps.Marker
+			({
+			position: {lat: coordinateX, lng: coordinateY},
+			map     : map,
+			title   : title
+			});
 	}
 /* -------------------------------------------------------------------- */
 /* ----------------------------- handlers ----------------------------- */
