@@ -24,7 +24,9 @@
 .av-bases-list-element.closed           {opacity: 0.5}
 
 .av-bases-list-element .value-block                        {padding-left:   13px}
-.av-bases-list-element .value-block > div:not(:last-child) {padding-bottom: 13px}
+.av-bases-list-element .value-block   > *:not(:last-child) {padding-bottom: 13px}
+.av-bases-list-element .streams-block                      {display: flex}
+.av-bases-list-element .streams-block > *:not(:last-child) {margin-right: 6px}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ other ------------------------------- */
 /* -------------------------------------------------------------------- */

@@ -55,13 +55,14 @@ if(in_array('streams', $arParams["PROPERTY_CODE"]))
 				$svgWidth         = $svgHeight*$svgViewboxParams[2]/$svgViewboxParams[3];
 				}
 
-			$arResult["STREAMS_INFO"][$queryElement["ID"]] =
-				[
-				"NAME"        => $queryElement["NAME"],
-				"SVG_CONTENT" => $svgContent,
-				"SVG_WIDTH"   => $svgWidth,
-				"SVG_HEIGHT"  => $svgHeight
-				];
+			if($svgContent && $svgWidth && $svgHeight)
+				$arResult["STREAMS_INFO"][$queryElement["ID"]] =
+					[
+					"NAME"        => $queryElement["NAME"],
+					"SVG_CONTENT" => $svgContent,
+					"SVG_WIDTH"   => $svgWidth,
+					"SVG_HEIGHT"  => $svgHeight
+					];
 			}
 		}
 	}

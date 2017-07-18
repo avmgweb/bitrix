@@ -25,4 +25,23 @@ $(function()
 			title   : $googleMap.attr("data-store-name")
 			});
 		}
+
+	$(document)
+		.on("vclick", '.av-bases-detail .streams-info-col .item:not(.no-info) .title', function()
+			{
+			$(this).closest('.item')
+				.toggleClass("open")
+				.find('.body').slideToggle();
+			});
+
+	$(window)
+		.resize(function()
+			{
+			var screenWidth = $(window).width();
+			$('.av-bases-detail .streams-info-col .item').each(function()
+				{
+				if(screenWidth >= 768)        $(this).find('.body').show();
+				else if(!$(this).is('.open')) $(this).find('.body').hide();
+				});
+			});
 	});

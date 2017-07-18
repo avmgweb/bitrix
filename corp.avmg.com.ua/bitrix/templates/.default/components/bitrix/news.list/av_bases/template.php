@@ -45,7 +45,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 				<?endif?>
 
 				<?if($arItem["PROPERTIES"]["streams"]["VALUE"][0]):?>
-				<div>
+				<div class="streams-block">
 					<?foreach($arItem["PROPERTIES"]["streams"]["VALUE"] as $stream):?>
 						<?if(count($arResult["STREAMS_INFO"][$stream])):?>
 						<div

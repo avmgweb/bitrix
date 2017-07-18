@@ -1,11 +1,7 @@
 <?
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-$cordinateX   = $arResult["PROPERTIES"]["cordinate_x"]["VALUE"];
-$cordinateY   = $arResult["PROPERTIES"]["cordinate_y"]["VALUE"];
-$priceLink    = CFile::GetPath($arResult["PROPERTIES"]["price_file"]["VALUE"]);
-$sectionTitle = '';
-foreach($arResult["SECTION"]["PATH"] as $arrayInfo)
-	$sectionTitle = $arrayInfo["NAME"];
+$cordinateX = $arResult["PROPERTIES"]["cordinate_x"]["VALUE"];
+$cordinateY = $arResult["PROPERTIES"]["cordinate_y"]["VALUE"];
 /* -------------------------------------------------------------------- */
 /* -------------------------- same articles --------------------------- */
 /* -------------------------------------------------------------------- */
@@ -104,41 +100,6 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 				<?=implode('<br>', $arResult["PROPERTIES"]["open_houres"]["VALUE"])?>
 			</div>
 			<?endif?>
-
-			<?if($priceLink):?>
-			<div>
-				<?
-				$APPLICATION->IncludeComponent
-					(
-					"av:form_elements", "av_site",
-						[
-						"TYPE"        => 'button',
-						"BUTTON_TYPE" => 'link',
-						"LINK"        => $priceLink,
-						"TITLE"       => GetMessage("AV_BASES_ELEMENT_DOWNLOAD_PRICE"),
-						"ATTR"        => 'download target=_blank'
-						]
-					);
-				?>
-			</div>
-			<?endif?>
-
-			<?if($arParams["TABLET_MENU_PATH"]):?>
-			<div>
-				<?
-				$APPLICATION->IncludeComponent
-					(
-					"av:visit_site.menu.tablet", "icons",
-						[
-						"TITLE"       => GetMessage("AV_BASES_ELEMENT_PRODUCTS_MENU"),
-						"MENU_PATH"   => $arParams["TABLET_MENU_PATH"],
-						"MENU_TYPE"   => $arParams["TABLET_MENU_TYPE"],
-						"MENU_VALUES" => $arParams["TABLET_MENU_VALUES"]
-						]
-					);
-				?>
-			</div>
-			<?endif?>
 		</div>
 	</div>
 	<?
@@ -155,6 +116,53 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 			data-cordinate-x="<?=$cordinateX?>"
 			data-cordinate-y="<?=$cordinateY?>"
 		></div>
+	</div>
+	<?endif?>
+	<?
+	/* ------------------------------------------- */
+	/* ------------- streams info col ------------ */
+	/* ------------------------------------------- */
+	?>
+	<?if(count($arResult["BASE_STREAMS_INFO"])):?>
+	<div class="streams-info-col">
+		<h3>
+			<span class="desktop"><?=GetMessage("AV_BASES_ELEMENT_STREAMS_INFO")?></span>
+			<span class="mobile"><?=GetMessage("AV_BASES_ELEMENT_STREAMS_INFO_SHORT")?></span>
+		</h3>
+		<div>
+			<?foreach($arResult["BASE_STREAMS_INFO"] as $streamInfo):?>
+			<div class="item<?if(!count($streamInfo["PHONES"]) && !$streamInfo["PRICE"]):?> no-info<?endif?>">
+				<h3 class="title" title="<?=$streamInfo["TITLE"]?>">
+					<span><?=$streamInfo["TITLE"]?></span>
+				</h3>
+				<div class="body">
+					<div>
+						<div style="width: <?=$streamInfo["ICON"]["WIDTH"]?>px;height: <?=$streamInfo["ICON"]["HEIGHT"]?>px">
+							<?=$streamInfo["ICON"]["CONTENT"]?>
+						</div>
+
+						<?if($streamInfo["PRICE"]):?>
+						<a
+							class="price-link"
+							title="<?=GetMessage("AV_BASES_ELEMENT_STREAMS_INFO_PRICE")?>"
+							href="<?=$streamInfo["PRICE"]?>"
+							download
+						>
+							<?=GetMessage("AV_BASES_ELEMENT_STREAMS_INFO_PRICE")?>
+						</a>
+						<?endif?>
+					</div>
+					<div>
+						<?foreach($streamInfo["PHONES"] as $phone):?>
+						<div>
+							(<?=$phone[0].$phone[1].$phone[2]?>) <?=$phone[3].$phone[4].$phone[5]?> <?=$phone[6].$phone[7]?> <?=$phone[8].$phone[9]?>
+						</div>
+						<?endforeach?>
+					</div>
+				</div>
+			</div>
+			<?endforeach?>
+		</div>
 	</div>
 	<?endif?>
 	<?
@@ -221,7 +229,7 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 	/* ------------------------------------------- */
 	?>
 	<?if($sameArticles):?>
-	<h3 class="av-spoiler-header" data-work-breakpoint="991"><?=GetMessage("AV_BASES_ELEMENT_SAME_BASES", ["#NAME#" => $sectionTitle])?></h3>
+	<h3 class="av-spoiler-header" data-work-breakpoint="991"><?=GetMessage("AV_BASES_ELEMENT_SAME_BASES", ["#NAME#" => $arResult["SECTION_INFO"]["NAME"]])?></h3>
 	<div class="av-spoiler-body"><?=$sameArticles?></div>
 	<?endif?>
 	<?
