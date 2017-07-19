@@ -98,7 +98,7 @@ if($arParams["AV_BASES_STREAMS_INFO_IBLOCK"] && $arResult["PROPERTIES"]["streams
 				if($value[0].$value[1] == 38) $value = substr($value, (strlen($value) - 2) * -1);
 				$phoneArray[$index] = $value;
 				}
-			$phoneArray = array_diff($phoneArray, ['']);
+			$phoneArray = array_values(array_unique(array_diff($phoneArray, [''])));
 			/* ---------------------------- */
 			/* -------- full array -------- */
 			/* ---------------------------- */

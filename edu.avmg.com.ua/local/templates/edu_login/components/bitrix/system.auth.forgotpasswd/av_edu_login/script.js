@@ -6,21 +6,14 @@ $(function()
 			if($(this).checkFormValidation())
 				{
 				AvWaitingScreen("on");
+				$(this).find('[name="USER_EMAIL"]').val($(this).find('[name="USER_LOGIN"]').val());
 				return true;
 				}
 			else
 				{
-				CreateAvAlertPopup
-					(
-					BX.message("AV_EDU_LOGIN_FORGOTPASS_VALIDATION_ALERT"),
-					"alert",
-						{
-						"hide_on_clickout" : 'Y',
-						"centering"        : 'Y',
-						"z_index"          : 1000
-						}
-					);
-				$(this).find('[name="USER_EMAIL"]').val($(this).find('[name="USER_LOGIN"]').val());
+				CreateAvAlertPopup(BX.message("AV_EDU_LOGIN_FORGOTPASS_VALIDATION_ALERT"), "alert")
+					.positionCenter(1000, 'Y')
+					.hideOnClickout("remove");
 				return false;
 				}
 			});

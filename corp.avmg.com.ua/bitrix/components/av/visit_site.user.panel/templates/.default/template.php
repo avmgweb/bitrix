@@ -241,23 +241,10 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 
 	<?if($arResult["REGISTER"]["CONFIRM_EMAIL_SENDED"]):?>
 	AvBlurScreen("on", 1000);
-	var $avRegisterOkPopup =
-		CreateAvAlertPopup('<?=GetMessage("AV_AUTH_REGISTER_FORM_SUCCESS")?>', "ok")
-			.css("position", 'fixed')
-			.positionCenter(1200)
-			.on("remove", function() {AvBlurScreen("off")});
-
-	$(document)
-		.on("vclick", function()
-			{
-			if(!$avRegisterOkPopup.isClicked())
-				$avRegisterOkPopup.remove();
-			});
-	$(window)
-		.resize(function()
-			{
-			$avRegisterOkPopup.positionCenter();
-			});
+	CreateAvAlertPopup('<?=GetMessage("AV_AUTH_REGISTER_FORM_SUCCESS")?>', "ok")
+		.positionCenter(1100, 'Y')
+		.hideOnClickout("remove")
+		.on("remove", function() {AvBlurScreen("off")});
 	<?endif?>
 
 	<?if(count($arResult["AUTH"]["ERRORS"]) || count($arResult["REGISTER"]["ERRORS"])):?>

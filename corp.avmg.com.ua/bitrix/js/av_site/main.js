@@ -35,59 +35,18 @@ function AvBlurScreen(value, zIndex)
 /* -------------------------------------------------------------------- */
 function CreateAvAlertPopup(alertText, type, options)
 	{
-	var
-		$popUpHider = $('<div class="av-alert-popup-hider"></div>'),
-		$popUp      = $
-			(
-			'<div class="av-alert-popup" type="'+(type ? type : 'simple')+'">'+
-				'<div class="content">'+
-					'<div class="image"></div>'+
-					'<div class="text">'+alertText+'</div>'+
-				'</div>'+
-				'<div class="close-form-button"></div>'+
-			'</div>'
-			)
-			.appendTo('body')
-			.on("vclick", '.close-form-button', function() {$(this).getAvAlertPopup().remove()})
-			.on("remove",                       function() {$popUpHider.remove()}),
-		popUpOptions =
-			{
-			"hide_on_clickout": 'N',
-			"centering"       : 'N',
-			"z_index"         : 1000
-			};
-
-	$.extend(popUpOptions, options);
-	popUpOptions.z_index = parseInt(popUpOptions.z_index);
-
-	if(popUpOptions.centering == 'Y')
-		{
-		$popUp.positionCenter(popUpOptions.z_index);
-		$(window)
-			.scroll(function() {$popUp.positionCenter()})
-			.resize(function() {$popUp.positionCenter()});
-		}
-
-	if(popUpOptions.hide_on_clickout == 'Y')
-		{
-		$popUpHider
-			.css
-				({
-				"position": 'fixed',
-				"top"     : '0',
-				"bottom"  : '0',
-				"left"    : '0',
-				"right"   : '0',
-				"z-index" : (popUpOptions.z_index - 1)
-				})
-			.appendTo('body');
-		setTimeout(function()
-			{
-			$popUpHider.on("vclick", function() {$popUp.remove()});
-			}, 300);
-		}
-
-	return $popUp;
+	return $
+		(
+		'<div class="av-alert-popup" type="'+(type ? type : 'simple')+'">'+
+			'<div class="content">'+
+				'<div class="image"></div>'+
+				'<div class="text">'+alertText+'</div>'+
+			'</div>'+
+			'<div class="close-form-button"></div>'+
+		'</div>'
+		)
+		.appendTo('body')
+		.on("vclick", '.close-form-button', function() {$(this).getAvAlertPopup().remove()});
 	}
 /* ------------------------------------------------------------------- */
 /* ----------------------------- methods ----------------------------- */
@@ -124,7 +83,19 @@ function CreateAvAlertPopup(alertText, type, options)
 	/* ------------------------------------------- */
 	/* --------- object position center ---------- */
 	/* ------------------------------------------- */
-	jQuery.fn.positionCenter = function(zIndex)
+	jQuery.fn.positionCenter = function(zIndex, centering)
+		{
+		var $currentObject = this;
+
+		$currentObject.objectCentering(zIndex);
+		if(centering == 'Y')
+			$(window)
+				.scroll(function() {$currentObject.objectCentering()})
+				.resize(function() {$currentObject.objectCentering()});
+
+		return this;
+		};
+	jQuery.fn.objectCentering = function(zIndex)
 		{
 		var
 			currentZIndex = this.css("z-index"),
@@ -137,12 +108,48 @@ function CreateAvAlertPopup(alertText, type, options)
 			formHeight    = this                            .outerHeight();
 
 		return this.css
-			({
-			"z-index": currentZIndex && currentZIndex > 1 ? currentZIndex  : setedZIndex,
-			"top"    : formHeight    >  screenHeight      ? scrollTop + 50 : scrollTop  + (screenHeight - formHeight) / 2,
-			"left"   : screenWidth   <= formWidth + 5     ? 0              : scrollLeft + (screenWidth  - formWidth)  / 2,
-			"right"  : screenWidth   <= formWidth + 5     ? 0              : ''
-			});
+           ({
+           "z-index": currentZIndex && currentZIndex > 1 ? currentZIndex  : setedZIndex,
+           "top"    : formHeight    >  screenHeight      ? scrollTop + 50 : scrollTop  + (screenHeight - formHeight) / 2,
+           "left"   : screenWidth   <= formWidth + 5     ? 0              : scrollLeft + (screenWidth  - formWidth)  / 2,
+           "right"  : screenWidth   <= formWidth + 5     ? 0              : ''
+           });
+		};
+	/* ------------------------------------------- */
+	/* --------- object hide on clickout --------- */
+	/* ------------------------------------------- */
+	jQuery.fn.hideOnClickout = function(functionType)
+		{
+		var
+			behaviorType   = functionType == 'remove' ? 'remove' : 'hide',
+			$currentObject = this,
+			$popUpHider    =
+				$('<div class="av-alert-popup-hider"></div>')
+					.css
+						({
+						"position": 'fixed',
+						"top"     : '0',
+						"bottom"  : '0',
+						"left"    : '0',
+						"right"   : '0',
+						"z-index" : (parseInt($(this).css("z-index")) - 1)
+						})
+					.appendTo('body');
+
+		setTimeout(function()
+			{
+			$popUpHider.on("vclick", function()
+				{
+				if(behaviorType == 'hide') $currentObject.hide();
+				else                       $currentObject.remove();
+				});
+			$currentObject.on(behaviorType, function()
+				{
+				$popUpHider.remove();
+				});
+			}, 300);
+
+		return $currentObject;
 		};
 	/* ------------------------------------------- */
 	/* --------------- flood image --------------- */

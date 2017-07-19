@@ -3,10 +3,6 @@
 /* -------------------------------------------------------------------- */
 $(function()
 	{
-	var $ACTLLdeleteForm = $('.av-cargo-traffic-light-list-delete-form');
-	/* ------------------------------------------- */
-	/* ------------- document events ------------- */
-	/* ------------------------------------------- */
 	$(document)
 		.on("vclick", '.av-cargo-traffic-light-list-table .body-row .remove-button',  function()
 			{
@@ -14,52 +10,32 @@ $(function()
 			if(!elementId) return;
 
 			AvBlurScreen("on");
-			$ACTLLdeleteForm
-				.show().positionCenter(1200)
-				.find('button').attr("data-element-id", elementId);
-			})
-		.on("vclick", function(event)
-			{
-			var $object = $(event.target);
-			if
-				(
-				!$object.closest('.av-cargo-traffic-light-list-delete-form').length
-				&&
-				!$object.closest('.av-cargo-traffic-light-list-table .body-row .remove-button').length
-				)
-				{
-				AvBlurScreen("off");
-				$ACTLLdeleteForm.hide();
-				}
-			});
-	/* ------------------------------------------- */
-	/* ----------- delete form behavior ---------- */
-	/* ------------------------------------------- */
-	$ACTLLdeleteForm
-		.on("vclick", 'button', function()
-			{
-			var
-				$mainForm = $('.av-cargo-traffic-light-list-table').closest('form'),
-				elementId = $(this).attr("data-element-id");
-			if(!elementId) return;
+			$('.av-cargo-traffic-light-list-delete-form')
+				.find('button').attr("data-element-id", elementId)
+				.closest('.av-cargo-traffic-light-list-delete-form')
+				.show()
+				.positionCenter(1200, 'Y')
+				.hideOnClickout()
+				.on("vclick", 'button', function()
+					{
+					var
+						$mainForm = $('.av-cargo-traffic-light-list-table').closest('form'),
+						elementId = $(this).attr("data-element-id");
+					if(!elementId) return;
 
-			$ACTLLdeleteForm.hide();
-			$mainForm.find('.action-type-input') .attr("value", 'delete') .val("delete");
-			$mainForm.find('.action-value-input').attr("value", elementId).val(elementId);
-			$mainForm.submit();
-			})
-		.on("vclick", '[data-cancel-button]', function()
-			{
-			AvBlurScreen("off");
-			$ACTLLdeleteForm.hide();
-			});
-	/* ------------------------------------------- */
-	/* -------------- scroll/resize -------------- */
-	/* ------------------------------------------- */
-	$(window)
-		.resize(function()
-			{
-			if($ACTLLdeleteForm.is(':visible')) $ACTLLdeleteForm.positionCenter();
+					$(this).closest('.av-cargo-traffic-light-list-delete-form').hide();
+					$mainForm.find('.action-type-input') .attr("value", 'delete') .val("delete");
+					$mainForm.find('.action-value-input').attr("value", elementId).val(elementId);
+					$mainForm.submit();
+					})
+				.on("vclick", '[data-cancel-button]', function()
+					{
+					$(this).closest('.av-cargo-traffic-light-list-delete-form').hide();
+					})
+				.on("hide", function()
+					{
+					AvBlurScreen("off")
+					});
 			});
 	});
 /* -------------------------------------------------------------------- */

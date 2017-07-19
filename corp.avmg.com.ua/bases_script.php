@@ -93,3 +93,15 @@ while($queryElement = $queryList->GetNext())
 	echo $queryElement["ID"].'<br>';
 	}
 */
+/*
+$queryList = CIBlockElement::GetList(["ID" => 'ASC'], ["IBLOCK_ID" => $basesInfoUAIblockId, "!PROPERTY_price" => false], false, false, ["ID", "PROPERTY_price"]);
+while($queryElement = $queryList->GetNext())
+	CIBlockElement::SetPropertyValuesEx
+		(
+		$queryElement["ID"],
+		$basesInfoUAIblockId,
+			[
+			"price" => '/upload'.$queryElement["PROPERTY_PRICE_VALUE"]
+			]
+		);
+*/

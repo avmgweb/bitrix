@@ -3,15 +3,15 @@ $arUrlRewrite = array(
 	array(
 		"CONDITION" => "#^/applications/#",
 		"PATH"      => "/applications/index.php",
-	),
+		),
 	array(
 		"CONDITION" => "#^/about/news/#",
 		"PATH"      => "/about/news/index.php",
-	),
+		),
 	array(
 		"CONDITION" => "#^/about/career/#",
 		"PATH"      => "/about/career/index.php",
-	),
+		),
 	array(
 		"CONDITION" => "#^/docs/pub/(?<hash>[0-9a-f]{32})/(?<action>[0-9a-zA-Z]+)/\\?#",
 		"RULE" => "hash=\$1&action=\$2&",
@@ -607,5 +607,3 @@ $arUrlRewrite = array(
 		"PATH" => "/rest/index.php",
 	),
 );
-
-?>

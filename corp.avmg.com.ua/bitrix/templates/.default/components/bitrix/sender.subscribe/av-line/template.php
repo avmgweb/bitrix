@@ -7,31 +7,17 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 <?if($arResult["MESSAGE"]):?>
 <script>
 	AvBlurScreen("on", 1000);
-	var $subscibeLinePopup =
-		CreateAvAlertPopup
-			(
-			'<div class="av-subscribe-form-line-popup-text">'+
-				'<b><?=GetMessage("AV_SUBSCRIBE_LINE_RESULT_".$arResult["MESSAGE"]["TYPE"])?></b>'+
-				'<span><?=$arResult["MESSAGE"]["TEXT"]?></span>'+
-			'</div>',
-			'<?=$arResult["MESSAGE"]["TYPE"] == "ERROR" ? "alert" : "ok"?>'
-			)
-			.positionCenter(1100);
-
-	$(function()
-		{
-		$(document)
-			.on("vclick", function()
-				{
-				$subscibeLinePopup.remove();
-				AvBlurScreen("off");
-				});
-		$(window)
-			.resize(function()
-				{
-				$subscibeLinePopup.positionCenter();
-				});
-		});
+	CreateAvAlertPopup
+		(
+		'<div class="av-subscribe-form-line-popup-text">'+
+			'<b><?=GetMessage("AV_SUBSCRIBE_LINE_RESULT_".$arResult["MESSAGE"]["TYPE"])?></b>'+
+			'<span><?=$arResult["MESSAGE"]["TEXT"]?></span>'+
+		'</div>',
+		'<?=$arResult["MESSAGE"]["TYPE"] == "ERROR" ? "alert" : "ok"?>'
+		)
+		.positionCenter(1100, 'Y')
+		.hideOnClickout("remove")
+		.on("remove", function() {AvBlurScreen("off")});
 </script>
 <?endif?>
 <?

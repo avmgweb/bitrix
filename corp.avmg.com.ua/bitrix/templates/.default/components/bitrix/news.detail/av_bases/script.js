@@ -29,6 +29,7 @@ $(function()
 	$(document)
 		.on("vclick", '.av-bases-detail .streams-info-col .item:not(.no-info) .title', function()
 			{
+			if($(window).width() >= 768) return;
 			$(this).closest('.item')
 				.toggleClass("open")
 				.find('.body').slideToggle();

@@ -1,6 +1,9 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
 <form
-	class="av-filter <?if($arParams["MARKUP_TYPE"] == 'TWO_COLUMNS'):?>two-columns<?endif?>"
+	class="
+		av-filter
+		<?if($arParams["MARKUP_TYPE"] == 'TWO_COLUMNS'):?>two-columns<?endif?>
+		"
 	name="<?=$arResult["FILTER_NAME"]."_form"?>"
 	action="<?=$arResult["FORM_ACTION"]?>"
 	method="get"

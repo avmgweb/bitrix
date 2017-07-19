@@ -19,32 +19,16 @@ function avSocAuth(params)
 		success : function(scriptResult)
 			{
 			var
-				scriptResultObj      = $.parseJSON(scriptResult),
-				scriptResultStatus   = scriptResultObj && scriptResultObj.status  ? scriptResultObj.status  : 'error',
-				scriptResultMessage  = scriptResultObj && scriptResultObj.message ? scriptResultObj.message : BX.message("AV_SOC_AUTH_ERROR_TEXT_DEFAULT"),
-				$avSocAuthAlertPopup = $();
+				scriptResultObj     = $.parseJSON(scriptResult),
+				scriptResultStatus  = scriptResultObj && scriptResultObj.status  ? scriptResultObj.status  : 'error',
+				scriptResultMessage = scriptResultObj && scriptResultObj.message ? scriptResultObj.message : BX.message("AV_SOC_AUTH_ERROR_TEXT_DEFAULT");
 
 			if(scriptResultStatus == 'success')
 				location.reload();
 			else if(scriptResultStatus == 'error')
-				$avSocAuthAlertPopup =
-					CreateAvAlertPopup('<b>'+BX.message("AV_SOC_AUTH_ERROR_TITLE")+'</b><br>'+scriptResultMessage, "alert")
-						.positionCenter(3000);
-
-			$(document)
-				.on("vclick", function()
-					{
-					$avSocAuthAlertPopup.remove();
-					});
-			$(window)
-				.scroll(function()
-					{
-					$avSocAuthAlertPopup.positionCenter();
-					})
-				.resize(function()
-					{
-					$avSocAuthAlertPopup.positionCenter();
-					});
+				CreateAvAlertPopup('<b>'+BX.message("AV_SOC_AUTH_ERROR_TITLE")+'</b><br>'+scriptResultMessage, "alert")
+					.positionCenter(3000, 'Y')
+					.hideOnClickout("remove");
 			},
 		complete: function() {AvWaitingScreen("off")}
 		});

@@ -1,7 +1,7 @@
 .av-cargo-navigation                      {display: flex;justify-content: center}
 .av-cargo-navigation > *                  {line-height: 18px;text-align: center}
 .av-cargo-navigation > *:not(:last-child) {margin-right: 4px}
-.av-cargo-navigation > *:not(.separator)  {font-size: 85%;width: 15px}
+.av-cargo-navigation > *:not(.separator)  {font-size: 85%;padding: 0 4px}
 .av-cargo-navigation > *.separator        {letter-spacing: 2px}
 .av-cargo-navigation > *:not(.current):not(.separator)
 	{

@@ -69,7 +69,7 @@ ksort($fieldsGroups);
 		<h3>
 			<span><?=($arResult["ELEMENT_ID"] ? $arResult["FORM_DATA"]["NAME"] : GetMessage("AVCTL_NEW_ELEMENT_TITLE"))?></span>
 			<?if($arResult["CAN_DELETE_ELEMENT"]):?>
-				<span class="delete-link"><?=$arResult["IBLOCK"]["ELEMENT_DELETE"]?></span>
+			<span class="delete-link"><?=$arResult["IBLOCK"]["ELEMENT_DELETE"]?></span>
 			<?endif?>
 		</h3>
 
@@ -248,7 +248,7 @@ ksort($fieldsGroups);
 			<th><?=$fieldInfo["NAME"]?></th>
 			<?endforeach?>
 		</tr>
-		<?foreach($arResult["HISTORY_ELEMENTS"] as $elementInfo):?>
+		<?foreach($arResult["HISTORY_ELEMENTS"] as $elementIndex => $elementInfo):?>
 		<tr>
 			<td><?=$elementInfo["DATE_CREATE"]?></td>
 			<td>
@@ -257,7 +257,7 @@ ksort($fieldsGroups);
 			</td>
 			<?foreach($arResult["FIELDS"] as $field => $fieldInfo):?>
 			<td>
-				<?if($elementInfo[$field] == 'cleared_value'):?><i><?=GetMessage("AVCTL_HISTORY_VALUE_CLEARED")?></i>
+				<?if(count($elementInfo[$field]) && !$elementInfo[$field][0] && $elementIndex != (count($arResult["HISTORY_ELEMENTS"]) - 1)):?><i><?=GetMessage("AVCTL_HISTORY_VALUE_CLEARED")?></i>
 				<?else:?><?=htmlspecialchars_decode(strip_tags(implode('<br>', $elementInfo[$field])))?>
 				<?endif?>
 			</td>

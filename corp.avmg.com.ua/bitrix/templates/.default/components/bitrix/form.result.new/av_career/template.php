@@ -118,16 +118,9 @@ CJSCore::Init(["av_form_elements"]);
 
 	<?if($arResult["isFormNote"] == 'Y'):?>
 	AvBlurScreen("on", 1000);
-	CreateAvAlertPopup
-		(
-		BX.message("AV_FORM_CAREER_RESULT_OK_MESSAGE"),
-		"ok",
-			{
-			"hide_on_clickout" : 'Y',
-			"centering"        : 'Y',
-			"z_index"          : 1100
-			}
-		)
+	CreateAvAlertPopup(BX.message("AV_FORM_CAREER_RESULT_OK_MESSAGE"), "ok")
+		.positionCenter(1100, 'Y')
+		.hideOnClickout("remove")
 		.on("remove", function() {AvBlurScreen("off")});
 	<?endif?>
 </script>

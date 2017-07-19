@@ -26,6 +26,14 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
+      <webServer id="e18c18aa-72d6-4581-8006-ea3e089fd956" name="ARTEM" url="http://192.168.101.252">
+        <fileTransfer host="192.168.101.252" port="22" rootFolder="/home/bitrix/ext_www" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

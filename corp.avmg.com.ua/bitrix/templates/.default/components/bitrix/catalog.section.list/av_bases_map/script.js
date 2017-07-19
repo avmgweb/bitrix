@@ -8,7 +8,9 @@ $(function()
 			{
 			$('#av-shop-store-map').find('g').removeClass("active");
 			$('.av-bases-map-region-form').hide();
-			$('.av-bases-map-region-form[data-region-code="'+$(this).attr("data-region-code")+'"]').show().positionCenter();
+			$('.av-bases-map-region-form[data-region-code="'+$(this).attr("data-region-code")+'"]')
+				.show()
+				.positionCenter();
 			})
 		.on("vclick", '.av-bases-map-region-form .title > span:last-child', function()
 			{

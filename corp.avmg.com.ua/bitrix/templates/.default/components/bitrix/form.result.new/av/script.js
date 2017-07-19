@@ -9,16 +9,9 @@ $(function()
 				return true;
 			else
 				{
-				CreateAvAlertPopup
-					(
-					BX.message("AV_FORM_FORM_VALIDATION_ALERT"),
-					"alert",
-						{
-						"hide_on_clickout" : 'Y',
-						"centering"        : 'Y',
-						"z_index"          : 1000
-						}
-					);
+				CreateAvAlertPopup(BX.message("AV_FORM_FORM_VALIDATION_ALERT"), "alert")
+					.positionCenter(1000, 'Y')
+					.hideOnClickout("remove");
 				return false;
 				}
 			});

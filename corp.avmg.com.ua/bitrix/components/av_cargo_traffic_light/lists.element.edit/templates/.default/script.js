@@ -1,9 +1,5 @@
 $(function()
 	{
-	var
-		$avCTEFPopUpAlert = $(),
-		$deleteForm       = $('.av-cargo-traffic-light-item-form-delete');
-
 	$(document)
 		/* ------------------------------------------- */
 		/* ------------------- tabs ------------------ */
@@ -37,7 +33,9 @@ $(function()
 				}
 			else
 				{
-				$avCTEFPopUpAlert = CreateAvAlertPopup(BX.message("AVCTL_FORM_VALIDATION_ALERT"), "alert").positionCenter(1000);
+				CreateAvAlertPopup(BX.message("AVCTL_FORM_VALIDATION_ALERT"), "alert")
+					.positionCenter(1000, 'Y')
+					.hideOnClickout("remove");
 				return false;
 				}
 			})
@@ -46,32 +44,11 @@ $(function()
 		/* ------------------------------------------- */
 		.on("vclick", '.av-cargo-traffic-light-item-form .delete-link',  function()
 			{
-			AvBlurScreen("on");
-			$deleteForm.show().positionCenter(1200);
-			})
-		/* ------------------------------------------- */
-		/* ------------------ hiding ----------------- */
-		/* ------------------------------------------- */
-		.on("vclick", function()
-			{
-			if(!$avCTEFPopUpAlert.isClicked())
-				$avCTEFPopUpAlert.remove();
-			if
-				(
-				(!$deleteForm.isClicked() && !$('.av-cargo-traffic-light-item-form .delete-link').isClicked())
-				||
-				$deleteForm.find('[data-cancel-button]').isClicked()
-				)
-				{
-				AvBlurScreen("off");
-				$deleteForm.hide();
-				}
-			});
-
-	$(window)
-		.resize(function()
-			{
-			$avCTEFPopUpAlert.positionCenter();
-			if($deleteForm.is(':visible')) $deleteForm.positionCenter();
+			AvBlurScreen("on", 1000);
+			$('.av-cargo-traffic-light-item-form-delete')
+				.show()
+				.positionCenter(1100, 'Y')
+				.hideOnClickout()
+				.on("hide", function() {AvBlurScreen("off")});
 			});
 	});

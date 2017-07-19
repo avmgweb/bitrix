@@ -1,6 +1,13 @@
 <?
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 $arResult["CURRENT_STATUS"] = '';
+$arResult["STORAGE_SENDER"] = '';
+/* -------------------------------------------------------------------- */
+/* --------------------------- edit access ---------------------------- */
+/* -------------------------------------------------------------------- */
+$arResult["EDIT_ACCESS"] = false;
+if(!$arResult["ELEMENT_ID"]) $arResult["EDIT_ACCESS"] = $arResult["CAN_ADD_ELEMENT"] ? true : false;
+else                         $arResult["EDIT_ACCESS"] = CIBlockElementRights::UserHasRightTo($arResult["IBLOCK_ID"], $arResult["ELEMENT_ID"], 'element_edit');
 /* -------------------------------------------------------------------- */
 /* ------------------------- fields refactor -------------------------- */
 /* -------------------------------------------------------------------- */
@@ -53,6 +60,11 @@ foreach($arResult["FIELDS"] as $field => $fieldInfo)
 
 		$queryList = CIBlockElement::GetList(["ID" => 'ASC'], ["IBLOCK_ID" => $fieldInfo["LINK_IBLOCK_ID"]], false, false, ["ID", "NAME"]);
 		while($queryElement = $queryList->GetNext()) $arResult["FIELDS"][$field]["LIST_ITEMS"][$queryElement["ID"]] = $queryElement["NAME"];
+
+		if($fieldInfo["CODE"] == 'storage_sender')
+			$arResult["STORAGE_SENDER"] = $arResult["FIELDS"][$field]["VALUE"][0];
+		if($fieldInfo["CODE"] == 'storage_geter')
+			unset($arResult["FIELDS"][$field]["LIST_ITEMS"][$arResult["STORAGE_SENDER"]]);
 		}
 	// html/text
 	elseif($fieldInfo["TYPE"] == 'S:HTML')
@@ -74,6 +86,7 @@ foreach($arResult["FIELDS"] as $field => $fieldInfo)
 	if($arResult["CURRENT_STATUS"] == 'uploaded_unloaded' || $arResult["CURRENT_STATUS"] == 'empty')
 		{
 		$arResult["FIELDS"][$field]["SETTINGS"]["EDIT_READ_ONLY_FIELD"] = 'Y';
+		$arResult["EDIT_ACCESS"]        = false;
 		$arResult["CAN_DELETE_ELEMENT"] = false;
 		}
 	// create form
@@ -95,7 +108,7 @@ foreach($arResult["FIELDS"] as $field => $fieldInfo)
 				break;
 			case "items_number":
 			case "tonnage":
-				if(count($fieldInfo["VALUE"]))
+				if($fieldInfo["VALUE"][0])
 					$arResult["FIELDS"][$field]["SETTINGS"]["EDIT_READ_ONLY_FIELD"] = 'Y';
 				break;
 			}

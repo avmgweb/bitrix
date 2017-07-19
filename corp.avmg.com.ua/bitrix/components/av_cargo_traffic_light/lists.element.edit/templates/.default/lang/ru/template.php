@@ -20,6 +20,5 @@ $MESS["AVCTL_BUTTONS_APPLY_NAME"]         = 'Применить';
 $MESS["AVCTL_BUTTONS_APPLY_TITLE"]        = 'Сохранить и остаться в форме';
 $MESS["AVCTL_BUTTONS_CANCEL_NAME"]        = 'Отменить';
 $MESS["AVCTL_BUTTONS_CANCEL_TITLE"]       = 'Не сохранять и вернуться в список';
-$MESS["AVCTL_BUTTONS_APPLY_TITLE"]        = 'Сохранить и остаться в форме';
 $MESS["AVCTL_BUTTONS_BACK_NAME"]          = 'Вернуться к списку';
 $MESS["AVCTL_BUTTONS_BACK_TITLE"]         = 'Вернуться к списку';

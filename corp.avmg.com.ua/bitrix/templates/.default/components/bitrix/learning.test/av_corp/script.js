@@ -42,14 +42,10 @@ $(function()
 							.replace('#TEXT#',        alertMessage)
 							.replace('#CANCEL_TEXT#', BX.message("AV_LEARNING_TEST_SKIP_QUESTION_CANCEL"))
 							.replace('#ACCEPT_TEXT#', BX.message("AV_LEARNING_TEST_SKIP_QUESTION_CONFIRM"))+
-					'</div>',
-					'',
-						{
-						"hide_on_clickout" : 'Y',
-						"centering"        : 'Y',
-						"z_index"          : 1000
-						}
+					'</div>'
 					)
+					.positionCenter(1000, 'Y')
+					.hideOnClickout("remove")
 					.on("vclick", '[data-apply-button]',  function()
 						{
 						$('.av-learning-test-detail [data-next-button-type]').removeAttr("data-next-button-type").click();
@@ -75,14 +71,10 @@ $(function()
 						.replace('#TEXT#',        BX.message("AV_LEARNING_TEST_FINISH_TEST"))
 						.replace('#CANCEL_TEXT#', BX.message("AV_LEARNING_TEST_FINISH_TEST_CANCEL"))
 						.replace('#ACCEPT_TEXT#', BX.message("AV_LEARNING_TEST_FINISH_TEST_CONFIRM"))+
-				'</div>',
-				'',
-					{
-					"hide_on_clickout" : 'Y',
-					"centering"        : 'Y',
-					"z_index"          : 1000
-					}
+				'</div>'
 				)
+				.positionCenter(1000, 'Y')
+				.hideOnClickout("remove")
 				.on("vclick", '[data-apply-button]',  function()
 					{
 					$('.av-learning-test-detail [name="finish"]').attr("confirmed", true).click();
