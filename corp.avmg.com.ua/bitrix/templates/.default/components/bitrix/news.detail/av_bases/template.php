@@ -239,21 +239,20 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 	?>
 	<div class="buttons-col">
 		<?
+		if(count($arResult["ROOT_SECTION_INFO"]))
+			$APPLICATION->IncludeComponent
+				(
+				"av:form.button", "av_alt",
+					[
+					"BUTTON_TYPE" => 'link',
+					"LINK"        => str_replace(['#SECTION_ID#', '#SECTION_CODE#'], [$arResult["ROOT_SECTION_INFO"]["ID"], $arResult["ROOT_SECTION_INFO"]["CODE"]], $arParams["SECTION_URL"]),
+					"TITLE"       => GetMessage("AV_BASES_ELEMENT_SECTION_LINK")
+					]
+				);
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site_alt",
+			"av:form.button", "av_alt",
 				[
-				"TYPE"        => 'button',
-				"BUTTON_TYPE" => 'link',
-				"LINK"        => $arResult["SECTION_URL"],
-				"TITLE"       => GetMessage("AV_BASES_ELEMENT_SECTION_LINK")
-				]
-			);
-		$APPLICATION->IncludeComponent
-			(
-			"av:form_elements", "av_site_alt",
-				[
-				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'link',
 				"LINK"        => $arResult["LIST_PAGE_URL"],
 				"TITLE"       => GetMessage("AV_BASES_ELEMENT_LIST_LINK")

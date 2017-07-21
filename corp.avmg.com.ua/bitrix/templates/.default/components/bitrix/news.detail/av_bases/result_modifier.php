@@ -2,10 +2,15 @@
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 use Bitrix\Main\Application;
 /* -------------------------------------------------------------------- */
-/* ------------------------ parent section info ----------------------- */
+/* --------------------------- section info --------------------------- */
 /* -------------------------------------------------------------------- */
 $arResult["SECTION_INFO"] = [];
 if($arResult["IBLOCK_SECTION_ID"]) $arResult["SECTION_INFO"] = CIBlockSection::GetList([], ["ID" => $arResult["IBLOCK_SECTION_ID"]])->GetNext();
+/* -------------------------------------------------------------------- */
+/* ------------------------- root section info ------------------------ */
+/* -------------------------------------------------------------------- */
+$arResult["ROOT_SECTION_INFO"] = [];
+if($arResult["SECTION_INFO"]["ID"]) $arResult["ROOT_SECTION_INFO"] = CIBlockSection::GetNavChain($arParams["IBLOCK_ID"], $arResult["SECTION_INFO"]["ID"], ["ID", "CODE", "NAME"])->GetNext();
 /* -------------------------------------------------------------------- */
 /* --------------------------- streams info --------------------------- */
 /* -------------------------------------------------------------------- */

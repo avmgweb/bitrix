@@ -1,8 +1,5 @@
 $(function()
 	{
-	/* ------------------------------------------- */
-	/* ---------------- handlers ----------------- */
-	/* ------------------------------------------- */
 	$(document)
 		.on("vclick", '.av-certificates-list > div', function()
 			{
@@ -10,11 +7,10 @@ $(function()
 				elementId     = $(this).attr("data-element-id"),
 				$elementPopup = $('.av-certificates-list-element-popup[data-element-id="'+elementId+'"]');
 
-			$('.av-certificates-list-element-popup').hide();
 			if($elementPopup.length)
 				{
-				$elementPopup.show().positionCenter(1100);
 				AvBlurScreen("on", 1000);
+				$elementPopup.show();
 				return;
 				}
 
@@ -36,38 +32,12 @@ $(function()
 					$('<div class="av-certificates-list-element-popup" data-element-id="'+elementId+'"></div>')
 						.appendTo('body')
 						.html(scriptResult)
-						.positionCenter(1100)
-						.on("vclick", '[data-close-form]', function ()
-							{
-							$(this).closest('.av-certificates-list-element-popup').hide();
-							AvBlurScreen("off");
-							});
+						.show();
 					},
 				complete: function() {AvWaitingScreen("off")}
 				});
 			})
-		.on("vclick", function()
-			{
-			var $popup = $('.av-certificates-list-element-popup');
-			if
-				(
-				!$('.av-certificates-list > div').isClicked()
-				&&
-				$popup.filter(':visible').length
-				&&
-				!$popup.isClicked()
-				)
-				{
-				$popup.hide();
-				AvBlurScreen("off");
-				}
-			});
-	/* ------------------------------------------- */
-	/* -------------- scroll/resize -------------- */
-	/* ------------------------------------------- */
-	$(window)
-		.resize(function()
-			{
-			$('.av-certificates-list-element-popup:visible').positionCenter();
-			});
+		.on("show",   '.av-certificates-list-element-popup',                   function() {$(this).positionCenter(1100, 'Y').hideOnClickout()})
+		.on("hide",   '.av-certificates-list-element-popup',                   function() {AvBlurScreen("off")})
+		.on("vclick", '.av-certificates-list-element-popup [data-close-form]', function() {$(this).closest('.av-certificates-list-element-popup').hide()});
 	});
