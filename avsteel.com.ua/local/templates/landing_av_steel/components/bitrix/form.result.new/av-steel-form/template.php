@@ -11,8 +11,9 @@
 	</script>
 <?endif?> 
 
-<div id="title-form-1" class="text-uppercase text-center"><span>Получите расчет кровли</span><p>эксперт свяжется с вам<br>в течении дня</p></div>
-<?=$arResult["FORM_HEADER"]?><div class="av-form-wrap">
+<div class="text-uppercase text-center title-form-1"><span>Получите расчет кровли</span><p>эксперт свяжется с вам<br>в течении дня</p></div>
+<?=$arResult["FORM_HEADER"]?>
+<div class="av-form-wrap">
 
 	<?
 	/* --------------------------------------------------------------------- */
@@ -20,8 +21,12 @@
 	/* --------------------------------------------------------------------- */
 	?>
 
-			<span form-input-error-2>Пожалуйста, введите корректные данные!</span>
 
+		<div class="inputErrors">
+			<?=$arResult["FORM_DESCRIPTION"]?>
+			<?if ($arResult["isFormErrors"] == "Y"):?><?=$arResult["FORM_ERRORS_TEXT"];?><?endif;?>
+		</div>
+			<span data-form-input-error-2>Пожалуйста, введите корректные данные!</span>
 
 	<?
 	/* --------------------------------------------------------------------- */
@@ -34,16 +39,15 @@
 		foreach($arQuestion["STRUCTURE"] as $fieldInfo) $fieldTypes[] = $fieldInfo["FIELD_TYPE"];
 		?>
 		<div
-			fom-row
-			<?if($arQuestion["REQUIRED"] == "Y"):?>required<?endif?>
+			class="fom-row <?if($arQuestion["REQUIRED"] == "Y"):?>required<?endif?>"
 			<?if($arResult['FORM_ERRORS'][$FIELD_SID]):?>form-error<?endif?>
-			field-types="<?=implode('|', $fieldTypes)?>"
 		>
 			<span title><?=$arQuestion["CAPTION"]?></span>
 			<?=$arQuestion["HTML_CODE"]?>
+
 		</div>
 	<?endforeach?>
-	<div class="text-center" security-text-form>Ваши персональные данные в безопасности</div>
+	<div class="text-center" data-security-text-form>Ваши персональные данные в безопасности</div>
 	<?
 	/* --------------------------------------------------------------------- */
 	/* ------------------------------ Submit ------------------------------- */

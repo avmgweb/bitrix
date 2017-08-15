@@ -67,7 +67,7 @@
 	if (count($arResult["POST"]) > 1 )
 	{ ?>
 	<div class=" text-center">
-		<span id="same-post-title" class="text-uppercase"><b>похожие статьи<b></span>
+		<span id="same-post-title" class="text-uppercase"><b>похожие статьи</b></span>
 		<p>			<?$APPLICATION->IncludeComponent(
 				"bitrix:main.include",
 				"",

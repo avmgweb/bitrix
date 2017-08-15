@@ -1,0 +1,130 @@
+/* -------------------------------------------------------------------- */
+/* ------------------------------ header ------------------------------ */
+/* -------------------------------------------------------------------- */
+#av-shop header
+	{
+	background: #FFF;
+	box-shadow: 0 4px 8px rgba(76,82,85,0.25);
+	letter-spacing: 1px;
+	width: 100%;
+	z-index: 200;
+	}
+#av-shop header.fixed                   {position: fixed;top: 0}
+#av-shop header.fixed .mobile-first-row {display: none}
+/* ------------------------------------------- */
+/* ----------------- desktop ----------------- */
+/* ------------------------------------------- */
+#av-shop header .desktop-left-col,
+#av-shop header .desktop-right-col {display: flex;height: 105px;padding: 12px 0}
+#av-shop header .desktop-left-col  {align-items: center}
+#av-shop header .desktop-right-col {align-items: flex-end;flex-direction: column;justify-content: space-between}
+
+#av-shop header .desktop-gadgets-row
+	{
+	color: #78909C;
+	display: flex;
+	font-size: 75%;
+	justify-content: flex-end;
+	}
+#av-shop header .desktop-gadgets-row > *                  {padding-left: 12px}
+#av-shop header .desktop-gadgets-row > *:not(:last-child) {border-right: 1px solid #B6C0C6;padding-right: 12px}
+
+#av-shop header .desktop-gadgets-row a,
+#av-shop header .desktop-gadgets-row a:visited {align-items: center;color: #78909C;display: flex}
+#av-shop header .desktop-gadgets-row a:hover,
+#av-shop header .desktop-gadgets-row a:active,
+#av-shop header .desktop-gadgets-row a:focus   {color: #CC0000}
+#av-shop header .desktop-gadgets-row a img     {margin-right: 3px}
+/* ------------------------------------------- */
+/* ----------------- mobile ------------------ */
+/* ------------------------------------------- */
+#av-shop header .mobile-first-row
+	{
+	background: #FAFAFA;
+	border-bottom: 1px solid #F5F5F5;
+	color: #78909C;
+	display: flex;
+	font-size: 80%;
+	justify-content: center;
+	padding-top: 2px;
+	}
+#av-shop header .mobile-first-row > *:not(:last-child) {padding-right: 12px}
+
+#av-shop header .mobile-first-row a,
+#av-shop header .mobile-first-row a:visited {align-items: center;color: #78909C;display: flex}
+#av-shop header .mobile-first-row a:hover,
+#av-shop header .mobile-first-row a:active,
+#av-shop header .mobile-first-row a:focus   {color: #CC0000}
+
+#av-shop header .mobile-second-row                  {align-items: center;display: flex;justify-content: space-between}
+#av-shop header .mobile-second-row > *:nth-child(1) {margin-left:  -15px}
+#av-shop header .mobile-second-row > *:nth-child(3) {margin-right: -15px}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- body ------------------------------- */
+/* -------------------------------------------------------------------- */
+#av-shop .page-main-title
+	{
+	align-items: center;
+	background: url(images/h1_bg.jpg) center center no-repeat;
+	background-size: cover;
+	color: #FFF;
+	display: flex;
+	justify-content: center;
+	margin:  0;
+	padding: 0 20px;
+	text-align: center;
+	}
+
+#av-shop .page-breadcrumbs {margin: -13px 0 13px 0}
+#av-shop .page-workarea    {padding-top: 26px;padding-bottom: 78px;min-height: 600px}
+
+@media (min-width: 992px)
+	{
+	#av-shop .page-main-title                  {height: 130px}
+	#av-shop .page-workarea .page-left-column  {border-right: 1px solid #ECEFF1;padding-right: 65px}
+	#av-shop .page-workarea .page-right-column {border-left:  1px solid #ECEFF1;padding-left:  65px;margin-left: -1px}
+	}
+@media (max-width: 991px)
+	{
+	#av-shop .page-main-title {height: 110px}
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ footer ------------------------------ */
+/* -------------------------------------------------------------------- */
+#av-shop footer
+	{
+	background: #4C5255;
+	color: #E0E0E0;
+	font-size: 75%;
+	letter-spacing: 1px;
+	padding: 26px 0 10px 0;
+	}
+
+#av-shop footer input                            {color: #4C5255}
+#av-shop footer input::-webkit-input-placeholder {color: #4C5255;letter-spacing: 1px}
+#av-shop footer input::-moz-placeholder          {color: #4C5255;letter-spacing: 1px}
+#av-shop footer input:-ms-input-placeholder      {color: #4C5255;letter-spacing: 1px}
+
+#av-shop footer .contacts-cell > b a {color: #FAFAFA;display: block;font-size: 116.7%;margin-bottom: 16px}
+#av-shop footer .contacts-cell >   a {color: #E0E0E0}
+#av-shop footer .socservs-cell       {align-items: center;display: flex;padding: 26px 0}
+#av-shop footer .copyright-cell      {border-top: 1px solid #757575;padding-top: 12px;text-align: center}
+
+@media (min-width: 992px)
+	{
+	#av-shop footer .contacts-cell {padding-left: 26px}
+	#av-shop footer .socservs-cell {border-top: 1px solid #757575;justify-content: space-between;margin-top: 26px}
+	}
+@media (min-width: 768px) and (max-width: 991px)
+	{
+	#av-shop footer .contacts-cell {padding-right: 26px;text-align: right}
+	#av-shop footer .subscibe-cell {padding-left : 26px;width: 250px}
+	#av-shop footer .socservs-cell {justify-content: center}
+	}
+@media (max-width: 767px)
+	{
+	#av-shop footer .contacts-cell,
+	#av-shop footer .subscibe-cell {text-align: center}
+	#av-shop footer .subscibe-cell {margin: 26px calc((100% - 200px)/2);width: 200px}
+	#av-shop footer .socservs-cell {justify-content: center;padding-top: 0}
+	}

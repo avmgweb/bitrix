@@ -139,5 +139,3 @@ $APPLICATION->IncludeComponent(
 if($arResult["SET_TITLE"]=="Y")
 	$APPLICATION->SetTitle(GetMessage("BLOG_TITLE"));
 ?>
-</div>
-</div>

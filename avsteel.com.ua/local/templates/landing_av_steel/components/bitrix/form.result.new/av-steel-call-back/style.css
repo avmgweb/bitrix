@@ -46,14 +46,14 @@ background-color: #CB2027;
 color: #FFF;
 transition: .3s;
 }
-#title-form-1 {
+.title-form-1 {
 background-color: #ff202a;
 border-bottom:none;
 border-radius: 4px 4px 0px 0px;
 color: #FFF;
 padding: 10px 10px;
 }
-#title-form-1 p {margin: 0px;font-size: 14px;}
+.title-form-1 p {margin: 0px;font-size: 14px;}
 
 .av-form-wrap-2 .inputtext{
 border: 2px solid #d4d4d4;
@@ -62,8 +62,8 @@ font-size: 16px;
 position: relative;
 z-index: 9;ASD
 }
-#title-form-1 span {font-size: 20px;font-weight: bold}
-.av-form-wrap-2 [fom-row] {width: 90%;margin: 0 auto}
+.title-form-1 span {font-size: 20px;font-weight: bold}
+.av-form-wrap-2 .fom-row {width: 90%;margin: 0 auto}
 .av-form-wrap-2 [title] {
 display: block;
 height: 0px;
@@ -85,9 +85,9 @@ opacity: 0.5;
 transition: .5s
 }
 
-.av-form-wrap-2 [security-text-form] {font-size:85%;opacity: .5;margin-top: 5px;}
+.av-form-wrap-2 [data-security-text-form] {font-size:85%;opacity: .5;margin-top: 5px;}
 
-.av-form-wrap-2 div[required] span:after {
+.av-form-wrap-2 div.required span:after {
 content:'*';
 color: #CC0000;
 }
@@ -101,18 +101,18 @@ float: left;
 height: 13px;
 width: 15px;
 }
-[form-input-error-123] {
+[data-form-input-error-123] {
 display:none;
 }
-[form-input-error-123].show {
+[data-form-input-error-123].show {
 z-index: 99;
 color: #000;
 text-align: center;
 width: 100%;
 display: block;}
-.av-form-wrap-2 [required]    input[form-error],
-.av-form-wrap-2 [required] textarea[form-error],
-.av-form-wrap-2 [required] checkbox[form-error],
-.av-form-wrap-2 [required]   select[form-error]{border-color:  #ff202a} 
+.av-form-wrap-2 .required    input[form-error],
+.av-form-wrap-2 .required textarea[form-error],
+.av-form-wrap-2 .required checkbox[form-error],
+.av-form-wrap-2 .required   select[form-error]{border-color:  #ff202a} 
 
 

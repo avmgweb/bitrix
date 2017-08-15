@@ -7,14 +7,14 @@ $APPLICATION->SetAdditionalCss($templateFolder."/styles.css");
 $APPLICATION->AddHeadScript($templateFolder."/slick.min.js");
 ?>
 <br class="hidden-sm hidden-xs">
-	<div class="center-slider-title text-uppercase"><strong red-text>Часто задаваемые вопросы</strong></div>
+	<div class="center-slider-title text-uppercase"><strong data-red-text>Часто задаваемые вопросы</strong></div>
 <br class="hidden-sm hidden-xs">
 <div class="multiple-items small-img">
 
 <?foreach($arResult["IMAGES_INFO"] as $arrayInfo):?>
 
 	<div> 
-			<svg version="1.1" id="Layer_1" x="0px" y="0px"
+			<svg version="1.1" x="0px" y="0px"
 			viewBox="0 0 35 35" enable-background="new 0 0 35 35" xml:space="preserve">
 			<circle fill="#D3D3D3" cx="17.5" cy="17.5" r="17.3"/>
 			<g>
@@ -30,7 +30,7 @@ $APPLICATION->AddHeadScript($templateFolder."/slick.min.js");
 
 	<span class="text-uppercase"><?=$arrayInfo["title"]?></span>
 	<br>
-		<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+		<svg version="1.1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 		viewBox="0 0 35 35" enable-background="new 0 0 35 35" xml:space="preserve">
 		<circle fill="#D3D3D3" cx="17.5" cy="17.5" r="17.3"/>
 		<g>

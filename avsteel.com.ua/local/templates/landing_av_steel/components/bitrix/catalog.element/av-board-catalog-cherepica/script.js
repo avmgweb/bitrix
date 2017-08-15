@@ -1,7 +1,7 @@
 $(function()
 {
 	// AJAX
-	$('#hover-section-2 [red-btn]').on('click', function()
+	$('#hover-section-2 [data-red-btn]').on('click', function()
 			{
 			AvWaitingScreen("on");
 			$.ajax
@@ -10,8 +10,8 @@ $(function()
 				url     : AvSteelCSAjaxElement5,
 				data    :
 					{
-					"element_id"   : $('#av-steel-catalog-wrap-cherepica').attr("element-id"),
-					"element_name" : $('#av-steel-catalog-wrap-cherepica').attr("element-name")
+					"element_id"   : $('#av-steel-catalog-wrap-cherepica').attr("data-element-id"),
+					"element_name" : $('#av-steel-catalog-wrap-cherepica').attr("data-element-name")
 					},
 				success : function(scriptResult)
 					{
@@ -28,7 +28,7 @@ $(function()
 
 	function checkFormYYYY() { 
 		$(' [name="av_steel_catalog_order"]').submit(function() {
-		timeoutID = window.setTimeout(msg1, 1000);
+		
 		});
 	};
 function msg1() {

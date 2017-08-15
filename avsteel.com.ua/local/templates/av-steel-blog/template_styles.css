@@ -22,12 +22,17 @@ h1, h2, h3, h4, h5, h6, body strong {
  color: #414042;
 }
 .main-wrap [logo] {
-background: url(/upload/av_site/landings/av-steel/logo_avsteel.png) center center no-repeat;
+background: url(/local/templates/landing_av_steel/images-av-steel/logo_AV.svg) center center no-repeat;
 background-size: contain;
 height: 100px;
 margin: 0 auto;
 }
-
+input:focus{
+	outline: 1px solid #929292;
+}
+input[type='submit'] {
+	outline:none;
+}
 /*--------------------------МЕНЮ 1------------------------------------*/
 .main-wrap .main-menu-fixed {display: inline-flex;font-size: 120%;justify-content: center;background-color: rgb(39, 67, 79);}
 
@@ -40,7 +45,7 @@ border-bottom: 1px solid rgba(255,255,255, 0.5)
 .main-wrap .main-menu-fixed li:hover {
 border: none !important; text-decoration: underline;
 }
-.main-wrap .main-menu-fixed li[call-btn]:hover {
+.main-wrap .main-menu-fixed li.call-btn:hover {
 text-decoration: none;
 }
 @media (max-width: 1200px ) {
@@ -52,14 +57,14 @@ color: #ecf0f1;
 padding: 5px;
 transition: 1s;
 }
-.main-wrap .main-menu li[call-btn]:hover {border-bottom: 1px solid rgba(255,255,255, 0.5);}
+.main-wrap .main-menu li.call-btn:hover {border-bottom: 1px solid rgba(255,255,255, 0.5);}
 .main-wrap .main-menu li a:hover    {color: #FFF}
-.main-wrap .main-menu li[call-btn] a {
+.main-wrap .main-menu li.call-btn a {
 border: 3px solid #ED1C24;
 border-radius: 4px;
 transition: .3s;
 }
-.main-wrap .main-menu li[call-btn]:hover a {
+.main-wrap .main-menu li.call-btn:hover a {
 background-color: #ED1C24;
 transition: .3s;
 }
@@ -68,14 +73,29 @@ transition: .3s;
 .main-wrap .main-menu-fixed a	{color: #FFFFFF !important}
 
 .main-wrap .main-menu-fixed li[logo-main-menu] {
-background: url(/upload/av_site/landings/av-steel/logo_smart.png) center center no-repeat;
+    background: url(/local/templates/landing_av_steel/images-av-steel/logo_smart.svg) center center no-repeat;
 background-size: 60px;
 height: 52px;
 width: 64px;
 }
 .main-wrap .main-menu-fixed li    {border-bottom: none;}
 /*----------------------------  MOBILE MENU  ----------------------------------------*/
-
+.flex-menu{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center !important;
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+     .flex-menu{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around !important; 
+    align-items: center !important;
+}
+}
 #hamburger {
 background-color: rgba(255,255,255,0.9);
 border-radius: 4px;
@@ -195,8 +215,22 @@ z-index: 9999;
 background-color: rgba(18,18,18,0.95);
 }
 
-
-
+[data-call-back-form]{
+max-width: 350px;
+    width: 100%;
+    position: absolute;
+}
+[data-close-form2] {
+    background: url(/local/templates/landing_av_steel/images-av-steel/cross_white.svg) no-repeat;
+    background-size: cover;
+    cursor: pointer!important;
+    opacity: 1;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    width: 20px;
+    height: 20px
+}
 
 /*-------------------------------------- FOOTER  --------------------------------*/
 
@@ -243,7 +277,12 @@ cursor: pointer;
 -webkit-transform: rotate(180deg);
 transform: rotate(180deg);
 }
-
+#arrow-up a {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
 .main-wrap #footer-wrap #arrow-up:before {
 content: '';
 position: absolute;
@@ -302,7 +341,7 @@ span#popUp-text-fromForm > span{
 	padding: 0px;
 }
 
-.av-alert-popup [close-form2] {
+.av-alert-popup [data-close-form2] {
 	background: url(/upload/av_site/landings/av-steel/cross_white.svg) no-repeat;
 	background-size: cover;
 	cursor: pointer !important;
@@ -316,11 +355,34 @@ span#popUp-text-fromForm > span{
 }
 	@media (max-width: 500px) {
 		[popup-form-wrap] {padding: 31px;}
-		.av-alert-popup [close-form2] {
-			right: 34px;
-			top: -5px;
+		.av-alert-popup [data-close-form2] {
+			right: 5px;
+			top: 5px;
 		}
 	}
 #h1Blog h1{color: #FF202A; font-weight: bold;}
 #h1Blog span {font-size: 16px;}
 
+[data-form-input-error-123] {
+display:none;
+}
+[data-form-input-error-123].show {
+z-index: 99;
+color: #000;
+text-align: center;
+width: 100%;
+display: block;}
+
+
+#footer-wrap [data-logo] {
+    background-size: contain;
+    height: 70px;
+    margin-bottom: 15px;
+}
+
+[data-logo] {
+    background: url(/local/templates/landing_av_steel/images-av-steel/logo_AV.svg) center center no-repeat;
+    background-size: contain;
+    height: 120px;
+    margin: 0 auto;
+}

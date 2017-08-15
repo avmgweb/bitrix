@@ -33,7 +33,7 @@
 						<div class="blog-post-content">
 
 
-							<span id="text-preview" class="text-full"><?=$CurPost["TEXT_FORMATED"]?></span>
+							<span class="text-full text-preview"><?=$CurPost["TEXT_FORMATED"]?></span>
 							<?
 							if ($CurPost["CUT"] == "Y")
 							{

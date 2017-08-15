@@ -1,4 +1,3 @@
-
 <?if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?><?
 
 ?>
@@ -111,7 +110,7 @@ else
 			<div id="form_comment_" style="display:none;">
 				<div id="form_c_del" style="display:none;">
 				<div class="blog-comment-form">
-
+<p><u>Поля отмеченные звёздочкой считаются обязательными</u></p>
 				<form method="POST" name="form_comment" id="form_comment" action="<?=POST_FORM_ACTION_URI?>">
 				<input type="hidden" name="parentId" id="parentId" value="">
 				<input type="hidden" name="edit_id" id="edit_id" value="">
@@ -197,7 +196,7 @@ else
 					}
 					?>
 					<div class="blog-comment-buttons">
-						<input tabindex="10" value="<?=GetMessage("B_B_MS_SEND")?>" type="button" name="sub-post" id="post-button" onclick="submitComment()">
+						<input tabindex="10" value="<?=GetMessage("B_B_MS_SEND")?>" type="button" name="sub-post" class="post-button" onclick="submitComment()">
 						<a href="javascript:void(0)" onclick="cancelComment();" class="blg-cancel-com"><?=GetMessage("BLOG_PC_COMMENT");?></a>
 					</div>
 				</div>
@@ -426,9 +425,9 @@ else
 							<?
 						}
 						?>
-						<span id="av-blog-cooment-field">
+						<div id="av-blog-cooment-field">
 							<div class="blog-comment-date"><b><?=$comment["DateFormated"]?></b></div> <br>
-							<?=$comment["TextFormated"]?></span>
+							<?=$comment["TextFormated"]?></div>
 						<?
 						if(!empty($arParams["arImages"][$comment["ID"]]))
 						{
@@ -689,7 +688,7 @@ else
 				if($arParams["NOT_USE_COMMENT_TITLE"] != "Y")
 					$postTitle = "RE: ".CUtil::JSEscape($arResult["Post"]["TITLE"]);
 				?>
-						<div class="blog-add-comment"><br><a href="javascript:void(0)" onclick="return showComment('0')"><b><?=GetMessage("B_B_MS_ADD_COMMENT")?></b></a><p><u>Поля отмеченные звоздочкой считаются обязательными</u></p></div>
+						<div class="blog-add-comment"><br><a href="javascript:void(0)" onclick="return showComment('0')"><b><?=GetMessage("B_B_MS_ADD_COMMENT")?></b></a></div>
 				<a name="0"></a>
 
 				<?
@@ -878,4 +877,3 @@ else
 if($arResult["is_ajax_post"] == "Y")
 	die();
 ?>
-

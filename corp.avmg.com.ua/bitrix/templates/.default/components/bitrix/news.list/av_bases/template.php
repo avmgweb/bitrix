@@ -46,14 +46,11 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 				<?if($arItem["PROPERTIES"]["streams"]["VALUE"][0]):?>
 				<div class="streams-block">
-					<?foreach($arItem["PROPERTIES"]["streams"]["VALUE"] as $stream):?>
-						<?if(count($arResult["STREAMS_INFO"][$stream])):?>
+					<?foreach($arResult["STREAMS_INFO"] as $stream => $streamInfo):?>
+						<?if(in_array($stream, $arItem["PROPERTIES"]["streams"]["VALUE"])):?>
 						<div
-							title="<?=$arResult["STREAMS_INFO"][$stream]["NAME"]?>"
-							style="
-								width:  <?=$arResult["STREAMS_INFO"][$stream]["SVG_WIDTH"]?>px;
-								height: <?=$arResult["STREAMS_INFO"][$stream]["SVG_HEIGHT"]?>px
-								"
+							title="<?=$streamInfo["NAME"]?>"
+							style="width: <?=$streamInfo["SVG_WIDTH"]?>px;height: <?=$streamInfo["SVG_HEIGHT"]?>px"
 						>
 							<?=$arResult["STREAMS_INFO"][$stream]["SVG_CONTENT"]?>
 						</div>

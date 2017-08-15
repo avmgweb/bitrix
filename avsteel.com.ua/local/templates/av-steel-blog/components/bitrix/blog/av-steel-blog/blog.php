@@ -124,4 +124,3 @@ $APPLICATION->IncludeComponent(
 		?>
 		</div>	
 <div class="blog-clear-float"></div>
-</div>

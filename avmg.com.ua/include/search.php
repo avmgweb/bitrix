@@ -8,7 +8,7 @@ $APPLICATION->IncludeComponent
 		"INPUT_ID"             => 'title-search-input',
 		"CONTAINER_ID"         => 'title-search',
 		"PREVIEW_TRUNCATE_LEN" => 150,
-		"PAGE"                 => '#SITE_DIR#search/index.php',
+		"PAGE"                 => '#SITE_DIR#search/',
 
 		"NUM_CATEGORIES"     => 3,
 		"TOP_COUNT"          => 5,

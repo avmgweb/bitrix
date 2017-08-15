@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 IncludeModuleLangFile($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/intranet/public/crm/company/index.php");
 $APPLICATION->SetTitle(GetMessage("CRM_TITLE"));
 ?><?$APPLICATION->IncludeComponent(
@@ -37,4 +37,4 @@ $APPLICATION->SetTitle(GetMessage("CRM_TITLE"));
 		),
 		"MYCOMPANY_MODE" => "Y"
 	)
-);?><?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php';?>
+);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

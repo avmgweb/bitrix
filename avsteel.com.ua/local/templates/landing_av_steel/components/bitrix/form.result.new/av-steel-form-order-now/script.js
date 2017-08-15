@@ -21,13 +21,13 @@ $(function()
 // проверка формы на заполненность////////
 	$('body').on('click', '.av-form-wrap-4 [name=web_form_submit]', function(event)
 	{
-		$('[form-input-error]').remove();
+		$('[data-form-input-error]').remove();
 		var
 			$form     = $(this).closest('form'),
 			formError = false,
 			t = 0;
 		$form.find('[form-error]').removeAttr("form-error");
-		$form.find('[required] input[type=text], [required] textarea ').each(function()
+		$form.find('.required input[type=text], .required textarea ').each(function()
 			{
 			if(!$(this).val())
 				{
@@ -38,7 +38,7 @@ $(function()
 
 		if(formError != false){
 			event.preventDefault();
-			$('[form-input-error-123]').addClass("show");
+			$('[data-form-input-error-123]').addClass("show");
 			}
 		else {
 			$(this).attr("disable", true);
@@ -46,13 +46,13 @@ $(function()
 	});
 
 //---------------------------УДАЛЕНИЕ КРАСНЫХ ПОЛЕЙ ПРИ ВВОДЕ В INPUT-------------------------// 
-	$('body').on('input', '.av-form-wrap-4 [required] input, .av-form-wrap-4 form [required] textarea', function()
+	$('body').on('input', '.av-form-wrap-4 .required input, .av-form-wrap-4 form .required textarea', function()
 		{
 		if($(this).val().length > 0 ) $(this).removeAttr("form-error");
 		else                          $(this).attr("form-error", true);
 		});
 //---------------------------ОТМЕНА ВВОДА КИРИЛЛИЦИ В ПОЛЕ ЕMAIL-------------------------// 
-	$('body').on('input', '.av-form-wrap-4 [required][field-types=email] input', function()
+	$('body').on('input', '.av-form-wrap-4 .required[field-types=email] input', function()
 		{
   var reg = /[а-яА-ЯёЁ]/g;
     if (this.value.search(reg) !=  -1) {

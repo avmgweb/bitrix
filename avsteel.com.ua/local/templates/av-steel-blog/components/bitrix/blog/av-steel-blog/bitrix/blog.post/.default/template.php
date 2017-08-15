@@ -80,7 +80,7 @@ else
 
 				<div class="blog-post-meta-util">
 						<div class="blog-post-date  hidden-xs">
-						<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
 						<g>
 							<path fill="#36505B" d="M486.4,34.1h-59.7V8.5c0-4.7-3.8-8.5-8.5-8.5h-59.7c-4.7,0-8.5,3.8-8.5,8.5v25.6H162.1V8.5
 								c0-4.7-3.8-8.5-8.5-8.5H93.9c-4.7,0-8.5,3.8-8.5,8.5v25.6H25.6c-4.7,0-8.5,3.8-8.5,8.5v93.9v366.9c0,4.7,3.8,8.5,8.5,8.5h460.8
@@ -95,7 +95,7 @@ else
 						</g>
 						</svg>
 						<span class="blog-post-day"><?=$arResult["Post"]["DATE_PUBLISH_DATE"]?></span><span class="blog-post-date-formated"><?=$arResult["Post"]["DATE_PUBLISH_FORMATED"]?></span></div>
-					<span class="blog-post-views-link hidden-xs"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+					<span class="blog-post-views-link hidden-xs"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
 <g>
 	<path fill="#36505B" d="M441.6,186.5c-102.8-102.8-270.1-102.8-372.9,0L0,255.1l70.4,70.4c51.4,51.4,118.9,77.1,186.5,77.1
@@ -110,7 +110,7 @@ else
 						</svg><span class="blog-post-link-counter"><?=IntVal($arResult["Post"]["VIEWS"])?></span> <span class="blog-post-link-caption text-uppercase"><?=GetMessage("BLOG_BLOG_BLOG_VIEWS")?></span></a></span>
 					<?if($arResult["Post"]["ENABLE_COMMENTS"] == "Y"):?>
 
-						<a href="#commentLink"><span class="blog-post-comments-link hidden-xs"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						<a href="#commentLink"><span class="blog-post-comments-link hidden-xs"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
 <g>
 	<path fill="#36505B" d="M102.4,145.1h128c4.7,0,8.5-3.8,8.5-8.5s-3.8-8.5-8.5-8.5h-128c-4.7,0-8.5,3.8-8.5,8.5
@@ -182,7 +182,7 @@ else
 ?>
 		<div class="hidden-lg hidden-md" id="blog-post-form-mobile">
 <br>
-		<?$APPLICATION->IncludeComponent(
+			<?/*$APPLICATION->IncludeComponent(
 			"bitrix:form",
 			"av-steel-blog",
 			array(
@@ -190,7 +190,7 @@ else
 				"AJAX_OPTION_ADDITIONAL" => "",
 				"AJAX_OPTION_HISTORY" => "N",
 				"AJAX_OPTION_JUMP" => "N",
-				"AJAX_OPTION_SHADOW" => "Y",
+				"AJAX_OPTION_SHADOW" => "N",
 				"AJAX_OPTION_STYLE" => "N",
 				"CACHE_TIME" => "3600",
 				"CACHE_TYPE" => "N",
@@ -219,7 +219,7 @@ else
 				"SHOW_STATUS" => "N",
 				"SHOW_VIEW_PAGE" => "N",
 				"START_PAGE" => "new",
-				"SUCCESS_URL" => "",
+				"SUCCESS_URL"    => $APPLICATION->GetCurPage(false),
 				"USE_EXTENDED_ERRORS" => "N",
 				"WEB_FORM_ID" => "13",
 				"COMPONENT_TEMPLATE" => "av-steel-form-blog",
@@ -228,11 +228,12 @@ else
 				)
 			),
 			false
-		);?><br></div>
-<?if(!empty($arResult["Category"]))
+);*/?><br></div>
+
+					<div class="blog-post-tag">
+		<?if(!empty($arResult["Category"]))
 				{
 					?>
-					<div class="blog-post-tag">
 						<noindex>
 							<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 								 viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
@@ -259,13 +260,14 @@ else
 						}
 						?>
 						</noindex>
-						<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
-						<script src="//yastatic.net/share2/share.js"></script>
-						<br class="hidden-lg hidden-md"><span class="pull-right text-uppercase" id="share-social" style="align-items: center;display:flex;"><b>поделиться:</b><div class="ya-share2 " data-services="vkontakte,facebook,gplus,twitter">  </div></span><br><br>
-					</div>
 					<?
 				}
 				?>
+						<script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+						<script src="//yastatic.net/share2/share.js"></script>
+						<br class="hidden-lg hidden-md"><div class="pull-right text-uppercase" id="share-social" style="align-items: center;display:flex;"><b>поделиться:</b><div class="ya-share2 " data-services="vkontakte,facebook,gplus,twitter">  </div></div><br><br>
+					</div>
+
 
 
 	<?if(strLen($arResult["urlToHide"])>0):?>
@@ -284,58 +286,43 @@ else
 
 
 <div class="col-md-3 hidden-sm hidden-xs pull-right left-col-post">
-<?$APPLICATION->IncludeComponent(
-	"bitrix:form",
-	"av-steel-blog",
-	array(
-		"AJAX_MODE" => "Y",
-		"AJAX_OPTION_ADDITIONAL" => "",
-		"AJAX_OPTION_HISTORY" => "N",
-		"AJAX_OPTION_JUMP" => "N",
-		"AJAX_OPTION_SHADOW" => "Y",
-		"AJAX_OPTION_STYLE" => "N",
-		"CACHE_TIME" => "3600",
-		"CACHE_TYPE" => "N",
-		"CALL_ITEM_TITLE" => $_POST["element_name"],
-		"CHAIN_ITEM_LINK" => "",
-		"CHAIN_ITEM_TEXT" => "",
-		"COMPOSITE_FRAME_MODE" => "A",
-		"COMPOSITE_FRAME_TYPE" => "AUTO",
-		"EDIT_ADDITIONAL" => "N",
-		"EDIT_STATUS" => "N",
-		"IGNORE_CUSTOM_TEMPLATE" => "N",
-		"NOT_SHOW_FILTER" => array(
-			0 => "",
-			1 => "",
-		),
-		"NOT_SHOW_TABLE" => array(
-			0 => "",
-			1 => "",
-		),
-		"RESULT_ID" => $_REQUEST[RESULT_ID],
-		"SEF_MODE" => "N",
-		"SHOW_ADDITIONAL" => "N",
-		"SHOW_ANSWER_VALUE" => "N",
-		"SHOW_EDIT_PAGE" => "N",
-		"SHOW_LIST_PAGE" => "N",
-		"SHOW_STATUS" => "N",
-		"SHOW_VIEW_PAGE" => "N",
-		"START_PAGE" => "new",
-		"SUCCESS_URL" => "",
-		"USE_EXTENDED_ERRORS" => "N",
-		"WEB_FORM_ID" => "13",
-		"COMPONENT_TEMPLATE" => "av-steel-form-blog",
-		"VARIABLE_ALIASES" => array(
-			"action" => "action",
-		)
-	),
-	false
-);?>
+	<?
+    $APPLICATION->IncludeComponent
+     (
+     "bitrix:form", "av-steel-blog",
+      array(
+"AJAX_MODE"           => 'Y',
+    "AJAX_OPTION_JUMP"    => 'N',
+    "AJAX_OPTION_STYLE"   => 'N',
+    "AJAX_OPTION_HISTORY" => 'N',
+
+    "SEF_MODE"    => 'N',
+    "WEB_FORM_ID" => 13,
+
+    "START_PAGE"     => 'new',
+    "SHOW_LIST_PAGE" => 'N',
+    "SHOW_EDIT_PAGE" => 'N',
+    "SHOW_VIEW_PAGE" => 'N',
+    "SUCCESS_URL"    => "",
+
+    "SHOW_ANSWER_VALUE"      => 'N',
+    "SHOW_ADDITIONAL"        => 'N',
+    "SHOW_STATUS"            => 'N',
+    "EDIT_ADDITIONAL"        => 'N',
+    "EDIT_STATUS"            => 'N',
+    "IGNORE_CUSTOM_TEMPLATE" => 'N',
+    "USE_EXTENDED_ERRORS"    => 'N',
+
+    "CACHE_TYPE" => 'A',
+    "CACHE_TIME" => 360000
+      )
+     )
+?>
 <br><br><a href="/" id="picture-right-bg-href">
 <div id="picture-right-bg">
-<div id="title-form-1" class="text-center text-uppercase">Национальный производитель профнастила и металлочерепицы</div>
+<div class="text-center text-uppercase title-form-1">Национальный производитель профнастила и металлочерепицы</div>
 <img src="/upload/av_site/landings/av-steel/img-blog-right.jpg" alt="" />
-	<div class="text-center text-uppercase" id="post-button">Узнать больше</div>
+	<div class="text-center text-uppercase post-button">Узнать больше</div>
 	</div></a>
 </div>
 

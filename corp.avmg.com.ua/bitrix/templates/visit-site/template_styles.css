@@ -29,11 +29,12 @@
 #av-vst header .desktop-gadgets-row > *                  {padding-left: 12px}
 #av-vst header .desktop-gadgets-row > *:not(:last-child) {border-right: 1px solid #B6C0C6;padding-right: 12px}
 
-#av-vst header .desktop-phone-cell  > a       {align-items: center;color: #78909C;display: flex}
-#av-vst header .desktop-phone-cell  > a:hover,
-#av-vst header .desktop-phone-cell  > a:active,
-#av-vst header .desktop-phone-cell  > a:focus {color: #CC0000}
-#av-vst header .desktop-phone-cell  > a img   {margin-right: 3px}
+#av-vst header .desktop-gadgets-row a,
+#av-vst header .desktop-gadgets-row a:visited {align-items: center;color: #78909C;display: flex}
+#av-vst header .desktop-gadgets-row a:hover,
+#av-vst header .desktop-gadgets-row a:active,
+#av-vst header .desktop-gadgets-row a:focus   {color: #CC0000}
+#av-vst header .desktop-gadgets-row a img     {margin-right: 3px}
 /* ------------------------------------------- */
 /* ----------------- mobile ------------------ */
 /* ------------------------------------------- */
@@ -49,10 +50,11 @@
 	}
 #av-vst header .mobile-first-row > *:not(:last-child) {padding-right: 12px}
 
-#av-vst header .mobile-first-row a       {align-items: center;color: #78909C;display: flex}
+#av-vst header .mobile-first-row a,
+#av-vst header .mobile-first-row a:visited {align-items: center;color: #78909C;display: flex}
 #av-vst header .mobile-first-row a:hover,
 #av-vst header .mobile-first-row a:active,
-#av-vst header .mobile-first-row a:focus {color: #CC0000}
+#av-vst header .mobile-first-row a:focus   {color: #CC0000}
 
 #av-vst header .mobile-second-row                  {align-items: center;display: flex;justify-content: space-between}
 #av-vst header .mobile-second-row > *:nth-child(1) {margin-left:  -15px}

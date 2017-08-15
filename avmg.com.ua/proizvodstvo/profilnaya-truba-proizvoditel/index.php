@@ -276,7 +276,7 @@ $APPLICATION->SetPageProperty("description", "Потрібна профільн�
 		<td>1,8</td>
 		<td>50х25</td>
 		<td>1,5</td>
-		<td>60х60</td>
+		<td>60х40</td>
 		<td>1,8</td>
 	</tr>
 	<tr>
@@ -301,8 +301,8 @@ $APPLICATION->SetPageProperty("description", "Потрібна профільн�
 		<td>50х25</td>
 		<td>2</td>
 		<td>
-			60х60<br>
-			80х60<br>
+			60х40<br>
+			80х40<br>
 			80х40<br>
 			80х40
 		</td>

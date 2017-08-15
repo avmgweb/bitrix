@@ -1,0 +1,59 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-shop-menu-vertical,
+.av-shop-menu-vertical ul,
+.av-shop-menu-vertical li        {padding: 0;margin: 0}
+.av-shop-menu-vertical li:before {display: none !important}
+
+.av-shop-menu-vertical a,
+.av-shop-menu-vertical a:hover,
+.av-shop-menu-vertical a:active,
+.av-shop-menu-vertical a:focus,
+.av-shop-menu-vertical a:visited {color: inherit;text-decoration: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- menu ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-shop-menu-vertical a
+	{
+	display: block;
+	padding: 12px 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	}
+.av-shop-menu-vertical .item
+	{
+	border: 1px solid #B6C0C6;
+	border-radius: 2px;
+	}
+.av-shop-menu-vertical .item .arrow
+	{
+	background: url(images/arrow.svg) center center no-repeat;
+	background-size: 12px;
+	cursor: pointer;
+	transition: .3s;
+	width:  24px;
+	height: 24px;
+	}
+.av-shop-menu-vertical .item > ul > li        {background: #FAFAFA}
+.av-shop-menu-vertical .item:not(:last-child) {margin-bottom: 13px}
+
+.av-shop-menu-vertical .item.parent        > div    {align-items: center;display: flex}
+.av-shop-menu-vertical .item.parent        > div a  {width: calc(100% - 24px - 10px)}
+.av-shop-menu-vertical .item.parent.active .arrow   {transform: rotate(-180deg)}
+.av-shop-menu-vertical .item.parent:not(.active) ul {display: none}
+
+.av-shop-menu-vertical .item:hover,
+.av-shop-menu-vertical .item.selected                     {border-color: #868B8D}
+.av-shop-menu-vertical .item.selected > div,
+.av-shop-menu-vertical .item          > div:hover,
+.av-shop-menu-vertical .item          > div:active,
+.av-shop-menu-vertical .item          > div:focus,
+.av-shop-menu-vertical .item          > ul > li:hover,
+.av-shop-menu-vertical .item          > ul > li:active,
+.av-shop-menu-vertical .item          > ul > li:focus     {background: #4C5255;color: #FFF}
+.av-shop-menu-vertical .item.selected > div        .arrow,
+.av-shop-menu-vertical .item          > div:hover  .arrow,
+.av-shop-menu-vertical .item          > div:active .arrow,
+.av-shop-menu-vertical .item          > div:focus  .arrow {background-image: url(images/arrow_active.svg)}

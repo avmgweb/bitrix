@@ -24,7 +24,23 @@ $(function() {
 
 	});
 */
+setFooter()
 
+function setFooter() {
+	if ($(window).height() > ($('.av-vs-blog-wrap').height() + 200)) {
+		$('#footer-wrap').addClass("fixed");
+	} else {
+		$('#footer-wrap').removeClass("fixed");
+	}
+};
+
+$(window).on("resize", function() {
+	if ($(window).height() > ($('.av-vs-blog-wrap').height()  + 200)) {
+		$('#footer-wrap').addClass("fixed");
+	} else {
+		$('#footer-wrap').removeClass("fixed");
+	}
+});
 $('#h1Blog').css('margin-top', '' + ($('.main-menu-fixed').height() + 15) + 'px');
 
 });

@@ -2,7 +2,7 @@
 require_once($_SERVER['DOCUMENT_ROOT']."/bitrix/modules/main/include/prolog_before.php");
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 ?>
-<div class="col-md-12">
+<div class="col-md-12 popUp-catalog">
 	<div class="col-md-6 av-cherepica-popUp">
 
 <?$APPLICATION->IncludeComponent(
@@ -106,7 +106,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		"USE_VOTE_RATING" => "N"
 	)
 );?></div> <div id="catalog-form-wrap" class="col-md-6">
-
+<br>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:form",
 	"av_steel_catalog_order",

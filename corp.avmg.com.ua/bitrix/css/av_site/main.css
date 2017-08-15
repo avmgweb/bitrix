@@ -3,13 +3,14 @@
 /* -------------------------------------------------------------------- */
 #av-waiting-screen
 	{
-	position: fixed;
 	top:    0;
 	left:   0;
 	right:  0;
 	bottom: 0;
 	z-index: 3000;
 	}
+#av-waiting-screen.fixed  {position: fixed}
+#av-waiting-screen.simple {position: absolute}
 #av-waiting-screen > div
 	{
 	animation: spin 2s linear infinite;

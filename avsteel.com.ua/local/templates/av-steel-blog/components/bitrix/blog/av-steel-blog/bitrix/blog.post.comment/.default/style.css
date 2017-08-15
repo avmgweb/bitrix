@@ -35,7 +35,7 @@ font-size: 20px;
 }
 .blog-post-tag a, .blog-comment-meta a , .blog-mainpage-meta a {color:#35505B !important;}
 .blog-comment-avatar svg circle {fill: #ff0000;}
-div.blog-comment-field-user {padding-bottom: 12px !important;}
+div.blog-comment-field-user {padding-bottom: 12px !important;width: 60%;}
 
 .blog-add-comment a{
 	background-color: red;
@@ -52,6 +52,10 @@ div.blog-comment-field-user {padding-bottom: 12px !important;}
 
 div.blog-comment-field-author, div.blog-comment-field-email {
     margin: 5px 5px;
+	outline:none;
+}
+.blog-comment-field input{
+outline: none !important;
 }
 .blog-add-comment {padding-bottom: 10px !important;}
 .blog-comment-buttons {
@@ -61,4 +65,21 @@ display: inline-flex;
 .blog-comment-buttons > a {
 	display: block;
 	margin-top: 22px;
+}
+.blog-comment-field-author, 
+.blog-comment-field-email {
+max-width: 225px;
+}
+div.blog-comment-buttons input {
+font-size: 14px !important;
+}
+div.blog-comment-buttons{
+width: 70%;
+}
+@madia screen and (max-width: 750px){
+div.blog-comment-field-user {width: 100% !important;}
+.blog-comment-field-author, 
+.blog-comment-field-email {
+max-width: 100%;
+}
 }

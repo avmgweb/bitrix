@@ -3,14 +3,9 @@
 /* -------------------------------------------------------------------- */
 function AvWaitingScreen(value)
 	{
-	if(value != 'on' && value != 'off') return;
-	$('#av-waiting-screen').remove();
-
-	if(value == 'on')
-		setTimeout(function()
-			{
-			$('<div id="av-waiting-screen"><div></div></div>').appendTo('body');
-			}, 10);
+	var $body = $('body');
+	     if(value == 'on')  $body.setAvWaitingScreenOn("fixed");
+	else if(value == 'off') $body.setAvWaitingScreenOff();
 	}
 /* -------------------------------------------------------------------- */
 /* ----------------------- blur screen function ----------------------- */
@@ -72,6 +67,28 @@ function CreateAvAlertPopup(alertText, type, options)
 		{
 		var $objectDate = this.data();
 		return !!($objectDate && $objectDate.clicked);
+		};
+	/* ------------------------------------------- */
+	/* ------------ preloader behavior ----------- */
+	/* ------------------------------------------- */
+	jQuery.fn.setAvWaitingScreenOn = function(type)
+		{
+		var $obj = this;
+
+		$obj.css
+	        ({
+	        "position"   : 'relative',
+	        "min-height" : '100px',
+	        "min-width"  : '100px'
+	        });
+		setTimeout(function()
+			{
+			$('<div id="av-waiting-screen" class="'+(type == 'fixed' ? 'fixed' : 'simple')+'"><div></div></div>').appendTo($obj);
+			}, 10);
+		};
+	jQuery.fn.setAvWaitingScreenOff = function()
+		{
+		this.find('#av-waiting-screen').remove();
 		};
 	/* ------------------------------------------- */
 	/* ---------------- get popup ---------------- */

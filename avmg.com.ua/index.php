@@ -170,7 +170,7 @@ $APPLICATION->IncludeComponent
 					array(
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => '/metallobaza/',
-					"TITLE"       => 'Подивитись усі',
+					"TITLE"       => 'Переглянути усі',
 					"ATTR"        => ["rel" => 'nofollow']
 					),
 				'', array("HIDE_ICONS" => 'Y')

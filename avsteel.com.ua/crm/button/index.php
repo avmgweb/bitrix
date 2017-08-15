@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 
 IncludeModuleLangFile($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/intranet/public/crm/button/index.php");
 $APPLICATION->SetTitle(GetMessage("CRM_TITLE"));
@@ -26,4 +26,4 @@ $APPLICATION->SetTitle(GetMessage("CRM_TITLE"));
 			"edit" => Array(),
 		)
 	)
-);?><?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php';?>
+);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

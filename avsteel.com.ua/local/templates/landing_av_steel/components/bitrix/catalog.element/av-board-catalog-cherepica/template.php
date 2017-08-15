@@ -3,8 +3,8 @@ CJSCore::Init(["jquery"]);
 
 $APPLICATION->SetAdditionalCss($templateFolder."/style.css");
 ?>
-<div id="av-steel-catalog-wrap-cherepica" element-id="<?=$arResult["ID"]?>" element-name="<?=$arResult["NAME"]?>">
-<table bordercolor="#838383" border="1" cellspacing="0" class=" text-center">
+<div id="av-steel-catalog-wrap-cherepica" data-element-id="<?=$arResult["ID"]?>" data-element-name="<?=$arResult["NAME"]?>">
+<table class=" text-center">
 			  <tbody><tr>
 				<td>толщина металла</td>
 				<td>длина листа</td>
@@ -18,28 +18,28 @@ $APPLICATION->SetAdditionalCss($templateFolder."/style.css");
 			  </tr>
 			  <tr>
 				  <td colspan="2">ЦЕНА ОТ:</td>
-				  <td><strong> <span  red-text=""><?=$arResult["PRICE_MATRIX"]["MATRIX"]["1"]["0"]["PRICE"];?> 
+				  <td><strong> <span  data-red-text=""><?=$arResult["PRICE_MATRIX"]["MATRIX"]["1"]["ZERO-INF"]["PRICE"];?> 
 						<?
-						if($arResult["PRICE_MATRIX"]["MATRIX"]["1"]["0"]["CURRENCY"] == "UAH"){
+						if($arResult["PRICE_MATRIX"]["MATRIX"]["1"]["ZERO-INF"]["CURRENCY"] == "UAH"){
 						echo("грн");
 						}
-						if($arResult["PRICE_MATRIX"]["MATRIX"]["1"]["0"]["CURRENCY"] == "RUB"){
+						if($arResult["PRICE_MATRIX"]["MATRIX"]["1"]["ZERO-INF"]["CURRENCY"] == "RUB"){
 						echo("руб");
 						}
-						if($arResult["PRICE_MATRIX"]["MATRIX"]["1"]["0"]["CURRENCY"] == "USD"){
+						if($arResult["PRICE_MATRIX"]["MATRIX"]["1"]["ZERO-INF"]["CURRENCY"] == "USD"){
 						echo("$");
 						}
 					  ?>/<?echo($arResult["CATALOG_MEASURE_NAME"]);?></span>
 					</strong></td>
-					<td><strong> <span red-text=""><?=$arResult["PRICE_MATRIX"]["MATRIX"]["2"]["0"]["PRICE"];?> 
+					<td><strong> <span data-red-text=""><?=$arResult["PRICE_MATRIX"]["MATRIX"]["2"]["ZERO-INF"]["PRICE"];?> 
 						<?
-						if($arResult["PRICE_MATRIX"]["MATRIX"]["1"]["0"]["CURRENCY"] == "UAH"){
+						if($arResult["PRICE_MATRIX"]["MATRIX"]["1"]["ZERO-INF"]["CURRENCY"] == "UAH"){
 						echo("грн");
 						}
-						if($arResult["PRICE_MATRIX"]["MATRIX"]["1"]["0"]["CURRENCY"] == "RUB"){
+						if($arResult["PRICE_MATRIX"]["MATRIX"]["1"]["ZERO-INF"]["CURRENCY"] == "RUB"){
 						echo("руб");
 						}
-						if($arResult["PRICE_MATRIX"]["MATRIX"]["1"]["0"]["CURRENCY"] == "USD"){
+						if($arResult["PRICE_MATRIX"]["MATRIX"]["1"]["ZERO-INF"]["CURRENCY"] == "USD"){
 						echo("$");
 						}
 						?>/<?echo($arResult["CATALOG_MEASURE_NAME"]);?>
@@ -47,4 +47,5 @@ $APPLICATION->SetAdditionalCss($templateFolder."/style.css");
 			  </tr>
 					</tbody></table>
 						<br>
+
 </div>

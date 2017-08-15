@@ -98,7 +98,7 @@ function AvSiteSearchFieldMobileBehavior(workType)
 /* -------------------------------------------------------------------- */
 /* ------------------ spoiler activity behavior func ------------------ */
 /* -------------------------------------------------------------------- */
-function AvSpoileActivityrBehavior()
+function AvSpoileActivityBehavior()
 	{
 	$('.av-spoiler-header[data-work-breakpoint]').each(function()
 		{
@@ -130,25 +130,25 @@ $(function()
 			{
 			var $input = $(this);
 
-			if(!$input.val())
-				AvSiteSearchFieldBehavior("diactivate");
-			else
+			if($input.val())
 				setTimeout(function()
 					{
 					if(!$input.is(':focus')) AvSiteSearchFieldBehavior("diactivate");
 					}, seacrhFieldEmptyTimeout);
+			else
+				AvSiteSearchFieldBehavior("diactivate");
 			})
 		.on("focusout", '#av-vst header .mobile-search-cell input', function()
 			{
 			var $input = $(this);
 
-			if(!$input.val())
-				AvSiteSearchFieldMobileBehavior("diactivate");
-			else
+			if($input.val())
 				setTimeout(function()
 					{
 					if(!$input.is(':focus')) AvSiteSearchFieldMobileBehavior("diactivate");
 					}, seacrhFieldEmptyTimeout);
+			else
+				AvSiteSearchFieldMobileBehavior("diactivate");
 			})
 		// "UP" button
 		.on("vclick", '#av-vst-up-button', function()
@@ -162,19 +162,19 @@ $(function()
 			{
 			var $body = $(this).next('.av-spoiler-body');
 
-			if(!$(this).is('.open'))
-				{
-				$(this).addClass("open");
-				$body  .slideDown();
-				}
-			else
+			if($(this).is('.open'))
 				{
 				$(this).removeClass("open");
 				$body  .slideUp();
 				}
+			else
+				{
+				$(this).addClass("open");
+				$body  .slideDown();
+				}
 			});
 
-	AvSpoileActivityrBehavior();
+	AvSpoileActivityBehavior();
 
 	$(document)
 		.find('.av-spoiler-header.open').each(function()
@@ -186,7 +186,7 @@ $(function()
 		.resize(function()
 			{
 			AvHeaderBehavior();
-			AvSpoileActivityrBehavior();
+			AvSpoileActivityBehavior();
 			})
 		.scroll(function()
 			{

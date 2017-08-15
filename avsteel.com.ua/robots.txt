@@ -27,6 +27,7 @@ Disallow: /*BACKURL=
 Disallow: /*BACK_URL=
 Disallow: /*back_url_admin=
 Disallow: /*?utm_source=
+Disallow: /local/
 Allow: /bitrix/cache/
 Allow: /bitrix/js/
 Sitemap: https://www.avsteel.com.ua/sitemap.xml
@@ -60,6 +61,7 @@ Disallow: /*BACKURL=
 Disallow: /*BACK_URL=
 Disallow: /*back_url_admin=
 Disallow: /*?utm_source=
+Disallow: /local/
 Allow: /bitrix/cache/
 Allow: /bitrix/js/
 Sitemap: https://avsteel.com.ua/sitemap.xml
@@ -93,6 +95,7 @@ Disallow: /*BACKURL=
 Disallow: /*BACK_URL=
 Disallow: /*back_url_admin=
 Disallow: /*?utm_source=
+Disallow: /local/
 Allow: /bitrix/cache/
 Allow: /bitrix/js/
 
