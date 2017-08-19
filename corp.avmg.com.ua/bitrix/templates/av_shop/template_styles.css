@@ -80,9 +80,8 @@
 
 @media (min-width: 992px)
 	{
-	#av-shop .page-main-title                  {height: 130px}
-	#av-shop .page-workarea .page-left-column  {border-right: 1px solid #ECEFF1;padding-right: 65px}
-	#av-shop .page-workarea .page-right-column {border-left:  1px solid #ECEFF1;padding-left:  65px;margin-left: -1px}
+	#av-shop .page-main-title                 {height: 130px}
+	#av-shop .page-workarea .page-left-column {padding-right: 52px}
 	}
 @media (max-width: 991px)
 	{

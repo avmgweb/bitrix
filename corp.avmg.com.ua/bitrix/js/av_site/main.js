@@ -100,37 +100,56 @@ function CreateAvAlertPopup(alertText, type, options)
 	/* ------------------------------------------- */
 	/* --------- object position center ---------- */
 	/* ------------------------------------------- */
-	jQuery.fn.positionCenter = function(zIndex, centering)
+	jQuery.fn.positionCenter = function(zIndex, centering, smooth)
 		{
 		var $currentObject = this;
 
 		$currentObject.objectCentering(zIndex);
 		if(centering == 'Y')
-			$(window)
-				.scroll(function() {$currentObject.objectCentering()})
-				.resize(function() {$currentObject.objectCentering()});
+			$(window).on("scroll resize", function()
+				{
+				if(smooth == 'Y')
+					{
+					clearTimeout($.data(this, 'scrollTimer'));
+					$.data(this, 'scrollTimer', setTimeout(function()
+						{
+						$currentObject.objectCentering(zIndex, smooth);
+						}, 250));
+					}
+				else
+					$currentObject.objectCentering(zIndex);
+				});
 
 		return this;
 		};
-	jQuery.fn.objectCentering = function(zIndex)
+	jQuery.fn.objectCentering = function(zIndex, smooth)
 		{
 		var
 			currentZIndex = this.css("z-index"),
-			setedZIndex   = parseInt(zIndex ? zIndex : 100),
 			screenWidth   = $(window).width(),
 			screenHeight  = $(window).height(),
 			scrollTop     = $(window).scrollTop(),
 			scrollLeft    = $(window).scrollLeft(),
 			formWidth     = this.css("position", 'absolute').outerWidth(),
-			formHeight    = this                            .outerHeight();
+			formHeight    = this                            .outerHeight(),
+			formOffset    = this.offset(),
+		    paramsArray   =
+				{
+				"z-index": currentZIndex && currentZIndex > 1 ? currentZIndex  : parseInt(zIndex ? zIndex : 100),
+				"top"    : formHeight     > screenHeight      ? scrollTop + 50 : scrollTop  + (screenHeight - formHeight) / 2,
+				"left"   : screenWidth   <= formWidth + 5     ? 0              : scrollLeft + (screenWidth  - formWidth)  / 2,
+				"right"  : screenWidth   <= formWidth + 5     ? 0              : ''
+				};
+		if(!formOffset) return this;
 
-		return this.css
-           ({
-           "z-index": currentZIndex && currentZIndex > 1 ? currentZIndex  : setedZIndex,
-           "top"    : formHeight    >  screenHeight      ? scrollTop + 50 : scrollTop  + (screenHeight - formHeight) / 2,
-           "left"   : screenWidth   <= formWidth + 5     ? 0              : scrollLeft + (screenWidth  - formWidth)  / 2,
-           "right"  : screenWidth   <= formWidth + 5     ? 0              : ''
-           });
+		if(smooth == 'Y')
+			{
+			     if(formOffset.top < scrollTop && formOffset.top + formHeight > scrollTop + screenHeight) paramsArray.top = 'auto';
+			else if(formOffset.top + formHeight < scrollTop + screenHeight && formHeight > screenHeight)  paramsArray.top = scrollTop + screenHeight - 50 - formHeight;
+			return this.width(this.width()).animate(paramsArray, 300);
+			}
+		else
+			return this.css(paramsArray);
 		};
 	/* ------------------------------------------- */
 	/* --------- object hide on clickout --------- */

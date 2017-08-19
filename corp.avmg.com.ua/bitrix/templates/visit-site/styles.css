@@ -84,6 +84,7 @@ table th
 /* -------------------------------------------------------------------- */
 /* ------------------------------ others ------------------------------ */
 /* -------------------------------------------------------------------- */
+img       {outline: none}
 ul        {padding: 0;margin: 0 0 0 20px}
 li        {list-style-type: none;padding: 0;margin: 0}
 li:before {color: #CC0000;content: '\2022';display: inline-block;margin: 0 5px 0 -15px}

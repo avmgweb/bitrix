@@ -8,22 +8,23 @@ $dirProperty = $APPLICATION->GetDirPropertyList();
 $leftMenu    = '';
 
 ob_start();
-$APPLICATION->IncludeComponent
-	(
-	"bitrix:menu", "av_shop_vertical",
-		array(
-		"ROOT_MENU_TYPE"     => 'left',
-		"MAX_LEVEL"          => 2,
-		"CHILD_MENU_TYPE"    => 'left',
-		"USE_EXT"            => 'Y',
-		"DELAY"              => 'N',
-		"ALLOW_MULTI_SELECT" => 'N',
+if($dirProperty["NOT_SHOW_LEFT_MENU"] != 'Y')
+	$APPLICATION->IncludeComponent
+		(
+		"bitrix:menu", "av_shop_vertical",
+			array(
+			"ROOT_MENU_TYPE"     => 'left',
+			"MAX_LEVEL"          => 2,
+			"CHILD_MENU_TYPE"    => 'left',
+			"USE_EXT"            => 'Y',
+			"DELAY"              => 'N',
+			"ALLOW_MULTI_SELECT" => 'N',
 
-		"MENU_CACHE_TYPE"       => 'A',
-		"MENU_CACHE_TIME"       => 360000,
-		"MENU_CACHE_USE_GROUPS" => 'Y'
-		)
-	);
+			"MENU_CACHE_TYPE"       => 'A',
+			"MENU_CACHE_TIME"       => 360000,
+			"MENU_CACHE_USE_GROUPS" => 'Y'
+			)
+		);
 $leftMenu = ob_get_contents();
 ob_end_clean();
 /* ============================================================================================= */
@@ -46,7 +47,7 @@ ob_end_clean();
 		<?$APPLICATION->ShowHead()?>
 		<?CJSCore::Init(["bootstrap", "av_site"])?>
 		<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/scripts/main.js')?>
-		<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/scripts/'.LANGUAGE_ID.'/google_analytics.js')?>
+		<?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/scripts/'.LANGUAGE_ID.'/google_analytics.js')?>
 		<?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/scripts/'.LANGUAGE_ID.'/yandex_metrika.js')?>
 	</head>
 	<?
@@ -214,7 +215,7 @@ ob_end_clean();
 
 		<div class="page-workarea container">
 			<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
-				<?if($dirProperty["NOT_SHOW_NAV_CHAIN"] == 'Y'):?>
+				<?if($dirProperty["NOT_SHOW_NAV_CHAIN"] != 'Y'):?>
 				<div class="page-breadcrumbs">
 					<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "av")?>
 				</div>

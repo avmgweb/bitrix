@@ -111,7 +111,21 @@
 	border:1px solid transparent
 }
 
-.slick-arrow
-{
-	display:none!important
-}
+.slick-prev,
+.slick-next
+	{
+	background: url(/bitrix/images/av_site/arrow.svg) center center no-repeat;
+	background-size: 16px;
+	border: none;
+	color: transparent;
+	cursor: pointer;
+	margin:  0;
+	padding: 0;
+	outline: none;
+	position: absolute;
+	top: calc((100% - 20px) / 2);
+	width:  20px;
+	height: 20px;
+	}
+.slick-prev {left:  -25px;transform: rotate( 90deg)}
+.slick-next {right: -25px;transform: rotate(-90deg)}

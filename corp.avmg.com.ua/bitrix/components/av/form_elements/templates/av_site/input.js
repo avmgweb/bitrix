@@ -6,7 +6,7 @@
 	jQuery.fn.getFormElememtNameIAV     = function()      {return this.find('input').attr("name")};
 	jQuery.fn.setFormElememtNameIAV     = function(value) {this.find('input').attr("name", value)};
 	jQuery.fn.getFormElememtValueIAV    = function()      {return this.find('input').val()};
-	jQuery.fn.setFormElememtValueIAV    = function(value) {this.find('input').attr("value", value).val(value)};
+	jQuery.fn.setFormElememtValueIAV    = function(value) {this.find('input').attr("value", value).val(value).trigger("focusout")};
 	jQuery.fn.getFormElememtRequiredIAV = function()      {return this.hasClass("required")};
 	jQuery.fn.setFormElememtRequiredIAV = function(value)
 		{
@@ -47,7 +47,8 @@ $(function()
 			})
 		.on("focusout", '.av-form-elements-av_site-input input', function()
 			{
-			if(!$(this).val())
-				$(this).closest('.av-form-elements-av_site-input').removeClass("active");
+			var $inputBlock = $(this).closest('.av-form-elements-av_site-input');
+			if($inputBlock.getFormElememtValueIAV()) $inputBlock.addClass("active");
+			else                                     $inputBlock.removeClass("active");
 			});
 	});

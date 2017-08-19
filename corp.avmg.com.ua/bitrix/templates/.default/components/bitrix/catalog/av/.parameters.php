@@ -17,3 +17,19 @@ if(count($iblockPropsArray))
 		"SIZE"     => 5,
 		"MULTIPLE" => 'Y'
 		];
+
+$arTemplateParameters["ASK_FORM_ID"] =
+	[
+	"NAME" => GetMessage("AV_CATALOG_PARAMS_ASK_FORM_ID"),
+	"TYPE" => "STRING"
+	];
+$arTemplateParameters["ASK_FORM_LINK_FIELD_ID"] =
+	[
+	"NAME" => GetMessage("AV_CATALOG_PARAMS_ASK_FORM_LINK_FIELD_ID"),
+	"TYPE" => "STRING"
+	];
+$arTemplateParameters["ASK_FORM_COUNT_FIELD_ID"] =
+	[
+	"NAME" => GetMessage("AV_CATALOG_PARAMS_ASK_FORM_COUNT_FIELD_ID"),
+	"TYPE" => "STRING"
+	];
