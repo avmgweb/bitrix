@@ -217,7 +217,7 @@ $cordsArray =
 		</div>
 		<div class="body">
 			<ul>
-				<?foreach($sectionInfo["SUBSECTIONS"] as $link => $title):?>
+				<?foreach($sectionInfo["SUBSECTIONS"] as $title => $link):?>
 				<li><a href="<?=$link?>"><?=$title?></a></li>
 				<?endforeach?>
 

@@ -30,11 +30,21 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 	$cordinateY = $arItem["PROPERTIES"]["cordinate_y"]["VALUE"];
 	$closed     = $arItem["PROPERTIES"]["closed"]     ["VALUE_XML_ID"];
 	?>
-	<div class="av-bases-list-element<?if(!$cordinateX || !$cordinateY):?> no-map<?endif?><?if($closed):?> closed<?endif?>" id="<?=$this->GetEditAreaId($arItem["ID"])?>">
+	<div
+		id="<?=$this->GetEditAreaId($arItem["ID"])?>"
+		class="
+			av-bases-list-element
+			<?if(!$cordinateX || !$cordinateY):?>no-map<?endif?>
+			<?if($closed):?>closed<?endif?>
+			<?if($arParams["DETAIL_URL"]):?>checkable<?endif?>
+			"
+	>
 		<div>
-			<h3><a href="<?=$arItem["DETAIL_PAGE_URL"]?>">
-				<?if($closed):?><?=GetMessage("AV_BASES_LIST_CLOSED_PREFIX")?> <?endif?><?=$arItem["NAME"]?>
-			</a></h3>
+			<h3>
+				<a <?if($arParams["DETAIL_URL"]):?>href="<?=$arItem["DETAIL_PAGE_URL"]?>"<?endif?>>
+					<?if($closed):?><?=GetMessage("AV_BASES_LIST_CLOSED_PREFIX")?> <?endif?><?=$arItem["NAME"]?>
+				</a>
+			</h3>
 			<div class="value-block">
 				<?if($arItem["PROPERTIES"]["address"]["VALUE"]["TEXT"]):?>
 				<div><?=$arItem["PROPERTIES"]["address"]["VALUE"]["TEXT"]?></div>

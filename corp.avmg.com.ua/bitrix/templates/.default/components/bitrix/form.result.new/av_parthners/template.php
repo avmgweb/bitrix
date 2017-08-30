@@ -98,14 +98,20 @@ CJSCore::Init(["bootstrap", "av_form_elements"]);
 			<div class="left-column">
 				<div>
 					<div class="title"><?=GetMessage("AV_FORM_PARTHNERS_FORM_BLOCK_MAIN")?></div>
-					<?foreach(["Name_company", "adress", "city", "post_index", "law_status"] as $fieldCode):?>
+					<?foreach(["Name_company", "adress","country", "city", "post_index", "law_status", "phone_text", "company_website"] as $fieldCode):?>
 					<div field-row="<?=$fieldCode?>">
 						<?$APPLICATION->IncludeComponent("av:form_elements", "av_site", $fieldsParams[$fieldCode])?>
 					</div>
 					<?endforeach?>
 				</div>
 				<div>
-					<div class="title"><?=GetMessage("AV_FORM_PARTHNERS_FORM_BLOCK_DELIVERY")?></div>
+					<?foreach(["adress_delivery_documents", "city_for_delivery", "post_index_delivery"] as $fieldCode):?>
+						<?if(count($fieldsParams[$fieldCode])):?>
+						<div class="title"><?=GetMessage("AV_FORM_PARTHNERS_FORM_BLOCK_DELIVERY")?></div>
+						<?break?>
+						<?endif?>
+					<?endforeach?>
+
 					<?foreach(["adress_delivery_documents", "city_for_delivery", "post_index_delivery"] as $fieldCode):?>
 					<div field-row="<?=$fieldCode?>">
 						<?$APPLICATION->IncludeComponent("av:form_elements", "av_site", $fieldsParams[$fieldCode])?>

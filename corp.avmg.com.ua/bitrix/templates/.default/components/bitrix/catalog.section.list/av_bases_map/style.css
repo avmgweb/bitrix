@@ -75,7 +75,7 @@
 .av-bases-map-region-form .body > ul a:active           {color: #CC0000;text-decoration: underline}
 .av-bases-map-region-form .body > ul .empty-item:before {display: none !important}
 
-.av-bases-map-region-form .body .region-link            {color: #CC0000}
+.av-bases-map-region-form .body .region-link            {color: #CC0000;width: 100%}
 .av-bases-map-region-form .body .region-link:hover,
 .av-bases-map-region-form .body .region-link:focus,
 .av-bases-map-region-form .body .region-link:active     {text-decoration: underline}

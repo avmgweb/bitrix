@@ -6,10 +6,10 @@ if(!count($arResult))                                           return;
 	<?foreach($arResult as $index => $itemInfo):?>
 		<?
 		$nextIndex  = $index+1;
-		$hasSubMenu = $arResult[$nextIndex]["PARAMS"]["DEPTH_LEVEL"] == 2 ? true : false;
+		$hasSubMenu = $arResult[$nextIndex]["DEPTH_LEVEL"] == 2 ? true : false;
 		?>
 
-		<?if($itemInfo["PARAMS"]["DEPTH_LEVEL"] == 1):?>
+		<?if($itemInfo["DEPTH_LEVEL"] == 1):?>
 		<li class="item<?if($itemInfo["SELECTED"]):?> selected active<?endif?><?if($hasSubMenu):?> parent<?endif?>">
 			<div>
 				<a href="<?=$itemInfo["LINK"]?>"><?=$itemInfo["TEXT"]?></a>
@@ -20,7 +20,7 @@ if(!count($arResult))                                           return;
 
 			<?if($hasSubMenu):?>
 			<ul>
-				<?while($arResult[$nextIndex]["PARAMS"]["DEPTH_LEVEL"] == 2):?>
+				<?while($arResult[$nextIndex]["DEPTH_LEVEL"] == 2):?>
 				<li>
 					<a href="<?=$arResult[$nextIndex]["LINK"]?>"><?=$arResult[$nextIndex]["TEXT"]?></a>
 					<?$nextIndex++?>

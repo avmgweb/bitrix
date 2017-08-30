@@ -8,7 +8,7 @@ $dirProperty = $APPLICATION->GetDirPropertyList();
 $leftMenu    = '';
 
 ob_start();
-if($dirProperty["NOT_SHOW_LEFT_MENU"] != 'Y')
+if($dirProperty["NOT_SHOW_LEFT_MENU"] != 'Y' && ERROR_404 != 'Y')
 	$APPLICATION->IncludeComponent
 		(
 		"bitrix:menu", "av_shop_vertical",
@@ -47,8 +47,8 @@ ob_end_clean();
 		<?$APPLICATION->ShowHead()?>
 		<?CJSCore::Init(["bootstrap", "av_site"])?>
 		<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/scripts/main.js')?>
-		<?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/scripts/'.LANGUAGE_ID.'/google_analytics.js')?>
-		<?//$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/scripts/'.LANGUAGE_ID.'/yandex_metrika.js')?>
+		<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/scripts/'.LANGUAGE_ID.'/google_analytics.js')?>
+		<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/scripts/'.LANGUAGE_ID.'/yandex_metrika.js')?>
 	</head>
 	<?
 	/* -------------------------------------------------------------------- */
@@ -97,19 +97,19 @@ ob_end_clean();
 								(
 								"bitrix:sale.basket.basket.line", "av",
 									array(
-									"PATH_TO_BASKET"    => '/user/cart/',
-									"PATH_TO_ORDER"     => '/user/order/make/',
+									"PATH_TO_BASKET"    => '/personal/cart/',
+									"PATH_TO_ORDER"     => '/personal/orders/make/',
 									"SHOW_NUM_PRODUCTS" => 'Y',
 									"SHOW_TOTAL_PRICE"  => 'N',
 									"SHOW_EMPTY_VALUES" => 'N',
 
 									"SHOW_PERSONAL_LINK" => 'N',
-									"PATH_TO_PERSONAL"   => '/user/',
+									"PATH_TO_PERSONAL"   => '/personal/',
 
 									"SHOW_AUTHOR"       => 'N',
-									"PATH_TO_REGISTER"  => '/user/register/',
-									"PATH_TO_AUTHORIZE" => '/user/auth/',
-									"PATH_TO_PROFILE"   => '/user/info/',
+									"PATH_TO_REGISTER"  => '/personal/register/',
+									"PATH_TO_AUTHORIZE" => '/personal/auth/',
+									"PATH_TO_PROFILE"   => '/personal/info/',
 
 									"SHOW_PRODUCTS"  => 'N',
 									"SHOW_DELAY"     => 'N',
@@ -134,9 +134,9 @@ ob_end_clean();
 								(
 								"av:visit_site.user.panel", "",
 									array(
-									"PROFILE_URL"         => '/user/info/index.php',
-									"FORGOT_PASSWORD_URL" => '/user/forgot_password/',
-									"BASKET_URL"          => '',
+									"PROFILE_URL"         => '/personal/info/',
+									"FORGOT_PASSWORD_URL" => '/personal/forgot_password/',
+									"BASKET_URL"          => '/personal/cart/',
 
 									"REGISTRATION_SHOW_FIELDS"         => array("EMAIL", "NAME", "LAST_NAME", "PERSONAL_MOBILE"),
 									"REGISTRATION_SHOW_USER_PROPS"     => array(),
@@ -213,18 +213,24 @@ ob_end_clean();
 		</h1>
 		<?endif?>
 
-		<div class="page-workarea container">
-			<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
-				<?if($dirProperty["NOT_SHOW_NAV_CHAIN"] != 'Y'):?>
-				<div class="page-breadcrumbs">
-					<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "av")?>
-				</div>
+		<div
+			class="
+				page-workarea
+				<?if($currentPage == SITE_DIR):?>row index
+				<?else:?>container
 				<?endif?>
+				"
+		>
+			<?if($dirProperty["NOT_SHOW_NAV_CHAIN"] != 'Y' && $currentPage != SITE_DIR && ERROR_404 != 'Y'):?>
+			<div class="page-breadcrumbs">
+				<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "av")?>
+			</div>
+			<?endif?>
 
-				<?if($leftMenu):?>
-				<div class="col-lg-4 col-md-4 hidden-sm hidden-xs page-left-column">
-					<?=$leftMenu?>
-				</div>
+			<?if($leftMenu):?>
+			<div class="col-lg-4 col-md-4 hidden-sm hidden-xs page-left-column">
+				<?=$leftMenu?>
+			</div>
 
-				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 page-right-column">
-				<?endif?>
+			<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 page-right-column">
+			<?endif?>

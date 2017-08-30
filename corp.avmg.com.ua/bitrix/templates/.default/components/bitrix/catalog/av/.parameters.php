@@ -33,3 +33,8 @@ $arTemplateParameters["ASK_FORM_COUNT_FIELD_ID"] =
 	"NAME" => GetMessage("AV_CATALOG_PARAMS_ASK_FORM_COUNT_FIELD_ID"),
 	"TYPE" => "STRING"
 	];
+$arTemplateParameters["CATALOG_MENU_TYPE"] =
+	[
+	"NAME" => GetMessage("AV_CATALOG_PARAMS_CATALOG_MENU_TYPE"),
+	"TYPE" => "STRING"
+	];

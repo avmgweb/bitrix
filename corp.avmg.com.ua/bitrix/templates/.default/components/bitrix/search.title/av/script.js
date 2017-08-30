@@ -22,12 +22,9 @@ $(function()
 	$(document)
 		.on("vclick", '.av-search-title:not(.active)', function()
 			{
-			$(this).find('input[type="text"]').focus();
-			})
-		.on("focus", '.av-search-title input[type="text"]', function()
-			{
-			$(this)
+			$(this).find('input[type="text"]')
 				.controlFormSubmit("off")
+				.focus()
 				.closest('.av-search-title').activateAvSearchField();
 			})
 		.on("keyup", '.av-search-title input[type="text"]', function(event)

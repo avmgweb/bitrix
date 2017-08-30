@@ -4,7 +4,8 @@ $containerId = $arParams["~CONTAINER_ID"] ? $arParams["~CONTAINER_ID"] : 'title-
 ?>
 <?if($arParams["SHOW_INPUT"] != 'N'):?>
 <form id="<?=$containerId?>" action="<?=$arResult["FORM_ACTION"]?>" class="av-search-title">
-	<div><?=GetMessage("AV_SEARCH_TITLE_INPUT_PLACEHOLDER")?></div>
+	<div class="icon"></div>
+	<div class="text"><?=GetMessage("AV_SEARCH_TITLE_INPUT_PLACEHOLDER")?></div>
 	<input id="<?=$inputId?>" type="text" name="q" autocomplete="off">
 	<input name="s" type="submit" hidden>
 </form>

@@ -3,5 +3,5 @@
 	src="/include/logo_mobile.svg"
 	alt="Металопрокат та будівельні матеріали"
 	title="АВ метал груп"
-	height="24"
+	height="25"
 >

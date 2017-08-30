@@ -52,4 +52,4 @@ $arUrlRewrite = array(
 		"CONDITION" => "#^/products/setka/#",
 		"PATH"      => "/products/setka/index.php"
 		)
-);
+	);

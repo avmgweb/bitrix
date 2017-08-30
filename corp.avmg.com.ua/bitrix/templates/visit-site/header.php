@@ -95,7 +95,7 @@ if($workAreaType == 'full_screen_page')          $useBreadcrumbs = false;
 						(
 						"bitrix:main.site.selector", "av",
 							array(
-							"SITE_LIST"  => array("RU","AV"),
+							"SITE_LIST"  => array("AV", "RU", "EN"),
 							"CACHE_TIME" => 3600000,
 							"CACHE_TYPE" => 'A'
 							)
@@ -124,7 +124,7 @@ if($workAreaType == 'full_screen_page')          $useBreadcrumbs = false;
 								(
 								"bitrix:main.site.selector", "av",
 									array(
-									"SITE_LIST"  => array("RU","AV"),
+									"SITE_LIST"  => array("AV", "RU", "EN"),
 									"CACHE_TIME" => 3600000,
 									"CACHE_TYPE" => 'A'
 									)

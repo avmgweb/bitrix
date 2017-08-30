@@ -11,27 +11,27 @@
 /* -------------------------------------------------------------------- */
 .av-list > div
 	{
-	cursor: pointer;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 	padding: 10px;
 	transition: .3s;
 	}
+.av-list > div.checkable        {cursor: pointer}
 .av-list > div:hover            {box-shadow: 0 4px 8px rgba(76,82,85,0.25)}
 .av-list > div:not(:last-child) {margin-bottom:  32px}
 
-.av-list > div       .image-link                             {display: flex;justify-content: center;overflow: hidden}
-.av-list > div       .image-link > img                       {height: 100%}
+.av-list > div .image-link       {display: flex;justify-content: center;overflow: hidden}
+.av-list > div .image-link > img {height: 100%}
 
-.av-list > div       .content-cell > *:not(:last-child)      {margin-bottom: 12px}
-.av-list > div       .content-cell .rating-row               {align-items: center;display: flex;justify-content: space-between}
-.av-list > div       .content-cell .rating-row .element-date {color: #B6C0C6;font-size: 87.5%;line-height: normal}
+.av-list > div .content-cell > *:not(:last-child)      {margin-bottom: 12px}
+.av-list > div .content-cell .rating-row               {align-items: center;display: flex;justify-content: space-between}
+.av-list > div .content-cell .rating-row .element-date {color: #B6C0C6;font-size: 87.5%;line-height: normal}
 
-.av-list > div       .content-cell .element-title            {display: block;font-weight: bold}
-.av-list > div:hover .content-cell .element-title            {color: #CC0000}
-.av-list > div       .content-cell .element-text             {color: #757575;text-align: justify}
-.av-list > div       .content-cell .read-more-link           {color: #CC0000 !important; display: block}
+.av-list > div                 .content-cell .element-title  {display: block;font-weight: bold}
+.av-list > div.checkable:hover .content-cell .element-title  {color: #CC0000}
+.av-list > div                 .content-cell .element-text   {color: #757575;text-align: justify}
+.av-list > div                 .content-cell .read-more-link {color: #CC0000 !important; display: block}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ other ------------------------------- */
 /* -------------------------------------------------------------------- */

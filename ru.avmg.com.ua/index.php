@@ -7,7 +7,6 @@ $APPLICATION->SetPageProperty("description", "АВ металл групп ™ �
 
 CJSCore::Init(["bootstrap"]);
 $APPLICATION->SetAdditionalCSS('/bitrix/css/av_site/pages/index.css');
-$APPLICATION->AddHeadScript   ('/bitrix/js/av_site/pages/index.js');
 /* -------------------------------------------------------------------- */
 /* ------------------------------ banner ------------------------------ */
 /* -------------------------------------------------------------------- */

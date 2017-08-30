@@ -19,7 +19,7 @@ $inputTitle = $arResult["EMPTY_TITLE"] ? $arResult["EMPTY_TITLE"] : $arResult["T
 	</div>
 
 	<div class="list">
-		<div data-list-value <?if(!$arResult["VALUE"]):?>style="display: none"<?endif?>><?=$inputTitle?></div>
+		<div data-list-value <?if(!$arResult["VALUE"] || !$inputTitle):?>style="display: none"<?endif?>><?=$inputTitle?></div>
 		<?foreach($arResult["LIST"] as $value => $title):?>
 		<div data-list-value="<?=$value?>" <?if($value == $arResult["VALUE"]):?>class="selected"<?endif?>><?=$title?></div>
 		<?endforeach?>

@@ -75,8 +75,9 @@
 	text-align: center;
 	}
 
-#av-shop .page-breadcrumbs {margin: -13px 0 13px 0}
-#av-shop .page-workarea    {padding-top: 26px;padding-bottom: 78px;min-height: 600px}
+#av-shop .page-breadcrumbs          {margin: -13px 0 13px 0}
+#av-shop .page-workarea             {min-height: 600px}
+#av-shop .page-workarea:not(.index) {padding-top: 26px;padding-bottom: 78px}
 
 @media (min-width: 992px)
 	{

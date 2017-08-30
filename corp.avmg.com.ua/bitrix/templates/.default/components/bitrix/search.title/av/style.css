@@ -10,10 +10,10 @@
 /* ------------------------------- form ------------------------------- */
 /* -------------------------------------------------------------------- */
 .av-search-title                               {align-items: center;display: flex}
-.av-search-title.active       > div,
+.av-search-title.active       .text,
 .av-search-title:not(.active) input[type=text] {display: none}
 .av-search-title.active       input[type=text] {border-bottom: 1px solid #B6C0C6}
-.av-search-title::before
+.av-search-title .icon
 	{
 	background: center center no-repeat;
 	background-size: 18px;
@@ -22,8 +22,8 @@
 	width:  24px;
 	height: 24px;
 	}
-.av-search-title:not(.active)::before {background-image: url(images/search_icon.png);cursor: pointer}
-.av-search-title.active::before       {background-image: url(images/search_icon_active.png)}
+.av-search-title:not(.active) .icon {background-image: url(images/search_icon.png);cursor: pointer}
+.av-search-title.active       .icon {background-image: url(images/search_icon_active.png)}
 /* -------------------------------------------------------------------- */
 /* --------------------------- result list ---------------------------- */
 /* -------------------------------------------------------------------- */

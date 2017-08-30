@@ -27,8 +27,8 @@ foreach($arResult["SECTIONS"] as $sectionIndex => $sectionInfo)
 	while($queryElement = $queryList->GetNext())
 		{
 		$regionCenterId = $queryElement["ID"];
-		$link = str_replace(["#SUBSECTION_ID#", "#SUBSECTION_CODE#"], [$queryElement["ID"], $queryElement["CODE"]], $arParams["SUBSECTION_URL"]);
-		$arResult["SECTIONS"][$sectionIndex]["SUBSECTIONS"][$sectionInfo["SECTION_PAGE_URL"].$link] = $queryElement["NAME"];
+		$link           = str_replace(["#SUBSECTION_ID#", "#SUBSECTION_CODE#"], [$queryElement["ID"], $queryElement["CODE"]], $sectionInfo["SECTION_PAGE_URL"].$arParams["SUBSECTION_URL"]);
+		$arResult["SECTIONS"][$sectionIndex]["SUBSECTIONS"][$queryElement["NAME"]] = $link;
 		}
 	/* ------------------------------------------- */
 	/* ------------- subsetions query ------------ */
@@ -53,8 +53,8 @@ foreach($arResult["SECTIONS"] as $sectionIndex => $sectionInfo)
 		{
 		if(count($arResult["SECTIONS"][$sectionIndex]["SUBSECTIONS"]) < $arParams["SUBSECTION_MAX_COUNT"])
 			{
-			$link = str_replace(["#SUBSECTION_ID#", "#SUBSECTION_CODE#"], [$queryElement["ID"], $queryElement["CODE"]], $arParams["SUBSECTION_URL"]);
-			$arResult["SECTIONS"][$sectionIndex]["SUBSECTIONS"][$sectionInfo["SECTION_PAGE_URL"].$link] = $queryElement["NAME"];
+			$link = str_replace(["#SUBSECTION_ID#", "#SUBSECTION_CODE#"], [$queryElement["ID"], $queryElement["CODE"]], $sectionInfo["SECTION_PAGE_URL"].$arParams["SUBSECTION_URL"]);
+			$arResult["SECTIONS"][$sectionIndex]["SUBSECTIONS"][$queryElement["NAME"]] = $link;
 			}
 		else
 			$arResult["SECTIONS"][$sectionIndex]["SUBSECTION_MORE"] = true;

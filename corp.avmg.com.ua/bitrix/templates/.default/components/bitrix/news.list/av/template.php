@@ -25,15 +25,22 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 	<?
 	$this->AddEditAction  ($arItem["ID"], $arItem["EDIT_LINK"],   CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
 	$this->AddDeleteAction($arItem["ID"], $arItem["DELETE_LINK"], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"));
+	$itemLink = $arParams["DETAIL_URL"] ? $arItem["DETAIL_PAGE_URL"] : '';
 	?>
-	<div id="<?=$this->GetEditAreaId($arItem["ID"])?>">
-		<a class="image-link" href="<?=$arItem["DETAIL_PAGE_URL"]?>" rel="nofollow">
+	<div
+		id="<?=$this->GetEditAreaId($arItem["ID"])?>"
+		<?if($arParams["DETAIL_URL"]):?>
+		class="checkable"
+		<?endif?>
+	>
+		<a class="image-link" <?if($itemLink):?>href="<?=$itemLink?>"<?endif?> rel="nofollow">
 			<img
 				src="<?=($arItem["PREVIEW_PICTURE"]["SRC"] ? $arItem["PREVIEW_PICTURE"]["SRC"] : $this->GetFolder().'/images/default_image.jpg')?>"
 				title="<?=$arItem["PREVIEW_PICTURE"]["TITLE"]?>"
 				alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>"
 			>
 		</a>
+
 		<div class="content-cell">
 			<?if($arItem["ACTIVE_FROM"] || $arParams["USE_RATING"] == 'Y'):?>
 			<div class="rating-row">
@@ -66,7 +73,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 			</div>
 			<?endif?>
 
-			<a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="element-title">
+			<a class="element-title" <?if($itemLink):?>href="<?=$itemLink?>"<?endif?>>
 				<?=$arItem["NAME"]?>
 			</a>
 
@@ -74,7 +81,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 			<div class="element-text"><?=$arItem["FIELDS"]["PREVIEW_TEXT"]?></div>
 			<?endif?>
 
-			<?if($arParams["MARKUP_TYPE"] != 'SMALLER'):?>
+			<?if($itemLink && $arParams["MARKUP_TYPE"] != 'SMALLER'):?>
 			<a href="<?=$arItem["DETAIL_PAGE_URL"]?>" rel="nofollow" class="read-more-link">
 				<?=GetMessage("AV_BLOG_LIST_READ_MORE")?>
 			</a>

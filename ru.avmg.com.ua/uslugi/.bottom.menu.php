@@ -6,5 +6,5 @@ $aMenuLinks = array(
 	array("Поперечная резка металла",        "/uslugi/prodolnaya-rezka-metalla/"),
 	array("Грузоперевозки",                  "/uslugi/dostavka/"),
 	array("Металлобазы",                     "/metallobaza/",  array(), array("important" => 'Y', "space" => 'top')),
-	array("Карьера",                         "/career/", array(), array("important" => 'Y'))
+	array("Карьера",                         "/career/",       array(), array("important" => 'Y'))
 	);

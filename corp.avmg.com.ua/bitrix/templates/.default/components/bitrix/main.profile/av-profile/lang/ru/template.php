@@ -1,4 +1,6 @@
 <?
+$MESS["UPLOAD_PHOTO"] = "Загрузить фото";
+$MESS["DELETE_PHOTO"] = "Удалить фото";
 $MESS["PROFILE_DATA_SAVED"] = "Изменения сохранены";
 $MESS["REG_SHOW_HIDE"] = "Регистрационная информация";
 $MESS["forum_INFO"] = "Профиль форума";

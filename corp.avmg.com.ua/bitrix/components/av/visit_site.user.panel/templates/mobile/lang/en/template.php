@@ -1,0 +1,6 @@
+<?
+$MESS["AV_AUTH_MOBILE_LOGIN_TEXT"]    = 'Login';
+$MESS["AV_AUTH_MOBILE_LOGIN_TITLE"]   = 'Registration';
+$MESS["AV_AUTH_MOBILE_PROFILE_LINK"]  = 'My profile';
+$MESS["AV_AUTH_MOBILE_BASKET_LINK"]   = 'Cart';
+$MESS["AV_AUTH_MOBILE_LOGOUT_BUTTON"] = 'Logout';

@@ -11,7 +11,6 @@
 /* -------------------------------------------------------------------- */
 .av-bases-list-element
 	{
-	cursor: pointer;
 	display: flex;
 	flex-wrap: wrap;
 	min-height: 200px;
@@ -19,6 +18,7 @@
 	padding: 10px;
 	transition: .3s;
 	}
+.av-bases-list-element.checkable        {cursor: pointer}
 .av-bases-list-element:hover            {box-shadow: 0 4px 8px rgba(76,82,85,0.25)}
 .av-bases-list-element:not(:last-child) {margin-bottom: 6px}
 .av-bases-list-element.closed           {opacity: 0.5}

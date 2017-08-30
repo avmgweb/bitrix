@@ -3,5 +3,5 @@
 	src="/include/logo.svg"
 	alt="Металлопрокат и строительные материалы"
 	title="АВ металл групп"
-	height="75"
+	height="90"
 >

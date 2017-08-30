@@ -1,4 +1,6 @@
 <?
+$MESS["UPLOAD_PHOTO"] = "Завантажити фото";
+$MESS["DELETE_PHOTO"] = "Видалити фото";
 $MESS["USER_DONT_KNOW"] = "(невідомо)";
 $MESS["EMAIL"] = "E-mail:";
 $MESS["USER_ICQ"] = "ICQ:";

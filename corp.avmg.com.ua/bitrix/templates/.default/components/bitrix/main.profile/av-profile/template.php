@@ -439,14 +439,14 @@ document.getElementById('bx_auth_secure').style.display = 'inline-block';
 </div>
 <div class="col-md-4 userPhotoSection">
 
-		<span id="downloadPhoto">Загрузить фото</span>
+		<span id="downloadPhoto"><?echo GetMessage("UPLOAD_PHOTO")?></span>
 		<div hidden ><?=$arResult["arUser"]["PERSONAL_PHOTO_INPUT"]?></div>
 			<?
 			if (strlen($arResult["arUser"]["PERSONAL_PHOTO"])>0)
 			{
 			?>
 				<?=$arResult["arUser"]["PERSONAL_PHOTO_HTML"]?>
-		<span id="deletePhoto">Удалить фото</span>
+		<span id="deletePhoto"><?echo GetMessage("DELETE_PHOTO")?></span>
 			<?
 			}
 			?>

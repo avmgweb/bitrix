@@ -18,7 +18,7 @@
 						(
 						"bitrix:menu", "av_vs_bottom",
 							array(
-							"ROOT_MENU_TYPE"     => 'top',
+							"ROOT_MENU_TYPE"     => 'bottom_top',
 							"MAX_LEVEL"          => 2,
 							"CHILD_MENU_TYPE"    => 'bottom',
 							"USE_EXT"            => 'Y',

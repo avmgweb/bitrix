@@ -1,5 +1,5 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
-<b><a href="/contacts/" rel="nofollow">Контакты</a></b>
+<b><a href="https://ru.avmg.com.ua/contacts/" rel="nofollow">Контакты</a></b>
 Украина, Днепр,<br>
 ул.Шолом-Алейхема,5<br>
 <a href="tel:+380567900122" rel="nofollow">+38 (056) 790-01-22</a><br>
