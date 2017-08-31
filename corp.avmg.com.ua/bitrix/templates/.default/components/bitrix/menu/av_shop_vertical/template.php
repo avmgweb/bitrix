@@ -4,21 +4,23 @@ if(!count($arResult))                                           return;
 ?>
 <ul class="av-shop-menu-vertical" data-av-at-avmg-main-menu="menu">
 	<?foreach($arResult as $index => $itemInfo):?>
-		<?
-		$nextIndex  = $index+1;
-		$hasSubMenu = $arResult[$nextIndex]["DEPTH_LEVEL"] == 2 ? true : false;
-		?>
-
 		<?if($itemInfo["DEPTH_LEVEL"] == 1):?>
-		<li class="item<?if($itemInfo["SELECTED"]):?> selected active<?endif?><?if($hasSubMenu):?> parent<?endif?>">
+		<li
+			class="
+				item
+				<?if($itemInfo["SELECTED"]):?>selected active<?endif?>
+				<?if($itemInfo["PARENT"]):?>  parent         <?endif?>
+				"
+		>
 			<div>
 				<a href="<?=$itemInfo["LINK"]?>"><?=$itemInfo["TEXT"]?></a>
-				<?if($hasSubMenu):?>
+				<?if($itemInfo["PARENT"]):?>
 				<div class="arrow"></div>
 				<?endif?>
 			</div>
 
-			<?if($hasSubMenu):?>
+			<?$nextIndex = $index + 1?>
+			<?if($itemInfo["PARENT"]):?>
 			<ul>
 				<?while($arResult[$nextIndex]["DEPTH_LEVEL"] == 2):?>
 				<li>

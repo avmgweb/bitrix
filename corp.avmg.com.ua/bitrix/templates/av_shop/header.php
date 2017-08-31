@@ -8,7 +8,7 @@ $dirProperty = $APPLICATION->GetDirPropertyList();
 $leftMenu    = '';
 
 ob_start();
-if($dirProperty["NOT_SHOW_LEFT_MENU"] != 'Y' && ERROR_404 != 'Y')
+if($dirProperty["NOT_SHOW_LEFT_MENU"] != 'Y' && $currentPage != SITE_DIR && ERROR_404 != 'Y')
 	$APPLICATION->IncludeComponent
 		(
 		"bitrix:menu", "av_shop_vertical",

@@ -1,0 +1,89 @@
+/* -------------------------------------------------------------------- */
+/* --------------------------- clear style ---------------------------- */
+/* -------------------------------------------------------------------- */
+.av-menu-tablet a,
+.av-menu-tablet a:visited,
+.av-menu-tablet a:hover,
+.av-menu-tablet a:active,
+.av-menu-tablet a:focus {color: inherit !important;text-decoration: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- menu ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-menu-tablet
+	{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	position: relative;
+	}
+
+.av-menu-tablet .item
+	{
+	align-items: center;
+	border-right:  1px solid #ECEFF1;
+	border-bottom: 1px solid #ECEFF1;
+	display: flex;
+	flex-direction: column;
+	padding: 26px;
+	text-align: center;
+	width: 25%;
+	}
+.av-menu-tablet .item.last  {border-color: #FFF}
+.av-menu-tablet .item:hover,
+.av-menu-tablet .item:active,
+.av-menu-tablet .item:focus {background: #FFF;box-shadow: 0 4px 8px rgba(76,82,85,0.25)}
+.av-menu-tablet .item .image-link
+	{
+	align-items: center;
+	display: flex;
+	margin-bottom: 26px;
+	overflow: hidden;
+	text-align: left;
+	height: 120px;
+	}
+.av-menu-tablet .item .image-link img
+	{
+	width: 100%;
+	}
+.av-menu-tablet .border-hider-vertical,
+.av-menu-tablet .border-hider-horizontal
+	{
+	background: #FFF;
+	position: absolute;
+	}
+.av-menu-tablet .border-hider-vertical
+	{
+	width:  1px;
+	height: 100%;
+	top:    0;
+	right:  0;
+	}
+.av-menu-tablet .border-hider-horizontal
+	{
+	width:  100%;
+	height: 1px;
+	bottom: 0;
+	left:   0;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- media ------------------------------ */
+/* -------------------------------------------------------------------- */
+@media(max-width: 1199px)
+	{
+	.av-menu-tablet .item {width: calc(100% / 3)}
+	}
+@media(max-width: 991px)
+	{
+	.av-menu-tablet .item {width: 50%}
+	}
+@media(max-width: 767px)
+	{
+	.av-menu-tablet .item
+		{
+		border-right: none;
+		margin-left:  auto;
+		margin-right: auto;
+		width: 100%;
+		max-width: 400px;
+		}
+	}

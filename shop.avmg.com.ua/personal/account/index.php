@@ -5,7 +5,7 @@ $APPLICATION->SetTitle("Личный счёт");
 
 $APPLICATION->IncludeComponent
 	(
-	"bitrix:sale.personal.account", "",
+	"bitrix:sale.personal.account", "av",
 		array(
 		"SET_TITLE" => 'N'
 		)
