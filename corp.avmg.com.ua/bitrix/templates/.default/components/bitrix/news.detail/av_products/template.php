@@ -1,4 +1,8 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
+<?
+use \Bitrix\Main\Localization\Loc;
+
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+?>
 <div class="av-products-detail" id="<?=$this->GetEditAreaId($arParams["ELEMENT_ID"])?>">
 	<?
 	/* ------------------------------------------- */
@@ -26,8 +30,9 @@
 					"TYPE"        => 'button',
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => $arResult["LIST_PAGE_URL"],
-					"TITLE"       => GetMessage("AV_PRODUCTS_VIEW_BACK_LINK")
-					]
+					"TITLE"       => Loc::getMessage("AV_PRODUCTS_VIEW_BACK_LINK")
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 			foreach($arParams["ADDITIONAL_LINKS"] as $index => $link)
 				$APPLICATION->IncludeComponent
@@ -38,7 +43,8 @@
 						"BUTTON_TYPE" => 'link',
 						"LINK"        => $link,
 						"TITLE"       => $arParams["ADDITIONAL_LINKS_TITLES"][$index]
-						]
+						],
+					false, ["HIDE_ICONS" => 'Y']
 					);
 			?>
 		</div>
@@ -50,7 +56,7 @@
 	?>
 	<?if($arParams["WEBFORM_ID"]):?>
 	<div class="web-form">
-		<h3><?=GetMessage("AV_PRODUCTS_VIEW_FEADBACK_FORM")?></h3>
+		<h3><?=Loc::getMessage("AV_PRODUCTS_VIEW_FEADBACK_FORM")?></h3>
 		<?
 		$APPLICATION->IncludeComponent
 			(
@@ -80,7 +86,8 @@
 				"EDIT_STATUS"            => 'N',
 				"IGNORE_CUSTOM_TEMPLATE" => 'N',
 				"USE_EXTENDED_ERRORS"    => 'N'
-				]
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		?>
 	<?endif?>

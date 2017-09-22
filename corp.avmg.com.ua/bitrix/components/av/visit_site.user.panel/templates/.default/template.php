@@ -1,8 +1,12 @@
 <?
+use
+	\Bitrix\Main\Page\Asset,
+	\Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 
 CJSCore::Init(["av_form_elements"]);
-$APPLICATION->AddHeadScript('https://www.google.com/recaptcha/api.js');
+Asset::getInstance()->addJs("https://www.google.com/recaptcha/api.js");
 /* -------------------------------------------------------------------- */
 /* ---------------------- auth/registration form ---------------------- */
 /* -------------------------------------------------------------------- */
@@ -18,10 +22,10 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 <div id="av-auth-guest-bar" class="av-auth-form-call-button">
 	<img
 		src="<?=$this->GetFolder()?>/images/user_default_icon.png"
-		alt="<?=GetMessage("AV_AUTH_LOGIN_TITLE")?>"
-		title="<?=GetMessage("AV_AUTH_LOGIN_TITLE")?>"
+		alt="<?=Loc::getMessage("AV_AUTH_LOGIN_TITLE")?>"
+		title="<?=Loc::getMessage("AV_AUTH_LOGIN_TITLE")?>"
 	>
-	<?=GetMessage("AV_AUTH_LOGIN_LINK")?>
+	<?=Loc::getMessage("AV_AUTH_LOGIN_LINK")?>
 </div>
 <?
 /* ------------------------------------------- */
@@ -37,13 +41,13 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 	<ul class="form-menu">
 		<?if(count($arResult["AUTH"])):?>
 		<li class="auth<?if($formTabActive == 'auth'):?> active<?endif?>">
-			<?=GetMessage("AV_AUTH_GUEST_FORM_MENU_LOGIN")?>
+			<?=Loc::getMessage("AV_AUTH_GUEST_FORM_MENU_LOGIN")?>
 		</li>
 		<?endif?>
 
 		<?if(count($arResult["REGISTER"])):?>
 		<li class="register<?if($formTabActive == 'register'):?> active<?endif?>">
-			<?=GetMessage("AV_AUTH_GUEST_FORM_MENU_REGISTRATION")?>
+			<?=Loc::getMessage("AV_AUTH_GUEST_FORM_MENU_REGISTRATION")?>
 		</li>
 		<?endif?>
 	</ul>
@@ -78,7 +82,8 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 				"VALUE"    => $arResult["AUTH"]["FORM_FIELDS"]["LOGIN"]["VALUE"],
 				"TITLE"    => $arResult["AUTH"]["FORM_FIELDS"]["LOGIN"]["TITLE"],
 				"REQUIRED" => 'Y'
-				]
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		$APPLICATION->IncludeComponent
 			(
@@ -88,7 +93,8 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 				"NAME"     => $arResult["AUTH"]["FORM_FIELDS"]["PASS"]["INPUT_NAME"],
 				"TITLE"    => $arResult["AUTH"]["FORM_FIELDS"]["PASS"]["TITLE"],
 				"REQUIRED" => 'Y'
-				]
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		?>
 
@@ -101,8 +107,9 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 					[
 					"TYPE"  => 'checkbox',
 					"NAME"  => $arResult["AUTH"]["FORM_FIELDS"]["REMEMBER_ME"]["INPUT_NAME"],
-					"TITLE" => GetMessage("AV_AUTH_GUEST_FORM_REMEMBER_ME")
-					]
+					"TITLE" => Loc::getMessage("AV_AUTH_GUEST_FORM_REMEMBER_ME")
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 			?>
 		</div>
@@ -110,7 +117,7 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 
 		<?if($arParams["FORGOT_PASSWORD_URL"]):?>
 		<a href="<?=$arParams["FORGOT_PASSWORD_URL"]?>" rel="nofollow">
-			<?=GetMessage("AV_AUTH_GUEST_FORM_FORGOTE_PASS")?>
+			<?=Loc::getMessage("AV_AUTH_GUEST_FORM_FORGOTE_PASS")?>
 		</a>
 		<?endif?>
 
@@ -121,15 +128,23 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 				[
 				"TYPE"  => 'button',
 				"NAME"  => $arResult["AUTH"]["SUBMIT_BUTTON_NAME"],
-				"TITLE" => GetMessage("AV_AUTH_GUEST_FORM_SUBMIT")
-				]
+				"TITLE" => Loc::getMessage("AV_AUTH_GUEST_FORM_SUBMIT")
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		?>
 
 		<?if(count($arResult["AUTH"]["SOC_SERVICES"])):?>
 		<div class="soc-services-block">
-			<div class="title"><?=GetMessage("AV_AUTH_GUEST_FORM_SOC_SERVICES_TITLE")?></div>
-			<?$APPLICATION->IncludeComponent("bitrix:socserv.auth.form", "av", ["AUTH_SERVICES"  => $arResult["AUTH"]["SOC_SERVICES"]])?>
+			<div class="title"><?=Loc::getMessage("AV_AUTH_GUEST_FORM_SOC_SERVICES_TITLE")?></div>
+			<?
+			$APPLICATION->IncludeComponent
+				(
+				"bitrix:socserv.auth.form", "av",
+				["AUTH_SERVICES"  => $arResult["AUTH"]["SOC_SERVICES"]],
+				false, ["HIDE_ICONS" => 'Y']
+				);
+			?>
 		</div>
 		<?endif?>
 	</form>
@@ -175,7 +190,12 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 					break;
 				}
 
-			$APPLICATION->IncludeComponent("av:form_elements", "av_site", $componentParams);
+			$APPLICATION->IncludeComponent
+				(
+				"av:form_elements", "av_site",
+				$componentParams,
+				false, ["HIDE_ICONS" => 'Y']
+				);
 			?>
 		<?endforeach?>
 
@@ -190,8 +210,9 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 				[
 				"TYPE"  => 'button',
 				"NAME"  => $arResult["REGISTER"]["SUBMIT_BUTTON_NAME"],
-				"TITLE" => GetMessage("AV_AUTH_GUEST_FORM_REGISTER")
-				]
+				"TITLE" => Loc::getMessage("AV_AUTH_GUEST_FORM_REGISTER")
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		?>
 	</form>
@@ -215,20 +236,29 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 </div>
 
 <form id="av-auth-user-menu">
+	<?
+	if($arParams["USER_MENU_TYPE"])
+		$APPLICATION->IncludeComponent
+			(
+			"bitrix:menu", "av_user",
+				[
+				"ROOT_MENU_TYPE"     => $arParams["USER_MENU_TYPE"],
+				"MAX_LEVEL"          => 1,
+				"CHILD_MENU_TYPE"    => '',
+				"USE_EXT"            => 'Y',
+				"DELAY"              => 'N',
+				"ALLOW_MULTI_SELECT" => 'N',
+
+				"MENU_CACHE_TYPE"       => 'N',
+				"MENU_CACHE_TIME"       => '',
+				"MENU_CACHE_USE_GROUPS" => ''
+				],
+			false, ["HIDE_ICONS" => 'Y']
+			);
+	?>
+
 	<input type="hidden" name="logout" value="yes">
-	<?if($arParams["PROFILE_URL"]):?>
-	<a class="menu-item profile" href="<?=$arParams["PROFILE_URL"]?>" rel="nofollow">
-		<?=GetMessage("AV_AUTH_LOGINED_PROFILE_LINK")?>
-	</a>
-	<?endif?>
-
-	<?if($arParams["BASKET_URL"]):?>
-	<a class="menu-item basket" href="<?=$arParams["BASKET_URL"]?>" rel="nofollow">
-		<?=GetMessage("AV_AUTH_LOGINED_BASKET_LINK")?>
-	</a>
-	<?endif?>
-
-	<button class="menu-item logout" name="logout_butt"><?=GetMessage("AV_AUTH_LOGINED_LOGOUT_BUTTON")?></button>
+	<button name="logout_butt"><?=Loc::getMessage("AV_AUTH_LOGINED_LOGOUT_BUTTON")?></button>
 </form>
 <?endif?>
 <?
@@ -237,11 +267,11 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 /* -------------------------------------------------------------------- */
 ?>
 <script>
-	BX.message({"AV_REGISTER_FORM_VALIDATION_ERROR": '<?=GetMessage("AV_AUTH_REGISTER_FORM_SUBMIT_ERROR")?>'});
+	BX.message({"AV_REGISTER_FORM_VALIDATION_ERROR": '<?=Loc::getMessage("AV_AUTH_REGISTER_FORM_SUBMIT_ERROR")?>'});
 
 	<?if($arResult["REGISTER"]["CONFIRM_EMAIL_SENDED"]):?>
 	AvBlurScreen("on", 1000);
-	CreateAvAlertPopup('<?=GetMessage("AV_AUTH_REGISTER_FORM_SUCCESS")?>', "ok")
+	CreateAvAlertPopup('<?=Loc::getMessage("AV_AUTH_REGISTER_FORM_SUCCESS")?>', "ok")
 		.positionCenter(1100, 'Y')
 		.hideOnClickout("remove")
 		.on("remove", function() {AvBlurScreen("off")});

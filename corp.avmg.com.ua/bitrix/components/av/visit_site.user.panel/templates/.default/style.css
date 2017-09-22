@@ -89,22 +89,22 @@
 	background: #FFF;
 	box-shadow: 0 4px 8px rgba(76,82,85,0.25);
 	display: none;
-	padding: 5px;
+	padding: 6px 24px 6px 29px;
+	min-width: 150px;
 	}
-#av-auth-user-menu input[type=hidden] {display: none}
-#av-auth-user-menu .menu-item         {align-items: center;display: flex;padding: 3px}
-#av-auth-user-menu .menu-item:hover,
-#av-auth-user-menu .menu-item:active,
-#av-auth-user-menu .menu-item:focus,
-#av-auth-user-menu .menu-item:hover   {color: #CC0000;text-decoration: underline}
-#av-auth-user-menu .menu-item::before
+#av-auth-user-menu a,
+#av-auth-user-menu button
 	{
-	background-repeat: no-repeat;
-	background-size: contain;
-	content: '';
-	display: inline-block;
-	margin-right: 10px;
-	width:  24px;
-	height: 24px;
+	align-items: center;
+	display: flex;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 	}
-#av-auth-user-menu .menu-item.logout::before {background-image: url(images/logout.png)}
+#av-auth-user-menu      a:hover,
+#av-auth-user-menu      a:active,
+#av-auth-user-menu      a:focus,
+#av-auth-user-menu button:hover,
+#av-auth-user-menu button:active,
+#av-auth-user-menu button:focus         {color: #CC0000;text-decoration: underline}
+#av-auth-user-menu > *:not(:last-child) {margin-bottom: 6px}

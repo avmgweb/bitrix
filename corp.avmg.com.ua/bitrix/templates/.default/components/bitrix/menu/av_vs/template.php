@@ -78,7 +78,8 @@ $currentPageUrl = $APPLICATION->GetCurPage(false);
 							"BUTTON_TYPE" => 'link',
 							"TITLE"       => $arItem["TEXT"],
 							"LINK"        => $arItem["LINK"]
-							]
+							],
+						false, ["HIDE_ICONS" => 'Y']
 						);
 					?>
 			<?else:?>

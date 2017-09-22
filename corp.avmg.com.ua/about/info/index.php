@@ -1,7 +1,11 @@
 <?
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+
+use Bitrix\Main\Page\Asset;
+
 $APPLICATION->SetTitle("Реквизиты");
-$APPLICATION->SetAdditionalCSS('/bitrix/css/av_corp/pages/about_info.css');
+
+Asset::getInstance()->addCss("/bitrix/css/av_corp/pages/about_info.css");
 ?>
 <table class="av-company-info-table">
 	<colgroup>

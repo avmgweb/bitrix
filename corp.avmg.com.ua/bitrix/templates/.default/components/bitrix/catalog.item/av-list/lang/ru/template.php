@@ -1,0 +1,6 @@
+<?
+$MESS["AV_CATALOG_ITEM_LIST_PRICE_FROM"]      = 'от #PRICE#';
+$MESS["AV_CATALOG_ITEM_LIST_PRICE_EMPTY"]     = 'цену уточняйте';
+$MESS["AV_CATALOG_ITEM_LIST_SKU_INFO_RANGE"]  = 'от #MIN_VALUE# до #MAX_VALUE#';
+$MESS["AV_CATALOG_ITEM_LIST_READ_MORE"]       = 'Подробнее';
+$MESS["AV_CATALOG_ITEM_LIST_READ_MORE_TITLE"] = 'смотреть подробнее';

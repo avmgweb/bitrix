@@ -1,7 +1,10 @@
 <?
+use Bitrix\Main\Page\Asset;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
 CJSCore::Init(["bootstrap"]);
-$APPLICATION->SetAdditionalCss($this->GetFolder().'/list.css');
+Asset::getInstance()->addCss($this->GetFolder().'/list.css');
 /* -------------------------------------------------------------------- */
 /* -------------------------- filter column --------------------------- */
 /* -------------------------------------------------------------------- */
@@ -24,7 +27,12 @@ $APPLICATION->SetAdditionalCss($this->GetFolder().'/list.css');
 	foreach($arParams["IBLOCK_ID"] as $iblockId)
 		$componentParams['PROPS_'.$iblockId] = $arParams['LIST_PROPS_'.$iblockId];
 
-	$APPLICATION->IncludeComponent("av:directories.filter", "", $componentParams);
+	$APPLICATION->IncludeComponent
+		(
+		"av:directories.filter", "",
+		$componentParams,
+		false, ["HIDE_ICONS" => 'Y']
+		);
 	?>
 </div>
 <?endif?>
@@ -61,6 +69,11 @@ $APPLICATION->SetAdditionalCss($this->GetFolder().'/list.css');
 	foreach($arParams["IBLOCK_ID"] as $iblockId)
 		$componentParams['PROPS_'.$iblockId] = $arParams['LIST_PROPS_'.$iblockId];
 
-	$APPLICATION->IncludeComponent("av:directories.list", "", $componentParams);
+	$APPLICATION->IncludeComponent
+		(
+		"av:directories.list", "",
+		$componentParams,
+		false, ["HIDE_ICONS" => 'Y']
+		);
 	?>
 </div>

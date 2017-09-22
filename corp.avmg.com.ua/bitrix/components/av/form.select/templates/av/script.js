@@ -36,8 +36,8 @@
 		this.find('.list [data-list-value]')                                  .removeClass("selected");
 		this.find('.list [data-list-value="'+$selectedItem.attr("value")+'"]').addClass("selected");
 
-		if($selectedItem.attr("value")) $defaultLabel.show();
-		else                            $defaultLabel.hide();
+		if($selectedItem.attr("value") && $defaultLabel.text()) $defaultLabel.show();
+		else                                                    $defaultLabel.hide();
 
 		$select.trigger("change");
 		};

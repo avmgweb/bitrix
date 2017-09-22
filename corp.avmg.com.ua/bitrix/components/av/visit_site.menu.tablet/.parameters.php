@@ -1,4 +1,6 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* -------------------------------------------------------------------- */
 /* ---------------------------- menu array ---------------------------- */
@@ -15,21 +17,21 @@ if($arCurrentValues["MENU_PATH"])
 /* -------------------------------------------------------------------- */
 $arComponentParameters["PARAMETERS"]["MENU_TYPE"] =
 	[
-	"NAME"   => GetMessage("AV_VS_MENU_INDEX_MENU_TYPE"),
+	"NAME"   => Loc::getMessage("AV_VS_MENU_INDEX_MENU_TYPE"),
 	"TYPE"   => 'LIST',
 	"VALUES" => GetMenuTypes($_REQUEST["site"] ? $_REQUEST["site"] : ($_REQUEST["src_site"] ? $_REQUEST["src_site"] : false))
 	];
 $arComponentParameters["PARAMETERS"]["MENU_PATH"] =
 	[
-	"NAME" => GetMessage("AV_VS_MENU_INDEX_MENU_PATH"),
+	"NAME" => Loc::getMessage("AV_VS_MENU_INDEX_MENU_PATH"),
 	"TYPE" => 'STRING'
 	];
 if(count($menuArray))
 	$arComponentParameters["PARAMETERS"]["MENU_VALUES"] =
-			[
-			"NAME"     => GetMessage("AV_VS_MENU_INDEX_MENU_VALUES"),
-			"TYPE"     => 'LIST',
-			"SIZE"     => 5,
-			"MULTIPLE" => 'Y',
-			"VALUES"   => array_merge(["all" => GetMessage("AV_VS_MENU_INDEX_MENU_VALUES_DEFAULT")], $menuArray)
-			];
+		[
+		"NAME"     => Loc::getMessage("AV_VS_MENU_INDEX_MENU_VALUES"),
+		"TYPE"     => 'LIST',
+		"SIZE"     => 5,
+		"MULTIPLE" => 'Y',
+		"VALUES"   => array_merge(["all" => Loc::getMessage("AV_VS_MENU_INDEX_MENU_VALUES_DEFAULT")], $menuArray)
+		];

@@ -28,21 +28,18 @@ if(count($iblockNeedArray))
 	{
 	$queryList = CIBlock::GetList(["SORT" => 'ASC'], ["ID" => $iblockNeedArray]);
 	while($queryElement = $queryList->GetNext())
-		{
-		$iblockLink = str_replace
-			(
-			["#IBLOCK_ID#",       "#IBLOCK_CODE#",       "#SITE_DIR#"],
-			[$queryElement["ID"], $queryElement["CODE"], ''],
-			$queryElement["LIST_PAGE_URL"]
-			);
 		$aMenuLinks[] =
 			[
 			$queryElement["NAME"],
-			$iblockLink,
+			str_replace
+				(
+				["#IBLOCK_ID#",       "#IBLOCK_CODE#",       "#SITE_DIR#"],
+				[$queryElement["ID"], $queryElement["CODE"], ''],
+				$queryElement["LIST_PAGE_URL"]
+				),
 			[],
 				[
 				"TITLE_BACKGROUND_ICON" => CFile::GetPath(CIBlock::GetArrayByID($queryElement["ID"], "PICTURE"))
 				]
 			];
-		}
 	}

@@ -2,8 +2,10 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 if(!CModule::IncludeModule('lists'))                             return ShowError(GetMessage("CC_BLEE_MODULE_NOT_INSTALLED"));
 
+use Bitrix\Main\Page\Asset;
+
 require_once($_SERVER["DOCUMENT_ROOT"].'/bitrix/modules/iblock/admin_tools.php');
-$APPLICATION->AddHeadScript("/bitrix/js/iblock/iblock_edit.js");
+Asset::getInstance()->addJs("/bitrix/js/iblock/iblock_edit.js");
 /* -------------------------------------------------------------------- */
 /* ----------------------------- variables ---------------------------- */
 /* -------------------------------------------------------------------- */

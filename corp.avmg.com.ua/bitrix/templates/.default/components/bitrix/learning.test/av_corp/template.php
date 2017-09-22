@@ -1,20 +1,23 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
 $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 /* -------------------------------------------------------------------- */
 /* -------------------------------- JS -------------------------------- */
 /* -------------------------------------------------------------------- */
 ?>
 <script>
-	BX.message({"AV_LEARNING_TEST_FINISH_TEST"           : '<?=GetMessage("AV_LEARNING_TEST_FINISH_TEST")?>'});
-	BX.message({"AV_LEARNING_TEST_FINISH_TEST_CONFIRM"   : '<?=GetMessage("AV_LEARNING_TEST_FINISH_TEST_CONFIRM")?>'});
-	BX.message({"AV_LEARNING_TEST_FINISH_TEST_CANCEL"    : '<?=GetMessage("AV_LEARNING_TEST_FINISH_TEST_CANCEL")?>'});
+	BX.message({"AV_LEARNING_TEST_FINISH_TEST"           : '<?=Loc::getMessage("AV_LEARNING_TEST_FINISH_TEST")?>'});
+	BX.message({"AV_LEARNING_TEST_FINISH_TEST_CONFIRM"   : '<?=Loc::getMessage("AV_LEARNING_TEST_FINISH_TEST_CONFIRM")?>'});
+	BX.message({"AV_LEARNING_TEST_FINISH_TEST_CANCEL"    : '<?=Loc::getMessage("AV_LEARNING_TEST_FINISH_TEST_CANCEL")?>'});
 
-	BX.message({"AV_LEARNING_TEST_INVALID_SORT_CONFIRM"  : '<?=GetMessage("AV_LEARNING_TEST_INVALID_SORT_CONFIRM")?>'});
-	BX.message({"AV_LEARNING_TEST_EMPTY_RESPONSE_CONFIRM": '<?=GetMessage("AV_LEARNING_TEST_EMPTY_RESPONSE_CONFIRM")?>'});
-	BX.message({"AV_LEARNING_TEST_NO_RESPONSE_CONFIRM"   : '<?=GetMessage("AV_LEARNING_TEST_NO_RESPONSE_CONFIRM")?>'});
-	BX.message({"AV_LEARNING_TEST_SKIP_QUESTION_CONFIRM" : '<?=GetMessage("AV_LEARNING_TEST_SKIP_QUESTION_CONFIRM")?>'});
-	BX.message({"AV_LEARNING_TEST_SKIP_QUESTION_CANCEL"  : '<?=GetMessage("AV_LEARNING_TEST_SKIP_QUESTION_CANCEL")?>'});
+	BX.message({"AV_LEARNING_TEST_INVALID_SORT_CONFIRM"  : '<?=Loc::getMessage("AV_LEARNING_TEST_INVALID_SORT_CONFIRM")?>'});
+	BX.message({"AV_LEARNING_TEST_EMPTY_RESPONSE_CONFIRM": '<?=Loc::getMessage("AV_LEARNING_TEST_EMPTY_RESPONSE_CONFIRM")?>'});
+	BX.message({"AV_LEARNING_TEST_NO_RESPONSE_CONFIRM"   : '<?=Loc::getMessage("AV_LEARNING_TEST_NO_RESPONSE_CONFIRM")?>'});
+	BX.message({"AV_LEARNING_TEST_SKIP_QUESTION_CONFIRM" : '<?=Loc::getMessage("AV_LEARNING_TEST_SKIP_QUESTION_CONFIRM")?>'});
+	BX.message({"AV_LEARNING_TEST_SKIP_QUESTION_CANCEL"  : '<?=Loc::getMessage("AV_LEARNING_TEST_SKIP_QUESTION_CANCEL")?>'});
 </script>
 
 <div class="av-learning-test-detail-popup-content">
@@ -28,7 +31,8 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 				"BUTTON_TYPE" => 'label',
 				"TITLE"       => '#ACCEPT_TEXT#',
 				"ATTR"        => 'data-apply-button'
-				]
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		$APPLICATION->IncludeComponent
 			(
@@ -37,7 +41,8 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 				"BUTTON_TYPE" => 'label',
 				"TITLE"       => '#CANCEL_TEXT#',
 				"ATTR"        => 'data-cancel-button'
-				]
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		?>
 	</div>
@@ -72,9 +77,9 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 			<?if(is_array($arResult["INCORRECT_QUESTION"])):?>
 			<div class="incorrect-message">
 				<?if($arResult["INCORRECT_QUESTION"]["ID"] != $arResult["QUESTION"]["ID"]):?>
-				<?=GetMessage("AV_LEARNING_TEST_INCORRECT_QUESTION_TITLE", ["#NAME#" => $arResult["INCORRECT_QUESTION"]["NAME"]])?><br>
+				<?=Loc::getMessage("AV_LEARNING_TEST_INCORRECT_QUESTION_TITLE", ["#NAME#" => $arResult["INCORRECT_QUESTION"]["NAME"]])?><br>
 				<?endif?>
-				<?=GetMessage("AV_LEARNING_TEST_INCORRECT_QUESTION_TEXT", ["#TEXT#" => $arResult["INCORRECT_QUESTION"]["INCORRECT_MESSAGE"]])?><br>
+				<?=Loc::getMessage("AV_LEARNING_TEST_INCORRECT_QUESTION_TEXT", ["#TEXT#" => $arResult["INCORRECT_QUESTION"]["INCORRECT_MESSAGE"]])?><br>
 			</div>
 			<?endif?>
 			<?
@@ -114,7 +119,8 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 								[
 								"NAME"  => 'answer',
 								"VALUE" => $arResult["QBAR"][$currentQuestion]["RESPONSE"][0]
-								]
+								],
+							false, ["HIDE_ICONS" => 'Y']
 							);
 						?>
 					<?elseif($arResult["QUESTION"]["QUESTION_TYPE"] == 'R'):?>
@@ -134,8 +140,9 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 										"NAME"        => 'answer[]',
 										"LIST"        => $list,
 										"VALUE"       => $arResult["QBAR"][$currentQuestion]["RESPONSE"][$index],
-										"EMPTY_TITLE" => GetMessage("AV_LEARNING_TEST_SORTING_EMPTY_TITLE")
-										]
+										"EMPTY_TITLE" => Loc::getMessage("AV_LEARNING_TEST_SORTING_EMPTY_TITLE")
+										],
+									false, ["HIDE_ICONS" => 'Y']
 									);
 								?>
 							</div>
@@ -153,7 +160,8 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 									"VALUE"   => $answerInfo["ID"],
 									"TITLE"   => $answerInfo["ANSWER"],
 									"CHECKED" => in_array($answerInfo["ID"], $arResult["QBAR"][$currentQuestion]["RESPONSE"]) ? 'Y' : 'N'
-									]
+									],
+								false, ["HIDE_ICONS" => 'Y']
 								);
 							?>
 						</div>
@@ -170,7 +178,8 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 									"VALUE"   => $answerInfo["ID"],
 									"TITLE"   => $answerInfo["ANSWER"],
 									"CHECKED" => in_array($answerInfo["ID"], $arResult["QBAR"][$currentQuestion]["RESPONSE"]) ? 'Y' : 'N'
-									]
+									],
+								false, ["HIDE_ICONS" => 'Y']
 								);
 							?>
 						</div>
@@ -188,8 +197,8 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 						[
 						"BUTTON_TYPE" => 'submit',
 						"NAME"        => 'next',
-						"TITLE"       => GetMessage("AV_LEARNING_TEST_NAVIGATION_NEXT_NAME"),
-						"PLACEHOLDER" => GetMessage("AV_LEARNING_TEST_NAVIGATION_NEXT_TITLE")
+						"TITLE"       => Loc::getMessage("AV_LEARNING_TEST_NAVIGATION_NEXT_NAME"),
+						"PLACEHOLDER" => Loc::getMessage("AV_LEARNING_TEST_NAVIGATION_NEXT_TITLE")
 						];
 					if($arResult["TEST"]["PASSAGE_TYPE"] == 0)
 						{
@@ -201,7 +210,12 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 						else                                                  $nextButtonParams["ATTR"]["data-next-button-alert-mesage"] = 'AV_LEARNING_TEST_NO_RESPONSE_CONFIRM';
 						}
 
-					$APPLICATION->IncludeComponent("av:form.button", "av_corp", $nextButtonParams);
+					$APPLICATION->IncludeComponent
+						(
+						"av:form.button", "av_corp",
+						$nextButtonParams,
+						false, ["HIDE_ICONS" => 'Y']
+						);
 
 					if($arResult["TEST"]["PASSAGE_TYPE"] > 0 && $arResult["NAV"]["PREV_QUESTION"])
 						$APPLICATION->IncludeComponent
@@ -210,9 +224,10 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 								[
 								"BUTTON_TYPE" => 'link',
 								"LINK"        => $arResult["QBAR"][$arResult["NAV"]["PREV_QUESTION"]]["URL"],
-								"TITLE"       => GetMessage("AV_LEARNING_TEST_NAVIGATION_PREV_NAME"),
-								"PLACEHOLDER" => GetMessage("AV_LEARNING_TEST_NAVIGATION_PREV_TITLE")
-								]
+								"TITLE"       => Loc::getMessage("AV_LEARNING_TEST_NAVIGATION_PREV_NAME"),
+								"PLACEHOLDER" => Loc::getMessage("AV_LEARNING_TEST_NAVIGATION_PREV_TITLE")
+								],
+							false, ["HIDE_ICONS" => 'Y']
 							);
 
 					$APPLICATION->IncludeComponent
@@ -222,9 +237,10 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 							[
 							"BUTTON_TYPE" => 'submit',
 							"NAME"        => 'finish',
-							"TITLE"       => GetMessage("AV_LEARNING_TEST_NAVIGATION_FINISH_NAME"),
-							"PLACEHOLDER" => GetMessage("AV_LEARNING_TEST_NAVIGATION_FINISH_TITLE")
-							]
+							"TITLE"       => Loc::getMessage("AV_LEARNING_TEST_NAVIGATION_FINISH_NAME"),
+							"PLACEHOLDER" => Loc::getMessage("AV_LEARNING_TEST_NAVIGATION_FINISH_TITLE")
+							],
+						false, ["HIDE_ICONS" => 'Y']
 						);
 					?>
 				</div>
@@ -237,7 +253,7 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 		?>
 		<div>
 			<div class="title">
-				<?=GetMessage("AV_LEARNING_TEST_QUESTIONS_COUNT", ["#COUNT#" => count($arResult["QBAR"])])?>
+				<?=Loc::getMessage("AV_LEARNING_TEST_QUESTIONS_COUNT", ["#COUNT#" => count($arResult["QBAR"])])?>
 			</div>
 
 			<div class="bar">
@@ -245,14 +261,14 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 				<?if($page == $currentQuestion):?>
 					<a
 						class="current"
-						title="<?=GetMessage("AV_LEARNING_TEST_CURRENT_QUESTION")?>"
+						title="<?=Loc::getMessage("AV_LEARNING_TEST_CURRENT_QUESTION")?>"
 					>
 						<?=$page?>
 					</a>
 				<?elseif($pageInfo["ANSWERED"] == 'Y'):?>
 					<a
 						class="answered"
-						title="<?=GetMessage("AV_LEARNING_TEST_ANSWERED_QUESTION")?>"
+						title="<?=Loc::getMessage("AV_LEARNING_TEST_ANSWERED_QUESTION")?>"
 						<?if($arResult["TEST"]["PASSAGE_TYPE"] == 2):?>
 						href="<?=$pageInfo["URL"]?>"
 						<?endif?>
@@ -261,7 +277,7 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 					</a>
 				<?else:?>
 					<a
-						title="<?=GetMessage("AV_LEARNING_TEST_NOANSWERED_QUESTION")?>"
+						title="<?=Loc::getMessage("AV_LEARNING_TEST_NOANSWERED_QUESTION")?>"
 						<?if($arResult["TEST"]["PASSAGE_TYPE"] != 0):?>
 						href="<?=$pageInfo["URL"]?>"
 						<?endif?>
@@ -276,7 +292,7 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 			<?$timerExplode = explode(':', $arResult["SECONDS_TO_END_STRING"])?>
 			<div
 				class="timer"
-				title="<?=GetMessage("AV_LEARNING_TEST_TIME_LIMIT")?>"
+				title="<?=Loc::getMessage("AV_LEARNING_TEST_TIME_LIMIT")?>"
 				data-limit="<?=$arResult["SECONDS_TO_END_STRING"]?>"
 			>
 				<div><?=$timerExplode[0]?></div>
@@ -289,7 +305,7 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 
 			<?if($arResult["TEST"]["CURRENT_INDICATION_PERCENT"] == 'Y'):?>
 			<div class="current-result">
-				<?=GetMessage("AV_LEARNING_TEST_CURRENT_RIGHT_COUNT")?>:<br>
+				<?=Loc::getMessage("AV_LEARNING_TEST_CURRENT_RIGHT_COUNT")?>:<br>
 				<b><?=$arResult["COMPLETE_PERCENT"]?>%</b>
 			</div>
 			<?endif?>
@@ -323,8 +339,8 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 			<?endif?>
 			"
 		>
-			<?if($arResult["ATTEMPT"]["COMPLETED"] == 'N'):?><?=GetMessage("AV_LEARNING_TEST_RESULT_FAILED")?>
-			<?elseif($arResult["ATTEMPT"]["COMPLETED"] == 'Y'):?><?=GetMessage("AV_LEARNING_TEST_RESULT_SUCCESS")?>
+			<?if($arResult["ATTEMPT"]["COMPLETED"] == 'N'):?><?=Loc::getMessage("AV_LEARNING_TEST_RESULT_FAILED")?>
+			<?elseif($arResult["ATTEMPT"]["COMPLETED"] == 'Y'):?><?=Loc::getMessage("AV_LEARNING_TEST_RESULT_SUCCESS")?>
 			<?endif?>
 		</div>
 		<?endif?>
@@ -337,18 +353,18 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 		<table class="result-table">
 			<?if($arResult["TEST"]["FINAL_INDICATION_CORRECT_COUNT"] == 'Y'):?>
 			<tr>
-				<th><?=GetMessage("AV_LEARNING_TEST_RESULT_TABLE_QUESTIONS_COUNT")?>:</th>
+				<th><?=Loc::getMessage("AV_LEARNING_TEST_RESULT_TABLE_QUESTIONS_COUNT")?>:</th>
 				<td><?=$arResult["ATTEMPT"]["QUESTIONS"]?></td>
 			</tr>
 			<tr>
-				<th><?=GetMessage("AV_LEARNING_TEST_RESULT_TABLE_RIGHT_QUESTIONS_COUNT")?>:</th>
+				<th><?=Loc::getMessage("AV_LEARNING_TEST_RESULT_TABLE_RIGHT_QUESTIONS_COUNT")?>:</th>
 				<td><?=$arResult["ATTEMPT"]["CORRECT_COUNT"]?></td>
 			</tr>
 			<?endif?>
 
 			<?if($arResult["TEST"]["FINAL_INDICATION_SCORE"] == 'Y'):?>
 			<tr>
-				<th><?=GetMessage("AV_LEARNING_TEST_RESULT_TABLE_RESULT_SCORE")?>:</th>
+				<th><?=Loc::getMessage("AV_LEARNING_TEST_RESULT_TABLE_RESULT_SCORE")?>:</th>
 				<td><?=round($arResult["ATTEMPT"]["SCORE"]/$arResult["ATTEMPT"]["MAX_SCORE"]*100, 2)?>%</td>
 			</tr>
 			<?endif?>
@@ -365,9 +381,10 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 					[
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => $arResult["GRADEBOOK_URL"],
-					"TITLE"       => GetMessage("AV_LEARNING_TEST_RESULT_TABLE_PROFILE_LINK_NAME"),
-					"PLACEHOLDER" => GetMessage("AV_LEARNING_TEST_RESULT_TABLE_PROFILE_LINK_TITLE")
-					]
+					"TITLE"       => Loc::getMessage("AV_LEARNING_TEST_RESULT_TABLE_PROFILE_LINK_NAME"),
+					"PLACEHOLDER" => Loc::getMessage("AV_LEARNING_TEST_RESULT_TABLE_PROFILE_LINK_TITLE")
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 		?>
 	</div>
@@ -382,21 +399,21 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 
 		<?if($arResult["TEST"]["ATTEMPT_LIMIT"]):?>
 		<div>
-			<?=GetMessage("AV_LEARNING_TEST_RESTART_ATTEMPT_LIMIT")?>: <b><?=$arResult["TEST"]["ATTEMPT_LIMIT"]?></b>
+			<?=Loc::getMessage("AV_LEARNING_TEST_RESTART_ATTEMPT_LIMIT")?>: <b><?=$arResult["TEST"]["ATTEMPT_LIMIT"]?></b>
 		</div>
 		<?endif?>
 
 		<?if($arResult["TEST"]["TIME_LIMIT"]):?>
 		<div>
-			<?=GetMessage("AV_LEARNING_TEST_RESTART_TIME_LIMIT")?>: <b><?=$arResult["TEST"]["TIME_LIMIT"]?></b> <?=GetMessage("AV_LEARNING_TEST_RESTART_TIME_LIMIT_MIN")?>
+			<?=Loc::getMessage("AV_LEARNING_TEST_RESTART_TIME_LIMIT")?>: <b><?=$arResult["TEST"]["TIME_LIMIT"]?></b> <?=Loc::getMessage("AV_LEARNING_TEST_RESTART_TIME_LIMIT_MIN")?>
 		</div>
 		<?endif?>
 
 		<div>
-			<?=GetMessage("AV_LEARNING_TEST_RESTART_PASSAGE_TYPE")?>:
-			<?if($arResult["TEST"]["PASSAGE_TYPE"] == 2):?>    <?=GetMessage("AV_LEARNING_TEST_RESTART_PASSAGE_FOLLOW_EDIT")?>
-			<?elseif($arResult["TEST"]["PASSAGE_TYPE"] == 1):?><?=GetMessage("AV_LEARNING_TEST_RESTART_PASSAGE_FOLLOW_NO_EDIT")?>
-			<?else:?>                                          <?=GetMessage("AV_LEARNING_TEST_RESTART_PASSAGE_NO_FOLLOW_NO_EDIT")?>
+			<?=Loc::getMessage("AV_LEARNING_TEST_RESTART_PASSAGE_TYPE")?>:
+			<?if($arResult["TEST"]["PASSAGE_TYPE"] == 2):?>    <?=Loc::getMessage("AV_LEARNING_TEST_RESTART_PASSAGE_FOLLOW_EDIT")?>
+			<?elseif($arResult["TEST"]["PASSAGE_TYPE"] == 1):?><?=Loc::getMessage("AV_LEARNING_TEST_RESTART_PASSAGE_FOLLOW_NO_EDIT")?>
+			<?else:?>                                          <?=Loc::getMessage("AV_LEARNING_TEST_RESTART_PASSAGE_NO_FOLLOW_NO_EDIT")?>
 			<?endif?>
 		</div>
 
@@ -406,7 +423,7 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 				(
 				["#TEST_LINK#", "#TEST_SCORE#"],
 				[$arResult["TEST"]["PREVIOUS_TEST_LINK"], $arResult["TEST"]["PREVIOUS_TEST_SCORE"]],
-				GetMessage("AV_LEARNING_TEST_RESTART_PREV_TEST_REQUIRED")
+				Loc::getMessage("AV_LEARNING_TEST_RESTART_PREV_TEST_REQUIRED")
 				)
 			?>
 		</div>
@@ -422,8 +439,9 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 					[
 					"BUTTON_TYPE" => 'submit',
 					"NAME"        => 'next',
-					"TITLE"       => GetMessage("AV_LEARNING_TEST_RESTART_START")
-					]
+					"TITLE"       => Loc::getMessage("AV_LEARNING_TEST_RESTART_START")
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 			?>
 		</form>

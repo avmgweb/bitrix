@@ -1,4 +1,6 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* -------------------------------------------------------------------- */
 /* ------------------------------ pager ------------------------------- */
@@ -13,7 +15,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* -------------------------------------------------------------------- */
 ?>
 <?if(!count($arResult["ITEMS"])):?>
-<?=GetMessage("AV_BLOG_LIST_NO_ITEMS")?>
+<?=Loc::getMessage("AV_BLOG_LIST_NO_ITEMS")?>
 <?endif?>
 <?
 /* -------------------------------------------------------------------- */
@@ -65,7 +67,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 							"CACHE_TYPE"   => $arParams["CACHE_TYPE"],
 							"CACHE_TIME"   => $arParams["CACHE_TIME"]
-							]
+							],
+						false, ["HIDE_ICONS" => 'Y']
 						);
 					?>
 				</div>
@@ -83,7 +86,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 			<?if($itemLink && $arParams["MARKUP_TYPE"] != 'SMALLER'):?>
 			<a href="<?=$arItem["DETAIL_PAGE_URL"]?>" rel="nofollow" class="read-more-link">
-				<?=GetMessage("AV_BLOG_LIST_READ_MORE")?>
+				<?=Loc::getMessage("AV_BLOG_LIST_READ_MORE")?>
 			</a>
 			<?endif?>
 		</div>

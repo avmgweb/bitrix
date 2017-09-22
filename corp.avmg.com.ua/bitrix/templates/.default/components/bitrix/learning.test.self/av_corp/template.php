@@ -1,5 +1,7 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
 <?
+use \Bitrix\Main\Localization\Loc;
+
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* -------------------------------------------------------------------- */
 /* --------------------------- alert message -------------------------- */
 /* -------------------------------------------------------------------- */
@@ -58,8 +60,9 @@
 								[
 								"NAME"        => 'answer[]',
 								"LIST"        => $questionList,
-								"EMPTY_TITLE" => GetMessage("AV_LEARNING_TEST_SELF_SORTING_EMPTY_TITLE")
-								]
+								"EMPTY_TITLE" => Loc::getMessage("AV_LEARNING_TEST_SELF_SORTING_EMPTY_TITLE")
+								],
+							false, ["HIDE_ICONS" => 'Y']
 							);
 						?>
 					</div>
@@ -77,7 +80,8 @@
 							"VALUE" => $answerInfo["ID"],
 							"TITLE" => $answerInfo["ANSWER"],
 							"ATTR"  => ["data-correct-value" => $answerInfo["CORRECT"]]
-							]
+							],
+						false, ["HIDE_ICONS" => 'Y']
 						);
 					?>
 				</div>
@@ -94,7 +98,8 @@
 							"VALUE" => $answerInfo["ID"],
 							"TITLE" => $answerInfo["ANSWER"],
 							"ATTR"  => ["data-correct-value" => $answerInfo["CORRECT"]]
-							]
+							],
+						false, ["HIDE_ICONS" => 'Y']
 						);
 					?>
 				</div>
@@ -113,10 +118,11 @@
 				"av:form.button", "av_corp",
 					[
 					"BUTTON_TYPE" => 'label',
-					"TITLE"       => GetMessage("AV_LEARNING_TEST_SELF_SUBMIT_NAME"),
-					"PLACEHOLDER" => GetMessage("AV_LEARNING_TEST_SELF_SUBMIT_TITLE"),
+					"TITLE"       => Loc::getMessage("AV_LEARNING_TEST_SELF_SUBMIT_NAME"),
+					"PLACEHOLDER" => Loc::getMessage("AV_LEARNING_TEST_SELF_SUBMIT_TITLE"),
 					"ATTR"        => 'data-submit-button'
-					]
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 			?>
 		</div>
@@ -129,7 +135,7 @@
 	?>
 	<div class="questions-bar">
 		<div class="title">
-			<?=GetMessage("AV_LEARNING_TEST_SELF_QUESTIONS_COUNT", ["#COUNT#" => count($arResult["QUESTIONS"])])?>
+			<?=Loc::getMessage("AV_LEARNING_TEST_SELF_QUESTIONS_COUNT", ["#COUNT#" => count($arResult["QUESTIONS"])])?>
 		</div>
 
 		<div class="bar">

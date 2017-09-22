@@ -46,7 +46,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 			"NAME"  => 'submit',
 			"TITLE" => GetMessage("AV_SUBSCRIBE_LINE_SUBMIT_BUTTON"),
 			"ATTR"  => ["id" => 'bx_subscribe_btn_'.$this->randString()]
-			]
+			],
+		false, ["HIDE_ICONS" => 'Y']
 		);
 	?>
 </form>

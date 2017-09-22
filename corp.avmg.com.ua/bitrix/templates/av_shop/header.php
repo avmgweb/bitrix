@@ -1,5 +1,7 @@
 <?
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
+use Bitrix\Main\Page\Asset;
 /* ============================================================================================= */
 /* ========================================= COUNTINGS ========================================= */
 /* ============================================================================================= */
@@ -46,9 +48,9 @@ ob_end_clean();
 
 		<?$APPLICATION->ShowHead()?>
 		<?CJSCore::Init(["bootstrap", "av_site"])?>
-		<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/scripts/main.js')?>
-		<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/scripts/'.LANGUAGE_ID.'/google_analytics.js')?>
-		<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/scripts/'.LANGUAGE_ID.'/yandex_metrika.js')?>
+		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH.'/scripts/main.js')?>
+		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH.'/scripts/'.LANGUAGE_ID.'/google_analytics.js')?>
+		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH.'/scripts/'.LANGUAGE_ID.'/yandex_metrika.js')?>
 	</head>
 	<?
 	/* -------------------------------------------------------------------- */
@@ -65,7 +67,49 @@ ob_end_clean();
 		<header>
 			<div class="hidden-lg hidden-md mobile-first-row">
 				<div>
-					<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => 'file', "PATH" => '/include/hot_line.php'))?>
+					<?
+					$APPLICATION->IncludeComponent
+						(
+						"bitrix:main.include", "",
+						array("AREA_FILE_SHOW" => 'file', "PATH" => '/include/hot_line.php')
+						);
+					?>
+				</div>
+				<div>
+					<?
+					$APPLICATION->IncludeComponent
+						(
+						"bitrix:sale.basket.basket.line", "av",
+							array(
+							"PATH_TO_BASKET"    => '/personal/cart/',
+							"PATH_TO_ORDER"     => '/personal/orders/make/',
+							"SHOW_NUM_PRODUCTS" => 'Y',
+							"SHOW_TOTAL_PRICE"  => 'N',
+							"SHOW_EMPTY_VALUES" => 'N',
+
+							"SHOW_PERSONAL_LINK" => 'N',
+							"PATH_TO_PERSONAL"   => '/personal/',
+
+							"SHOW_AUTHOR"       => 'N',
+							"PATH_TO_REGISTER"  => '/personal/register/',
+							"PATH_TO_AUTHORIZE" => '/personal/auth/',
+							"PATH_TO_PROFILE"   => '/personal/info/',
+
+							"SHOW_PRODUCTS"  => 'N',
+							"SHOW_DELAY"     => 'N',
+							"SHOW_NOTAVAIL"  => 'N',
+							"SHOW_SUBSCRIBE" => 'N',
+							"SHOW_IMAGE"     => 'N',
+							"SHOW_PRICE"     => 'N',
+							"SHOW_SUMMARY"   => 'N',
+
+							"POSITION_FIXED"       => 'N',
+							"POSITION_HORIZONTAL"  => '',
+							"POSITION_VERTICAL"    => '',
+							"HIDE_ON_BASKET_PAGES" => 'N'
+							)
+						);
+					?>
 				</div>
 			</div>
 
@@ -124,7 +168,7 @@ ob_end_clean();
 									"POSITION_VERTICAL"    => '',
 									"HIDE_ON_BASKET_PAGES" => 'N'
 									)
-								)
+								);
 							?>
 						</div>
 
@@ -134,16 +178,14 @@ ob_end_clean();
 								(
 								"av:visit_site.user.panel", "",
 									array(
-									"PROFILE_URL"         => '/personal/info/',
-									"FORGOT_PASSWORD_URL" => '/personal/forgot_password/',
-									"BASKET_URL"          => '/personal/cart/',
+									"USER_MENU_TYPE" => 'user',
 
 									"REGISTRATION_SHOW_FIELDS"         => array("EMAIL", "NAME", "LAST_NAME", "PERSONAL_MOBILE"),
 									"REGISTRATION_SHOW_USER_PROPS"     => array(),
 									"REGISTRATION_REQUIRED_FIELDS"     => array(),
 									"REGISTRATION_REQUIRED_USER_PROPS" => array()
 									)
-								)
+								);
 							?>
 						</div>
 					</div>
@@ -164,7 +206,7 @@ ob_end_clean();
 							"MENU_CACHE_TIME"       => 360000,
 							"MENU_CACHE_USE_GROUPS" => 'Y'
 							)
-						)
+						);
 					?>
 				</div>
 				<?

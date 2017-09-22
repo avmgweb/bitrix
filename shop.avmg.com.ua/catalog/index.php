@@ -38,11 +38,12 @@ if(count($iblockInfo))
 $iblockListPage    = $iblockInfo["LIST_PAGE_URL"];
 $iblockSectionPage = str_replace($iblockListPage, '', $iblockInfo["SECTION_PAGE_URL"]);
 $iblockElementPage = str_replace($iblockListPage, '', $iblockInfo["DETAIL_PAGE_URL"]);
-$iblockListUrl     = str_replace(["#IBLOCK_ID#", "#IBLOCK_CODE#"], [$iblockInfo["ID"], $iblockInfo["CODE"]], $iblockListPage);
 /* -------------------------------------------------------------------- */
-/* ------------------------- sku iblock props ------------------------- */
+/* --------------------- catalog/sku iblock props --------------------- */
 /* -------------------------------------------------------------------- */
+$iblockProps    = [];
 $skuIblockProps = [];
+
 if(count($iblockInfo))
 	{
 	$catalogInfo = CCatalog::GetList
@@ -55,6 +56,9 @@ if(count($iblockInfo))
 			],
 		false, false
 		)->GetNext();
+
+	$queryList = CIBlockProperty::GetList(["SORT" => 'ASC'], ["IBLOCK_ID" => $catalogInfo["ID"]]);
+	while($queryElement = $queryList->GetNext()) $iblockProps[] = $queryElement["CODE"] ? $queryElement["CODE"] : $queryElement["ID"];
 
 	if($catalogInfo["OFFERS_IBLOCK_ID"] && $catalogInfo["OFFERS_PROPERTY_ID"])
 		{
@@ -95,7 +99,7 @@ if(!count($iblockInfo))
 /* -------------------------------------------------------------------- */
 else
 	{
-	$APPLICATION->AddChainItem($iblockInfo["NAME"], $iblockListUrl);
+	$APPLICATION->AddChainItem($iblockInfo["NAME"], $iblockInfo["LIST_PAGE_URL"]);
 	$APPLICATION->IncludeComponent
 		(
 		"bitrix:catalog", "av",
@@ -137,7 +141,7 @@ else
 			"USE_FILTER"                  => 'Y',
 			"FILTER_NAME"                 => '',
 			"FILTER_FIELD_CODE"           => array(),
-			"FILTER_PROPERTY_CODE"        => array(),
+			"FILTER_PROPERTY_CODE"        => $iblockProps,
 			"FILTER_PRICE_CODE"           => array('BASE'),
 			"FILTER_OFFERS_FIELD_CODE"    => array(),
 			"FILTER_OFFERS_PROPERTY_CODE" => $skuIblockProps,
@@ -206,17 +210,17 @@ else
 			"ELEMENT_SORT_ORDER"        => 'ASC',
 			"ELEMENT_SORT_FIELD2"       => 'ID',
 			"ELEMENT_SORT_ORDER2"       => 'DESC',
-			"LIST_PROPERTY_CODE"        => array(),
+			"LIST_PROPERTY_CODE"        => $iblockProps,
 			"INCLUDE_SUBSECTIONS"       => 'N',
 			"LIST_META_KEYWORDS"        => '',
 			"LIST_META_DESCRIPTION"     => '',
 			"LIST_BROWSER_TITLE"        => '',
 			"LIST_OFFERS_FIELD_CODE"    => array("NAME", "PREVIEW_PICTURE"),
-			"LIST_OFFERS_PROPERTY_CODE" => array(),
+			"LIST_OFFERS_PROPERTY_CODE" => $skuIblockProps,
 			"LIST_OFFERS_LIMIT"         => '',
 			"SECTION_BACKGROUND_IMAGE"  => '',
 
-			"DETAIL_PROPERTY_CODE"             => array(),
+			"DETAIL_PROPERTY_CODE"             => $iblockProps,
 			"DETAIL_META_KEYWORDS"             => '',
 			"DETAIL_META_DESCRIPTION"          => '',
 			"DETAIL_BROWSER_TITLE"             => '',
@@ -245,7 +249,7 @@ else
 			"OFFERS_SORT_FIELD2" => 'NAME',
 			"OFFERS_SORT_ORDER2" => 'ASC',
 
-			"PAGER_TEMPLATE"       => 'av',
+			"PAGER_TEMPLATE"       => 'av_corp',
 			"DISPLAY_TOP_PAGER"    => 'N',
 			"DISPLAY_BOTTOM_PAGER" => 'Y',
 
@@ -262,7 +266,8 @@ else
 			"ASK_FORM_ID"             => 52,
 			"ASK_FORM_LINK_FIELD_ID"  => 'form_text_334',
 			"ASK_FORM_COUNT_FIELD_ID" => 'form_text_335',
-			"CATALOG_MENU_TYPE"       => 'catalog'
+			"CATALOG_MENU_TYPE"       => 'catalog',
+			"PAGE_SIZE_VALUES"        => array(10, 20, 30)
 			)
 		);
 	}

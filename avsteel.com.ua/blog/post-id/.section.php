@@ -1,3 +1,0 @@
-<?
-$sSectionName="post_id";
-?>

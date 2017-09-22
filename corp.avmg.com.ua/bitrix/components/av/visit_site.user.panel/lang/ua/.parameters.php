@@ -2,11 +2,8 @@
 // groups
 $MESS["AV_AUTH_PARAMS_GROUP_LINKS"]        = 'Параметри посилань';
 $MESS["AV_AUTH_PARAMS_GROUP_REGISTRATION"] = 'Параметри реєстрації';
-$MESS["AV_AUTH_PARAMS_GROUP_GOOGLE"]       = 'Google ReCAPTCHA';
 // links params
-$MESS["AV_AUTH_PROFILE_URL"]         = 'Сторінка профілю';
-$MESS["AV_AUTH_FORGOT_PASSWORD_URL"] = 'Сторінка забутого пароля';
-$MESS["AV_AUTH_BASKET_URL"]          = 'Сторінка с кошиком';
+$MESS["AV_AUTH_USER_MENU_TYPE"] = 'Тип меню користувачя';
 // registration params
 $MESS["AV_AUTH_REGISTRATION_SHOW_FIELDS"]         = 'Поля форми';
 $MESS["AV_AUTH_REGISTRATION_SHOW_USER_PROPS"]     = 'Поля форми користувача';

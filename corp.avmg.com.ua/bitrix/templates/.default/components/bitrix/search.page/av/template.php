@@ -10,7 +10,8 @@
 				"NAME"  => 'q',
 				"VALUE" => $arResult["REQUEST"]["QUERY"],
 				"ATTR"  => 'size="40" autocomplete="off"'
-				]
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		$APPLICATION->IncludeComponent
 			(
@@ -19,7 +20,8 @@
 				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'submit',
 				"TITLE"       => GetMessage("AV_SEARCH_PAGE_SEARCH")
-				]
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		?>
 		<input type="hidden" name="how" value="<?=$arResult["REQUEST"]["HOW"] == 'd' ? 'd': 'r'?>">
@@ -44,7 +46,8 @@
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => $arParams["PRODUCTS_LINK"],
 					"TITLE"       => GetMessage("AV_SEARCH_PRODUCTS_LINK")
-					]
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 			?>
 		</div>

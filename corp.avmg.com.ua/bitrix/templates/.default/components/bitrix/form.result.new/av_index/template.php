@@ -1,12 +1,15 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
 CJSCore::Init(["av_form_elements"]);
 /* -------------------------------------------------------------------- */
 /* --------------------------- form sended ---------------------------- */
 /* -------------------------------------------------------------------- */
 ?>
 <?if($arResult["isFormNote"] == 'Y'):?>
-<div class="av-form-index-result-ok"><?=GetMessage("AV_FORM_INDEX_RESULT_OK")?></div>
+<div class="av-form-index-result-ok"><?=Loc::getMessage("AV_FORM_INDEX_RESULT_OK")?></div>
 <?endif?>
 <?
 /* -------------------------------------------------------------------- */
@@ -59,7 +62,14 @@ CJSCore::Init(["av_form_elements"]);
 		<?foreach($arResult["FIELDS"] as $fieldCode => $arrayInfo):?>
 			<?if(!in_array($fieldCode, ["message"])):?>
 			<div class="field-row <?=$fieldCode?>">
-				<?$APPLICATION->IncludeComponent("av:form_elements", "av_site", $fieldsParams[$fieldCode])?>
+				<?
+				$APPLICATION->IncludeComponent
+					(
+					"av:form_elements", "av_site",
+					$fieldsParams[$fieldCode],
+					false, ["HIDE_ICONS" => 'Y']
+					);
+				?>
 			</div>
 			<?endif?>
 		<?endforeach?>
@@ -73,7 +83,14 @@ CJSCore::Init(["av_form_elements"]);
 		<?foreach($arResult["FIELDS"] as $fieldCode => $arrayInfo):?>
 			<?if(in_array($fieldCode, ["message"])):?>
 			<div class="field-row <?=$fieldCode?>">
-				<?$APPLICATION->IncludeComponent("av:form_elements", "av_site", $fieldsParams[$fieldCode])?>
+				<?
+				$APPLICATION->IncludeComponent
+					(
+					"av:form_elements", "av_site",
+					$fieldsParams[$fieldCode],
+					false, ["HIDE_ICONS" => 'Y']
+					);
+				?>
 			</div>
 			<?endif?>
 		<?endforeach?>
@@ -92,8 +109,9 @@ CJSCore::Init(["av_form_elements"]);
 					"TYPE"        => 'button',
 					"BUTTON_TYPE" => 'submit',
 					"NAME"        => 'web_form_submit',
-					"TITLE"       => GetMessage("AV_FORM_INDEX_SUBMIT")
-					]
+					"TITLE"       => Loc::getMessage("AV_FORM_INDEX_SUBMIT")
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 			?>
 		</div>
@@ -106,8 +124,8 @@ CJSCore::Init(["av_form_elements"]);
 /* -------------------------------------------------------------------- */
 ?>
 <script>
-	BX.message({"AV_FORM_INDEX_FORM_VALIDATION_ALERT": '<?=GetMessage("AV_FORM_INDEX_FORM_VALIDATION_ALERT")?>'});
-	BX.message({"AV_FORM_INDEX_RESULT_OK_MESSAGE"    : '<?=GetMessage("AV_FORM_INDEX_RESULT_OK_MESSAGE")?>'});
+	BX.message({"AV_FORM_INDEX_FORM_VALIDATION_ALERT": '<?=Loc::getMessage("AV_FORM_INDEX_FORM_VALIDATION_ALERT")?>'});
+	BX.message({"AV_FORM_INDEX_RESULT_OK_MESSAGE"    : '<?=Loc::getMessage("AV_FORM_INDEX_RESULT_OK_MESSAGE")?>'});
 
 	<?if($arResult["isFormNote"] == 'Y'):?>
 	AvBlurScreen("on", 1000);

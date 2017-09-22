@@ -1,4 +1,6 @@
 <?
+use Bitrix\Main\Page\Asset;
+
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
 $APPLICATION->SetTitle("О нас");
@@ -6,8 +8,8 @@ $APPLICATION->SetPageProperty("title",       "О компании АВ мета�
 $APPLICATION->SetPageProperty("description", "АВ металл групп ™ ✓Низкие цены ✓Прямы поставки ✓Собственное производство ✓Качественный сервис ☎(097)208-29-98 Звоните!");
 
 CJSCore::Init(["av_site", "bootstrap"]);
-$APPLICATION->SetAdditionalCSS('/bitrix/css/av_site/pages/about.css');
-$APPLICATION->AddHeadScript   ('/bitrix/js/av_site/pages/about.js');
+Asset::getInstance()->addCss("/bitrix/css/av_site/pages/about.css");
+Asset::getInstance()->addJs ("/bitrix/js/av_site/pages/about.js");
 ?>
 <div class="av-vs-page-block">
 	<div class="container">

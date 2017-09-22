@@ -1,4 +1,6 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 /* -------------------------------------------------------------------- */
 /* ---------------------------- variables ----------------------------- */
@@ -49,45 +51,41 @@ if(CTimeZone::Enabled()) $userFields[] = 'AUTO_TIME_ZONE';
 $userFieldsArray = [];
 $userPropsArray  = [];
 foreach($userFields as $property)
-	$userFieldsArray[$property] = GetMessage("REGISTER_FIELD_".$property);
+	$userFieldsArray[$property] = Loc::getMessage("REGISTER_FIELD_".$property);
 foreach($GLOBALS["USER_FIELD_MANAGER"]->GetUserFields("USER", 0, LANGUAGE_ID) as $property)
 	$userPropsArray[$property["FIELD_NAME"]] = $property["EDIT_FORM_LABEL"] ? $property["EDIT_FORM_LABEL"] : $property["FIELD_NAME"];
+
+$menuTypes = [];
+$queryList = CSite::GetList();
+while($queryElement = $queryList->GetNext())
+	foreach(GetMenuTypes($queryElement["ID"]) as $menuType => $menuTitle)
+		if(!$menuTypes[$menuType])
+			$menuTypes[$menuType] = $menuTitle;
 /* -------------------------------------------------------------------- */
 /* ------------------------------ groups ------------------------------ */
 /* -------------------------------------------------------------------- */
 $arComponentParameters["GROUPS"] =
 	[
-	"LINKS"        => ["NAME" => GetMessage("AV_AUTH_PARAMS_GROUP_LINKS"),        "SORT" => 10],
-	"REGISTRATION" => ["NAME" => GetMessage("AV_AUTH_PARAMS_GROUP_REGISTRATION"), "SORT" => 20],
-	"GOOGLE"       => ["NAME" => GetMessage("AV_AUTH_PARAMS_GROUP_GOOGLE"),       "SORT" => 30]
+	"LINKS"        => ["NAME" => Loc::getMessage("AV_AUTH_PARAMS_GROUP_LINKS"),        "SORT" => 10],
+	"REGISTRATION" => ["NAME" => Loc::getMessage("AV_AUTH_PARAMS_GROUP_REGISTRATION"), "SORT" => 20]
 	];
 /* -------------------------------------------------------------------- */
 /* --------------------------- links params --------------------------- */
 /* -------------------------------------------------------------------- */
-$arComponentParameters["PARAMETERS"]["PROFILE_URL"] =
-	[
-	"NAME"   => GetMessage("AV_AUTH_PROFILE_URL"),
-	"TYPE"   => 'STRING',
-	"PARENT" => 'LINKS'
-	];
-$arComponentParameters["PARAMETERS"]["FORGOT_PASSWORD_URL"] =
-	[
-	"NAME"   => GetMessage("AV_AUTH_FORGOT_PASSWORD_URL"),
-	"TYPE"   => 'STRING',
-	"PARENT" => 'LINKS'
-	];
-$arComponentParameters["PARAMETERS"]["BASKET_URL"] =
-	[
-	"NAME"   => GetMessage("AV_AUTH_BASKET_URL"),
-	"TYPE"   => 'STRING',
-	"PARENT" => 'LINKS'
-	];
+if(count($menuTypes))
+	$arComponentParameters["PARAMETERS"]["USER_MENU_TYPE"] =
+		[
+		"NAME"   => Loc::getMessage("AV_AUTH_USER_MENU_TYPE"),
+		"TYPE"   => 'LIST',
+		"VALUES" => $menuTypes,
+		"PARENT" => 'LINKS'
+		];
 /* -------------------------------------------------------------------- */
 /* ------------------------ registration params ----------------------- */
 /* -------------------------------------------------------------------- */
 $arComponentParameters["PARAMETERS"]["REGISTRATION_SHOW_FIELDS"] =
 	[
-	"NAME"     => GetMessage("AV_AUTH_REGISTRATION_SHOW_FIELDS"),
+	"NAME"     => Loc::getMessage("AV_AUTH_REGISTRATION_SHOW_FIELDS"),
 	"TYPE"     => 'LIST',
 	"MULTIPLE" => 'Y',
 	"SIZE"     => 5,
@@ -96,7 +94,7 @@ $arComponentParameters["PARAMETERS"]["REGISTRATION_SHOW_FIELDS"] =
 	];
 $arComponentParameters["PARAMETERS"]["REGISTRATION_SHOW_USER_PROPS"] =
 	[
-	"NAME"     => GetMessage("AV_AUTH_REGISTRATION_SHOW_USER_PROPS"),
+	"NAME"     => Loc::getMessage("AV_AUTH_REGISTRATION_SHOW_USER_PROPS"),
 	"TYPE"     => 'LIST',
 	"MULTIPLE" => 'Y',
 	"SIZE"     => 5,
@@ -105,7 +103,7 @@ $arComponentParameters["PARAMETERS"]["REGISTRATION_SHOW_USER_PROPS"] =
 	];
 $arComponentParameters["PARAMETERS"]["REGISTRATION_REQUIRED_FIELDS"] =
 	[
-	"NAME"     => GetMessage("AV_AUTH_REGISTRATION_REQUIRED_FIELDS"),
+	"NAME"     => Loc::getMessage("AV_AUTH_REGISTRATION_REQUIRED_FIELDS"),
 	"TYPE"     => 'LIST',
 	"MULTIPLE" => 'Y',
 	"SIZE"     => 5,
@@ -114,7 +112,7 @@ $arComponentParameters["PARAMETERS"]["REGISTRATION_REQUIRED_FIELDS"] =
 	];
 $arComponentParameters["PARAMETERS"]["REGISTRATION_REQUIRED_USER_PROPS"] =
 	[
-	"NAME"     => GetMessage("AV_AUTH_REGISTRATION_REQUIRED_USER_PROPS"),
+	"NAME"     => Loc::getMessage("AV_AUTH_REGISTRATION_REQUIRED_USER_PROPS"),
 	"TYPE"     => 'LIST',
 	"MULTIPLE" => 'Y',
 	"SIZE"     => 5,

@@ -1,0 +1,69 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-file label
+	{
+	font-weight: normal;
+	margin:  0;
+	padding: 0;
+	}
+.av-form-file a,
+.av-form-file a:hover,
+.av-form-file a:active,
+.av-form-file a:focus,
+.av-form-file a:visited {color: #CC0000}
+.av-form-file input     {display: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ input ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-file label
+	{
+	align-items: center;
+	color: #CC0000;
+	display: flex;
+	}
+.av-form-file .default,
+.av-form-file .new-value .title,
+.av-form-file .current-value a
+	{
+	cursor: pointer;
+	overflow: hidden;
+	text-decoration: underline;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	}
+.av-form-file .new-value .title,
+.av-form-file .current-value a
+	{
+	max-width: calc(100% - 24px);
+	}
+.av-form-file label .delete
+	{
+	background: url(images/delete.svg) center center no-repeat;
+	background-size: 12px;
+	cursor: pointer;
+	width:  24px;
+	height: 24px;
+	}
+.av-form-file label .delete:hover
+	{
+	background-image: url(images/delete_active.svg);
+	}
+.av-form-file.uploaded       .default,
+.av-form-file.active         .default,
+.av-form-file.uploaded       .new-value,
+.av-form-file:not(.active)   .new-value,
+.av-form-file:not(.uploaded) .current-value,
+.av-form-file.active         .current-value
+	{
+	display: none;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- media ------------------------------ */
+/* -------------------------------------------------------------------- */
+@media (max-width: 767px)
+	{
+	.av-form-file label .delete    {background-size: 18px;width: 48px;height: 48px}
+	.av-form-file .new-value .title,
+	.av-form-file .current-value a {max-width: calc(100% - 48px)}
+	}

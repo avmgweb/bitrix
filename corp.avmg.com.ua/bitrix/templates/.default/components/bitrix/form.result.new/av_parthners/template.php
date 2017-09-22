@@ -1,13 +1,16 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
 CJSCore::Init(["bootstrap", "av_form_elements"]);
 /* -------------------------------------------------------------------- */
 /* --------------------------- form sended ---------------------------- */
 /* -------------------------------------------------------------------- */
 ?>
 <?if($arResult["isFormNote"] == 'Y'):?>
-	<h3><?=GetMessage("AV_FORM_PARTHNERS_FORM_TITLE")?></h3>
-	<div class="av-form-parthners-result-ok"><?=GetMessage("AV_FORM_PARTHNERS_RESULT_OK")?></div>
+	<h3><?=Loc::getMessage("AV_FORM_PARTHNERS_FORM_TITLE")?></h3>
+	<div class="av-form-parthners-result-ok"><?=Loc::getMessage("AV_FORM_PARTHNERS_RESULT_OK")?></div>
 <?endif?>
 <?
 /* -------------------------------------------------------------------- */
@@ -21,7 +24,7 @@ CJSCore::Init(["bootstrap", "av_form_elements"]);
 	/* ------------------------------------------- */
 	?>
 	<div class="av-form-parthners-title">
-		<?=GetMessage("AV_FORM_PARTHNERS_MAIN_TITLE")?>
+		<?=Loc::getMessage("AV_FORM_PARTHNERS_MAIN_TITLE")?>
 	</div>
 	<?
 	/* ------------------------------------------- */
@@ -32,7 +35,7 @@ CJSCore::Init(["bootstrap", "av_form_elements"]);
 		<div>
 			<div class="av-form-parthners-work-button authorize<?if($USER->IsAuthorized()):?> passed unactive<?endif?>">
 				<div>1</div>
-				<div><?=GetMessage("AV_FORM_PARTHNERS_BUTTON_REGISTER")?></div>
+				<div><?=Loc::getMessage("AV_FORM_PARTHNERS_BUTTON_REGISTER")?></div>
 				<div></div>
 			</div>
 			<?$APPLICATION->IncludeComponent("bitrix:main.include", "", ["AREA_FILE_SHOW" => "file", "PATH" => "/include/partners/left_column.php"])?>
@@ -40,7 +43,7 @@ CJSCore::Init(["bootstrap", "av_form_elements"]);
 		<div>
 			<div class="av-form-parthners-work-button form-link<?if(!$USER->IsAuthorized()):?> unactive<?endif?>">
 				<div>2</div>
-				<div><?=GetMessage("AV_FORM_PARTHNERS_BUTTON_FORM_LINK")?></div>
+				<div><?=Loc::getMessage("AV_FORM_PARTHNERS_BUTTON_FORM_LINK")?></div>
 				<div></div>
 			</div>
 			<?$APPLICATION->IncludeComponent("bitrix:main.include", "", ["AREA_FILE_SHOW" => "file", "PATH" => "/include/partners/right_column.php"])?>
@@ -53,7 +56,7 @@ CJSCore::Init(["bootstrap", "av_form_elements"]);
 	?>
 	<?if($USER->IsAuthorized()):?>
 	<div class="av-form-parthners" data-avat-form-id="<?=$arResult["arForm"]["ID"]?>">
-		<h3><?=GetMessage("AV_FORM_PARTHNERS_FORM_TITLE")?></h3>
+		<h3><?=Loc::getMessage("AV_FORM_PARTHNERS_FORM_TITLE")?></h3>
 
 		<?if($arResult["isFormErrors"] == 'Y'):?>
 		<div class="errors-block"><?=$arResult["FORM_ERRORS"]?></div>
@@ -97,24 +100,38 @@ CJSCore::Init(["bootstrap", "av_form_elements"]);
 			?>
 			<div class="left-column">
 				<div>
-					<div class="title"><?=GetMessage("AV_FORM_PARTHNERS_FORM_BLOCK_MAIN")?></div>
+					<div class="title"><?=Loc::getMessage("AV_FORM_PARTHNERS_FORM_BLOCK_MAIN")?></div>
 					<?foreach(["Name_company", "adress","country", "city", "post_index", "law_status", "phone_text", "company_website"] as $fieldCode):?>
 					<div field-row="<?=$fieldCode?>">
-						<?$APPLICATION->IncludeComponent("av:form_elements", "av_site", $fieldsParams[$fieldCode])?>
+						<?
+						$APPLICATION->IncludeComponent
+							(
+							"av:form_elements", "av_site",
+							$fieldsParams[$fieldCode],
+							false, ["HIDE_ICONS" => 'Y']
+							);
+						?>
 					</div>
 					<?endforeach?>
 				</div>
 				<div>
 					<?foreach(["adress_delivery_documents", "city_for_delivery", "post_index_delivery"] as $fieldCode):?>
 						<?if(count($fieldsParams[$fieldCode])):?>
-						<div class="title"><?=GetMessage("AV_FORM_PARTHNERS_FORM_BLOCK_DELIVERY")?></div>
+						<div class="title"><?=Loc::getMessage("AV_FORM_PARTHNERS_FORM_BLOCK_DELIVERY")?></div>
 						<?break?>
 						<?endif?>
 					<?endforeach?>
 
 					<?foreach(["adress_delivery_documents", "city_for_delivery", "post_index_delivery"] as $fieldCode):?>
 					<div field-row="<?=$fieldCode?>">
-						<?$APPLICATION->IncludeComponent("av:form_elements", "av_site", $fieldsParams[$fieldCode])?>
+						<?
+						$APPLICATION->IncludeComponent
+							(
+							"av:form_elements", "av_site",
+							$fieldsParams[$fieldCode],
+							false, ["HIDE_ICONS" => 'Y']
+							);
+						?>
 					</div>
 					<?endforeach?>
 				</div>
@@ -125,10 +142,17 @@ CJSCore::Init(["bootstrap", "av_form_elements"]);
 			/* ---------------------------- */
 			?>
 			<div class="right-column">
-				<div class="title"><?=GetMessage("AV_FORM_PARTHNERS_FORM_BLOCK_COMPANY_AGENT")?></div>
+				<div class="title"><?=Loc::getMessage("AV_FORM_PARTHNERS_FORM_BLOCK_COMPANY_AGENT")?></div>
 				<?foreach(["last_name", "name_secondname", "position", "email", "phone", "phone_additional", "comments"] as $fieldCode):?>
 				<div class="field-row <?=$fieldCode?>">
-					<?$APPLICATION->IncludeComponent("av:form_elements", "av_site", $fieldsParams[$fieldCode])?>
+					<?
+					$APPLICATION->IncludeComponent
+						(
+						"av:form_elements", "av_site",
+						$fieldsParams[$fieldCode],
+						false, ["HIDE_ICONS" => 'Y']
+						);
+					?>
 				</div>
 				<?endforeach?>
 			</div>
@@ -146,9 +170,10 @@ CJSCore::Init(["bootstrap", "av_form_elements"]);
 						"TYPE"        => 'button',
 						"BUTTON_TYPE" => 'submit',
 						"NAME"        => 'web_form_submit',
-						"TITLE"       => GetMessage("AV_FORM_PARTHNERS_SUBMIT"),
+						"TITLE"       => Loc::getMessage("AV_FORM_PARTHNERS_SUBMIT"),
 						"ATTR"        => 'submit-button'
-						]
+						],
+					false, ["HIDE_ICONS" => 'Y']
 					);
 				?>
 			</div>
@@ -162,8 +187,8 @@ CJSCore::Init(["bootstrap", "av_form_elements"]);
 /* -------------------------------------------------------------------- */
 ?>
 <script>
-	BX.message({"AV_FORM_PARTHNERS_FORM_VALIDATION_ALERT": '<?=GetMessage("AV_FORM_PARTHNERS_FORM_VALIDATION_ALERT")?>'});
-	BX.message({"AV_FORM_PARTHNERS_RESULT_OK_MESSAGE"    : '<?=GetMessage("AV_FORM_PARTHNERS_RESULT_OK_MESSAGE")?>'});
+	BX.message({"AV_FORM_PARTHNERS_FORM_VALIDATION_ALERT": '<?=Loc::getMessage("AV_FORM_PARTHNERS_FORM_VALIDATION_ALERT")?>'});
+	BX.message({"AV_FORM_PARTHNERS_RESULT_OK_MESSAGE"    : '<?=Loc::getMessage("AV_FORM_PARTHNERS_RESULT_OK_MESSAGE")?>'});
 
 	<?if($arResult["isFormNote"] == 'Y'):?>
 	AvBlurScreen("on", 1000);

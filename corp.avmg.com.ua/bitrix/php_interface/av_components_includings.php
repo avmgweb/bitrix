@@ -1,4 +1,6 @@
 <?
+use Bitrix\Main\Page\Asset;
+
 class AvComponentsIncludings
 	{
 	protected static
@@ -56,8 +58,8 @@ class AvComponentsIncludings
 			];
 
 		include $_SERVER["DOCUMENT_ROOT"].$dirPath.'/component_epilog.php';
-		$GLOBALS["APPLICATION"]->SetAdditionalCss($dirPath.'/style.css');
-		$GLOBALS["APPLICATION"]->AddHeadScript   ($dirPath.'/script.js');
+		Asset::getInstance()->addCss($dirPath.'/style.css');
+		Asset::getInstance()->addJs ($dirPath.'/script.js');
 
 		return $this;
 		}

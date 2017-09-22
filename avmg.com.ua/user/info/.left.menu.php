@@ -8,7 +8,7 @@ $aMenuLinks = Array(
 		"" 
 	),
 	Array(
-		"Мої звернення", 
+		"Підтримка", 
 		"/user/support/", 
 		Array(), 
 		Array(), 

@@ -1,4 +1,6 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* -------------------------------------------------------------------- */
 /* -------------------------- same articles --------------------------- */
@@ -105,7 +107,8 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 
 						"CACHE_TYPE"   => $arParams["CACHE_TYPE"],
 						"CACHE_TIME"   => $arParams["CACHE_TIME"]
-						]
+						],
+					false, ["HIDE_ICONS" => 'Y']
 					);
 			?>
 		</div>
@@ -122,8 +125,9 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 					"TYPE"        => 'button',
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => $arResult["LIST_PAGE_URL"],
-					"TITLE"       => GetMessage("AV_BLOG_VIEW_BACK_LINK")
-					]
+					"TITLE"       => Loc::getMessage("AV_BLOG_VIEW_BACK_LINK")
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 			?>
 		</div>
@@ -135,7 +139,7 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 	?>
 	<?if($sameArticles):?>
 	<div class="same-articles-block">
-		<h3><?=GetMessage("AV_BLOG_VIEW_SAME_ARTICLES")?></h3>
+		<h3><?=Loc::getMessage("AV_BLOG_VIEW_SAME_ARTICLES")?></h3>
 		<?=$sameArticles?>
 	</div>
 	<?endif?>

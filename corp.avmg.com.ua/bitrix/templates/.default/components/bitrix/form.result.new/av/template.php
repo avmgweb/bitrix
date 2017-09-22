@@ -1,11 +1,13 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* -------------------------------------------------------------------- */
 /* --------------------------- form sended ---------------------------- */
 /* -------------------------------------------------------------------- */
 ?>
 <?if($arResult["isFormNote"] == 'Y'):?>
-<div class="av-form-result-ok"><?=GetMessage("AV_FORM_RESULT_OK")?></div>
+<div class="av-form-result-ok"><?=Loc::getMessage("AV_FORM_RESULT_OK")?></div>
 <?endif?>
 <?
 /* -------------------------------------------------------------------- */
@@ -44,7 +46,12 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 				}
 			if($fieldCode == 'contact_phone') $fieldComponentParams["TYPE"] = 'phone';
 
-			$APPLICATION->IncludeComponent("av:form_elements", "av_site", $fieldComponentParams);
+			$APPLICATION->IncludeComponent
+				(
+				"av:form_elements", "av_site",
+				$fieldComponentParams,
+				false, ["HIDE_ICONS" => 'Y']
+				);
 			?>
 		</div>
 		<?endforeach?>
@@ -58,8 +65,9 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 					"TYPE"        => 'button',
 					"BUTTON_TYPE" => 'submit',
 					"NAME"        => 'web_form_submit',
-					"TITLE"       => GetMessage("AV_FORM_SUBMIT")
-					]
+					"TITLE"       => Loc::getMessage("AV_FORM_SUBMIT")
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 			?>
 		</div>
@@ -72,8 +80,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* -------------------------------------------------------------------- */
 ?>
 <script>
-	BX.message({"AV_FORM_FORM_VALIDATION_ALERT": '<?=GetMessage("AV_FORM_FORM_VALIDATION_ALERT")?>'});
-	BX.message({"AV_FORM_RESULT_OK_MESSAGE"    : '<?=GetMessage("AV_FORM_RESULT_OK_MESSAGE")?>'});
+	BX.message({"AV_FORM_FORM_VALIDATION_ALERT": '<?=Loc::getMessage("AV_FORM_FORM_VALIDATION_ALERT")?>'});
+	BX.message({"AV_FORM_RESULT_OK_MESSAGE"    : '<?=Loc::getMessage("AV_FORM_RESULT_OK_MESSAGE")?>'});
 
 	<?if($arResult["isFormNote"] == 'Y'):?>
 	AvBlurScreen("on", 1000);

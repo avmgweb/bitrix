@@ -1,4 +1,8 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
+<?
+use \Bitrix\Main\Localization\Loc;
+
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+?>
 <div class="av-directories-detail" id="<?=$this->GetEditAreaId($arParams["ELEMENT_ID"])?>">
 	<?
 	/* -------------------------------------------------------------------- */
@@ -21,20 +25,20 @@
 		<?endif?>
 
 		<?if($arResult["ELEMENT_INFO"]["DETAIL_TEXT"]):?><?=$arResult["ELEMENT_INFO"]["DETAIL_TEXT"]?>
-		<?else:?>                                        <?=GetMessage("AV_DIRECTORIES_VIEW_EMPTY_TEXT")?>
+		<?else:?>                                        <?=Loc::getMessage("AV_DIRECTORIES_VIEW_EMPTY_TEXT")?>
 		<?endif?>
 
 		<div class="back-link-cell">
 			<?
 			$APPLICATION->IncludeComponent
 				(
-				"av:form_elements", "av_site_alt",
+				"av:form.button", "av_alt",
 					[
-					"TYPE"        => 'button',
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => $arParams["PATH_TO_LIST"],
-					"TITLE"       => GetMessage("AV_DIRECTORIES_VIEW_BACK_LINK")
-					]
+					"TITLE"       => Loc::getMessage("AV_DIRECTORIES_VIEW_BACK_LINK")
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 			?>
 		</div>
@@ -45,7 +49,7 @@
 	/* -------------------------------------------------------------------- */
 	?>
 	<form method="post" class="relative-elements-block">
-		<div><?=GetMessage("AV_DIRECTORIES_VIEW_RELATIVE_ELEMENTS")?></div>
+		<div><?=Loc::getMessage("AV_DIRECTORIES_VIEW_RELATIVE_ELEMENTS")?></div>
 
 		<?if($arParams["PATH_TO_LIST"]):?>
 		<button name="<?=$arResult["IBLOCK_FILTER_BUTTON_NAME"]?>">

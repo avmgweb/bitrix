@@ -1,5 +1,8 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
 $selectedItemIndex = false;
 foreach($arResult["ITEMS"] as $index => $itemInfo)
 	if($itemInfo["SELECTED"])
@@ -46,9 +49,10 @@ foreach($arResult["ITEMS"] as $index => $itemInfo)
 			[
 			"BUTTON_TYPE" => 'link',
 			"LINK"        => $arResult["ITEMS"][1]["URL"],
-			"TITLE"       => GetMessage("AV_LEARNING_COURSE_NAVIGATION_START"),
-			"PLACEHOLDER" => GetMessage("AV_LEARNING_COURSE_NAVIGATION_START")
-			]
+			"TITLE"       => Loc::getMessage("AV_LEARNING_COURSE_NAVIGATION_START"),
+			"PLACEHOLDER" => Loc::getMessage("AV_LEARNING_COURSE_NAVIGATION_START")
+			],
+		false, ["HIDE_ICONS" => 'Y']
 		);
 	?>
 <?endif?>

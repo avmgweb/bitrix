@@ -5,7 +5,7 @@ $APPLICATION->SetTitle("Платежный профиль");
 
 $APPLICATION->IncludeComponent
 	(
-	"bitrix:sale.personal.profile", "",
+	"bitrix:sale.personal.profile", "av",
 		array(
 		"SEF_MODE"          => 'Y',
 		"SEF_FOLDER"        => '/personal/profiles/',

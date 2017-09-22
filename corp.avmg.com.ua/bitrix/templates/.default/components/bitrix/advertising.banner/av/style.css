@@ -1,0 +1,105 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-banner h2
+	{
+	background: transparent;
+	border: none;
+	padding: 0;
+	margin:  0;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ banner ------------------------------ */
+/* -------------------------------------------------------------------- */
+.av-banner
+	{
+	height: 400px;
+	position: relative;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ slides ------------------------------ */
+/* -------------------------------------------------------------------- */
+.av-banner > .item
+	{
+	height: inherit;
+	position: absolute;
+	top:    0;
+	bottom: 0;
+	left:   0;
+	right:  0;
+	}
+.av-banner > .item:not(.first)
+	{
+	display: none;
+	}
+.av-banner > .item .image
+	{
+	display: block;
+	height: inherit;
+	}
+.av-banner > .item .text-block
+	{
+	align-items: center;
+	color: #FFF;
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	top:  100px;
+	left: calc((100% - 500px) / 2);
+	width: 500px;
+	}
+.av-banner > .item .text-block h2,
+.av-banner > .item .text-block .text
+	{
+	overflow: hidden;
+	text-align: center;
+	text-overflow: ellipsis;
+	text-shadow: 1px 1px 2px black, 0 0 1em #181818;
+	width: 100%;
+	}
+.av-banner > .item .text-block h2
+	{
+	font-size: 45px;
+	height: 60px;
+	white-space: nowrap;
+	}
+.av-banner > .item .text-block .text
+	{
+	font-size: 25px;
+	max-height: 120px;
+	margin-bottom: 26px;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ pager ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-banner .pager
+	{
+	display: flex;
+	justify-content: center;
+	margin: 0 5%;
+	position: absolute;
+	bottom: 30px;
+	width: 90%;
+	height: 12px;
+	}
+.av-banner .pager > *
+	{
+	border: 1px solid #FFF;
+	border-radius: 12px;
+	cursor: pointer;
+	width:  12px;
+	height: 12px;
+	}
+.av-banner .pager > *.selected         {background: #FFF}
+.av-banner .pager > *:not(:last-child) {margin-right: 6px}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ media ------------------------------- */
+/* -------------------------------------------------------------------- */
+@media(max-width: 767px)
+	{
+	.av-banner                           {height: 300px}
+	.av-banner > .item .text-block       {top: 40px;left: 5%;width: 90%}
+	.av-banner > .item .text-block h2    {font-size: 30px;height: 40px}
+	.av-banner > .item .text-block .text {font-size: 18px;max-height: 110px;margin-bottom: 13px}
+	.av-banner .pager                    {bottom: 20px}
+	}

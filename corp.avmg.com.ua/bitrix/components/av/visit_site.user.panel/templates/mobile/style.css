@@ -34,22 +34,20 @@
 #av-auth-mobile-user-panel:focus  > span,
 #av-auth-mobile-user-panel.active > span {color: #CC0000;text-decoration: underline}
 
-#av-auth-mobile-user-menu,
-#av-auth-mobile-user-menu input[type=hidden]          {display: none}
-#av-auth-mobile-user-menu .menu-item                  {align-items: center;display: flex}
-#av-auth-mobile-user-menu .menu-item:not(:last-child) {padding-bottom: 6px}
-#av-auth-mobile-user-menu .menu-item:hover,
-#av-auth-mobile-user-menu .menu-item:active,
-#av-auth-mobile-user-menu .menu-item:focus,
-#av-auth-mobile-user-menu .menu-item:hover            {color: #CC0000;text-decoration: underline}
-#av-auth-mobile-user-menu .menu-item::before
+#av-auth-mobile-user-menu {display: none;width: 100%}
+#av-auth-mobile-user-menu a,
+#av-auth-mobile-user-menu button
 	{
-	background-repeat: no-repeat;
-	background-size: contain;
-	content: '';
-	display: inline-block;
-	margin-right: 5px;
-	width:  24px;
-	height: 24px;
+	align-items: center;
+	display: flex;
+	padding-left: 29px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 	}
-#av-auth-mobile-user-menu .menu-item.logout::before {background-image: url(images/logout.png)}
+#av-auth-mobile-user-menu      a:hover,
+#av-auth-mobile-user-menu      a:active,
+#av-auth-mobile-user-menu      a:focus,
+#av-auth-mobile-user-menu button:hover,
+#av-auth-mobile-user-menu button:active,
+#av-auth-mobile-user-menu button:focus {color: #CC0000;text-decoration: underline}

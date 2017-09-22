@@ -1,5 +1,7 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
 <?
+use \Bitrix\Main\Localization\Loc;
+
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* -------------------------------------------------------------------- */
 /* ------------------------------- form ------------------------------- */
 /* -------------------------------------------------------------------- */
@@ -37,7 +39,12 @@
 				}
 			if($fieldCode == 'contact_phone') $fieldComponentParams["TYPE"] = 'phone';
 
-			$APPLICATION->IncludeComponent("av:form_elements", "av_site", $fieldComponentParams);
+			$APPLICATION->IncludeComponent
+				(
+				"av:form_elements", "av_site",
+				$fieldComponentParams,
+				false, ["HIDE_ICONS" => 'Y']
+				);
 			?>
 		</div>
 		<?endforeach?>
@@ -49,7 +56,7 @@
 				"av:form.button", "av",
 					[
 					"BUTTON_TYPE" => 'label',
-					"TITLE"       => GetMessage("AV_FORM_AJAX_SUBMIT"),
+					"TITLE"       => Loc::getMessage("AV_FORM_AJAX_SUBMIT"),
 					"ATTR"        =>'data-submit-button'
 					]
 				);
@@ -64,6 +71,6 @@
 /* -------------------------------------------------------------------- */
 ?>
 <script>
-	BX.message({"AV_FORM_AJAX_FORM_VALIDATION_ALERT": '<?=GetMessage("AV_FORM_AJAX_FORM_VALIDATION_ALERT")?>'});
-	BX.message({"AV_FORM_AJAX_RESULT_OK_MESSAGE"    : '<?=GetMessage("AV_FORM_AJAX_RESULT_OK_MESSAGE")?>'});
+	BX.message({"AV_FORM_AJAX_FORM_VALIDATION_ALERT": '<?=Loc::getMessage("AV_FORM_AJAX_FORM_VALIDATION_ALERT")?>'});
+	BX.message({"AV_FORM_AJAX_RESULT_OK_MESSAGE"    : '<?=Loc::getMessage("AV_FORM_AJAX_RESULT_OK_MESSAGE")?>'});
 </script>

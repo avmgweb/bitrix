@@ -1,4 +1,8 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
+<?
+use \Bitrix\Main\Localization\Loc;
+
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+?>
 <div class="av-certificates-detail">
 	<img
 		src="<?=$arResult["DETAIL_PICTURE"]["SRC"]?>"
@@ -20,9 +24,10 @@
 				[
 				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'label',
-				"TITLE"       => GetMessage("AV_CERTIFICATES_DETAIL_CLOSE"),
+				"TITLE"       => Loc::getMessage("AV_CERTIFICATES_DETAIL_CLOSE"),
 				"ATTR"        => $arParams["CLOSE_FORM_ATTR"]
-				]
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		if($arResult["DETAIL_PICTURE"]["SRC"])
 			$APPLICATION->IncludeComponent
@@ -31,10 +36,11 @@
 					[
 					"TYPE"        => 'button',
 					"BUTTON_TYPE" => 'link',
-					"TITLE"       => GetMessage("AV_CERTIFICATES_DETAIL_UPLOAD"),
+					"TITLE"       => Loc::getMessage("AV_CERTIFICATES_DETAIL_UPLOAD"),
 					"LINK"        => $arResult["DETAIL_PICTURE"]["SRC"],
 					"ATTR"        => 'download target=_blank'
-					]
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 		?>
 	</div>

@@ -1,11 +1,14 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
+<?
+use \Bitrix\Main\Localization\Loc;
 
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+?>
 <table class="av-learn-certificates-table">
 	<tr>
-		<th><?=GetMessage("AV_LEARNING_CERTIFICATES_COURSE")?></th>
-		<th><?=GetMessage("AV_LEARNING_CERTIFICATES_NAME")?></th>
-		<th><?=GetMessage("AV_LEARNING_CERTIFICATES_RESULT")?></th>
-		<th><?=GetMessage("AV_LEARNING_CERTIFICATES_SCORE")?></th>
+		<th><?=Loc::getMessage("AV_LEARNING_CERTIFICATES_COURSE")?></th>
+		<th><?=Loc::getMessage("AV_LEARNING_CERTIFICATES_NAME")?></th>
+		<th><?=Loc::getMessage("AV_LEARNING_CERTIFICATES_RESULT")?></th>
+		<th><?=Loc::getMessage("AV_LEARNING_CERTIFICATES_SCORE")?></th>
 	</tr>
 
 	<?foreach($arResult["COURSES"] as $courseInfo):?>
@@ -18,10 +21,10 @@
 		</td>
 		<td>
 			<?if($courseInfo["COMPLETED"]):?>
-				<?=GetMessage("AV_LEARNING_CERTIFICATES_YES")?>
+				<?=Loc::getMessage("AV_LEARNING_CERTIFICATES_YES")?>
 			<?else:?>
-				<?if($courseInfo["NO_TESTS"]):?><?=GetMessage("AV_LEARNING_CERTIFICATES_NO_TESTS")?>
-				<?else:?><a href="<?=$courseInfo["TESTS_LIST_URL"]?>"><?=GetMessage("AV_LEARNING_CERTIFICATES_NO")?></a>
+				<?if($courseInfo["NO_TESTS"]):?><?=Loc::getMessage("AV_LEARNING_CERTIFICATES_NO_TESTS")?>
+				<?else:?><a href="<?=$courseInfo["TESTS_LIST_URL"]?>"><?=Loc::getMessage("AV_LEARNING_CERTIFICATES_NO")?></a>
 				<?endif?>
 			<?endif?>
 		</td>
@@ -35,7 +38,7 @@
 
 	<?if(!$arResult["COURSES"]):?>
 	<tr>
-		<td colspan="4"><?=GetMessage("AV_LEARNING_CERTIFICATES_NO_DATA")?></td>
+		<td colspan="4"><?=Loc::getMessage("AV_LEARNING_CERTIFICATES_NO_DATA")?></td>
 	</tr>
 	<?endif?>
 </table>

@@ -1,5 +1,8 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
 $cordinateX = $arResult["PROPERTIES"]["cordinate_x"]["VALUE"];
 $cordinateY = $arResult["PROPERTIES"]["cordinate_y"]["VALUE"];
 /* -------------------------------------------------------------------- */
@@ -68,7 +71,8 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 				"USE_RATING" => $arParams["USE_RATING"],
 				"MAX_VOTE"   => $arParams["MAX_VOTE"],
 				"VOTE_NAMES" => $arParams["VOTE_NAMES"]
-				]
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 	$sameArticles = ob_get_contents();
 	ob_end_clean();
@@ -84,7 +88,7 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 	/* ------------------------------------------- */
 	?>
 	<div class="info-col">
-		<h3><?=GetMessage("AV_BASES_ELEMENT_INFO")?></h3>
+		<h3><?=Loc::getMessage("AV_BASES_ELEMENT_INFO")?></h3>
 		<div>
 			<?if($arResult["PROPERTIES"]["address"]["VALUE"]["TEXT"]):?>
 			<div><?=$arResult["PROPERTIES"]["address"]["VALUE"]["TEXT"]?></div>
@@ -109,7 +113,7 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 	?>
 	<?if($cordinateX && $cordinateY):?>
 	<div class="map-col">
-		<h3><?=GetMessage("AV_BASES_ELEMENT_MAP")?></h3>
+		<h3><?=Loc::getMessage("AV_BASES_ELEMENT_MAP")?></h3>
 		<div
 			class="google-map"
 			data-store-name="<?=$arResult["NAME"]?>"
@@ -126,8 +130,8 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 	<?if(count($arResult["BASE_STREAMS_INFO"])):?>
 	<div class="streams-info-col">
 		<h3>
-			<span class="desktop"><?=GetMessage("AV_BASES_ELEMENT_STREAMS_INFO")?></span>
-			<span class="mobile"><?=GetMessage("AV_BASES_ELEMENT_STREAMS_INFO_SHORT")?></span>
+			<span class="desktop"><?=Loc::getMessage("AV_BASES_ELEMENT_STREAMS_INFO")?></span>
+			<span class="mobile"><?=Loc::getMessage("AV_BASES_ELEMENT_STREAMS_INFO_SHORT")?></span>
 		</h3>
 		<div>
 			<?foreach($arResult["BASE_STREAMS_INFO"] as $streamInfo):?>
@@ -144,11 +148,11 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 						<?if($streamInfo["PRICE"]):?>
 						<a
 							class="price-link"
-							title="<?=GetMessage("AV_BASES_ELEMENT_STREAMS_INFO_PRICE")?>"
+							title="<?=Loc::getMessage("AV_BASES_ELEMENT_STREAMS_INFO_PRICE")?>"
 							href="<?=$streamInfo["PRICE"]?>"
 							download
 						>
-							<?=GetMessage("AV_BASES_ELEMENT_STREAMS_INFO_PRICE")?>
+							<?=Loc::getMessage("AV_BASES_ELEMENT_STREAMS_INFO_PRICE")?>
 						</a>
 						<?endif?>
 					</div>
@@ -172,7 +176,7 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 	?>
 	<?if($arResult["DETAIL_TEXT"] || $arResult["DETAIL_PICTURE"]["SRC"]):?>
 	<div class="detail-col">
-		<h3><?=($arResult["PROPERTIES"]["additional_title"]["VALUE"] ? $arResult["PROPERTIES"]["additional_title"]["VALUE"] : GetMessage("AV_BASES_ELEMENT_DETEIL"))?></h3>
+		<h3><?=($arResult["PROPERTIES"]["additional_title"]["VALUE"] ? $arResult["PROPERTIES"]["additional_title"]["VALUE"] : Loc::getMessage("AV_BASES_ELEMENT_DETEIL"))?></h3>
 		<div>
 			<?if($arResult["DETAIL_PICTURE"]["SRC"]):?>
 			<img
@@ -187,7 +191,7 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 
 			<?if($arParams["USE_SHARE"] == 'Y'):?>
 			<div class="share-block">
-				<span><?=GetMessage("AV_BASES_ELEMENT_SHARE_BLOCK_TITLE")?>:</span>
+				<span><?=Loc::getMessage("AV_BASES_ELEMENT_SHARE_BLOCK_TITLE")?>:</span>
 				<?
 				$APPLICATION->IncludeComponent
 					(
@@ -196,7 +200,8 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 						"HANDLERS"   => $arParams["SHARE_HANDLERS"],
 						"PAGE_TITLE" => $APPLICATION->GetTitle(),
 						"PAGE_URL"   => CURRENT_PROTOCOL.'://'.SITE_SERVER_NAME.$APPLICATION->GetCurPage(false)
-						]
+						],
+					false, ["HIDE_ICONS" => 'Y']
 					);
 				?>
 			</div>
@@ -211,7 +216,7 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 	?>
 	<?if($arResult["CURRENT_ACTION"]["TEXT"] || $arResult["CURRENT_ACTION"]["PICTURE"]):?>
 	<div class="action-col">
-		<h3><?=GetMessage("AV_BASES_ELEMENT_CURRENT_ACTION")?></h3>
+		<h3><?=Loc::getMessage("AV_BASES_ELEMENT_CURRENT_ACTION")?></h3>
 		<?if($arResult["CURRENT_ACTION"]["PICTURE"]):?>
 		<img
 			src="<?=$arResult["CURRENT_ACTION"]["PICTURE"]?>"
@@ -229,7 +234,7 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 	/* ------------------------------------------- */
 	?>
 	<?if($sameArticles):?>
-	<h3 class="av-spoiler-header" data-work-breakpoint="991"><?=GetMessage("AV_BASES_ELEMENT_SAME_BASES", ["#NAME#" => $arResult["SECTION_INFO"]["NAME"]])?></h3>
+	<h3 class="av-spoiler-header" data-work-breakpoint="991"><?=Loc::getMessage("AV_BASES_ELEMENT_SAME_BASES", ["#NAME#" => $arResult["SECTION_INFO"]["NAME"]])?></h3>
 	<div class="av-spoiler-body"><?=$sameArticles?></div>
 	<?endif?>
 	<?
@@ -246,8 +251,9 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 					[
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => str_replace(['#SECTION_ID#', '#SECTION_CODE#'], [$arResult["ROOT_SECTION_INFO"]["ID"], $arResult["ROOT_SECTION_INFO"]["CODE"]], $arParams["SECTION_URL"]),
-					"TITLE"       => GetMessage("AV_BASES_ELEMENT_SECTION_LINK")
-					]
+					"TITLE"       => Loc::getMessage("AV_BASES_ELEMENT_SECTION_LINK")
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 		$APPLICATION->IncludeComponent
 			(
@@ -255,8 +261,9 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 				[
 				"BUTTON_TYPE" => 'link',
 				"LINK"        => $arResult["LIST_PAGE_URL"],
-				"TITLE"       => GetMessage("AV_BASES_ELEMENT_LIST_LINK")
-				]
+				"TITLE"       => Loc::getMessage("AV_BASES_ELEMENT_LIST_LINK")
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		?>
 	</div>

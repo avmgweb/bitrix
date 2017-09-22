@@ -21,9 +21,21 @@ if (isset($templateData['TEMPLATE_THEME']))
 {
     $this->addExternalCss($templateData['TEMPLATE_THEME']);
 }
-$this->addExternalCss("/bitrix/css/main/bootstrap.css");
-$this->addExternalCss("/bitrix/css/main/font-awesome.css");
+
 ?>
+<?php
+$showFiler = false;
+foreach($arResult["ITEMS"] as $key => $arItem){
+    if($key != "BASE"){
+        if(count($arItem["VALUES"])){
+            $showFiler = true;
+            break;
+        }
+    }
+}
+if($showFiler) {
+?>
+
 <div class="bx-filter <?=$templateData["TEMPLATE_CLASS"]?> <?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL") echo "bx-filter-horizontal"?>">
     <div class="bx-filter-section container-fluid">
         <div class=" title-filter"><div class="<?if ($arParams["FILTER_VIEW_MODE"] == "HORIZONTAL"):?>col-sm-12 <?else:?><?endif?> bx-filter-title"><span>ФИЛЬТР</span><div class="pull-right">
@@ -390,7 +402,7 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
                                 break;
                                 case "R"://DROPDOWN_WITH_PICTURES_AND_LABELS
                                 ?>
-                                    <div class="col-xs-12">
+                                    <div class="col-xs-12 no-padding">
                                         <div class="bx-filter-select-container">
                                             <div class="bx-filter-select-block" onclick="smartFilter.showDropDownPopup(this, '<?=CUtil::JSEscape($key)?>')">
                                                 <div class="bx-filter-select-text fix" data-role="currentOption">
@@ -551,7 +563,7 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
                                 break;
                                 default://CHECKBOXES
                                 ?>
-                                    <div class="col-xs-12">
+                                    <div class="col-xs-12 no-padding">
                                         <?foreach($arItem["VALUES"] as $val => $ar):?>
                                             <div class="checkbox">
                                                 <label data-role="label_<?=$ar["CONTROL_ID"]?>" class="bx-filter-param-label <? echo $ar["DISABLED"] ? 'disabled': '' ?>" for="<? echo $ar["CONTROL_ID"] ?>">
@@ -619,3 +631,9 @@ $this->addExternalCss("/bitrix/css/main/font-awesome.css");
 <script type="text/javascript">
     var smartFilter = new JCSmartFilter('<?echo CUtil::JSEscape($arResult["FORM_ACTION"])?>', '<?=CUtil::JSEscape($arParams["FILTER_VIEW_MODE"])?>', <?=CUtil::PhpToJSObject($arResult["JS_FILTER_PARAMS"])?>);
 </script>
+
+<?}?>
+
+
+
+

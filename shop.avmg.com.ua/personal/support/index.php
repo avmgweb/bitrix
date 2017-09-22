@@ -1,11 +1,11 @@
 <?
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
-$APPLICATION->SetTitle("Техподдержка");
+$APPLICATION->SetTitle("Поддержка");
 
 $APPLICATION->IncludeComponent
 	(
-	"bitrix:support.wizard", "",
+	"bitrix:support.wizard", "av",
 		array(
 		"IBLOCK_TYPE"           => 'services',
 		"IBLOCK_ID"             => 80,

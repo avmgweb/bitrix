@@ -1,4 +1,6 @@
 <?
+use Bitrix\Main\Page\Asset;
+
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
 $APPLICATION->SetTitle("Контакты");
@@ -6,7 +8,7 @@ $APPLICATION->SetPageProperty("title",       "АВ металл групп ко�
 $APPLICATION->SetPageProperty("description", "АВ металл групп крупнейший металлотрейдер Украины ☎ (056) 790-01-22, 🏠 г. Днепр, ул.Шолом-Алейхема, 5");
 
 CJSCore::Init(["bootstrap"]);
-$APPLICATION->SetAdditionalCSS('/bitrix/css/av_site/pages/contacts.css');
+Asset::getInstance()->addCss("/bitrix/css/av_site/pages/contacts.css");
 ?>
 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 av-contacts-page-block first-column">
 	<h3>Головной офис</h3>

@@ -1,4 +1,6 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* -------------------------------------------------------------------- */
 /* ------------------------------ filter ------------------------------ */
@@ -13,7 +15,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 	<input type="hidden" name="how"       value="d">
 	<?endif?>
 
-	<h3><?=GetMessage("AV_LEARNING_SEARCH_TITLE")?>: <span><?=$arResult["q"]?></span></h3>
+	<h3><?=Loc::getMessage("AV_LEARNING_SEARCH_TITLE")?>: <span><?=$arResult["q"]?></span></h3>
 
 	<div>
 		<?
@@ -23,10 +25,11 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 				[
 				"NAME"         => 'q',
 				"VALUE"        => $arResult["q"],
-				"TITLE"        => GetMessage("AV_LEARNING_SEARCH_FORM_TITLE"),
-				"PLACEHOLDER"  => GetMessage("AV_LEARNING_SEARCH_FORM_PLACEHOLDER"),
-				"SEARCH_TITLE" => GetMessage("AV_LEARNING_SEARCH_FORM_BUTTON_TITLE")
-				]
+				"TITLE"        => Loc::getMessage("AV_LEARNING_SEARCH_FORM_TITLE"),
+				"PLACEHOLDER"  => Loc::getMessage("AV_LEARNING_SEARCH_FORM_PLACEHOLDER"),
+				"SEARCH_TITLE" => Loc::getMessage("AV_LEARNING_SEARCH_FORM_BUTTON_TITLE")
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		?>
 	</div>
@@ -58,6 +61,6 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 ?>
 <?else:?>
 	<div class="av-learning-search-empty">
-		<?=GetMessage("AV_LEARNING_SEARCH_EMPTY_RESULT")?>
+		<?=Loc::getMessage("AV_LEARNING_SEARCH_EMPTY_RESULT")?>
 	</div>
 <?endif?>

@@ -1,6 +1,9 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 if(!count($arResult["ITEMS"]))                                  return;
+
 $bracketLevel = 0;
 /* -------------------------------------------------------------------- */
 /* ------------------------------- tree ------------------------------- */
@@ -81,9 +84,10 @@ $bracketLevel = 0;
 						[
 						"BUTTON_TYPE" => 'link',
 						"LINK"        => $itemInfo["URL"],
-						"TITLE"       => GetMessage("AV_LEARNING_COURSE_TREE_TESTS").' ( '.preg_replace("/[^0-9]/", '', $itemInfo["NAME"]).' )',
-						"PLACEHOLDER" => GetMessage("AV_LEARNING_COURSE_TREE_TESTS")
-						]
+						"TITLE"       => Loc::getMessage("AV_LEARNING_COURSE_TREE_TESTS").' ( '.preg_replace("/[^0-9]/", '', $itemInfo["NAME"]).' )',
+						"PLACEHOLDER" => Loc::getMessage("AV_LEARNING_COURSE_TREE_TESTS")
+						],
+					false, ["HIDE_ICONS" => 'Y']
 					);
 				?>
 			</li>

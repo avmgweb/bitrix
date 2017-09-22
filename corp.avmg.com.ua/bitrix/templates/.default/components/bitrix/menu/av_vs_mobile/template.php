@@ -81,10 +81,9 @@ $currentPageUrl = $APPLICATION->GetCurPage(false);
 			(
 			"av:visit_site.user.panel", "mobile",
 				[
-				"PROFILE_URL"         => '/personal/info/',
-				"FORGOT_PASSWORD_URL" => '/personal/forgot_password/',
-				"BASKET_URL"          => '/personal/cart/'
-				]
+				"USER_MENU_TYPE" => 'user'
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			)
 		?>
 	</li>

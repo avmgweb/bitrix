@@ -146,7 +146,8 @@ function CreateAvAlertPopup(alertText, type, options)
 			{
 			     if(formOffset.top < scrollTop && formOffset.top + formHeight > scrollTop + screenHeight) paramsArray.top = 'auto';
 			else if(formOffset.top + formHeight < scrollTop + screenHeight && formHeight > screenHeight)  paramsArray.top = scrollTop + screenHeight - 50 - formHeight;
-			return this.width(this.width()).animate(paramsArray, 300);
+			this.width(this.width());
+			return this.animate(paramsArray, 300);
 			}
 		else
 			return this.css(paramsArray);
@@ -154,7 +155,7 @@ function CreateAvAlertPopup(alertText, type, options)
 	/* ------------------------------------------- */
 	/* --------- object hide on clickout --------- */
 	/* ------------------------------------------- */
-	jQuery.fn.hideOnClickout = function(functionType)
+	jQuery.fn.hideOnClickout = function(functionType, callback)
 		{
 		var
 			behaviorType   = functionType == 'remove' ? 'remove' : 'hide',
@@ -178,6 +179,7 @@ function CreateAvAlertPopup(alertText, type, options)
 				{
 				if(behaviorType == 'hide') $currentObject.hide();
 				else                       $currentObject.remove();
+				if(callback && typeof callback == 'function') callback();
 				});
 			$currentObject.on(behaviorType, function()
 				{

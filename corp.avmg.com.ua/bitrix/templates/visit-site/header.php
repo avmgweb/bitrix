@@ -1,4 +1,6 @@
 <?
+use Bitrix\Main\Page\Asset;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* ============================================================================================= */
 /* ========================================= COUNTINGS ========================================= */
@@ -68,9 +70,9 @@ if($workAreaType == 'full_screen_page')          $useBreadcrumbs = false;
 
 		<?$APPLICATION->ShowHead()?>
 		<?CJSCore::Init(["bootstrap", "av_site"])?>
-		<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/scripts/main.js')?>
-		<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/scripts/'.LANGUAGE_ID.'/google_analytics.js')?>
-		<?$APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH.'/scripts/'.LANGUAGE_ID.'/yandex_metrika.js')?>
+		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH.'/scripts/main.js')?>
+		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH.'/scripts/'.LANGUAGE_ID.'/google_analytics.js')?>
+		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH.'/scripts/'.LANGUAGE_ID.'/yandex_metrika.js')?>
 	</head>
 	<?
 	/* -------------------------------------------------------------------- */
@@ -146,9 +148,7 @@ if($workAreaType == 'full_screen_page')          $useBreadcrumbs = false;
 								(
 								"av:visit_site.user.panel", "",
 									array(
-									"PROFILE_URL"         => '/user/info/index.php',
-									"FORGOT_PASSWORD_URL" => '/user/forgot_password/',
-									"BASKET_URL"          => '',
+									"USER_MENU_TYPE" => 'user',
 
 									"REGISTRATION_SHOW_FIELDS"         => array("EMAIL", "NAME", "LAST_NAME", "PERSONAL_MOBILE"),
 									"REGISTRATION_SHOW_USER_PROPS"     => array(),

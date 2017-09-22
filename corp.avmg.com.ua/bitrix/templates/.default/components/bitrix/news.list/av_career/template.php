@@ -1,4 +1,6 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* -------------------------------------------------------------------- */
 /* ------------------------------ pager ------------------------------- */
@@ -13,7 +15,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* -------------------------------------------------------------------- */
 ?>
 <?if(!count($arResult["ITEMS"])):?>
-<?=GetMessage("AV_CAREER_LIST_NO_ITEMS")?>
+<?=Loc::getMessage("AV_CAREER_LIST_NO_ITEMS")?>
 <?endif?>
 <?
 /* -------------------------------------------------------------------- */

@@ -72,5 +72,6 @@ $APPLICATION->IncludeComponent
 		"WEBFORM_TEMPLATE"             => $arParams["DETAIL_PAGE_WEBFORM_TEMPLATE"],
 		"AV_BASES_STREAMS_INFO_IBLOCK" => $arParams["AV_BASES_STREAMS_INFO_IBLOCK"],
 		"CATEGORY_APPLIED_FILTER"      => $arResult["CATEGORY_APPLIED_FILTER"]
-		]
+		],
+	false, ["HIDE_ICONS" => 'Y']
 	);

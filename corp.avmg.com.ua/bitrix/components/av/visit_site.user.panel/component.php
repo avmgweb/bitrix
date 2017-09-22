@@ -1,13 +1,12 @@
 <?
-use \Bitrix\Main\Loader;
+use
+	\Bitrix\Main\Loader,
+	\Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* -------------------------------------------------------------------- */
 /* ----------------------- arParams correction ------------------------ */
 /* -------------------------------------------------------------------- */
-$arParams["PROFILE_URL"]                      = trim($arParams["PROFILE_URL"]);
-$arParams["FORGOT_PASSWORD_URL"]              = trim($arParams["FORGOT_PASSWORD_URL"]);
-$arParams["BASKET_URL"]                       = trim($arParams["BASKET_URL"]);
-
 $arParams["REGISTRATION_SHOW_FIELDS"]         = is_array($arParams["REGISTRATION_SHOW_FIELDS"])         ? $arParams["REGISTRATION_SHOW_FIELDS"]         : [];
 $arParams["REGISTRATION_SHOW_USER_PROPS"]     = is_array($arParams["REGISTRATION_SHOW_USER_PROPS"])     ? $arParams["REGISTRATION_SHOW_USER_PROPS"]     : [];
 $arParams["REGISTRATION_REQUIRED_FIELDS"]     = is_array($arParams["REGISTRATION_REQUIRED_FIELDS"])     ? $arParams["REGISTRATION_REQUIRED_FIELDS"]     : [];
@@ -33,13 +32,13 @@ if(!$USER->IsAuthorized())
 			[
 			"LOGIN" =>
 				[
-				"TITLE"      => GetMessage("AUTH_FIELD_LOGIN"),
+				"TITLE"      => Loc::getMessage("AUTH_FIELD_LOGIN"),
 				"INPUT_NAME" => 'USER_LOGIN',
 				"VALUE"      => $userLogin
 				],
 			"PASS" =>
 				[
-				"TITLE"      => GetMessage("AUTH_FIELD_PASSWORD"),
+				"TITLE"      => Loc::getMessage("AUTH_FIELD_PASSWORD"),
 				"INPUT_NAME" => 'USER_PASSWORD'
 				],
 			"REMEMBER_ME" =>
@@ -81,7 +80,7 @@ if(!$USER->IsAuthorized() && COption::GetOptionString("main", "new_user_registra
 	foreach($arParams["REGISTRATION_SHOW_FIELDS"] as $field)
 		$registrationFormFields[$field] =
 			[
-			"TITLE"      => GetMessage('REGISTER_FIELD_'.$field),
+			"TITLE"      => Loc::getMessage('REGISTER_FIELD_'.$field),
 			"INPUT_NAME" => $formInputPrefix.'['.$field.']',
 			"VALUE"      => $formValues[$field],
 			"REQUIRED"   => in_array($field, $arParams["REGISTRATION_REQUIRED_FIELDS"]) ? 'Y' : 'N'
@@ -102,8 +101,8 @@ if(!$USER->IsAuthorized() && COption::GetOptionString("main", "new_user_registra
 				{
 				$securityObject->SetKeys($securityKeys);
 				$error = $securityObject->AcceptFromForm([$formInputPrefix]);
-				if($error == CRsaSecurity::ERROR_SESS_CHECK) $errors[] = GetMessage("AV_AUTH_REGISTRATION_SESSION_EXPIRED");
-				elseif($error < 0)                           $errors[] = GetMessage("AV_AUTH_REGISTRATION_DECODE_ERROR", ["#ERRCODE#" => $error]);
+				if($error == CRsaSecurity::ERROR_SESS_CHECK) $errors[] = Loc::getMessage("AV_AUTH_REGISTRATION_SESSION_EXPIRED");
+				elseif($error < 0)                           $errors[] = Loc::getMessage("AV_AUTH_REGISTRATION_DECODE_ERROR", ["#ERRCODE#" => $error]);
 				}
 			}
 		/* ---------------------------- */
@@ -111,7 +110,7 @@ if(!$USER->IsAuthorized() && COption::GetOptionString("main", "new_user_registra
 		/* ---------------------------- */
 		foreach($registrationFormFields as $field => $fieldArray)
 			if($fieldArray["REQUIRED"] == 'Y' && !$fieldArray["VALUE"])
-				$errors[$property] = GetMessage("AV_AUTH_REGISTRATION_FIELD_REQUIRED", ["#FIELD_NAME#" => $fieldArray["TITLE"]]);
+				$errors[$property] = Loc::getMessage("AV_AUTH_REGISTRATION_FIELD_REQUIRED", ["#FIELD_NAME#" => $fieldArray["TITLE"]]);
 
 		if(!$GLOBALS["USER_FIELD_MANAGER"]->CheckFields("USER", 0, $formValues))
 			{
@@ -141,7 +140,7 @@ if(!$USER->IsAuthorized() && COption::GetOptionString("main", "new_user_registra
 						]
 					])
 				));
-			if(!$captchaPassResult->success) $errors[] = GetMessage("AV_AUTH_RECAPTCHA_FAILED");
+			if(!$captchaPassResult->success) $errors[] = Loc::getMessage("AV_AUTH_RECAPTCHA_FAILED");
 			}
 		/* ---------------------------- */
 		/* ------- check errors ------- */

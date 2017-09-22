@@ -1,4 +1,6 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 if(!CModule::IncludeModule("iblock"))                           return;
 /* -------------------------------------------------------------------- */
@@ -23,17 +25,17 @@ $fieldsArray = CIBlockParameters::GetFieldCode()["VALUES"];
 /* -------------------------------------------------------------------- */
 $arComponentParameters["GROUPS"] =
 	[
-	"MAIN"    => ["NAME" => GetMessage("AV_DIRECTORIES_PARAMS_GROUP_MAIN"),    "SORT" => 10],
-	"LIST"    => ["NAME" => GetMessage("AV_DIRECTORIES_PARAMS_GROUP_LIST"),    "SORT" => 20],
-	"FILTER"  => ["NAME" => GetMessage("AV_DIRECTORIES_PARAMS_GROUP_FILTER"),  "SORT" => 30],
-	"ELEMENT" => ["NAME" => GetMessage("AV_DIRECTORIES_PARAMS_GROUP_ELEMENT"), "SORT" => 40]
+	"MAIN"    => ["NAME" => Loc::getMessage("AV_DIRECTORIES_PARAMS_GROUP_MAIN"),    "SORT" => 10],
+	"LIST"    => ["NAME" => Loc::getMessage("AV_DIRECTORIES_PARAMS_GROUP_LIST"),    "SORT" => 20],
+	"FILTER"  => ["NAME" => Loc::getMessage("AV_DIRECTORIES_PARAMS_GROUP_FILTER"),  "SORT" => 30],
+	"ELEMENT" => ["NAME" => Loc::getMessage("AV_DIRECTORIES_PARAMS_GROUP_ELEMENT"), "SORT" => 40]
 	];
 /* -------------------------------------------------------------------- */
 /* --------------------------- main params ---------------------------- */
 /* -------------------------------------------------------------------- */
 $arComponentParameters["PARAMETERS"]["IBLOCK_TYPE"] =
 	[
-	"NAME"    => GetMessage("AV_DIRECTORIES_PARAMS_IBLOCK_TYPE"),
+	"NAME"    => Loc::getMessage("AV_DIRECTORIES_PARAMS_IBLOCK_TYPE"),
 	"TYPE"    => 'LIST',
 	"VALUES"  => CIBlockParameters::GetIBlockTypes(),
 	"REFRESH" => 'Y',
@@ -42,7 +44,7 @@ $arComponentParameters["PARAMETERS"]["IBLOCK_TYPE"] =
 if(count($iblockArray))
 	$arComponentParameters["PARAMETERS"]["IBLOCK_ID"] =
 		[
-		"NAME"     => GetMessage("AV_DIRECTORIES_PARAMS_IBLOCK_ID"),
+		"NAME"     => Loc::getMessage("AV_DIRECTORIES_PARAMS_IBLOCK_ID"),
 		"TYPE"     => 'LIST',
 		"VALUES"   => $iblockArray,
 		"SIZE"     => 5,
@@ -52,7 +54,7 @@ if(count($iblockArray))
 		];
 $arComponentParameters["PARAMETERS"]["FILTER_VAR_NAME"] =
 	[
-	"NAME"   => GetMessage("AV_DIRECTORIES_PARAMS_FILTER_VAR_NAME"),
+	"NAME"   => Loc::getMessage("AV_DIRECTORIES_PARAMS_FILTER_VAR_NAME"),
 	"TYPE"   => 'STRING',
 	"PARENT" => 'MAIN'
 	];
@@ -61,25 +63,25 @@ $arComponentParameters["PARAMETERS"]["FILTER_VAR_NAME"] =
 /* -------------------------------------------------------------------- */
 $arComponentParameters["PARAMETERS"]["SORT_FIELD"] =
 	[
-	"NAME"   => GetMessage("AV_DIRECTORIES_PARAMS_SORT_FIELD"),
+	"NAME"   => Loc::getMessage("AV_DIRECTORIES_PARAMS_SORT_FIELD"),
 	"TYPE"   => 'LIST',
 	"VALUES" => $fieldsArray,
 	"PARENT" => 'LIST'
 	];
 $arComponentParameters["PARAMETERS"]["SORT_TYPE"] =
 	[
-	"NAME"   => GetMessage("AV_DIRECTORIES_PARAMS_SORT_TYPE"),
+	"NAME"   => Loc::getMessage("AV_DIRECTORIES_PARAMS_SORT_TYPE"),
 	"TYPE"   => 'LIST',
 	"VALUES" =>
 		[
-		"ASC"  => GetMessage("AV_DIRECTORIES_PARAMS_SORT_ASC"),
-		"DESC" => GetMessage("AV_DIRECTORIES_PARAMS_SORT_DESC")
+		"ASC"  => Loc::getMessage("AV_DIRECTORIES_PARAMS_SORT_ASC"),
+		"DESC" => Loc::getMessage("AV_DIRECTORIES_PARAMS_SORT_DESC")
 		],
 	"PARENT" => 'LIST'
 	];
 $arComponentParameters["PARAMETERS"]["LIST_FIELDS"] =
 	[
-	"NAME"     => GetMessage("AV_DIRECTORIES_PARAMS_WORK_FIELDS"),
+	"NAME"     => Loc::getMessage("AV_DIRECTORIES_PARAMS_WORK_FIELDS"),
 	"TYPE"     => 'LIST',
 	"VALUES"   => $fieldsArray,
 	"SIZE"     => 5,
@@ -89,7 +91,7 @@ $arComponentParameters["PARAMETERS"]["LIST_FIELDS"] =
 foreach($propsArray as $iblockId => $propsList)
 	$arComponentParameters["PARAMETERS"]['LIST_PROPS_'.$iblockId] =
 		[
-		"NAME"     => $iblockArray[$iblockId].': '.GetMessage("AV_DIRECTORIES_PARAMS_WORK_PROPS"),
+		"NAME"     => $iblockArray[$iblockId].': '.Loc::getMessage("AV_DIRECTORIES_PARAMS_WORK_PROPS"),
 		"TYPE"     => 'LIST',
 		"VALUES"   => $propsList,
 		"SIZE"     => 5,
@@ -98,7 +100,7 @@ foreach($propsArray as $iblockId => $propsList)
 		];
 $arComponentParameters["PARAMETERS"]["LIST_ELEMENTS_COUNT"] =
 	[
-	"NAME"   => GetMessage("AV_DIRECTORIES_PARAMS_LIST_ELEMENTS_COUNT"),
+	"NAME"   => Loc::getMessage("AV_DIRECTORIES_PARAMS_LIST_ELEMENTS_COUNT"),
 	"TYPE"   => 'STRING',
 	"PARENT" => 'LIST'
 	];
@@ -107,7 +109,7 @@ $arComponentParameters["PARAMETERS"]["LIST_ELEMENTS_COUNT"] =
 /* -------------------------------------------------------------------- */
 $arComponentParameters["PARAMETERS"]["SHOW_FILTER"] =
 	[
-	"NAME"    => GetMessage("AV_DIRECTORIES_PARAMS_SHOW_FILTER"),
+	"NAME"    => Loc::getMessage("AV_DIRECTORIES_PARAMS_SHOW_FILTER"),
 	"TYPE"    => 'CHECKBOX',
 	"REFRESH" => 'Y',
 	"PARENT"  => 'FILTER'
@@ -116,7 +118,7 @@ if($arCurrentValues["SHOW_FILTER"] == 'Y')
 	{
 	$arComponentParameters["PARAMETERS"]["FILTER_FIELDS"] =
 		[
-		"NAME"     => GetMessage("AV_DIRECTORIES_PARAMS_WORK_FIELDS"),
+		"NAME"     => Loc::getMessage("AV_DIRECTORIES_PARAMS_WORK_FIELDS"),
 		"TYPE"     => 'LIST',
 		"VALUES"   => $fieldsArray,
 		"SIZE"     => 5,
@@ -126,7 +128,7 @@ if($arCurrentValues["SHOW_FILTER"] == 'Y')
 	foreach($propsArray as $iblockId => $propsList)
 		$arComponentParameters["PARAMETERS"]['FILTER_PROPS_'.$iblockId] =
 			[
-			"NAME"     => $iblockArray[$iblockId].': '.GetMessage("AV_DIRECTORIES_PARAMS_WORK_PROPS"),
+			"NAME"     => $iblockArray[$iblockId].': '.Loc::getMessage("AV_DIRECTORIES_PARAMS_WORK_PROPS"),
 			"TYPE"     => 'LIST',
 			"VALUES"   => $propsList,
 			"SIZE"     => 5,
@@ -139,7 +141,7 @@ if($arCurrentValues["SHOW_FILTER"] == 'Y')
 /* -------------------------------------------------------------------- */
 $arComponentParameters["PARAMETERS"]["ELEMENT_FIELDS"] =
 	[
-	"NAME"     => GetMessage("AV_DIRECTORIES_PARAMS_WORK_FIELDS"),
+	"NAME"     => Loc::getMessage("AV_DIRECTORIES_PARAMS_WORK_FIELDS"),
 	"TYPE"     => 'LIST',
 	"VALUES"   => $fieldsArray,
 	"SIZE"     => 5,
@@ -149,7 +151,7 @@ $arComponentParameters["PARAMETERS"]["ELEMENT_FIELDS"] =
 foreach($propsArray as $iblockId => $propsList)
 	$arComponentParameters["PARAMETERS"]['ELEMENT_PROPS_'.$iblockId]  =
 		[
-		"NAME"     => $iblockArray[$iblockId].': '.GetMessage("AV_DIRECTORIES_PARAMS_WORK_PROPS"),
+		"NAME"     => $iblockArray[$iblockId].': '.Loc::getMessage("AV_DIRECTORIES_PARAMS_WORK_PROPS"),
 		"TYPE"     => 'LIST',
 		"VALUES"   => $propsList,
 		"SIZE"     => 5,
@@ -158,7 +160,7 @@ foreach($propsArray as $iblockId => $propsList)
 		];
 $arComponentParameters["PARAMETERS"]["SHOW_RELATIVE_ELEMENTS"] =
 	[
-	"NAME"    => GetMessage("AV_DIRECTORIES_PARAMS_SHOW_RELATIVE_ELEMENTS"),
+	"NAME"    => Loc::getMessage("AV_DIRECTORIES_PARAMS_SHOW_RELATIVE_ELEMENTS"),
 	"TYPE"    => 'CHECKBOX',
 	"REFRESH" => 'Y',
 	"PARENT"  => 'ELEMENT'
@@ -166,7 +168,7 @@ $arComponentParameters["PARAMETERS"]["SHOW_RELATIVE_ELEMENTS"] =
 if($arCurrentValues["SHOW_RELATIVE_ELEMENTS"] == 'Y')
 	$arComponentParameters["PARAMETERS"]["RELATIVE_ELEMENTS_COUNT"] =
 		[
-		"NAME"   => GetMessage("AV_DIRECTORIES_PARAMS_RELATIVE_ELEMENTS_COUNT"),
+		"NAME"   => Loc::getMessage("AV_DIRECTORIES_PARAMS_RELATIVE_ELEMENTS_COUNT"),
 		"TYPE"   => 'STRING',
 		"PARENT" => 'ELEMENT'
 		];
@@ -177,18 +179,18 @@ $arComponentParameters["PARAMETERS"]["SEF_MODE"] =
 	[
 	"list" =>
 		[
-		"NAME" => GetMessage("AV_DIRECTORIES_PARAMS_SEF_LIST_PAGE")
+		"NAME" => Loc::getMessage("AV_DIRECTORIES_PARAMS_SEF_LIST_PAGE")
 		],
 	"element" =>
 		[
-		"NAME"      => GetMessage("AV_DIRECTORIES_PARAMS_SEF_ELEMENT_PAGE"),
+		"NAME"      => Loc::getMessage("AV_DIRECTORIES_PARAMS_SEF_ELEMENT_PAGE"),
 		"DEFAULT"   => '#ELEMENT_ID#/',
 		"VARIABLES" => ["ELEMENT_ID", "ELEMENT_CODE"]
 		]
 	];
 $arComponentParameters["PARAMETERS"]["VARIABLE_ALIASES"] =
 	[
-	"ELEMENT_ID" => ["NAME" => GetMessage("AV_DIRECTORIES_PARAMS_VAR_ALIASES_ELEMENT_ID")]
+	"ELEMENT_ID" => ["NAME" => Loc::getMessage("AV_DIRECTORIES_PARAMS_VAR_ALIASES_ELEMENT_ID")]
 	];
 /* -------------------------------------------------------------------- */
 /* ------------------------------- cache ------------------------------ */
@@ -200,14 +202,13 @@ $arComponentParameters["PARAMETERS"]["CACHE_TIME"] =
 $arComponentParameters["PARAMETERS"]["CACHE_FILTER"] =
 	[
 	"TYPE"   => 'CHECKBOX',
-	"NAME"   => GetMessage("AV_DIRECTORIES_PARAMS_CACHE_FILTER"),
+	"NAME"   => Loc::getMessage("AV_DIRECTORIES_PARAMS_CACHE_FILTER"),
 	"PARENT" => 'CACHE_SETTINGS'
 	];
 $arComponentParameters["PARAMETERS"]["CACHE_GROUPS"] =
 	[
 	"TYPE"    => 'CHECKBOX',
 	"DEFAULT" => 'Y',
-	"NAME"    => GetMessage("AV_DIRECTORIES_PARAMS_CACHE_GROUPS"),
+	"NAME"    => Loc::getMessage("AV_DIRECTORIES_PARAMS_CACHE_GROUPS"),
 	"PARENT"  => 'CACHE_SETTINGS'
 	];
-?>

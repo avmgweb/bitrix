@@ -1,0 +1,9 @@
+.av-catalog.element .pager-col          {margin: -13px 0 13px 0}
+.av-catalog.element .menu-minimized-col {margin-bottom: 26px;width: 250px}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- media ------------------------------ */
+/* -------------------------------------------------------------------- */
+@media (max-width: 767px)
+	{
+	.av-catalog.element .menu-minimized-col {width: 100%}
+	}

@@ -13,7 +13,8 @@
 					"VALUE"   => $value,
 					"CHECKED" => in_array($value, $arResult["VALUE"]) ? 'Y' : 'N',
 					"TITLE"   => $title
-					]
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 			?>
 		</div>

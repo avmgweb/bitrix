@@ -1,8 +1,8 @@
 <?
-use Bitrix\Main\Page\Asset;
-
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 if($USER->IsAuthorized())                                       die();
+
+use Bitrix\Main\Page\Asset;
 
 CJSCore::Init(["av_site"]);
 Asset::getInstance()->addString('<script>AvSocAuthAjaxFile = "'.CURRENT_PROTOCOL.'://'.SITE_SERVER_NAME.$this->GetFolder().'/ajax/user_login.php";</script>');
@@ -42,9 +42,9 @@ Asset::getInstance()->addString('<script>BX.message({"AV_SOC_AUTH_ERROR_TEXT_DEF
 	/* ----------------- GOOGLE ------------------ */
 	/* ------------------------------------------- */
 	?>
-	<?if($service == 'GooglePlusOAuth' && GOOGLE_API_KEY):?>
+	<?if($service == 'GooglePlusOAuth'):?>
 		<?
-		Asset::getInstance()->addString('<script>AvSocAuthGoogleAPIKey = "'.GOOGLE_API_KEY.'";</script>');
+		Asset::getInstance()->addString('<script>AvSocAuthGoogleAPIKey = "'.COption::GetOptionString("fileman", "google_map_api_key").'";</script>');
 		Asset::getInstance()->addString('<script>AvSocAuthGoogleAppid = "'.CSocServGooglePlusOAuth::GetOption("google_appid").'";</script>');
 		Asset::getInstance()->addJs($this->GetFolder().'/gplus.js');
 		?>

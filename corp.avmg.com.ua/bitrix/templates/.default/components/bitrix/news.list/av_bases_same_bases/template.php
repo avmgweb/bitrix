@@ -1,4 +1,6 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 if(!count($arResult["ITEMS"]))                                  return;
 ?>
@@ -11,7 +13,7 @@ if(!count($arResult["ITEMS"]))                                  return;
 	?>
 	<div id="<?=$this->GetEditAreaId($arItem["ID"])?>" <?if($closed):?>class="closed"<?endif?>>
 		<h3><a href="<?=$arItem["DETAIL_PAGE_URL"]?>">
-			<?if($closed):?><?=GetMessage("AV_BASES_SAME_BASES_LIST_CLOSED_PREFIX")?> <?endif?><?=$arItem["NAME"]?>
+			<?if($closed):?><?=Loc::getMessage("AV_BASES_SAME_BASES_LIST_CLOSED_PREFIX")?> <?endif?><?=$arItem["NAME"]?>
 		</a></h3>
 		<div>
 			<?if($arItem["PROPERTIES"]["address"]["VALUE"]["TEXT"]):?>

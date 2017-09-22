@@ -1,0 +1,46 @@
+.av-catalog.section .pager-row        {margin: -13px 0 13px 0}
+.av-catalog.section .menu-col         {padding-right: 52px}
+.av-catalog.section .filter-cell,
+.av-catalog.section .subsections-cell {margin-bottom: 26px}
+/* -------------------------------------------------------------------- */
+/* ----------------------- page type controller ----------------------- */
+/* -------------------------------------------------------------------- */
+.av-catalog.section .page-type-controller-col
+	{
+	align-items: center;
+	color: #8698A2;
+	display: flex;
+	font-size: 81.25%;
+	justify-content: flex-end;
+	}
+.av-catalog.section .page-type-controller-col .title                              {padding: 0 6px 0 13px}
+.av-catalog.section .page-type-controller-col .type-selector                      {display: flex;padding-left: 13px}
+.av-catalog.section .page-type-controller-col .type-selector > *
+	{
+	background-size: 18px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	border: 1px solid #B6C0C6;
+	transition: .3s;
+	width:  24px;
+	height: 24px;
+	}
+.av-catalog.section .page-type-controller-col .type-selector > *:not(:last-child) {margin-right: 6px}
+.av-catalog.section .page-type-controller-col .type-selector > *:not(.selected)   {cursor: pointer}
+.av-catalog.section .page-type-controller-col .type-selector > .tablet            {background-image: url(images/type_selector_tablet.svg)}
+.av-catalog.section .page-type-controller-col .type-selector > .list              {background-image: url(images/type_selector_list.svg)}
+.av-catalog.section .page-type-controller-col .type-selector > *.selected,
+.av-catalog.section .page-type-controller-col .type-selector > *:hover            {border: 1px solid #8698A2}
+.av-catalog.section .page-type-controller-col .type-selector > .tablet.selected,
+.av-catalog.section .page-type-controller-col .type-selector > .tablet:hover      {background-image: url(images/type_selector_tablet_active.svg)}
+.av-catalog.section .page-type-controller-col .type-selector > .list.selected,
+.av-catalog.section .page-type-controller-col .type-selector > .list:hover        {background-image: url(images/type_selector_list_active.svg)}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- media ------------------------------ */
+/* -------------------------------------------------------------------- */
+@media (max-width: 991px)
+	{
+	.av-catalog.section                                  {margin-top: 0}
+	.av-catalog.section .page-type-controller-col        {justify-content: flex-start}
+	.av-catalog.section .page-type-controller-col .title {padding-left: 0}
+	}

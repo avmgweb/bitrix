@@ -1,4 +1,8 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
+<?
+use \Bitrix\Main\Localization\Loc;
+
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+?>
 <form
 	class="
 		av-filter
@@ -26,8 +30,9 @@
 					"VALUE"             => $fieldInfo["INPUT_VALUE"],
 					"TITLE"             => $fieldInfo["NAME"],
 					"IBLOCK_ID"         => $fieldInfo["IBLOCK_ID"],
-					"EMPTY_RESULT_TEXT" => GetMessage("AV_FILTER_IBLOCK_EMPTY_RESULT")
-					]
+					"EMPTY_RESULT_TEXT" => Loc::getMessage("AV_FILTER_IBLOCK_EMPTY_RESULT")
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 		elseif($fieldInfo["TYPE"] == 'SELECT')
 			$APPLICATION->IncludeComponent
@@ -38,7 +43,8 @@
 					"VALUE" => $fieldInfo["INPUT_VALUE"],
 					"TITLE" => $fieldInfo["NAME"],
 					"LIST"  => $fieldInfo["VALUE_LIST"]
-					]
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 		elseif($fieldInfo["TYPE"] == 'SELECT_MULTIPLE')
 			$APPLICATION->IncludeComponent
@@ -49,7 +55,8 @@
 					"VALUE" => $fieldInfo["INPUT_VALUE"],
 					"TITLE" => $fieldInfo["NAME"],
 					"LIST"  => $fieldInfo["VALUE_LIST"]
-					]
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 		elseif($fieldInfo["TYPE"] == 'RADIO')
 			$APPLICATION->IncludeComponent
@@ -60,7 +67,8 @@
 					"VALUE" => $fieldInfo["INPUT_VALUE"],
 					"TITLE" => $fieldInfo["NAME"],
 					"LIST"  => $fieldInfo["VALUE_LIST"]
-					]
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 		elseif($fieldInfo["TYPE"] == 'LINKS_LIST')
 			$APPLICATION->IncludeComponent
@@ -70,7 +78,8 @@
 					"VALUE" => $fieldInfo["INPUT_VALUE"],
 					"TITLE" => $fieldInfo["NAME"],
 					"LIST"  => $fieldInfo["VALUE_LIST"]
-					]
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 		elseif($fieldInfo["TYPE"] == 'SEARCH')
 			$APPLICATION->IncludeComponent
@@ -80,8 +89,9 @@
 					"NAME"        => $fieldInfo["INPUT_NAME"],
 					"VALUE"       => $fieldInfo["INPUT_VALUE"],
 					"TITLE"       => $fieldInfo["NAME"],
-					"PLACEHOLDER" => GetMessage("AV_FILTER_SEARCH_PLACEHOLDER")
-					]
+					"PLACEHOLDER" => Loc::getMessage("AV_FILTER_SEARCH_PLACEHOLDER")
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 		?>
 	</div>
@@ -103,9 +113,10 @@
 					"TYPE"        => 'button',
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => $arParams["LIST_URL"],
-					"TITLE"       => GetMessage("AV_FILTER_CANCEL_FILTER"),
+					"TITLE"       => Loc::getMessage("AV_FILTER_CANCEL_FILTER"),
 					"ATTR"        => ["rel" => 'nofollow']
-					]
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 		else
 			$APPLICATION->IncludeComponent
@@ -114,9 +125,10 @@
 					[
 					"TYPE"  => 'button',
 					"NAME"  => 'del_filter',
-					"TITLE" => GetMessage("AV_FILTER_CANCEL_FILTER"),
+					"TITLE" => Loc::getMessage("AV_FILTER_CANCEL_FILTER"),
 					"ATTR"  => 'cancel-button'
-					]
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 		?>
 	</div>

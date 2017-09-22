@@ -1,16 +1,18 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 $linksArray = [];
 foreach($arResult as $itemInfo)
-	if($itemInfo["DEPTH_LEVEL"] == 1)
-		$linksArray[$itemInfo["LINK"]] = $itemInfo["TEXT"];
+	$linksArray[$itemInfo["LINK"]] = str_repeat('&nbsp;.&nbsp;', $itemInfo["DEPTH_LEVEL"] - 1).$itemInfo["TEXT"];
 
 $APPLICATION->IncludeComponent
 	(
 	"av:form.links_list", 'av',
 		[
-		"TITLE" => GetMessage("AV_MENU_CATALOG_MINIMIZED_TITLE"),
+		"TITLE" => Loc::getMessage("AV_MENU_CATALOG_MINIMIZED_TITLE"),
 		"LIST"  => $linksArray
-		]
+		],
+	false, ["HIDE_ICONS" => 'Y']
 	);

@@ -9,8 +9,7 @@
 	width: 100%;
 	z-index: 200;
 	}
-#av-shop header.fixed                   {position: fixed;top: 0}
-#av-shop header.fixed .mobile-first-row {display: none}
+#av-shop header.fixed {position: fixed;top: 0}
 /* ------------------------------------------- */
 /* ----------------- desktop ----------------- */
 /* ------------------------------------------- */
@@ -26,8 +25,8 @@
 	font-size: 75%;
 	justify-content: flex-end;
 	}
-#av-shop header .desktop-gadgets-row > *                  {padding-left: 12px}
-#av-shop header .desktop-gadgets-row > *:not(:last-child) {border-right: 1px solid #B6C0C6;padding-right: 12px}
+#av-shop header .desktop-gadgets-row > *:not(:first-child) {padding-left: 12px}
+#av-shop header .desktop-gadgets-row > *:not(:last-child)  {border-right: 1px solid #B6C0C6;padding-right: 12px}
 
 #av-shop header .desktop-gadgets-row a,
 #av-shop header .desktop-gadgets-row a:visited {align-items: center;color: #78909C;display: flex}
@@ -46,9 +45,10 @@
 	display: flex;
 	font-size: 80%;
 	justify-content: center;
-	padding-top: 2px;
+	padding: 2px 0;
 	}
-#av-shop header .mobile-first-row > *:not(:last-child) {padding-right: 12px}
+#av-shop header .mobile-first-row > *:not(:first-child) {padding-left: 12px}
+#av-shop header .mobile-first-row > *:not(:last-child)  {border-right: 1px solid #B6C0C6;padding-right: 12px}
 
 #av-shop header .mobile-first-row a,
 #av-shop header .mobile-first-row a:visited {align-items: center;color: #78909C;display: flex}
@@ -69,6 +69,7 @@
 	background-size: cover;
 	color: #FFF;
 	display: flex;
+	height: 130px;
 	justify-content: center;
 	margin:  0;
 	padding: 0 20px;
@@ -81,7 +82,6 @@
 
 @media (min-width: 992px)
 	{
-	#av-shop .page-main-title                 {height: 130px}
 	#av-shop .page-workarea .page-left-column {padding-right: 52px}
 	}
 @media (max-width: 991px)
@@ -105,26 +105,42 @@
 #av-shop footer input::-moz-placeholder          {color: #4C5255;letter-spacing: 1px}
 #av-shop footer input:-ms-input-placeholder      {color: #4C5255;letter-spacing: 1px}
 
-#av-shop footer .contacts-cell > b a {color: #FAFAFA;display: block;font-size: 116.7%;margin-bottom: 16px}
-#av-shop footer .contacts-cell >   a {color: #E0E0E0}
-#av-shop footer .socservs-cell       {align-items: center;display: flex;padding: 26px 0}
-#av-shop footer .copyright-cell      {border-top: 1px solid #757575;padding-top: 12px;text-align: center}
+#av-shop footer > .container          {display: flex;flex-wrap: wrap}
+#av-shop footer .subscibe-cell-mobile {display: none}
+#av-shop footer .soc-links-cell
+	{
+	align-items: center;
+	display: flex;
+	justify-content: flex-start;
+	width: 40%;
+	}
+#av-shop footer .subscibe-cell
+	{
+	align-items: center;
+	display: flex;
+	justify-content: flex-end;
+	width: 60%;
+	}
+#av-shop footer .copyright-cell
+	{
+	border-top: 1px solid #757575;
+	margin-top:  26px;
+	padding-top: 13px;
+	text-align: center;
+	width: 100%;
+	}
+#av-shop footer .copyright-cell a {color: inherit}
 
-@media (min-width: 992px)
+@media(max-width: 767px)
 	{
-	#av-shop footer .contacts-cell {padding-left: 26px}
-	#av-shop footer .socservs-cell {border-top: 1px solid #757575;justify-content: space-between;margin-top: 26px}
-	}
-@media (min-width: 768px) and (max-width: 991px)
-	{
-	#av-shop footer .contacts-cell {padding-right: 26px;text-align: right}
-	#av-shop footer .subscibe-cell {padding-left : 26px;width: 250px}
-	#av-shop footer .socservs-cell {justify-content: center}
-	}
-@media (max-width: 767px)
-	{
-	#av-shop footer .contacts-cell,
-	#av-shop footer .subscibe-cell {text-align: center}
-	#av-shop footer .subscibe-cell {margin: 26px calc((100% - 200px)/2);width: 200px}
-	#av-shop footer .socservs-cell {justify-content: center;padding-top: 0}
+	#av-shop footer .subscibe-cell-mobile
+		{
+		display: block;
+		margin: 0 calc((100% - 250px) / 2) 13px calc((100% - 250px) / 2);
+		width: 250px;
+		}
+	#av-shop footer .soc-links-cell {justify-content: center;width: 100%}
+	#av-shop footer .subscibe-cell  {display: none}
+	#av-shop footer .copyright-cell {margin-top: 13px}
+	#av-shop footer .contacts-cell  {display: none}
 	}

@@ -1,0 +1,203 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- main image ---------------------------- */
+/* -------------------------------------------------------------------- */
+.av-catalog-element .images-block .main-image-wraper                   {align-items: center;display: flex;height: 250px;overflow: hidden}
+.av-catalog-element .images-block .main-image-wraper img               {width: 100%}
+.av-catalog-element .images-block .main-image-wraper img:not(.default) {cursor: pointer}
+/* -------------------------------------------------------------------- */
+/* ---------------------------- main slider --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-catalog-element .images-block .slider
+	{
+	align-items: center;
+	display: flex;
+	margin: 13px -27px 0 -24px;
+	}
+.av-catalog-element .images-block .slider .navigation
+	{
+	background: url(images/arrow.svg) center center no-repeat;
+	background-size: 18px;
+	cursor: pointer;
+	width:  24px;
+	height: 24px;
+	transition: .3s;
+	}
+.av-catalog-element .images-block .slider .navigation:hover {background-image: url(images/arrow_hover.svg)}
+.av-catalog-element .images-block .slider .navigation.prev  {transform: rotate( 90deg)}
+.av-catalog-element .images-block .slider .navigation.next  {transform: rotate(-90deg)}
+
+.av-catalog-element .images-block .slider .slider-block
+	{
+	align-items: center;
+	display: flex;
+	height: 70px;
+	overflow: hidden;
+	width: calc(100% - 24px * 2);
+	}
+.av-catalog-element .images-block .slider .slider-block .slider-image
+	{
+	cursor: pointer;
+	margin-right: 3px;
+	overflow: hidden;
+	width:  25%;
+	height: inherit;
+	}
+.av-catalog-element .images-block .slider .slider-block .slider-image img
+	{
+	height: 100%;
+	margin-left: 50%;
+	transform: translateX(-50%);
+	}
+/* -------------------------------------------------------------------- */
+/* ---------------------------- big viewer ---------------------------- */
+/* -------------------------------------------------------------------- */
+.av-catalog-element-image-viewer
+	{
+	background: #FFF;
+	display: none;
+	padding: 13px;
+	width:  800px;
+	height: 600px;
+	}
+.av-catalog-element-image-viewer .close
+	{
+	background: url(images/close.svg) center center no-repeat;
+	background-size: 18px;
+	cursor: pointer;
+	float: right;
+	width:  24px;
+	height: 24px;
+	transition: .3s;
+	}
+.av-catalog-element-image-viewer .close:hover {background-image: url(images/close_hover.svg)}
+.av-catalog-element-image-viewer .body
+	{
+	align-items: center;
+	display: flex;
+	margin-top: 24px;
+	height: calc(600px - 13px * 2 - 24px);
+	}
+/* ------------------------------------------- */
+/* --------------- main slider --------------- */
+/* ------------------------------------------- */
+.av-catalog-element-image-viewer .slider-main
+	{
+	align-items: center;
+	display: flex;
+	height: inherit;
+	}
+.av-catalog-element-image-viewer.has-slider       .slider-main {width: calc(100% - 150px)}
+.av-catalog-element-image-viewer:not(.has-slider) .slider-main {width: 100%}
+
+.av-catalog-element-image-viewer .slider-main .navigation
+	{
+	background: url(images/arrow_big.svg) center center no-repeat;
+	background-size: 48px;
+	cursor: pointer;
+	width:  48px;
+	height: 48px;
+	transition: .3s;
+	}
+.av-catalog-element-image-viewer:not(.has-slider) .slider-main .navigation       {visibility: hidden}
+.av-catalog-element-image-viewer                  .slider-main .navigation:hover {background-image: url(images/arrow_big_hover.svg)}
+.av-catalog-element-image-viewer                  .slider-main .navigation.prev  {transform: rotate( 90deg)}
+.av-catalog-element-image-viewer                  .slider-main .navigation.next  {transform: rotate(-90deg)}
+
+.av-catalog-element-image-viewer .slider-main .slider-block
+	{
+	align-items: center;
+	display: flex;
+	height: inherit;
+	overflow: hidden;
+	width: calc(100% - 48px * 2);
+	}
+.av-catalog-element-image-viewer .slider-main .slider-block .slider-image
+	{
+	overflow: hidden;
+	width: 100%;
+	}
+.av-catalog-element-image-viewer .slider-main .slider-block .slider-image img
+	{
+	height: 100%;
+	margin-left: 50%;
+	transform: translateX(-50%);
+	}
+/* ------------------------------------------- */
+/* ------------- vertical slider ------------- */
+/* ------------------------------------------- */
+.av-catalog-element-image-viewer .slider-vertical
+	{
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	width:  150px;
+	height: inherit;
+	}
+.av-catalog-element-image-viewer .slider-vertical .navigation
+	{
+	background: url(images/arrow.svg) center center no-repeat;
+	background-size: 18px;
+	cursor: pointer;
+	width:  24px;
+	height: 24px;
+	transition: .3s;
+	}
+.av-catalog-element-image-viewer .slider-vertical .navigation:hover {background-image: url(images/arrow_hover.svg)}
+.av-catalog-element-image-viewer .slider-vertical .navigation.prev  {transform: rotate(180deg)}
+
+.av-catalog-element-image-viewer .slider-vertical .slider-block
+	{
+	align-items: center;
+	border-left: 1px solid #EFEFEF;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
+	width:  inherit;
+	height: calc(100% - 24px * 2);
+	}
+.av-catalog-element-image-viewer .slider-vertical .slider-block .slider-image
+	{
+	border-left: 2px solid #FFF;
+	cursor: pointer;
+	margin-bottom: 3px;
+	overflow: hidden;
+	width:  100%;
+	height: 25%;
+	}
+.av-catalog-element-image-viewer .slider-vertical .slider-block .slider-image:hover
+	{
+	border-color: #999;
+	}
+.av-catalog-element-image-viewer .slider-vertical .slider-block .slider-image img
+	{
+	height: 100%;
+	margin-left: 50%;
+	transform: translateX(-50%);
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ media ------------------------------- */
+/* -------------------------------------------------------------------- */
+@media (max-width: 991px)
+	{
+	.av-catalog-element .images-block .main-image-wraper,
+	.av-catalog-element .images-block .slider {margin-left: auto;margin-right: auto;width: 350px}
+	.av-catalog-element-image-viewer          {width: 700px;height: 550px}
+	.av-catalog-element-image-viewer .body    {height: calc(550px - 13px * 2 - 24px)}
+	}
+@media (max-width: 767px)
+	{
+	.av-catalog-element .images-block .main-image-wraper,
+	.av-catalog-element .images-block .slider               {width: 100%;max-width: 300px}
+	.av-catalog-element .images-block .slider .navigation
+		{
+		background-size: 24px;
+		width:  48px;
+		height: 48px;
+		}
+	.av-catalog-element .images-block .slider .slider-block  {width: calc(100% - 48px * 2)}
+	.av-catalog-element-image-viewer                         {width: 100%;height: 400px}
+	.av-catalog-element-image-viewer .body                   {height: calc(400px - 13px * 2 - 24px)}
+	.av-catalog-element-image-viewer.has-slider .slider-main {width: 100%}
+	.av-catalog-element-image-viewer .slider-vertical        {display: none}
+	}

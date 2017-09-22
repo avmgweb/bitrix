@@ -1,10 +1,12 @@
 <?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+
 $APPLICATION->SetTitle("Обращение клиентов");
-?><?$APPLICATION->IncludeComponent(
-	"bitrix:support.wizard",
-	"",
-	Array(
+
+$APPLICATION->IncludeComponent
+	(
+	"bitrix:support.wizard", "",
+		array(
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_ADDITIONAL" => "",
 		"AJAX_OPTION_HISTORY" => "N",
@@ -26,5 +28,7 @@ $APPLICATION->SetTitle("Обращение клиентов");
 		"TEMPLATE_TYPE" => "standard",
 		"TICKETS_PER_PAGE" => "50",
 		"VARIABLE_ALIASES_ID" => "ID"
-	)
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+		)
+	);
+
+require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php';

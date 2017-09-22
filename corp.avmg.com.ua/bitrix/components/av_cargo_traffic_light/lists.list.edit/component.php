@@ -1,5 +1,8 @@
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
+
+use Bitrix\Main\Page\Asset;
+
 /** @global CMain $APPLICATION */
 /** @global CUser $USER */
 /** @global CDatabase $DB */
@@ -22,7 +25,7 @@ if(!CModule::IncludeModule('lists'))
 	return;
 }
 require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/iblock/admin_tools.php");
-$APPLICATION->AddHeadScript('/bitrix/js/iblock/iblock_edit.js');
+Asset::getInstance()->addJs('/bitrix/js/iblock/iblock_edit.js');
 
 $lists_perm = CListPermissions::CheckAccess(
 	$USER,

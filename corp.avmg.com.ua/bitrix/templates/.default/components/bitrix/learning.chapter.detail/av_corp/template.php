@@ -1,4 +1,8 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
+<?
+use \Bitrix\Main\Localization\Loc;
+
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+?>
 <div class="av-learning-course-chapter">
 	<h3 class="title"><?=$arResult["CHAPTER"]["NAME"]?></h3>
 	<?=$arResult["CHAPTER"]["DETAIL_TEXT"]?>
@@ -11,9 +15,10 @@
 				[
 				"BUTTON_TYPE" => 'link',
 				"LINK"        => $arResult["CHAPTER"]["SELF_TEST_URL"],
-				"TITLE"       => GetMessage("AV_LEARNING_COURSE_CHAPTER_PAST_TEST"),
-				"PLACEHOLDER" => GetMessage("AV_LEARNING_COURSE_CHAPTER_PAST_TEST")
-				]
+				"TITLE"       => Loc::getMessage("AV_LEARNING_COURSE_CHAPTER_PAST_TEST"),
+				"PLACEHOLDER" => Loc::getMessage("AV_LEARNING_COURSE_CHAPTER_PAST_TEST")
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		?>
 	</div>

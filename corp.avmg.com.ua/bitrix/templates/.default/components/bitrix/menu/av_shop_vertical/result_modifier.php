@@ -2,13 +2,27 @@
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 foreach($arResult as $index => $itemInfo)
-	{
-	$nextIndex   = $index + 1;
-	$sectionLink = $itemInfo["PARAMS"]["SECTION_LINK"] == 'Y'             ? true : false;
-	$hasSubMenu  = $arResult[$nextIndex]["PARAMS"]["SECTION_LINK"] == 'Y' ? true : false;
+	$arResult[$index]["DEPTH_LEVEL"] = intval($itemInfo["PARAMS"]["DEPTH_LEVEL"] ? $itemInfo["PARAMS"]["DEPTH_LEVEL"] : $itemInfo["DEPTH_LEVEL"]);
 
-	if($itemInfo["DEPTH_LEVEL"] == 1 && !$sectionLink && $hasSubMenu)
-		while($arResult[$nextIndex]["PARAMS"]["SECTION_LINK"] == 'Y')
+foreach($arResult as $index => $itemInfo)
+	{
+	$nextIndex = $index + 1;
+
+	if($itemInfo["DEPTH_LEVEL"] == 1)
+		while(count($arResult[$nextIndex]) && $arResult[$nextIndex]["DEPTH_LEVEL"] > 1)
+			{
+			$arResult[$index]["PARENT"] = true;
+			if($arResult[$nextIndex]["SELECTED"])
+				{
+				$arResult[$index]["ACTIVE"] = true;
+				break;
+				}
+			else
+				$nextIndex++;
+			}
+
+	if($itemInfo["DEPTH_LEVEL"] == 2)
+		while(count($arResult[$nextIndex]) && $arResult[$nextIndex]["DEPTH_LEVEL"] > 2)
 			{
 			if($arResult[$nextIndex]["SELECTED"])
 				{
@@ -18,7 +32,6 @@ foreach($arResult as $index => $itemInfo)
 			else
 				$nextIndex++;
 			}
-
-	$arResult[$index]["PARENT"] = $hasSubMenu;
-	if($sectionLink) $arResult[$index]["DEPTH_LEVEL"] = 2;
 	}
+
+$arResult = array_values($arResult);

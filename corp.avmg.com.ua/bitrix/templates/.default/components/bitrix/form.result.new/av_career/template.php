@@ -1,12 +1,15 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
 CJSCore::Init(["av_form_elements"]);
 /* -------------------------------------------------------------------- */
 /* --------------------------- form sended ---------------------------- */
 /* -------------------------------------------------------------------- */
 ?>
 <?if($arResult["isFormNote"] == 'Y'):?>
-<div class="av-form-career-result-ok"><?=GetMessage("AV_FORM_CAREER_RESULT_OK")?></div>
+<div class="av-form-career-result-ok"><?=Loc::getMessage("AV_FORM_CAREER_RESULT_OK")?></div>
 <?endif?>
 <?
 /* -------------------------------------------------------------------- */
@@ -59,29 +62,51 @@ CJSCore::Init(["av_form_elements"]);
 						"TYPE"    => 'checkbox',
 						"NAME"    => 'comments-trigger',
 						"CHECKED" => $fieldInfo["VALUE"] ? 'Y' : 'N',
-						"TITLE"   => GetMessage("AV_FORM_CAREER_COMMENTS_TRIGGER")
-						]
+						"TITLE"   => Loc::getMessage("AV_FORM_CAREER_COMMENTS_TRIGGER")
+						],
+					false, ["HIDE_ICONS" => 'Y']
 					);
 				?>
 				<div class="comments-field<?if(!$fieldInfo["VALUE"]):?> hidden-field<?endif?>">
-					<?$APPLICATION->IncludeComponent("av:form_elements", "av_site", $fieldComponentParams)?>
+					<?
+					$APPLICATION->IncludeComponent
+						(
+						"av:form_elements", "av_site",
+						$fieldComponentParams,
+						false, ["HIDE_ICONS" => 'Y']
+						);
+					?>
 				</div>
 			<?elseif($fieldCode == 'upload_file'):?>
-				<?$APPLICATION->IncludeComponent("av:form_elements", "av_site", $fieldComponentParams)?>
+				<?
+				$APPLICATION->IncludeComponent
+					(
+					"av:form_elements", "av_site",
+					$fieldComponentParams,
+					false, ["HIDE_ICONS" => 'Y']
+					);
+				?>
 
 				<?if(count($fieldInfo["VALIDATORS"])):?>
 				<ul class="validation-info">
 					<?foreach($fieldInfo["VALIDATORS"] as $arrayInfo):?>
 					<li>
-						<?if($arrayInfo["NAME"]     == 'file_size'):?><?=GetMessage("AV_FORM_CAREER_FORM_VALIDATION_FILE_SIZE", ["#SIZE#" => ceil($arrayInfo["PARAMS"]["SIZE_TO"]/1048576)])?>
-						<?elseif($arrayInfo["NAME"] == 'file_type'):?><?=GetMessage("AV_FORM_CAREER_FORM_VALIDATION_FILE_TYPE", ["#TYPE#" => implode(', ', explode(',', $arrayInfo["PARAMS"]["EXT"]))])?>
+						<?if($arrayInfo["NAME"]     == 'file_size'):?><?=Loc::getMessage("AV_FORM_CAREER_FORM_VALIDATION_FILE_SIZE", ["#SIZE#" => ceil($arrayInfo["PARAMS"]["SIZE_TO"]/1048576)])?>
+						<?elseif($arrayInfo["NAME"] == 'file_type'):?><?=Loc::getMessage("AV_FORM_CAREER_FORM_VALIDATION_FILE_TYPE", ["#TYPE#" => implode(', ', explode(',', $arrayInfo["PARAMS"]["EXT"]))])?>
 						<?endif?>
 					</li>
 					<?endforeach?>
 				</ul>
 				<?endif?>
 			<?else:?>
-				<?$APPLICATION->IncludeComponent("av:form_elements", "av_site", $fieldComponentParams)?>
+				<?
+				$APPLICATION->IncludeComponent
+					(
+					"av:form_elements", "av_site",
+					$fieldComponentParams,
+					false, ["HIDE_ICONS" => 'Y']
+					);
+				?>
 			<?endif?>
 		</div>
 		<?endforeach?>
@@ -99,8 +124,9 @@ CJSCore::Init(["av_form_elements"]);
 					"TYPE"        => 'button',
 					"BUTTON_TYPE" => 'submit',
 					"NAME"        => 'web_form_submit',
-					"TITLE"       => GetMessage("AV_FORM_CAREER_SUBMIT")
-					]
+					"TITLE"       => Loc::getMessage("AV_FORM_CAREER_SUBMIT")
+					],
+				false, ["HIDE_ICONS" => 'Y']
 				);
 			?>
 		</div>
@@ -113,8 +139,8 @@ CJSCore::Init(["av_form_elements"]);
 /* -------------------------------------------------------------------- */
 ?>
 <script>
-	BX.message({"AV_FORM_CAREER_FORM_VALIDATION_ALERT": '<?=GetMessage("AV_FORM_CAREER_FORM_VALIDATION_ALERT")?>'});
-	BX.message({"AV_FORM_CAREER_RESULT_OK_MESSAGE"    : '<?=GetMessage("AV_FORM_CAREER_RESULT_OK_MESSAGE")?>'});
+	BX.message({"AV_FORM_CAREER_FORM_VALIDATION_ALERT": '<?=Loc::getMessage("AV_FORM_CAREER_FORM_VALIDATION_ALERT")?>'});
+	BX.message({"AV_FORM_CAREER_RESULT_OK_MESSAGE"    : '<?=Loc::getMessage("AV_FORM_CAREER_RESULT_OK_MESSAGE")?>'});
 
 	<?if($arResult["isFormNote"] == 'Y'):?>
 	AvBlurScreen("on", 1000);

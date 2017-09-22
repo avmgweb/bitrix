@@ -1,4 +1,8 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
+<?
+use \Bitrix\Main\Localization\Loc;
+
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+?>
 <form method="POST" class="av-directories-filter">
 	<?
 	/* ------------------------------------------- */
@@ -24,11 +28,16 @@
 			}
 		switch($fieldInfo["FIELD"])
 			{
-			case "IBLOCK_ID": $componentParams["TITLE"] = GetMessage("AV_DIRECTORIES_FILTER_IBLOCK_LIST_DEFAULT");$componenTemplate = 'default_alt';break;
-			case "NAME"     : $componentParams["TITLE"] = GetMessage("AV_DIRECTORIES_FILTER_SEARCH_PLACEHOLDER");                                   break;
+			case "IBLOCK_ID": $componentParams["TITLE"] = Loc::getMessage("AV_DIRECTORIES_FILTER_IBLOCK_LIST_DEFAULT");$componenTemplate = 'default_alt';break;
+			case "NAME"     : $componentParams["TITLE"] = Loc::getMessage("AV_DIRECTORIES_FILTER_SEARCH_PLACEHOLDER");                                   break;
 			}
 
-		$APPLICATION->IncludeComponent("av:form_elements", $componenTemplate, $componentParams);
+		$APPLICATION->IncludeComponent
+			(
+			"av:form_elements", $componenTemplate,
+			$componentParams,
+			false, ["HIDE_ICONS" => 'Y']
+			);
 		?>
 	</div>
 	<?endforeach?>
@@ -47,8 +56,9 @@
 				[
 				"TYPE"  => 'button',
 				"NAME"  => $arResult["CANCEL_NAME"],
-				"TITLE" => GetMessage("AV_DIRECTORIES_FILTER_CANCEL_BUTTON")
-				]
+				"TITLE" => Loc::getMessage("AV_DIRECTORIES_FILTER_CANCEL_BUTTON")
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		?>
 	</div>

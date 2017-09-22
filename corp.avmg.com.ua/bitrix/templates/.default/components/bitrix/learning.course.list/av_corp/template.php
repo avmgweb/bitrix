@@ -1,4 +1,6 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* -------------------------------------------------------------------- */
 /* ------------------------------ filter ------------------------------ */
@@ -13,10 +15,11 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 			"av:form.input", "av_corp_learning_search",
 				[
 				"NAME"         => 'q',
-				"TITLE"        => GetMessage("AV_LEARNING_LIST_SEARCH_TITLE"),
-				"PLACEHOLDER"  => GetMessage("AV_LEARNING_LIST_SEARCH_PLACEHOLDER"),
-				"SEARCH_TITLE" => GetMessage("AV_LEARNING_LIST_SEARCH_BUTTON_TITLE")
-				]
+				"TITLE"        => Loc::getMessage("AV_LEARNING_LIST_SEARCH_TITLE"),
+				"PLACEHOLDER"  => Loc::getMessage("AV_LEARNING_LIST_SEARCH_PLACEHOLDER"),
+				"SEARCH_TITLE" => Loc::getMessage("AV_LEARNING_LIST_SEARCH_BUTTON_TITLE")
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		?>
 	</div>
@@ -59,10 +62,10 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 				<div class="test-info-row">
 					<?
 					$infoArray = [];
-					if($testInfo["TIME_LIMIT"])        $infoArray[] = GetMessage("AV_LEARNING_TESTS_TIME_LIMIT",    ["#MINUTES#"  => $testInfo["TIME_LIMIT"]]);
-					if($testInfo["ATTEMPT_LIMIT"])     $infoArray[] = GetMessage("AV_LEARNING_TESTS_ATTEMPT_LIMIT", ["#ATTEMPTS#" => $testInfo["ATTEMPT_LIMIT"]]);
-					if($testInfo["PASSAGE_TYPE"] == 2) $infoArray[] = GetMessage("AV_LEARNING_TESTS_PASSAGE_TYPE_CHANGE_ANSWER_YES");
-					else                               $infoArray[] = GetMessage("AV_LEARNING_TESTS_PASSAGE_TYPE_CHANGE_ANSWER_NO");
+					if($testInfo["TIME_LIMIT"])        $infoArray[] = Loc::getMessage("AV_LEARNING_TESTS_TIME_LIMIT",    ["#MINUTES#"  => $testInfo["TIME_LIMIT"]]);
+					if($testInfo["ATTEMPT_LIMIT"])     $infoArray[] = Loc::getMessage("AV_LEARNING_TESTS_ATTEMPT_LIMIT", ["#ATTEMPTS#" => $testInfo["ATTEMPT_LIMIT"]]);
+					if($testInfo["PASSAGE_TYPE"] == 2) $infoArray[] = Loc::getMessage("AV_LEARNING_TESTS_PASSAGE_TYPE_CHANGE_ANSWER_YES");
+					else                               $infoArray[] = Loc::getMessage("AV_LEARNING_TESTS_PASSAGE_TYPE_CHANGE_ANSWER_NO");
 					?>
 					<?=implode(' / ', $infoArray)?>
 				</div>

@@ -1,4 +1,6 @@
 <?
+use Bitrix\Main\Page\Asset;
+
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
 $APPLICATION->SetTitle("АВ метал груп - корпоративний сайт компанії");
@@ -6,36 +8,20 @@ $APPLICATION->SetPageProperty("title",       "АВ метал груп пров�
 $APPLICATION->SetPageProperty("description", "АВ метал груп ™ найбільший металотрейдер України ✔ г. Дніпро, ул. Шолом-Алейхема, 5 Телефонуйте! ☎ (056)790-01-22");
 
 CJSCore::Init(["bootstrap"]);
-$APPLICATION->SetAdditionalCSS('/bitrix/css/av_site/pages/index.css');
+Asset::getInstance()->addCss("/bitrix/css/av_site/pages/index.css");
 /* -------------------------------------------------------------------- */
 /* ------------------------------ banner ------------------------------ */
 /* -------------------------------------------------------------------- */
 $APPLICATION->IncludeComponent
 	(
-	"bitrix:advertising.banner", "bootstrap_av",
+	"bitrix:advertising.banner", "av",
 		array(
-		"ANIMATION_DURATION" => 500,
-		"BS_WRAP" => "Y",
-		"CYCLING" => "N",
-		"QUANTITY" => "12",
-		"SCALE" => "N",
-		"TYPE" => "MAIN_CORP_SITE",
-		"COMPONENT_TEMPLATE" => "bootstrap_av",
-		"NOINDEX" => "N",
-		"DEFAULT_TEMPLATE" => "bootstrap",
-		"BS_EFFECT" => "fade",
-		"BS_CYCLING" => "Y",
-		"BS_INTERVAL" => "6500",
-		"BS_PAUSE" => "Y",
-		"BS_KEYBOARD" => "N",
-		"BS_ARROW_NAV" => "N",
-		"BS_BULLET_NAV" => "Y",
-		"BS_HIDE_FOR_TABLETS" => "N",
-		"BS_HIDE_FOR_PHONES" => "N",
-		"CACHE_TYPE" => "A",
-		"CACHE_TIME" => "3600",
-		"COMPOSITE_FRAME_MODE" => "A",
-		"COMPOSITE_FRAME_TYPE" => "AUTO"
+		"TYPE"     => "MAIN_CORP_SITE",
+		"NOINDEX"  => 'Y',
+		"QUANTITY" => 12,
+
+		"CACHE_TYPE" => 'A',
+		"CACHE_TIME" => 360000
 		)
 	);
 /* -------------------------------------------------------------------- */
@@ -67,7 +53,7 @@ $APPLICATION->IncludeComponent
 					"TITLE"       => 'Усі напрямки',
 					"ATTR"        => ["rel" => 'nofollow']
 					),
-				'', array("HIDE_ICONS" => 'Y')
+				false, array("HIDE_ICONS" => 'Y')
 				);
 			?>
 		</div>
@@ -172,7 +158,7 @@ $APPLICATION->IncludeComponent
 					"TITLE"       => 'Переглянути усі',
 					"ATTR"        => ["rel" => 'nofollow']
 					),
-				'', array("HIDE_ICONS" => 'Y')
+				false, array("HIDE_ICONS" => 'Y')
 				);
 			?>
 		</div>
@@ -240,7 +226,7 @@ $APPLICATION->IncludeComponent
 				"TITLE"       => 'Читати більше',
 				"ATTR"        => ["rel" => 'nofollow']
 				),
-			'', array("HIDE_ICONS" => 'Y')
+			false, array("HIDE_ICONS" => 'Y')
 			);
 		?>
 	</div>

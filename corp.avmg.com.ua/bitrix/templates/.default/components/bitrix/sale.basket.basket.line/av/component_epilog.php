@@ -12,3 +12,8 @@ $templateFolder = '/'.implode('/', $templateFolderArray);
 
 CJSCore::Init(["av_site"]);
 Asset::getInstance()->addString('<script>AvBasketLineUpdate = "'.CURRENT_PROTOCOL.'://'.$_SERVER["SERVER_NAME"].$templateFolder.'/ajax/update_basket.php";</script>');
+Asset::getInstance()->addString('<script>AvBasketLineDelete = "'.CURRENT_PROTOCOL.'://'.$_SERVER["SERVER_NAME"].$templateFolder.'/ajax/delete_item.php";</script>');
+
+AvComponentsIncludings::getInstance()
+	->setIncludings("av", "form.button", "av_alt2")
+	->setIncludings("av", "form.button", "av");

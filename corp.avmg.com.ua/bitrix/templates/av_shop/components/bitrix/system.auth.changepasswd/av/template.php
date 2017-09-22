@@ -1,4 +1,8 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
+<?
+use \Bitrix\Main\Localization\Loc;
+
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+?>
 <form class="av-change-pass-form" method="post" action="<?=$arResult["AUTH_FORM"]?>" name="bform">
 	<?if($arResult["BACKURL"]):?>
 	<input type="hidden" name="backurl" value="<?=$arResult["BACKURL"]?>">
@@ -6,7 +10,7 @@
 	<input type="hidden" name="AUTH_FORM" value="Y">
 	<input type="hidden" name="TYPE" value="CHANGE_PWD">
 
-	<h3><?=GetMessage("AV_CHANGE_PASS_TITLE")?></h3>
+	<h3><?=Loc::getMessage("AV_CHANGE_PASS_TITLE")?></h3>
 
 	<?if($arParams["~AUTH_RESULT"]):?>
 	<div class="alert-text">
@@ -21,9 +25,10 @@
 			[
 			"TYPE"  => 'input',
 			"NAME"  => 'USER_LOGIN',
-			"TITLE" => GetMessage("AV_CHANGE_PASS_LOGIN"),
+			"TITLE" => Loc::getMessage("AV_CHANGE_PASS_LOGIN"),
 			"VALUE" => $arResult["LAST_LOGIN"]
-			]
+			],
+		false, ["HIDE_ICONS" => 'Y']
 		);
 	$APPLICATION->IncludeComponent
 		(
@@ -31,9 +36,10 @@
 			[
 			"TYPE"  => 'input',
 			"NAME"  => 'USER_CHECKWORD',
-			"TITLE" => GetMessage("AV_CHANGE_PASS_CHECKWORD"),
+			"TITLE" => Loc::getMessage("AV_CHANGE_PASS_CHECKWORD"),
 			"VALUE" => $arResult["USER_CHECKWORD"]
-			]
+			],
+		false, ["HIDE_ICONS" => 'Y']
 		);
 	$APPLICATION->IncludeComponent
 		(
@@ -41,9 +47,10 @@
 			[
 			"TYPE"  => 'password',
 			"NAME"  => 'USER_PASSWORD',
-			"TITLE" => GetMessage("AV_CHANGE_PASS_NEW_PASS"),
+			"TITLE" => Loc::getMessage("AV_CHANGE_PASS_NEW_PASS"),
 			"VALUE" => $arResult["USER_PASSWORD"]
-			]
+			],
+		false, ["HIDE_ICONS" => 'Y']
 		);
 	$APPLICATION->IncludeComponent
 		(
@@ -51,9 +58,10 @@
 			[
 			"TYPE"  => 'password',
 			"NAME"  => 'USER_CONFIRM_PASSWORD',
-			"TITLE" => GetMessage("AV_CHANGE_PASS_NEW_PASS_CONFIRM"),
+			"TITLE" => Loc::getMessage("AV_CHANGE_PASS_NEW_PASS_CONFIRM"),
 			"VALUE" => $arResult["USER_CONFIRM_PASSWORD"]
-			]
+			],
+		false, ["HIDE_ICONS" => 'Y']
 		);
 	?>
 
@@ -68,9 +76,10 @@
 				[
 				"TYPE"  => 'input',
 				"NAME"  => 'captcha_word',
-				"TITLE" => GetMessage("AV_CHANGE_PASS_CAPCHA"),
+				"TITLE" => Loc::getMessage("AV_CHANGE_PASS_CAPCHA"),
 				"ATTR"  => ["autocomplete" => 'off']
-				]
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		?>
 	</div>
@@ -85,8 +94,9 @@
 				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'submit',
 				"NAME"        => 'change_pwd',
-				"TITLE"       => GetMessage("AV_CHANGE_PASS_SUBMIT")
-				]
+				"TITLE"       => Loc::getMessage("AV_CHANGE_PASS_SUBMIT")
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		?>
 	</div>

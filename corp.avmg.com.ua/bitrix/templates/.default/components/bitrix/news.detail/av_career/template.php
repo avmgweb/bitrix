@@ -1,5 +1,8 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
 $cityTitle = strip_tags($arResult["DISPLAY_PROPERTIES"]["city"]["DISPLAY_VALUE"]);
 /* -------------------------------------------------------------------- */
 /* -------------------------- same articles --------------------------- */
@@ -67,7 +70,8 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 				"USE_RATING" => $arParams["USE_RATING"],
 				"MAX_VOTE"   => $arParams["MAX_VOTE"],
 				"VOTE_NAMES" => $arParams["VOTE_NAMES"]
-				]
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 	$sameArticles = ob_get_contents();
 	ob_end_clean();
@@ -86,7 +90,7 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 		<?
 		$infoArray =
 			[
-			GetMessage("AV_CAREER_VIEW_ACTIVE_DATE")                => explode(' ', $arResult["FIELDS"]["DATE_ACTIVE_FROM"])[0],
+			Loc::getMessage("AV_CAREER_VIEW_ACTIVE_DATE")           => explode(' ', $arResult["FIELDS"]["DATE_ACTIVE_FROM"])[0],
 			$arResult["DISPLAY_PROPERTIES"]["type_job"]    ["NAME"] => $arResult["DISPLAY_PROPERTIES"]["type_job"]    ["DISPLAY_VALUE"],
 			$arResult["DISPLAY_PROPERTIES"]["city"]        ["NAME"] => $cityTitle,
 			$arResult["DISPLAY_PROPERTIES"]["type_vacancy"]["NAME"] => $arResult["DISPLAY_PROPERTIES"]["type_vacancy"]["DISPLAY_VALUE"],
@@ -107,7 +111,7 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 		<?endif?>
 
 		<?if($arParams["USE_SHARE"] == 'Y'):?>
-		<div class="share-block-title"><?=GetMessage("AV_CAREER_VIEW_SHARE_TITLE")?></div>
+		<div class="share-block-title"><?=Loc::getMessage("AV_CAREER_VIEW_SHARE_TITLE")?></div>
 		<?
 		$APPLICATION->IncludeComponent
 			(
@@ -116,7 +120,8 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 				"HANDLERS"   => $arParams["SHARE_HANDLERS"],
 				"PAGE_TITLE" => $APPLICATION->GetTitle(),
 				"PAGE_URL"   => CURRENT_PROTOCOL.'://'.SITE_SERVER_NAME.$APPLICATION->GetCurPage(false)
-				]
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		?>
 		<?endif?>
@@ -146,7 +151,7 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 	/* ------------------------------------------- */
 	?>
 	<div class="form-cell">
-		<h3><?=GetMessage("AV_CAREER_VIEW_FORM_CELL_TITLE")?></h3>
+		<h3><?=Loc::getMessage("AV_CAREER_VIEW_FORM_CELL_TITLE")?></h3>
 		<?
 		if($arParams["WEBFORM_ID"])
 			$APPLICATION->IncludeComponent
@@ -177,11 +182,12 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 
 					"CACHE_TYPE" => 'A',
 					"CACHE_TIME" => 360000
-					]
-				)
+					],
+				false, ["HIDE_ICONS" => 'Y']
+				);
 		?>
 		<div class="support-text">
-			<?=GetMessage("AV_CAREER_VIEW_FORM_SUPPORT_TEXT")?>
+			<?=Loc::getMessage("AV_CAREER_VIEW_FORM_SUPPORT_TEXT")?>
 		</div>
 	</div>
 	<?
@@ -191,7 +197,9 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 	?>
 	<?if($sameArticles):?>
 	<div class="same-articles-cell">
-		<h3 class="av-spoiler-header" data-work-breakpoint="991"><?=GetMessage("AV_CAREER_VIEW_SAME_BASES", ["#NAME#" => $cityTitle])?></h3>
+		<h3 class="av-spoiler-header" data-work-breakpoint="991">
+			<?=Loc::getMessage("AV_CAREER_VIEW_SAME_BASES", ["#NAME#" => $cityTitle])?>
+		</h3>
 		<div class="av-spoiler-body"><?=$sameArticles?></div>
 	</div>
 	<?endif?>
@@ -209,8 +217,9 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'link',
 				"LINK"        => $arResult["LIST_PAGE_URL"],
-				"TITLE"       => GetMessage("AV_CAREER_VIEW_BACK_LINK")
-				]
+				"TITLE"       => Loc::getMessage("AV_CAREER_VIEW_BACK_LINK")
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		?>
 	</div>

@@ -1,4 +1,6 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 if($USER->IsAuthorized())                                       die();
 ?>
@@ -10,8 +12,8 @@ if($USER->IsAuthorized())                                       die();
 	<input type="hidden" name="TYPE" value="SEND_PWD">
 	<input type="hidden" name="USER_EMAIL">
 
-	<div class="title"><?=GetMessage("AV_FORGOT_PASS_TITLE")?></div>
-	<div class="text"><?=GetMessage("AV_FORGOT_PASS_TEXT")?></div>
+	<div class="title"><?=Loc::getMessage("AV_FORGOT_PASS_TITLE")?></div>
+	<div class="text"><?=Loc::getMessage("AV_FORGOT_PASS_TEXT")?></div>
 
 	<div class="input-row">
 		<?
@@ -21,9 +23,10 @@ if($USER->IsAuthorized())                                       die();
 				[
 				"TYPE"  => 'input',
 				"NAME"  => 'USER_LOGIN',
-				"TITLE" => GetMessage("AV_FORGOT_PASS_INPUT_TITLE"),
+				"TITLE" => Loc::getMessage("AV_FORGOT_PASS_INPUT_TITLE"),
 				"VALUE" => $arResult["LAST_LOGIN"]
-				]
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		?>
 	</div>
@@ -39,9 +42,10 @@ if($USER->IsAuthorized())                                       die();
 				[
 				"TYPE"  => 'input',
 				"NAME"  => 'captcha_word',
-				"TITLE" => GetMessage("AV_FORGOT_PASS_CAPCHA_TITLE"),
+				"TITLE" => Loc::getMessage("AV_FORGOT_PASS_CAPCHA_TITLE"),
 				"ATTR"  => ["autocomplete" => 'off']
-				]
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		?>
 	</div>
@@ -56,8 +60,9 @@ if($USER->IsAuthorized())                                       die();
 				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'submit',
 				"NAME"        => 'send_account_info',
-				"TITLE"       => GetMessage("AV_FORGOT_PASS_SUBMIT_TITLE")
-				]
+				"TITLE"       => Loc::getMessage("AV_FORGOT_PASS_SUBMIT_TITLE")
+				],
+			false, ["HIDE_ICONS" => 'Y']
 			);
 		?>
 	</div>

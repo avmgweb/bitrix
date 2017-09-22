@@ -16,7 +16,6 @@
 	justify-content: center;
 	position: relative;
 	}
-
 .av-menu-tablet .item
 	{
 	align-items: center;
@@ -34,16 +33,15 @@
 .av-menu-tablet .item:focus {background: #FFF;box-shadow: 0 4px 8px rgba(76,82,85,0.25)}
 .av-menu-tablet .item .image-link
 	{
-	align-items: center;
-	display: flex;
 	margin-bottom: 26px;
 	overflow: hidden;
-	text-align: left;
 	height: 120px;
 	}
 .av-menu-tablet .item .image-link img
 	{
-	width: 100%;
+	height: 100%;
+	margin-left: 50%;
+	transform: translateX(-50%);
 	}
 .av-menu-tablet .border-hider-vertical,
 .av-menu-tablet .border-hider-horizontal

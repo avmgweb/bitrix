@@ -1,4 +1,6 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* -------------------------------------------------------------------- */
 /* ------------------------------ pager ------------------------------- */
@@ -13,7 +15,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* -------------------------------------------------------------------- */
 ?>
 <?if(!count($arResult["ITEMS"])):?>
-<?=GetMessage("AV_BASES_LIST_NO_ITEMS")?>
+<?=Loc::getMessage("AV_BASES_LIST_NO_ITEMS")?>
 <?endif?>
 <?
 /* -------------------------------------------------------------------- */
@@ -42,7 +44,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		<div>
 			<h3>
 				<a <?if($arParams["DETAIL_URL"]):?>href="<?=$arItem["DETAIL_PAGE_URL"]?>"<?endif?>>
-					<?if($closed):?><?=GetMessage("AV_BASES_LIST_CLOSED_PREFIX")?> <?endif?><?=$arItem["NAME"]?>
+					<?if($closed):?><?=Loc::getMessage("AV_BASES_LIST_CLOSED_PREFIX")?> <?endif?><?=$arItem["NAME"]?>
 				</a>
 			</h3>
 			<div class="value-block">

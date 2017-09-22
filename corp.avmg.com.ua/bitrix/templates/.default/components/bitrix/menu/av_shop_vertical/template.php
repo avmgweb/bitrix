@@ -8,8 +8,9 @@ if(!count($arResult))                                           return;
 		<li
 			class="
 				item
-				<?if($itemInfo["SELECTED"]):?>selected active<?endif?>
-				<?if($itemInfo["PARENT"]):?>  parent         <?endif?>
+				<?if($itemInfo["SELECTED"]):?>                       selected<?endif?>
+				<?if($itemInfo["ACTIVE"] || $itemInfo["SELECTED"]):?>active  <?endif?>
+				<?if($itemInfo["PARENT"]):?>                         parent  <?endif?>
 				"
 		>
 			<div>
@@ -22,11 +23,14 @@ if(!count($arResult))                                           return;
 			<?$nextIndex = $index + 1?>
 			<?if($itemInfo["PARENT"]):?>
 			<ul>
-				<?while($arResult[$nextIndex]["DEPTH_LEVEL"] == 2):?>
-				<li>
-					<a href="<?=$arResult[$nextIndex]["LINK"]?>"><?=$arResult[$nextIndex]["TEXT"]?></a>
-					<?$nextIndex++?>
-				</li>
+				<?while(count($arResult[$nextIndex]) && $arResult[$nextIndex]["DEPTH_LEVEL"] > 1):?>
+					<?if($arResult[$nextIndex]["DEPTH_LEVEL"] == 2):?>
+					<li class="subitem<?if($arResult[$nextIndex]["SELECTED"]):?> selected<?endif?>">
+						<a href="<?=$arResult[$nextIndex]["LINK"]?>"><?=$arResult[$nextIndex]["TEXT"]?></a>
+					</li>
+					<?endif?>
+
+				<?$nextIndex++?>
 				<?endwhile?>
 			</ul>
 			<?endif?>

@@ -1,4 +1,6 @@
 <?
+use Bitrix\Main\Page\Asset;
+
 require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
 
 $APPLICATION->SetTitle("Партнерство");
@@ -6,7 +8,7 @@ $APPLICATION->SetPageProperty("title",       "Сотрудничество с к
 $APPLICATION->SetPageProperty("description", "Сотрудничество с компанией АВ металл групп ™ ✓Выгодная партнерская программа ✓Широкая региональная сеть ☎ (056)790-01-22 Звоните!");
 
 CJSCore::Init(["bootstrap"]);
-$APPLICATION->SetAdditionalCSS('/bitrix/css/av_site/pages/partners.css');
+Asset::getInstance()->addCss("/bitrix/css/av_site/pages/partners.css");
 ?>
 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 av-parthners-page-block first-column">
 	<h3>Партнерская программа</h3>

@@ -16,9 +16,9 @@ $APPLICATION->IncludeComponent
 		"SHOW_RELATIVE_ELEMENTS"  => $arParams["SHOW_RELATIVE_ELEMENTS"],
 		"RELATIVE_ELEMENTS_COUNT" => $arParams["RELATIVE_ELEMENTS_COUNT"],
 
-		"CACHE_TIME"      => $arParams["CACHE_TIME"],
-		"CACHE_FILTER"    => $arParams["CACHE_FILTER"],
-		"CACHE_GROUPS"    => $arParams["CACHE_GROUPS"]
-		]
+		"CACHE_TIME"   => $arParams["CACHE_TIME"],
+		"CACHE_FILTER" => $arParams["CACHE_FILTER"],
+		"CACHE_GROUPS" => $arParams["CACHE_GROUPS"]
+		],
+	false, ["HIDE_ICONS" => 'Y']
 	);
-?>

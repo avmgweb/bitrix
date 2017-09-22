@@ -13,11 +13,7 @@ if(is_array($arResult["ATTR"]))
 	{
 	$attrArray = [];
 	foreach($arResult["ATTR"] as $index => $value)
-		{
-		$attrString = $index;
-		if($value) $attrString .= '='.$value;
-		$attrArray[] = $attrString;
-		}
+		$attrArray[] = $index.'="'.str_replace('\"', '\'', $value).'"';
 	$arResult["ATTR"] = implode(' ', $attrArray);
 	}
 /* --------------------------------------------------------------------- */

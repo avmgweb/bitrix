@@ -1,4 +1,6 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 $fieldsList = [];
@@ -9,18 +11,18 @@ $arComponentParameters["PARAMETERS"] =
 	[
 	"SECTION_FIELD" =>
 		[
-		"NAME"  => GetMessage("AV_LEARNING_COURSE_SECTION_LIST_SECTION_FIELD"),
+		"NAME"  => Loc::getMessage("AV_LEARNING_COURSE_SECTION_LIST_SECTION_FIELD"),
 		"TYPE"  => 'LIST',
 		"VALUES" => $fieldsList
 		],
 	"COURSE_DETAIL_TEMPLATE" =>
 		[
-		"NAME" => GetMessage("AV_LEARNING_COURSE_SECTION_LIST_URL"),
+		"NAME" => Loc::getMessage("AV_LEARNING_COURSE_SECTION_LIST_URL"),
 		"TYPE" => 'STRING'
 		],
 	"CHECK_PERMISSIONS" =>
 		[
-		"NAME" => GetMessage("AV_LEARNING_COURSE_SECTION_LIST_CHECK_PERMISSIONS"),
+		"NAME" => Loc::getMessage("AV_LEARNING_COURSE_SECTION_LIST_CHECK_PERMISSIONS"),
 		"TYPE" => 'CHECKBOX'
 		]
 	];

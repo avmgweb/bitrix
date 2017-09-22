@@ -1,4 +1,6 @@
 <?
+use \Bitrix\Main\Localization\Loc;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 foreach($arResult["QUERY"] as $letter => $arrayInfo)
@@ -10,7 +12,7 @@ foreach($arResult["QUERY"] as $letter => $arrayInfo)
 	/* -------------------------------------------------------------------- */
 	/* ---------------------------- page title ---------------------------- */
 	/* -------------------------------------------------------------------- */
-	$pageTitle = GetMessage("AV_DIRECTORIES_LIST_MAIN_TITLE");
+	$pageTitle = Loc::getMessage("AV_DIRECTORIES_LIST_MAIN_TITLE");
 	if(count($arParams["IBLOCK_ID"]) == 1)                                                            $pageTitle = $arResult["IBLOCKS_INFO"][$arParams["IBLOCK_ID"][0]]["NAME"];
 	elseif(count($arParams["IBLOCK_ID"]) > 1 && count($arResult["APPLIED_FILTER"]["IBLOCK_ID"]) == 1) $pageTitle = $arResult["IBLOCKS_INFO"][$arResult["APPLIED_FILTER"]["IBLOCK_ID"][0]]["NAME"];
 	?>
@@ -38,7 +40,7 @@ foreach($arResult["QUERY"] as $letter => $arrayInfo)
 		</ul>
 
 		<?if($arrayInfo["more_elements"]):?>
-		<a><?=GetMessage("AV_DIRECTORIES_LIST_SHOW_MORE_LINK")?></a>
+		<a><?=Loc::getMessage("AV_DIRECTORIES_LIST_SHOW_MORE_LINK")?></a>
 		<?endif?>
 	</div>
 	<?endforeach?>
@@ -48,7 +50,7 @@ foreach($arResult["QUERY"] as $letter => $arrayInfo)
 	/* -------------------------------------------------------------------- */
 	?>
 	<?if(!count($arResult["QUERY"])):?>
-	<b><?=GetMessage("AV_DIRECTORIES_LIST_EMPTY_TITLE")?></b>
-	<div><?=GetMessage("AV_DIRECTORIES_LIST_EMPTY_TEXT")?></div>
+	<b><?=Loc::getMessage("AV_DIRECTORIES_LIST_EMPTY_TITLE")?></b>
+	<div><?=Loc::getMessage("AV_DIRECTORIES_LIST_EMPTY_TEXT")?></div>
 	<?endif?>
 </div>
