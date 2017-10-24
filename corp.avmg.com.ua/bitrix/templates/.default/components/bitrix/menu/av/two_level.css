@@ -1,0 +1,57 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-menu-two-level,
+.av-menu-two-level ul,
+.av-menu-two-level li        {padding: 0;margin: 0}
+.av-menu-two-level li:before {display: none !important}
+
+.av-menu-two-level a,
+.av-menu-two-level a:hover,
+.av-menu-two-level a:active,
+.av-menu-two-level a:focus,
+.av-menu-two-level a:visited {color: inherit;text-decoration: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- menu ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-menu-two-level a       {display: block}
+.av-menu-two-level a.selected,
+.av-menu-two-level a:hover,
+.av-menu-two-level a:active,
+.av-menu-two-level a:focus {color: #CC0000}
+
+.av-menu-two-level
+	{
+	align-items: center;
+	display: flex;
+	}
+.av-menu-two-level > li:not(:last-child) {padding-right: 13px}
+
+.av-menu-two-level > li > a
+	{
+	cursor: pointer;
+	font-weight: bold;
+	white-space: nowrap;
+	}
+.av-menu-two-level ul
+	{
+	background: #FFF;
+	box-shadow: 0 4px 8px rgba(76, 82, 85, 0.25);
+	display: none;
+	padding: 19px;
+	position: absolute;
+	max-width: 300px;
+	z-index: 300;
+	}
+.av-menu-two-level > li:hover ul                     {display: block}
+.av-menu-two-level            ul li:not(:last-child) {padding-bottom: 9px}
+
+.av-menu-two-level ul a
+	{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	}
+.av-menu-two-level ul a:hover,
+.av-menu-two-level ul a:active,
+.av-menu-two-level ul a:focus {text-decoration: underline}

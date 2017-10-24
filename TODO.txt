@@ -1,0 +1,6 @@
+Микроразметка GeoCoordinates:
+	<span itemprop="geo" itemscope="" itemtype="http://schema.org/GeoCoordinates">
+		<meta itemprop="latitude" content="51.76449"/>
+		<meta itemprop="longitude" content="14.32711"/>
+	</span>
+SHOP большая корзина: ожидаемые/отсутствуют

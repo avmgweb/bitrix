@@ -40,7 +40,7 @@ $(function()
 
 				CreateAvAlertPopup(BX.message("AV_FORM_AJAX_FORM_VALIDATION_ALERT"), "alert")
 					.positionCenter(formZindex + 50, 'Y')
-					.hideOnClickout("remove");
+					.onClickout(function() {$(this).remove()});
 				}
 			});
 	});

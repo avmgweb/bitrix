@@ -4,27 +4,41 @@ body, html
 	font-family: "robotoregular", sans-serif;
 	font-size: 16px;
 	line-height: 26px;
+	margin:  0;
+	padding: 0;
+	}
+*
+	{
+	box-sizing: border-box;
+	outline: none;
 	}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ fonts ------------------------------- */
 /* -------------------------------------------------------------------- */
 @font-face
 	{
-	font-family: 'robotoregular';
+	font-family: "robotoregular";
 	src:
-		url('fonts/RobotoRegular/roboto-regular-webfont.eot?#iefix')        format('embedded-opentype'),
-		url('fonts/RobotoRegular/roboto-regular-webfont.woff')              format('woff'),
-		url('fonts/RobotoRegular/roboto-regular-webfont.svg#robotoregular') format('svg');
+		url("fonts/RobotoRegular/roboto-regular-webfont.eot?#iefix")        format("embedded-opentype"),
+		url("fonts/RobotoRegular/roboto-regular-webfont.woff")              format("woff"),
+		url("fonts/RobotoRegular/roboto-regular-webfont.svg#robotoregular") format("svg");
 	font-style:  normal;
 	font-weight: normal;
 	}
 /* -------------------------------------------------------------------- */
 /* ----------------------------- headers ------------------------------ */
 /* -------------------------------------------------------------------- */
-h1, h2, h3, h4, h5, h6 {font-weight: normal;margin: 0;padding: 0}
-h4                     {font-weight: bold}
-h5                     {color: #78909C;font-size: 14px}
-h6                     {font-size: 12px}
+h1, h2, h3, h4, h5, h6
+	{
+	font-weight: normal;
+	margin:  0;
+	padding: 0;
+	}
+h1
+	{
+	font-size:   36px;
+	line-height: 36px;
+	}
 h2, h3
 	{
 	background: #FAFAFA;
@@ -33,6 +47,9 @@ h2, h3
 	padding: 15px 10px;
 	margin-bottom: 26px;
 	}
+h4 {font-weight: bold}
+h5 {font-size: 14px}
+h6 {font-size: 12px}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ links ------------------------------- */
 /* -------------------------------------------------------------------- */
@@ -40,7 +57,11 @@ a,
 a:hover,
 a:focus,
 a:active,
-a:visited {color: #CC0000;text-decoration: none;outline: none}
+a:visited
+	{
+	color: #CC0000;
+	text-decoration: none;
+	}
 a:hover,
 a:focus   {text-decoration: underline}
 a:visited {color: #800080}
@@ -52,7 +73,6 @@ input, select, textarea, button
 	background-color: transparent;
 	border: none;
 	line-height: inherit;
-	outline: none;
 	padding: 0;
 	margin:  0;
 	}
@@ -63,15 +83,20 @@ label
 	padding: 0;
 	margin:  0;
 	}
+input[type=hidden],
 ::-ms-clear,
 ::-ms-reveal           {display: none}
 textarea               {resize: none}
 input:-webkit-autofill {-webkit-box-shadow: 0 0 0 1000px white inset !important}
-input[type=hidden]     {display: none}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ tables ------------------------------ */
 /* -------------------------------------------------------------------- */
-table {border-collapse: collapse;padding: 0;margin: 0}
+table
+	{
+	border-collapse: collapse;
+	padding: 0;
+	margin:  0;
+	}
 table td,
 table th
 	{
@@ -84,15 +109,45 @@ table th
 /* -------------------------------------------------------------------- */
 /* ------------------------------ others ------------------------------ */
 /* -------------------------------------------------------------------- */
-img       {outline: none}
-ul        {padding: 0;margin: 0 0 0 20px}
-li        {list-style-type: none;padding: 0;margin: 0}
-li:before {color: #CC0000;content: '\2022';display: inline-block;margin: 0 5px 0 -15px}
-p         {padding: 0 0 26px 0;margin: 0;text-align: justify}
+ul
+	{
+	padding: 0;
+	margin:  0 0 0 20px;
+	}
+li
+	{
+	list-style-type: none;
+	padding: 0;
+	margin:  0;
+	}
+li:before
+	{
+	color: #CC0000;
+	content: "\2022";
+	display: inline-block;
+	margin: 0 5px 0 -15px;
+	}
+p
+	{
+	padding: 0 0 26px 0;
+	margin:  0;
+	text-align: justify;
+	}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ classes ----------------------------- */
 /* -------------------------------------------------------------------- */
-.av-page-title {text-align: center}
+.av-responsive-block
+	{
+	margin: auto;
+	width: 1130px;
+	}
+.av-page-title
+	{
+	font-size:   36px;
+	line-height: 36px;
+	margin: 52px 0;
+	text-align: center;
+	}
 
 .av-products-image-link                        {position: relative}
 .av-products-image-link > a:nth-child(1)       {display: block;width: 100%}
@@ -135,13 +190,17 @@ p         {padding: 0 0 26px 0;margin: 0;text-align: justify}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ media ------------------------------- */
 /* -------------------------------------------------------------------- */
-@media (min-width: 768px)
+@media (max-width: 1199px)
 	{
-	h1             {font-size: 36px;line-height: 36px}
-	.av-page-title {font-size: 36px;line-height: 36px;margin: 52px 0}
+	.av-responsive-block {width: 930px}
+	}
+@media (max-width: 991px)
+	{
+	.av-responsive-block {width: 710px}
 	}
 @media (max-width: 767px)
 	{
-	h1             {font-size: 24px;line-height: 24px}
-	.av-page-title {font-size: 24px;line-height: 24px;margin: 26px 0}
+	h1                   {font-size: 24px;line-height: 24px}
+	.av-responsive-block {width: calc(100% - 40px)}
+	.av-page-title       {font-size: 24px;line-height: 24px;margin: 26px 0}
 	}

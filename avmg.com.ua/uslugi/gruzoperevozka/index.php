@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Вантажоперевезення");
 $APPLICATION->SetPageProperty("title",       "Доставка металопрокату по Україні: Дніпро, Київ, Харків, Львів, Одеса | Напрям АВ метал груп ™ avmg.com.ua");
@@ -35,4 +35,4 @@ $APPLICATION->SetPageProperty("description", "Доставка металу по
 	Порядок розрахунку і вартість транспортування можна дізнатися у менеджера або відправити заявку на доставку через он-лайн форму на нашому сайті.
 </p>
 <p><img style="width: 100%" alt="Вантажоперевезення" title="Вантажоперевезення" src="/upload/medialibrary/13f/dostavka.jpg"></p>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

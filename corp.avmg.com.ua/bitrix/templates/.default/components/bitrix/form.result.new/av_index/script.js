@@ -11,7 +11,7 @@ $(function()
 				{
 				CreateAvAlertPopup(BX.message("AV_FORM_INDEX_FORM_VALIDATION_ALERT"), "alert")
 					.positionCenter(1000, 'Y')
-					.hideOnClickout("remove");
+					.onClickout(function() {$(this).remove()});
 				return false;
 				}
 			});

@@ -1,43 +1,43 @@
 <?
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-
-if($arParams["PARENT_SECTION_CODE"] && !$arParams["PARENT_SECTION"])
-	$arParams["PARENT_SECTION"] = CIBlockSection::GetList([], ["CODE" => $arParams["PARENT_SECTION_CODE"]], false, ["ID"])->GetNext()["ID"];
 /* -------------------------------------------------------------------- */
 /* ---------------------------- variables ----------------------------- */
 /* -------------------------------------------------------------------- */
-$currentSectionUrl =
-	($arParams["PARENT_SECTION"] || $arParams["PARENT_SECTION_CODE"])
-		? str_replace
-			(
-			["#SECTION_ID#",             "#SECTION_CODE#"],
-			[$arParams["PARENT_SECTION"], $arParams["PARENT_SECTION_CODE"]],
-			$arParams["SECTION_URL"]
-			)
-		: '';
-$currentSubsectionUrl =
-	($arParams["SUBSECTION"] || $arParams["SUBSECTION_CODE"])
-		? str_replace
-			(
-			["#PARENT_SECTION_ID#",       "#PARENT_SECTION_CODE#",          "#SECTION_ID#",          "#SECTION_CODE#"],
-			[$arParams["PARENT_SECTION"], $arParams["PARENT_SECTION_CODE"], $arParams["SUBSECTION"], $arParams["SUBSECTION_CODE"]],
-			$arParams["SUBSECTION_URL"]
-			)
-		: '';
-$rootSectionsArray = [];
-if(in_array('SECTION_ID', $arParams["FIELD_CODE"]) || in_array('SUBSECTION', $arParams["FIELD_CODE"]))
+$sectionId = $arParams["SECTION_CODE"] && !$arParams["SECTION_ID"]
+	? CIBlockSection::GetList([], ["CODE" => $arParams["SECTION_CODE"]], false, ["ID"])->GetNext()["ID"]
+	: (int) $arParams["SECTION_ID"];
+$parentSectionId = $arParams["PARENT_SECTION_CODE"] && !$arParams["PARENT_SECTION_ID"]
+	? CIBlockSection::GetList([], ["CODE" => $arParams["PARENT_SECTION_CODE"]], false, ["ID"])->GetNext()["ID"]
+	: (int) $arParams["PARENT_SECTION_ID"];
+$sectionUrl = $sectionId
+	? str_replace
+		(
+		["#SECTION_ID#",                                                              "#SECTION_CODE#"],
+		[$parentSectionId ? $arParams["PARENT_SECTION_ID"] : $arParams["SECTION_ID"], $parentSectionId ? $arParams["PARENT_SECTION_CODE"] : $arParams["SECTION_CODE"]],
+		$arParams["SECTION_URL"]
+		)
+	: "";
+$parentSectionIrl = $parentSectionId
+	? str_replace
+		(
+		["#PARENT_SECTION_ID#",          "#PARENT_SECTION_CODE#",          "#SECTION_ID#",          "#SECTION_CODE#"],
+		[$arParams["PARENT_SECTION_ID"], $arParams["PARENT_SECTION_CODE"], $arParams["SECTION_ID"], $arParams["SECTION_CODE"]],
+		$arParams["SUBSECTION_URL"]
+		)
+	: "";
+
+$rootSectionsInfo = [];
+if(in_array("SECTION_ID", $arParams["FIELD_CODE"]) || in_array("SUBSECTION", $arParams["FIELD_CODE"]))
 	{
 	$queryList = CIBlockSection::GetList(["NAME" => 'ASC'], ["IBLOCK_ID" => $arParams["IBLOCK_ID"], "SECTION_ID" => false], false, ["ID", "CODE", "NAME"]);
 	while($queryElement = $queryList->GetNext())
-		$rootSectionsArray[$queryElement["ID"]] =
+		$rootSectionsInfo[$queryElement["ID"]] =
 			[
 			"NAME" => $queryElement["NAME"],
 			"CODE" => $queryElement["CODE"]
 			];
 	}
-/* -------------------------------------------------------------------- */
-/* ---------------------------- props info ---------------------------- */
-/* -------------------------------------------------------------------- */
+
 $propsInfo = [];
 $queryList = CIBlockProperty::GetList([], ["IBLOCK_ID" => $arParams["IBLOCK_ID"], "ACTIVE" => 'Y']);
 while($queryInfo = $queryList->GetNext()) $propsInfo[$queryInfo["CODE"]] = $queryInfo;
@@ -65,6 +65,7 @@ if($needRedirect)
 	{
 	$redirectUrl = $arParams["EMPTY_FILTER_URL"];
 	foreach($arResult["arrInputNames"] as $index => $value) unset($_GET[$index]);
+
 	if(count($urlParamsArray) && $arParams["APPLIED_FILTER_URL"]) $redirectUrl = str_replace('#FILTER_PARAMS#', implode('-AND-', $urlParamsArray), $arParams["APPLIED_FILTER_URL"]);
 	LocalRedirect($redirectUrl.(count($_GET) ? '?' : '').http_build_query($_GET));
 	}
@@ -176,16 +177,16 @@ if(count($arResult["FIELDS"]["SECTION_ID"]))
 
 	if($arParams["LIST_URL"] && $arParams["SECTION_URL"])
 		{
-		$arResult["FIELDS"]["SECTION_ID"]["TYPE"]        = 'LINKS_LIST';
+		$arResult["FIELDS"]["SECTION_ID"]["TYPE"]        = "LINKS_LIST";
 		$arResult["FIELDS"]["SECTION_ID"]["VALUE_LIST"]  = [];
-		$arResult["FIELDS"]["SECTION_ID"]["INPUT_VALUE"] = $currentSectionUrl;
-		if($arParams["PARENT_SECTION"])
+		$arResult["FIELDS"]["SECTION_ID"]["INPUT_VALUE"] = $sectionUrl;
+		if($sectionId)
 			$arResult["FIELDS"]["SECTION_ID"]["VALUE_LIST"][$arParams["LIST_URL"]] = $arResult["FIELDS"]["SECTION_ID"]["NAME"];
 
-		foreach($rootSectionsArray as $sectiionId => $sectionInfo)
+		foreach($rootSectionsInfo as $rootSectionId => $rootSectionInfo)
 			{
-			$link = str_replace(['#SECTION_ID#', '#SECTION_CODE#'], [$sectiionId, $sectionInfo["CODE"]], $arParams["SECTION_URL"]);
-			$arResult["FIELDS"]["SECTION_ID"]["VALUE_LIST"][$link] = $sectionInfo["NAME"];
+			$link = str_replace(['#SECTION_ID#', '#SECTION_CODE#'], [$rootSectionId, $rootSectionInfo["CODE"]], $arParams["SECTION_URL"]);
+			$arResult["FIELDS"]["SECTION_ID"]["VALUE_LIST"][$link] = $rootSectionInfo["NAME"];
 			}
 		}
 	}
@@ -196,25 +197,25 @@ if(array_key_exists('SUBSECTION', $arResult["FIELDS"]))
 	{
 	$arResult["FIELDS"]["SUBSECTION"] =
 		[
-		"TYPE"        => 'LINKS_LIST',
+		"TYPE"        => "LINKS_LIST",
 		"NAME"        => $arParams["SUBSECTION_TITLE"],
 		"VALUE_LIST"  => [],
-		"INPUT_VALUE" => $currentSubsectionUrl,
+		"INPUT_VALUE" => $parentSectionIrl
 		];
-	if($arParams["SUBSECTION"] || $arParams["SUBSECTION_CODE"])
-		$arResult["FIELDS"]["SUBSECTION"]["VALUE_LIST"][$currentSectionUrl] = $arResult["FIELDS"]["SUBSECTION"]["NAME"];
+	if($parentSectionId &&  $sectionId)
+		$arResult["FIELDS"]["SUBSECTION"]["VALUE_LIST"][$sectionUrl] = $arResult["FIELDS"]["SUBSECTION"]["NAME"];
 
 	$queryFilter = ["IBLOCK_ID" => $arParams["IBLOCK_ID"]];
-	if($arParams["PARENT_SECTION"]) $queryFilter["SECTION_ID"]  = $arParams["PARENT_SECTION"];
-	else                            $queryFilter["DEPTH_LEVEL"] = 2;
+	if($sectionId || $parentSectionId) $queryFilter["SECTION_ID"]  = $parentSectionId ? $parentSectionId : $sectionId;
+	else                               $queryFilter["DEPTH_LEVEL"] = 2;
 
-	$queryList = CIBlockSection::GetList(["NAME" => 'ASC'], $queryFilter, false, ["ID", "CODE", "NAME", "IBLOCK_SECTION_ID"]);
+	$queryList = CIBlockSection::GetList(["NAME" => "ASC"], $queryFilter, false, ["ID", "CODE", "NAME", "IBLOCK_SECTION_ID"]);
 	while($queryElement = $queryList->GetNext())
 		{
 		$link = str_replace
 			(
 			["#PARENT_SECTION_ID#",              "#PARENT_SECTION_CODE#",                                       "#SECTION_ID#",      "#SECTION_CODE#"],
-			[$queryElement["IBLOCK_SECTION_ID"], $rootSectionsArray[$queryElement["IBLOCK_SECTION_ID"]]["CODE"], $queryElement["ID"], $queryElement["CODE"]],
+			[$queryElement["IBLOCK_SECTION_ID"], $rootSectionsInfo[$queryElement["IBLOCK_SECTION_ID"]]["CODE"], $queryElement["ID"], $queryElement["CODE"]],
 			$arParams["SUBSECTION_URL"]
 			);
 		$arResult["FIELDS"]["SUBSECTION"]["VALUE_LIST"][$link] = $queryElement["NAME"];

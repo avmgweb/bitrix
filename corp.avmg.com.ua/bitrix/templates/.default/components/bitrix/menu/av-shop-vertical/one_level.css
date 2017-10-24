@@ -1,0 +1,48 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-shop-menu-vertical-one-level a,
+.av-shop-menu-vertical-one-level a:hover,
+.av-shop-menu-vertical-one-level a:active,
+.av-shop-menu-vertical-one-level a:focus,
+.av-shop-menu-vertical-one-level a:visited {color: inherit;text-decoration: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- menu ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-shop-menu-vertical-one-level a
+	{
+	display: flex;
+	padding: 5px 0 5px 25px;
+	transition: .3s;
+	}
+.av-shop-menu-vertical-one-level a.selected,
+.av-shop-menu-vertical-one-level a:hover,
+.av-shop-menu-vertical-one-level a:focus            {color: #CC0000}
+.av-shop-menu-vertical-one-level a:hover,
+.av-shop-menu-vertical-one-level a:focus            {box-shadow: 0 2px 4px rgba(76, 82, 85, 0.25)}
+.av-shop-menu-vertical-one-level a:active           {background: #CC0000;border-color: #CC0000;color: #FFF}
+.av-shop-menu-vertical-one-level a:not(:last-child) {border-bottom: 1px solid #B6C0C6}
+
+.av-shop-menu-vertical-one-level a .title
+	{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: calc(100% - 24px);
+	}
+.av-shop-menu-vertical-one-level a .arrow
+	{
+	background: url(images/arrow.svg) center center no-repeat;
+	background-size: 10px;
+	content: "";
+	cursor: pointer;
+	display: block;
+	transform: rotate(-90deg);
+	transition: .3s;
+	width:  24px;
+	height: 24px;
+	}
+.av-shop-menu-vertical-one-level a.selected .arrow,
+.av-shop-menu-vertical-one-level a:hover    .arrow,
+.av-shop-menu-vertical-one-level a:focus    .arrow {background-image: url(images/arrow_hover.svg)}
+.av-shop-menu-vertical-one-level a:active   .arrow {background-image: url(images/arrow_active.svg)}

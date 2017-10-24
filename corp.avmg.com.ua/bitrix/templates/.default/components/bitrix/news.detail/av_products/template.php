@@ -5,6 +5,15 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 ?>
 <div class="av-products-detail" id="<?=$this->GetEditAreaId($arParams["ELEMENT_ID"])?>">
 	<?
+	$buttonsArray = CIBlock::GetPanelButtons
+		(
+		$arResult["IBLOCK_ID"],
+		$arResult["ID"],
+		0, ["SECTION_BUTTONS" => false, "SESSID" => false]
+		);
+
+	$this->AddEditAction  ($arResult["ID"], $buttonsArray["edit"]["edit_element"]["ACTION_URL"],   CIBlock::GetArrayByID($arResult["IBLOCK_ID"], "ELEMENT_EDIT"));
+	$this->AddDeleteAction($arResult["ID"], $buttonsArray["edit"]["delete_element"]["ACTION_URL"], CIBlock::GetArrayByID($arResult["IBLOCK_ID"], "ELEMENT_DELETE"));
 	/* ------------------------------------------- */
 	/* ------------------ image ------------------ */
 	/* ------------------------------------------- */

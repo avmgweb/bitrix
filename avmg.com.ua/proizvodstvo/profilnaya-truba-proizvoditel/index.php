@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Труби електрозварні прямошовні");
 $APPLICATION->SetPageProperty("title",       "Труба профільна від виробника | АВ метал груп Україна, Дніпро виробник круглої, квадратної, прямокутної сталевої труби | Купити профільну трубу оптом: телефон для замовлення ☎ (056) 790-01-22");
@@ -593,4 +593,4 @@ $APPLICATION->SetPageProperty("description", "Потрібна профільн�
 <p>
 	<img alt="1.jpg" src="/upload/medialibrary/e09/1.jpg" style="width: 100%" title="1.jpg">
 </p>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

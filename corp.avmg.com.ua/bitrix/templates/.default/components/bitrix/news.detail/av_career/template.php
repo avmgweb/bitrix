@@ -82,6 +82,15 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 ?>
 <div class="av-career-detail">
 	<?
+	$buttonsArray = CIBlock::GetPanelButtons
+		(
+		$arResult["IBLOCK_ID"],
+		$arResult["ID"],
+		0, ["SECTION_BUTTONS" => false, "SESSID" => false]
+		);
+
+	$this->AddEditAction  ($arResult["ID"], $buttonsArray["edit"]["edit_element"]["ACTION_URL"],   CIBlock::GetArrayByID($arResult["IBLOCK_ID"], "ELEMENT_EDIT"));
+	$this->AddDeleteAction($arResult["ID"], $buttonsArray["edit"]["delete_element"]["ACTION_URL"], CIBlock::GetArrayByID($arResult["IBLOCK_ID"], "ELEMENT_DELETE"));
 	/* ------------------------------------------- */
 	/* ---------------- info cell ---------------- */
 	/* ------------------------------------------- */

@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Поздовжнє різання металу");
 $APPLICATION->SetPageProperty("title",       "Поздовжнє різання рулонного металу Дніпро | АВ метал груп продаж і порізка металу| ☎ телефон (056) 790-01-22");
@@ -22,4 +22,4 @@ $APPLICATION->SetPageProperty("description", "Поздовжнє різання 
 </ul><br>
 
 <p>Проектні потужності розраховані на 500-600 (тонн) готової продукції.</p>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

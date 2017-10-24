@@ -1,15 +1,18 @@
 /* -------------------------------------------------------------------- */
 /* ----------------------- header behavior func ----------------------- */
 /* -------------------------------------------------------------------- */
-function AvHeaderBehavior(workType)
+function AvHeaderBehavior()
 	{
-	var $head = $('#av-vst').find('header');
+	var $head = $('#page-header');
 
-	if(workType == 'lock' || !workType && AV_VST_HEAD_START_POSITION < $(window).scrollTop())
+	if(!$head.attr("offset-position"))
+		$head.attr("offset-position", $head.offset().top);
+
+	if($head.attr("offset-position") < $(window).scrollTop())
 		$head
 			.addClass("fixed")
 			.next().css("margin-top", $head.height());
-	else if(workType == 'unlock' || !workType)
+	else
 		$head
 			.removeClass("fixed")
 			.next().removeAttr("style");
@@ -19,9 +22,9 @@ function AvHeaderBehavior(workType)
 /* -------------------------------------------------------------------- */
 function AvUpButtonBehavior()
 	{
-	var $upButton = $('#av-vst-up-button');
-	if($(window).scrollTop() > $('#av-vst').find('.page-workarea').offset().top) $upButton.fadeIn();
-	else                                                                         $upButton.fadeOut();
+	var $upButton = $('#page-up-button');
+	if($(window).scrollTop() > $('#page-workarea').offset().top) $upButton.fadeIn();
+	else                                                         $upButton.fadeOut();
 	}
 /* -------------------------------------------------------------------- */
 /* ----------------- activate/diactivate search func ------------------ */
@@ -29,9 +32,9 @@ function AvUpButtonBehavior()
 function AvSiteSearchFieldBehavior(workType)
 	{
 	var
-		$head             = $('#av-vst').find('header'),
-        $searchInput      = $head.find('.desktop-search-cell input[type=text]'),
-		$hideElements     = $head.find('.desktop-phone-cell, .desktop-lang-twister-cell'),
+		$gadgetsRow       = $('#page-header').find('.second-row-desktop .gadgets-row'),
+        $searchInput      = $gadgetsRow.find('.search-cell input[type=text]'),
+		$hideElements     = $gadgetsRow.find('.phone-cell, .lang-twister-cell'),
         searchInputActive = !!$searchInput.attr("activate"),
 		workSpeed         = 400;
 
@@ -65,9 +68,9 @@ function AvSiteSearchFieldBehavior(workType)
 function AvSiteSearchFieldMobileBehavior(workType)
 	{
 	var
-        $head             = $('#av-vst').find('header'),
-        $searchCell       = $head.find('.mobile-search-cell'),
-		$hideElements     = $head.find('.mobile-second-row').children().filter(':not(.mobile-search-cell)'),
+		$gadgetsRow       = $('#page-header').find('.second-row-mobile'),
+        $searchCell       = $gadgetsRow.find('.search-cell'),
+		$hideElements     = $gadgetsRow.children().filter(':not(.search-cell)'),
         searchInputActive = !!$searchCell.attr("activate"),
 		workSpeed         = 400;
 
@@ -117,16 +120,13 @@ function AvSpoileActivityBehavior()
 /* -------------------------------------------------------------------- */
 $(function()
 	{
-	var
-		upButtonSpeed           = 300,
-		seacrhFieldEmptyTimeout = 2000;
-	AV_VST_HEAD_START_POSITION  = $('#av-vst').find('header').offset().top;
-
-	$(document)
-		// search fields
-		.on("focus",    '#av-vst header .desktop-search-cell input', function() {AvSiteSearchFieldBehavior("activate")})
-		.on("focus",    '#av-vst header .mobile-search-cell  input', function() {AvSiteSearchFieldMobileBehavior("activate")})
-		.on("focusout", '#av-vst header .desktop-search-cell input', function()
+	/* ------------------------------------------- */
+	/* -------------- search fields -------------- */
+	/* ------------------------------------------- */
+	$('#page-header')
+		.on("focus",    '.second-row-desktop .search-cell input', function() {AvSiteSearchFieldBehavior("activate")})
+		.on("focus",    '.second-row-mobile  .search-cell input', function() {AvSiteSearchFieldMobileBehavior("activate")})
+		.on("focusout", '.second-row-desktop .search-cell input', function()
 			{
 			var $input = $(this);
 
@@ -134,11 +134,11 @@ $(function()
 				setTimeout(function()
 					{
 					if(!$input.is(':focus')) AvSiteSearchFieldBehavior("diactivate");
-					}, seacrhFieldEmptyTimeout);
+					}, 2000);
 			else
 				AvSiteSearchFieldBehavior("diactivate");
 			})
-		.on("focusout", '#av-vst header .mobile-search-cell input', function()
+		.on("focusout", '#page-header .second-row-mobile  .search-cell input', function()
 			{
 			var $input = $(this);
 
@@ -146,18 +146,24 @@ $(function()
 				setTimeout(function()
 					{
 					if(!$input.is(':focus')) AvSiteSearchFieldMobileBehavior("diactivate");
-					}, seacrhFieldEmptyTimeout);
+					}, 2000);
 			else
 				AvSiteSearchFieldMobileBehavior("diactivate");
-			})
-		// "UP" button
-		.on("vclick", '#av-vst-up-button', function()
+			});
+	/* ------------------------------------------- */
+	/* --------------- "UP" button --------------- */
+	/* ------------------------------------------- */
+	$('#page-up-button')
+		.click(function()
 			{
 			$('html, body')
 				.stop()
-				.animate({scrollTop: 0}, upButtonSpeed);
-			})
-		// spoilers
+				.animate({scrollTop: 0}, 300);
+			});
+	/* ------------------------------------------- */
+	/* ---------------- spoilers ----------------- */
+	/* ------------------------------------------- */
+	$(document)
 		.on("vclick", '.av-spoiler-header:not(.disabled)', function()
 			{
 			var $body = $(this).next('.av-spoiler-body');
@@ -172,16 +178,15 @@ $(function()
 				$(this).addClass("open");
 				$body  .slideDown();
 				}
-			});
-
-	AvSpoileActivityBehavior();
-
-	$(document)
+			})
 		.find('.av-spoiler-header.open').each(function()
 			{
 			$(this).next('.av-spoiler-body').show();
 			});
-
+	/* ------------------------------------------- */
+	/* -------------- scroll/resize -------------- */
+	/* ------------------------------------------- */
+	AvSpoileActivityBehavior();
 	$(window)
 		.resize(function()
 			{

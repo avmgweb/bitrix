@@ -1,5 +1,5 @@
 <?
-use Bitrix\Main\Page\Asset;
+use \Bitrix\Main\Page\Asset;
 
 class AvComponentsIncludings
 	{

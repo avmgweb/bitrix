@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Грузоперевозки");
 $APPLICATION->SetPageProperty("title",       "Доставка металлопроката по Украине: Днепр, Киев, Харьков, Львов, Одесса | Направление АВ металл групп ™ ru.avmg.com.ua");
@@ -35,4 +35,4 @@ $APPLICATION->SetPageProperty("description", "Доставка металла п
 	Порядок расчета и стоимость транспортировки можно узнать у менеджера или оправить заявку на доставку через он-лайн форму на нашем сайте.
 </p>
 <p><img style="width: 100%" alt="Dostavka.jpg" title="Dostavka.jpg" src="/upload/medialibrary/13f/dostavka.jpg"></p>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

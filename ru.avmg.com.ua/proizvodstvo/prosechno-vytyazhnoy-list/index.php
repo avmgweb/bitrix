@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Просечно-вытяжной лист");
 $APPLICATION->SetPageProperty("title",       "Просечно-вытяжной лист ПВЛ от производителя | АВ металл групп Украина, Днепр: листа ПВЛ 1-6 мм, ячейка 5 - 25 мм | Купить лист ПВЛ оптом: телефон для заказа ☎ (056)790-01-22");
@@ -22,4 +22,4 @@ $APPLICATION->SetPageProperty("description", "Нужен лист ПВЛ от п
 	Лист ПВЛ имеет высокую светопроводимость и проходимость воздуха, что способствует облегчению конструкции, а также увеличивает площадь объектов которые перекрываются и не задерживает грязь.
 	Лист ПВЛ может использоваться для производства ограждений, настилов и для армирования бетонных конструкций.
 </p>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

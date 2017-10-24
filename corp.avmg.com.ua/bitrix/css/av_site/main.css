@@ -7,10 +7,9 @@
 	left:   0;
 	right:  0;
 	bottom: 0;
+	position: fixed;
 	z-index: 3000;
 	}
-#av-waiting-screen.fixed  {position: fixed}
-#av-waiting-screen.simple {position: absolute}
 #av-waiting-screen > div
 	{
 	animation: spin 2s linear infinite;
@@ -86,8 +85,8 @@
 	max-width: 500px;
 	}
 
-.av-alert-popup                    .content {align-items: center;display: flex;height: 100%}
-.av-alert-popup:not([type=simple]) .image
+.av-alert-popup              .content {align-items: center;display: flex;height: 100%}
+.av-alert-popup:not(.simple) .image
 	{
 	background-repeat: no-repeat;
 	background-size: contain;
@@ -95,11 +94,11 @@
 	width:  64px;
 	height: 64px;
 	}
-.av-alert-popup[type=ok]           .image   {background-image: url(/bitrix/images/av_site/alert_popup_ok.png)}
-.av-alert-popup[type=alert]        .image   {background-image: url(/bitrix/images/av_site/alert_popup_alert.png)}
-.av-alert-popup:not([type=simple]) .text    {width: calc(100% - 84px)}
-.av-alert-popup[type=simple]       .text    {width: 100%}
-.av-alert-popup                    .close-form-button
+.av-alert-popup.ok           .image {background-image: url(/bitrix/images/av_site/alert_popup_ok.png)}
+.av-alert-popup.alert        .image {background-image: url(/bitrix/images/av_site/alert_popup_alert.png)}
+.av-alert-popup:not(.simple) .text  {width: calc(100% - 84px)}
+.av-alert-popup.simple       .text  {width: 100%}
+.av-alert-popup              .close-form-button
 	{
 	background: url(/bitrix/images/av_site/alert_popup_close.png) center center no-repeat;
 	background-size: 16px;

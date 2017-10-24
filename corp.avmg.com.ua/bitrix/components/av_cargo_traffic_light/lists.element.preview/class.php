@@ -1,7 +1,7 @@
 <?
-
-use Bitrix\Main;
-use Bitrix\Main\Localization\Loc;
+use
+	\Bitrix\Main,
+	\Bitrix\Main\Localization\Loc;
 
 if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 

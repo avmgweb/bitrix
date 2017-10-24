@@ -1,14 +1,62 @@
 .av-subscribe-form-popup-text b    {display: block}
 .av-subscribe-form-popup-text span {font-size: 87.5%}
 
-.av-subscribe-form                    {display: flex;flex-direction: column}
-.av-subscribe-form > *                {width: 100%;height: 35px}
-.av-subscribe-form .title             {margin-bottom: 13px;text-align: center}
-.av-subscribe-form input[type=hidden] {display: none}
-.av-subscribe-form input,
-.av-subscribe-form button             {padding: 0 7px}
-.av-subscribe-form input              {background: #FFF;border: 1px solid #B6C0C6;border-radius: 2px;margin-bottom: 7px}
-
-.av-subscribe-form input::-webkit-input-placeholder {text-align: center}
-.av-subscribe-form input::-moz-placeholder          {text-align: center}
-.av-subscribe-form input:-ms-input-placeholder      {text-align: center}
+.av-subscribe-form
+	{
+	align-items: center;
+	display: flex;
+	}
+.av-subscribe-form .title
+	{
+	margin-right: 13px;
+	}
+.av-subscribe-form input
+	{
+	background: #FFF;
+	border: 1px solid #B6C0C6;
+	border-radius: 2px;
+	height: 35px;
+	padding: 0 7px;
+	width: 200px;
+	}
+.av-subscribe-form button
+	{
+	border-top-left-radius:    0;
+	border-bottom-left-radius: 0;
+	padding: 0;
+	margin:  0 0 0 -2px;
+	width:  100px;
+	height: 35px;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- media ------------------------------ */
+/* -------------------------------------------------------------------- */
+@media (max-width: 991px)
+	{
+	.av-subscribe-form        {flex-direction: column}
+	.av-subscribe-form .title
+		{
+		margin: 0 0 24px 0;
+		text-align: center;
+		width: 100%;
+		}
+	.av-subscribe-form input
+		{
+		margin-bottom: 6px;
+		width: 100%;
+		}
+	.av-subscribe-form button
+		{
+		border-top-left-radius:    2px;
+		border-bottom-left-radius: 2px;
+		margin: 0;
+		width: 100%;
+		}
+	.av-subscribe-form input::-webkit-input-placeholder {text-align: center}
+	.av-subscribe-form input::-moz-placeholder          {text-align: center}
+	.av-subscribe-form input:-ms-input-placeholder      {text-align: center}
+	}
+@media (max-width: 767px)
+	{
+	.av-subscribe-form .title {margin: 0 0 6px 0}
+	}

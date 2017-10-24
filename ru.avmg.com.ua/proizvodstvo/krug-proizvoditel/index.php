@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Круг стальной");
 $APPLICATION->SetPageProperty("title",       "Стальной круг от производителя | АВ металл групп Украина, Днепр: производитель круглого прута, диаметр 6,5 - 14 мм, длина 6 метров | Купить круглый прокат оптом: телефон для заказа ☎ (056)790-01-22");
@@ -22,4 +22,4 @@ $APPLICATION->SetPageProperty("description", "Нужен круглый прок
 
 <p>Мощности по производству стального круга составляют около 1 тыс. тон в месяц.</p>
 <p><img style="width: 100%" src="/upload/medialibrary/8c3/krug.jpg" alt="круг стальной" title="круг стальной"></p>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

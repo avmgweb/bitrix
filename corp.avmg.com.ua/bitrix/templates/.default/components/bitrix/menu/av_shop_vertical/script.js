@@ -9,13 +9,13 @@ $(function()
 
 			if($subMenu.is(':visible'))
 				{
-				$subMenu.slideUp();
 				$block.removeClass("active");
+				$subMenu.show().slideUp();
 				}
 			else
 				{
-				$subMenu.slideDown();
 				$block.addClass("active");
+				$subMenu.hide().slideDown();
 				}
 			});
 	});

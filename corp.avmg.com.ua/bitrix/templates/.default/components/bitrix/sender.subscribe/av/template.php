@@ -9,15 +9,21 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 	AvBlurScreen("on", 1000);
 	CreateAvAlertPopup
 		(
-		'<div class="av-subscribe-form-popup-text">'+
+		'<div class="av-subscribe-form-line-popup-text">'+
 			'<b><?=GetMessage("AV_SUBSCRIBE_RESULT_".$arResult["MESSAGE"]["TYPE"])?></b>'+
 			'<span><?=$arResult["MESSAGE"]["TEXT"]?></span>'+
 		'</div>',
-		'<?if($arResult["MESSAGE"]["TYPE"] == 'ERROR'):?>alert<?else:?>ok<?endif?>'
+		'<?=$arResult["MESSAGE"]["TYPE"] == "ERROR" ? "alert" : "ok"?>'
 		)
-		.positionCenter(1100, 'Y')
-		.hideOnClickout("remove")
-		.on("remove", function() {AvBlurScreen("off")});
+		.positionCenter(1100, "Y")
+		.onClickout(function()
+			{
+			$(this).remove();
+			})
+		.on("remove", function()
+			{
+			AvBlurScreen("off");
+			});
 </script>
 <?endif?>
 <?
@@ -40,14 +46,13 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 	<?
 	$APPLICATION->IncludeComponent
 		(
-		"av:form_elements", "av_site",
+		"av:form.button", "av",
 			[
-			"TYPE"  => 'button',
 			"NAME"  => 'submit',
 			"TITLE" => GetMessage("AV_SUBSCRIBE_SUBMIT_BUTTON"),
 			"ATTR"  => ["id" => 'bx_subscribe_btn_'.$this->randString()]
 			],
-		false, ["HIDE_ICONS" => 'Y']
+		false, ["HIDE_ICONS" => "Y"]
 		);
 	?>
 </form>

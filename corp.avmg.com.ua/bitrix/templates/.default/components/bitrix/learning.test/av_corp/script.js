@@ -45,14 +45,20 @@ $(function()
 					'</div>'
 					)
 					.positionCenter(1000, 'Y')
-					.hideOnClickout("remove")
+					.onClickout(function()
+						{
+						$(this).find('[data-cancel-button]').click();
+						})
 					.on("vclick", '[data-apply-button]',  function()
 						{
 						$('.av-learning-test-detail [data-next-button-type]').removeAttr("data-next-button-type").click();
-						$(this).getAvAlertPopup().remove();
+						$(this).getAvAlertPopup().find('[data-cancel-button]').click();
 						})
-					.on("vclick", '[data-cancel-button]', function() {$(this).getAvAlertPopup().remove()})
-					.on("remove",                         function() {AvBlurScreen("off")});
+					.on("vclick", '[data-cancel-button]', function()
+						{
+						$(this).getAvAlertPopup().remove();
+						AvBlurScreen("off");
+						});
 				return false;
 				}
 
@@ -74,14 +80,20 @@ $(function()
 				'</div>'
 				)
 				.positionCenter(1000, 'Y')
-				.hideOnClickout("remove")
+				.onClickout(function()
+					{
+					$(this).find('[data-cancel-button]').click();
+					})
 				.on("vclick", '[data-apply-button]',  function()
 					{
 					$('.av-learning-test-detail [name="finish"]').attr("confirmed", true).click();
-					$(this).getAvAlertPopup().remove();
+					$(this).getAvAlertPopup().find('[data-cancel-button]').click();
 					})
-				.on("vclick", '[data-cancel-button]', function() {$(this).getAvAlertPopup().remove()})
-				.on("remove",                         function() {AvBlurScreen("off")});
+				.on("vclick", '[data-cancel-button]', function()
+					{
+					$(this).getAvAlertPopup().remove();
+					AvBlurScreen("off");
+					});
 			return false;
 			})
 		/* ------------------------------------------- */

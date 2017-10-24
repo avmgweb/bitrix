@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Квадрат и полоса");
 $APPLICATION->SetPageProperty("title",       "Квадрат г/к ГОСТ 2591-88, Полоса г/к ГОСТ 103-76 от производителя | АВ металл групп Украина, Днепр производитель плоского и квадратного горячекатанного прута | Купить квадратный прокат оптом: телефон для заказа ☎ (056)790-01-22");
@@ -35,4 +35,4 @@ $APPLICATION->SetPageProperty("description", "Нужен квадратный п
 	По требованию заказчика, компания может выпускать промежуточные типоразмеры, необходимых допусков, а также продукцию повышенной точности.
 </p>
 <p><img style="width: 100%" alt="квадрат и полоса" title="квадрат и полоса" src="/upload/medialibrary/b2d/stalnoy_kvadrat.jpg"></p>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

@@ -1,7 +1,7 @@
 <?
-if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+use \Bitrix\Main\Page\Asset;
 
-use Bitrix\Main\Page\Asset;
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 CUtil::InitJSCore(array('window', 'ajax'));
 Asset::getInstance()->addJs("/bitrix/js/main/utils.js");

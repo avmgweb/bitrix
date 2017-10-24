@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Продольная резка металла");
 $APPLICATION->SetPageProperty("title",       "Поперечная резка рулонного металла Днепр | АВ металл групп продажа и порезка металла | ☎ телефон (056) 790-01-22");
@@ -22,4 +22,4 @@ $APPLICATION->SetPageProperty("description", "Поперечная резка м
 </ul><br>
 
 <p>Проектные мощности рассчитаны на 500-600 (тонн) готовой продукции.</p>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

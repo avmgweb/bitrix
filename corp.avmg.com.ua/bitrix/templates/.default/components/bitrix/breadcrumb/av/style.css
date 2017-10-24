@@ -1,9 +1,10 @@
-.av-breadcrumb       {font-size: 81.25%}
-.av-breadcrumb > *   {display: inline-block}
-.av-breadcrumb > div {margin: 0 6px}
+.av-breadcrumb            {font-size: 81.25%}
+.av-breadcrumb .item,
+.av-breadcrumb .separator {display: inline-block}
+.av-breadcrumb .separator {margin: 0 6px}
 
 .av-breadcrumb a,
-.av-breadcrumb a:visited {color: inherit}
+.av-breadcrumb a:visited {color: inherit;text-decoration: none}
 .av-breadcrumb a:hover,
 .av-breadcrumb a:active,
-.av-breadcrumb a:focus   {color: #CC0000}
+.av-breadcrumb a:focus   {color: #CC0000;text-decoration: underline}

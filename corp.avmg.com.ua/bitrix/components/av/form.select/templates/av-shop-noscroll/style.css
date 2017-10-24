@@ -1,0 +1,57 @@
+/* -------------------------------------------------------------------- */
+/* --------------------------- clear styles --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-select-shop-noscroll select {display: none !important}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- label ------------------------------ */
+/* -------------------------------------------------------------------- */
+.av-form-select-shop-noscroll:not(.disabled) {cursor: pointer}
+
+.av-form-select-shop-noscroll .title-label
+	{
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	}
+.av-form-select-shop-noscroll .title-label > *:nth-child(1)
+	{
+	overflow: hidden;
+	padding-right: 5px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: calc(100% - 24px);
+	}
+.av-form-select-shop-noscroll .title-label > *:nth-child(2)
+	{
+	background: url(images/arrow.svg) center center no-repeat;
+	background-size: 8px;
+	transition: .3s;
+	width:  24px;
+	height: 24px;
+	}
+.av-form-select-shop-noscroll.active .title-label       > *:nth-child(2) {transform: rotate(-180deg)}
+.av-form-select-shop-noscroll.active .title-label       > *:nth-child(2),
+.av-form-select-shop-noscroll        .title-label:hover > *:nth-child(2) {background-image: url(images/arrow_active.svg)}
+/* -------------------------------------------------------------------- */
+/* -------------------------- drop-down menu -------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-select-shop-noscroll .list
+	{
+	background: #FFF;
+	border: 1px solid #868B8D;
+	border-radius: 2px;
+	display: none;
+	max-height: 200px;
+	position: absolute;
+	z-index: 10;
+	}
+
+.av-form-select-shop-noscroll .list [data-list-value]
+	{
+	overflow: hidden;
+	padding: 3px 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	}
+.av-form-select-shop-noscroll .list             [data-list-value]:hover,
+.av-form-select-shop-noscroll .list:not(:hover) [data-list-value].selected {background: #FAFAFA}

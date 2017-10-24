@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Газовая резка металла");
 $APPLICATION->SetPageProperty("title",       "Газовая резка металла Днепр | АВ металл групп продажа и порезка металла | ☎ телефон (056) 790-01-22, (097) 208-29-98");
@@ -28,4 +28,4 @@ $APPLICATION->SetPageProperty("description", "Резка металла газо
 	<li>толщина - 20 – 80 мм</li>
 	<li>длина - до 6000 мм</li>
 </ul>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

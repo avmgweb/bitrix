@@ -1,10 +1,11 @@
 <?
-$aMenuLinks = array(
-	array("О нас",        "/about/",        array(), array("workarea_type" => 'full_screen_page')),
-	array("Продукция",    "/products/",     array(), array("workarea_type" => 'container_page')),
-	array("Производство", "/proizvodstvo/", array(), array("workarea_type" => 'container_page')),
-	array("Услуги",       "/uslugi/",       array(), array("workarea_type" => 'container_page')),
+$aMenuLinks = array
+	(
+	array("О нас",        "/about/"),
+	array("Продукция",    "/products/"),
+	array("Производство", "/proizvodstvo/"),
+	array("Услуги",       "/uslugi/"),
 	array("Металлобазы",  "/metallobaza/"),
-	array("Карьера",      "/career/",       array(), array("children_workarea_type" => 'container_page')),
+	array("Карьера",      "/career/"),
 	array("Контакты",     "/contacts/")
 	);

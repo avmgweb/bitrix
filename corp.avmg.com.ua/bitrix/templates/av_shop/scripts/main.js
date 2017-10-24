@@ -1,177 +1,134 @@
-/* -------------------------------------------------------------------- */
-/* ----------------------- header behavior func ----------------------- */
-/* -------------------------------------------------------------------- */
-function AvHeaderBehavior(workType)
-	{
-	var $head = $('#av-shop').find('header');
-
-	if(workType == 'lock' || !workType && AV_VST_HEAD_START_POSITION < $(window).scrollTop())
-		$head
-			.addClass("fixed")
-			.next().css("margin-top", $head.height());
-	else if(workType == 'unlock' || !workType)
-		$head
-			.removeClass("fixed")
-			.next().removeAttr("style");
-	}
-/* -------------------------------------------------------------------- */
-/* ----------------- activate/diactivate search func ------------------ */
-/* -------------------------------------------------------------------- */
-function AvSiteSearchFieldBehavior(workType)
-	{
-	var
-		$head             = $('#av-shop').find('header'),
-        $searchInput      = $head.find('.desktop-search-cell input[type=text]'),
-		$hideElements     = $head.find('.desktop-phone-cell'),
-        searchInputActive = !!$searchInput.attr("activate"),
-		workSpeed         = 400;
-
-	if(workType == 'activate' && !searchInputActive)
-		{
-		$hideElements
-			.css("visibility", 'hidden')
-			.hide(workSpeed);
-		$searchInput
-            .attr("activate", true)
-			.animate({"width": '400px'}, workSpeed);
-		}
-	if(workType == 'diactivate' && searchInputActive)
-		{
-		$hideElements
-			.show(workSpeed, function()
-				{
-				$hideElements.css("visibility", 'visible');
-				});
-		$searchInput
-            .removeAttr("activate")
-			.animate({"width": '25px'}, workSpeed, function()
-				{
-				$searchInput.closest('form').diactivateAvSearchField();
-				});
-		}
-	}
-/* -------------------------------------------------------------------- */
-/* -------------- activate/diactivate mobile search func -------------- */
-/* -------------------------------------------------------------------- */
-function AvSiteSearchFieldMobileBehavior(workType)
-	{
-	var
-        $head             = $('#av-shop').find('header'),
-        $searchCell       = $head.find('.mobile-search-cell'),
-		$hideElements     = $head.find('.mobile-second-row').children().filter(':not(.mobile-search-cell)'),
-        searchInputActive = !!$searchCell.attr("activate"),
-		workSpeed         = 400;
-
-	if(workType == 'activate' && !searchInputActive)
-		{
-		$hideElements
-            .css("visibility", 'hidden')
-			.hide(workSpeed);
-		$searchCell
-			.attr("activate", true)
-			.animate({"width": '100%'}, workSpeed);
-		}
-	if(workType == 'diactivate' && searchInputActive)
-		{
-		$hideElements
-			.show(workSpeed, function()
-				{
-				$hideElements.css("visibility", 'visible');
-				});
-		$searchCell
-			.removeAttr("activate")
-			.animate({"width": '48px'}, workSpeed, function()
-				{
-				$searchCell.find('form').diactivateAvSearchFieldMobile();
-				});
-		}
-	}
-/* -------------------------------------------------------------------- */
-/* ------------------ spoiler activity behavior func ------------------ */
-/* -------------------------------------------------------------------- */
-function AvSpoileActivityBehavior()
-	{
-	$('.av-spoiler-header[data-work-breakpoint]').each(function()
-		{
-		var $body = $(this).next('.av-spoiler-body');
-		if($(window).width() <= $(this).attr("data-work-breakpoint"))
-			$(this).add($body).removeClass("disabled");
-		else
-			{
-			$(this).add($body).addClass("disabled");
-			$body.show();
-			}
-		});
-	}
-/* -------------------------------------------------------------------- */
-/* ----------------------------- handlers ----------------------------- */
-/* -------------------------------------------------------------------- */
 $(function()
 	{
-	var seacrhFieldEmptyTimeout = 2000;
-	AV_VST_HEAD_START_POSITION  = $('#av-shop').find('header').offset().top;
-
-	$(document)
-		// search fields
-		.on("focus",    '#av-shop header .desktop-search-cell input', function() {AvSiteSearchFieldBehavior("activate")})
-		.on("focus",    '#av-shop header .mobile-search-cell  input', function() {AvSiteSearchFieldMobileBehavior("activate")})
-		.on("focusout", '#av-shop header .desktop-search-cell input', function()
+	/* -------------------------------------------------------------------- */
+	/* -------------------------- call back form -------------------------- */
+	/* -------------------------------------------------------------------- */
+	$("#page-header")
+		.on("vclick", "[data-call-back-form-button]", function()
 			{
-			var $input = $(this);
+			var
+				$callButton   = $(this),
+				$callBackForm = $("#page-header").find(".call-back-form");
 
-			if($input.val())
-				setTimeout(function()
+			AvBlurScreen("on", 1000);
+			$callButton
+				.addClass("active");
+			$callBackForm
+				.show()
+				.positionCenter(1100, "Y", "Y")
+				.onClickout(function()
 					{
-					if(!$input.is(':focus')) AvSiteSearchFieldBehavior("diactivate");
-					}, seacrhFieldEmptyTimeout);
-			else
-				AvSiteSearchFieldBehavior("diactivate");
-			})
-		.on("focusout", '#av-shop header .mobile-search-cell input', function()
-			{
-			var $input = $(this);
-
-			if($input.val())
-				setTimeout(function()
+					$callBackForm.find(".close").click();
+					})
+				.on("vclick", ".close", function()
 					{
-					if(!$input.is(':focus')) AvSiteSearchFieldMobileBehavior("diactivate");
-					}, seacrhFieldEmptyTimeout);
-			else
-				AvSiteSearchFieldMobileBehavior("diactivate");
-			})
-		// spoilers
-		.on("vclick", '.av-spoiler-header:not(.disabled)', function()
-			{
-			var $body = $(this).next('.av-spoiler-body');
-
-			if($(this).is('.open'))
-				{
-				$(this).removeClass("open");
-				$body  .slideUp();
-				}
-			else
-				{
-				$(this).addClass("open");
-				$body  .slideDown();
-				}
+					$callBackForm.hide();
+					$callButton.removeClass("active");
+					AvBlurScreen("off");
+					});
 			});
-
-	AvSpoileActivityBehavior();
-
 	$(document)
-		.find('.av-spoiler-header.open').each(function()
+		.on("keyup", function(event)
 			{
-			$(this).next('.av-spoiler-body').show();
+			var $callBackForm = $("#page-header").find(".call-back-form:visible");
+			if(event.keyCode == 27 && $callBackForm.length)
+				$callBackForm
+					.find(".close")
+					.click();
 			});
+	/* -------------------------------------------------------------------- */
+	/* -------------------------- header search --------------------------- */
+	/* -------------------------------------------------------------------- */
+	$(document)
+		.on("avShopSearchTitleOpen avShopSearchTitleClose avShopSearchTitleNormolize", function(event)
+			{
+			var
+				eventType          = event.type,
+				windowMode         = "desktop",
+				speed              = parseInt($(this).data("avShopSearchTitleOpenSpeed")) ? parseInt($(this).data("avShopSearchTitleOpenSpeed")) : 400,
+				windowWidth        = $(window).width(),
+			    $searchRow         = $("#page-header").find(".second-row"),
+				$searchCell        = $searchRow.find(".search-cell"),
+			    $hotLine           = $searchRow.find(".hot-line"),
+			    $callBackButton    = $searchRow.find(".call-back-form-button"),
+			    $sidebarCallButton = $searchRow.find(".sidebar-call-button"),
+			    $logoMobile        = $searchRow.find(".logo-cell-mobile");
 
-	$(window)
-		.resize(function()
-			{
-			AvHeaderBehavior();
-			AvSpoileActivityBehavior();
-			})
-		.scroll(function()
-			{
-			AvHeaderBehavior();
+			     if(windowWidth >= 992 && windowWidth <= 1199) windowMode = "tablet";
+			else if(windowWidth <= 991)                        windowMode = "mobile";
+			/* ------------------------------------------- */
+			/* ------------ search open tablet ----------- */
+			/* ------------------------------------------- */
+			if(eventType == "avShopSearchTitleOpen" && windowMode == "tablet")
+				{
+				var searchCellWidth = $searchCell.offset().left + $searchCell.width() - $hotLine.offset().left;
+
+				$hotLine
+					.add($callBackButton)
+					.hide();
+				$searchCell
+					.width(searchCellWidth)
+					.css("padding-left", (searchCellWidth - 24)+"px")
+					.animate({"padding-left": (searchCellWidth - 400)+"px"}, speed);
+				}
+			/* ------------------------------------------- */
+			/* ------------ search open mobile ----------- */
+			/* ------------------------------------------- */
+			else if(eventType == "avShopSearchTitleOpen" && windowMode == "mobile")
+				{
+				$searchRow
+					.height($searchRow.height());
+				$sidebarCallButton
+					.add($logoMobile)
+					.hide();
+				$searchCell
+					.width($searchRow.width())
+					.css("padding-left", ($searchRow.width() - 24)+"px")
+					.animate({"padding-left": 0}, speed);
+				}
+			/* ------------------------------------------- */
+			/* ----------- search close tablet ----------- */
+			/* ------------------------------------------- */
+			else if(eventType == "avShopSearchTitleClose" && windowMode == "tablet")
+				$searchCell.animate
+					(
+					{"padding-left": (parseInt($searchCell.css("width")) - 24)+"px"},
+					speed,
+					function()
+						{
+						$hotLine
+							.add($callBackButton)
+							.add($searchCell)
+							.removeAttr("style");
+						}
+					);
+			/* ------------------------------------------- */
+			/* ----------- search close mobile ----------- */
+			/* ------------------------------------------- */
+			else if(eventType == "avShopSearchTitleClose" && windowMode == "mobile")
+				$searchCell.animate
+					(
+					{"padding-left": (parseInt($searchCell.css("width")) - 24)+"px"},
+					speed,
+					function()
+						{
+						$searchRow
+							.add($sidebarCallButton)
+							.add($logoMobile)
+							.add($searchCell)
+							.removeAttr("style");
+						}
+					);
+			/* ------------------------------------------- */
+			/* ------------ search normolize ------------- */
+			/* ------------------------------------------- */
+			else if(eventType == "avShopSearchTitleNormolize")
+				$searchRow
+					.add($searchCell)
+					.add($hotLine)
+					.add($searchRow.find(".logo-cell"))
+					.add($sidebarCallButton)
+					.add($logoMobile)
+					.removeAttr("style");
 			});
 	});

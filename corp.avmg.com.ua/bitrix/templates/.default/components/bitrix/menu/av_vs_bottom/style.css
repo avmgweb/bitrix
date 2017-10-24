@@ -15,14 +15,13 @@
 /* ------------------------------- menu ------------------------------- */
 /* -------------------------------------------------------------------- */
 .av-menu-bottom      {display: flex;justify-content: space-between}
-.av-menu-bottom a    {display: block}
+.av-menu-bottom a    {display: inline-block}
 .av-menu-bottom > li {float: left}
+.av-menu-bottom ul   {margin-top: 16px}
 
 .av-menu-bottom a:hover,
 .av-menu-bottom a:active,
 .av-menu-bottom a:focus {text-decoration: underline}
 
 .av-menu-bottom .main-link,
-.av-menu-bottom .important-link {color: #FAFAFA;font-size: 116.7%;font-weight: bold}
-.av-menu-bottom .sub-link       {color: #E0E0E0}
-.av-menu-bottom ul              {margin-top: 16px}
+.av-menu-bottom .important-link {font-size: 116.7%;font-weight: bold}

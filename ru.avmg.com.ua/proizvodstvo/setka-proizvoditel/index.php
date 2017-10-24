@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Кладочная сетка");
 $APPLICATION->SetPageProperty("title",       "Сетка кладочная от производителя | АВ металл групп Украина, Днепр: производитель сетки из проволоки ВР-1, диаметром 2,5-5мм | Купить сетку оптом: телефон для заказа ☎ (056)790-01-22");
@@ -26,4 +26,4 @@ $APPLICATION->SetPageProperty("description", "Нужна кладочная се
 
 <p>По требованию заказчика наша компания может изготавливать другие размеры кладочной сетки.</p>
 <p><img style="width: 100%" src="/upload/medialibrary/9fd/63.jpg" alt="63.jpg" title="63.jpg"></p>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

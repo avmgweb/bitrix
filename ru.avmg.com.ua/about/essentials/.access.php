@@ -1,2 +1,2 @@
 <?
-$PERM["index.php"]["20"] = 'X';
+$PERM["index.php"]["20"] = "X";

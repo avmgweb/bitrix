@@ -1,8 +1,9 @@
-<?php
-use Bitrix\Lists\Internals\Error\Error;
-use Bitrix\Main\Localization\Loc;
-use Bitrix\Main\Loader;
-use Bitrix\Lists\Internals\Controller;
+<?
+use
+	\Bitrix\Lists\Internals\Error\Error,
+	\Bitrix\Main\Localization\Loc,
+	\Bitrix\Main\Loader,
+	\Bitrix\Lists\Internals\Controller;
 
 define('STOP_STATISTICS', true);
 define('BX_SECURITY_SHOW_MESSAGE', true);

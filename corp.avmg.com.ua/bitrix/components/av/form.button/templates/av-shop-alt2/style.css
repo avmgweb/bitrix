@@ -1,0 +1,47 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-button-shop-alt2
+	{
+	background: transparent;
+	border: none;
+	color: inherit;
+	font-weight: normal;
+	margin:  0;
+	padding: 0;
+	}
+.av-form-button-shop-alt2,
+.av-form-button-shop-alt2:hover,
+.av-form-button-shop-alt2:focus,
+.av-form-button-shop-alt2:active,
+.av-form-button-shop-alt2:visited
+	{
+	outline: none;
+	text-decoration: none;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ button ------------------------------ */
+/* -------------------------------------------------------------------- */
+.av-form-button-shop-alt2
+	{
+	background: #B6C0C6;
+	border: 1px solid #B6C0C6;
+	border-radius: 2px;
+	color: #FFF !important;
+	cursor: pointer;
+	display: block;
+	font-size: calc(100% - 2px);
+	font-weight: bold;
+	padding: 0 10px;
+	text-align: center;
+	transition: .3s;
+	}
+.av-form-button-shop-alt2:hover,
+.av-form-button-shop-alt2:active,
+.av-form-button-shop-alt2:focus
+	{
+	background: #FFF;
+	border-color: #868B8D;
+	box-shadow: 0 2px 4px rgba(76,82,85,0.25);
+	color: #868B8D !important;
+	}

@@ -14,10 +14,14 @@
 /* -------------------------------------------------------------------- */
 /* ------------------------------- menu ------------------------------- */
 /* -------------------------------------------------------------------- */
+.av-shop-menu-vertical
+	{
+	font-size: 90%;
+	}
 .av-shop-menu-vertical a
 	{
 	display: block;
-	padding: 12px 10px;
+	padding: 6px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -38,8 +42,8 @@
 	}
 .av-shop-menu-vertical .item:not(:last-child) {margin-bottom: 13px}
 
-.av-shop-menu-vertical .item.parent        > div    {align-items: center;display: flex}
-.av-shop-menu-vertical .item.parent        > div a  {width: calc(100% - 24px - 10px)}
+.av-shop-menu-vertical .item.parent        > div    {align-items: center;display: flex;padding-right: 7px}
+.av-shop-menu-vertical .item.parent        > div a  {width: calc(100% - 24px)}
 .av-shop-menu-vertical .item.parent.active .arrow   {transform: rotate(-180deg)}
 .av-shop-menu-vertical .item.parent:not(.active) ul {display: none}
 

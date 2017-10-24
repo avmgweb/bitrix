@@ -1,5 +1,6 @@
 <?
-$aMenuLinks = array(
+$aMenuLinks = array
+	(
 	array("Арматура горячекатанная", "/proizvodstvo/armatura-proizvoditel/"),
 	array("Проволока",               "/proizvodstvo/provoloka-proizvoditel/"),
 	array("Круглый прокат",          "/proizvodstvo/krug-proizvoditel/"),

@@ -27,8 +27,6 @@ $(function()
 					},
 				success : function(scriptResult)
 					{
-					console.log(AvVsCertifitacesListElementFile);
-					AvBlurScreen("on", 1000);
 					$('<div class="av-certificates-list-element-popup" data-element-id="'+elementId+'"></div>')
 						.appendTo('body')
 						.html(scriptResult)
@@ -37,7 +35,20 @@ $(function()
 				complete: function() {AvWaitingScreen("off")}
 				});
 			})
-		.on("show",   '.av-certificates-list-element-popup',                   function() {$(this).positionCenter(1100, 'Y').hideOnClickout()})
-		.on("hide",   '.av-certificates-list-element-popup',                   function() {AvBlurScreen("off")})
-		.on("vclick", '.av-certificates-list-element-popup [data-close-form]', function() {$(this).closest('.av-certificates-list-element-popup').hide()});
+		.on("show", '.av-certificates-list-element-popup', function()
+			{
+			AvBlurScreen("on", 1000);
+			$(this)
+				.positionCenter(1100, 'Y')
+				.onClickout(function()
+					{
+					$(this).hide();
+					AvBlurScreen("off");
+					});
+			})
+		.on("vclick", '.av-certificates-list-element-popup [data-close-form]', function()
+			{
+			$(this).closest('.av-certificates-list-element-popup').hide();
+			AvBlurScreen("off");
+			});
 	});

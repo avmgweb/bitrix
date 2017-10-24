@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->IncludeComponent(
 	"bitrix:sale.bestsellers", 
@@ -201,4 +201,4 @@ $APPLICATION->IncludeComponent(
 	false
 );
 
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php";

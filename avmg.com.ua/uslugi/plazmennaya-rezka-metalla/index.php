@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Плазмова різка металу");
 $APPLICATION->SetPageProperty("title",       "Різання металу плазмою Дніпро | АВ метал груп продаж і порізка металу| ☎ телефон (056) 790-01-22, (097) 208-29-98");
@@ -38,4 +38,4 @@ $APPLICATION->SetPageProperty("description", "Плазмова різка мет
 	<li>художня робота - заготовки можна робити будь-якої геометричної форми;</li>
 	<li>доступне фігурне різання підвищеної складності, художнє різання деталей.</li>
 </ul>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

@@ -6,6 +6,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 /* ----------------------------- sku table ---------------------------- */
 /* -------------------------------------------------------------------- */
 ?>
+<table class="info-table" data-price-type="<?=$arParams["PRICE_TYPE"]?>" data-site-id="<?=SITE_ID?>">
 <?if(count($arResult["OFFERS"])):?>
 	<thead>
 		<tr>
@@ -51,10 +52,14 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 				<?endforeach?>
 
 				<td>
-					<?$positionQuantity = (float) $arResult["USER_BASKET"][$valueInfo["ID"]]["QUANTITY"]?>
+					<?$positionQuantity = (int) $arResult["USER_BASKET"][$valueInfo["ID"]]["QUANTITY"]?>
 					<div class="counter<?if($positionQuantity):?> disabled<?endif?>">
 						<div class="checker back<?if($positionQuantity <= 1):?> disabled<?endif?>"></div>
-						<input value="<?=($positionQuantity ? $positionQuantity : 1)?>" <?if($positionQuantity):?>disabled<?endif?>>
+						<input
+							value="<?=($positionQuantity ? $positionQuantity : 1)?>"
+							title="<?=Loc::getMessage("AV_CATALOG_ELEMENT_INFO_TABLE_COUNT_TITLE")?>"
+							<?if($positionQuantity):?>disabled<?endif?>
+						>
 						<div class="checker forward"></div>
 					</div>
 				</td>
@@ -125,10 +130,14 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 			<?endforeach?>
 
 			<td>
-				<?$positionQuantity = (float) $arResult["USER_BASKET"][$arResult["ID"]]["QUANTITY"]?>
+				<?$positionQuantity = (int) $arResult["USER_BASKET"][$arResult["ID"]]["QUANTITY"]?>
 				<div class="counter<?if($positionQuantity):?> disabled<?endif?>">
 					<div class="checker back<?if($positionQuantity <= 1):?> disabled<?endif?>"></div>
-					<input value="<?=($positionQuantity ? $positionQuantity : 1)?>" <?if($positionQuantity):?>disabled<?endif?>>
+					<input
+						value="<?=($positionQuantity ? $positionQuantity : 1)?>"
+						title="<?=Loc::getMessage("AV_CATALOG_ELEMENT_INFO_TABLE_COUNT_TITLE")?>"
+						<?if($positionQuantity):?>disabled<?endif?>
+					>
 					<div class="checker forward"></div>
 				</div>
 			</td>
@@ -158,3 +167,4 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 		</tr>
 	</tbody>
 <?endif?>
+</table>

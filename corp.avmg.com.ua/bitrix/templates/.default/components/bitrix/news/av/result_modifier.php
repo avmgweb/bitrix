@@ -1,65 +1,100 @@
 <?
+use
+	\Bitrix\Iblock\Component\Tools,
+	\Bitrix\Iblock\InheritedProperty\SectionValues;
+
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-use Bitrix\Main\Localization\Loc;
-Loc::loadMessages(__FILE__);
 
-$arParams["MARKUP_TYPE"] = $arParams["MARKUP_TYPE"] ? $arParams["MARKUP_TYPE"] : 'STANDART';
+$arParams["MARKUP_TYPE"] = in_array($arParams["MARKUP_TYPE"], ["STANDART", "TWO_COLUMNS"]) ? $arParams["MARKUP_TYPE"] : 'STANDART';
 
-$arResult["FILTER_HTML"]             = '';
-$arResult["LIST_HTML"]               = '';
-$arResult["SHARING_HTML"]            = '';
+$arResult["FILTER_HTML"]             = "";
+$arResult["MENU_HTML"]               = "";
+$arResult["LIST_HTML"]               = "";
+$arResult["SHARING_HTML"]            = "";
 $arResult["CATEGORY_APPLIED_FILTER"] = [];
-$arResult["LIST_DESCRIPTION"]        = '';
+$arResult["LIST_DESCRIPTION"]        = "";
 /* -------------------------------------------------------------------- */
 /* ---------------------------- variables ----------------------------- */
 /* -------------------------------------------------------------------- */
-if($arResult["VARIABLES"]["ELEMENT_ID"] || $arResult["VARIABLES"]["ELEMENT_CODE"])
-	$elementInfo = CIBlockElement::GetList
+$pageType     = "list";
+$urlVariables = $arResult["VARIABLES"];
+$urlTemplates = $arResult["URL_TEMPLATES"];
+$pageVarName  = "PAGEN_1";
+$listPage     = 1;
+
+    if($urlVariables["ELEMENT_ID"] || $urlVariables["ELEMENT_CODE"]) $pageType = "detail";
+elseif($urlVariables["SECTION_ID"] || $urlVariables["SECTION_CODE"]) $pageType = "section";
+
+    if($urlVariables["PARENT_SECTION_ID"] || $urlVariables["PARENT_SECTION_CODE"]) $pageVarName = "PAGEN_3";
+elseif($urlVariables["SECTION_ID"]        || $urlVariables["SECTION_CODE"])        $pageVarName = "PAGEN_2";
+$listPage = $_GET[$pageVarName] ? $_GET[$pageVarName] : 1;
+
+$elementInfo = $urlVariables["ELEMENT_ID"] || $urlVariables["ELEMENT_CODE"]
+	? CIBlockElement::GetList
 		(
 		[],
 			[
 			"IBLOCK_ID" => $arParams["IBLOCK_ID"],
-			"ID"        => $arResult["VARIABLES"]["ELEMENT_ID"],
-			"CODE"      => $arResult["VARIABLES"]["ELEMENT_CODE"]
+			"ID"        => $urlVariables["ELEMENT_ID"],
+			"CODE"      => $urlVariables["ELEMENT_CODE"]
 			],
 		false, false,
 		["ID", "CODE", "NAME", "IBLOCK_SECTION_ID"]
-		)->GetNext();
-if($arResult["VARIABLES"]["SECTION_ID"] || $arResult["VARIABLES"]["SECTION_CODE"])
-	$sectionInfo = CIBlockSection::GetList
+		)->GetNext()
+	: [];
+$sectionInfo = $urlVariables["SECTION_ID"] || $urlVariables["SECTION_CODE"]
+	? CIBlockSection::GetList
 		(
 		[],
 			[
 			"IBLOCK_ID" => $arParams["IBLOCK_ID"],
-			"ID"        => $arResult["VARIABLES"]["SECTION_ID"],
-			"CODE"      => $arResult["VARIABLES"]["SECTION_CODE"]
+			"ID"        => $urlVariables["SECTION_ID"],
+			"CODE"      => $urlVariables["SECTION_CODE"]
 			],
 		false, false,
-		["ID", "CODE", "NAME", "DESCRIPTION"]
-		)->GetNext();
-if($arResult["VARIABLES"]["PARENT_SECTION_ID"] || $arResult["VARIABLES"]["PARENT_SECTION_CODE"])
-	$parentSectionInfo = CIBlockSection::GetList
+		["ID", "CODE", "NAME", "DESCRIPTION", "DEPTH_LEVEL"]
+		)->GetNext()
+	: [];
+$parentSectionInfo = $urlVariables["PARENT_SECTION_ID"] || $urlVariables["PARENT_SECTION_CODE"]
+	? CIBlockSection::GetList
 		(
 		[],
 			[
 			"IBLOCK_ID" => $arParams["IBLOCK_ID"],
-			"ID"        => $arResult["VARIABLES"]["PARENT_SECTION_ID"],
-			"CODE"      => $arResult["VARIABLES"]["PARENT_SECTION_CODE"]
+			"ID"        => $urlVariables["PARENT_SECTION_ID"],
+			"CODE"      => $urlVariables["PARENT_SECTION_CODE"]
 			],
 		false, false,
-		["ID", "CODE", "NAME", "DESCRIPTION"]
-		)->GetNext();
-
-$urlTemplates    = $arResult["URL_TEMPLATES"];
-$pageType        = 'list';
-$currentListPage = $_GET["PAGEN_1"] ? $_GET["PAGEN_1"] : 1;
-
-if($elementInfo["ID"] || $elementInfo["CODE"])         $pageType = 'detail';
-elseif($sectionInfo["ID"] || $parentSectionInfo["ID"]) $pageType = 'section';
+		["ID", "CODE", "NAME", "DESCRIPTION", "DEPTH_LEVEL"]
+		)->GetNext()
+	: [];
+/* -------------------------------------------------------------------- */
+/* ---------------------------- 404 error ----------------------------- */
+/* -------------------------------------------------------------------- */
+if
+	(
+	$urlTemplates["subsection"]
+	&&
+		(
+		$elementInfo === false || $sectionInfo === false || $parentSectionInfo === false
+		||
+		(!count($parentSectionInfo) && $sectionInfo["DEPTH_LEVEL"] > 1)
+		||
+		$parentSectionInfo["DEPTH_LEVEL"] > 1
+		)
+	)
+	Tools::process404
+		(
+		"",
+		$arParams["SET_STATUS_404"] == "Y",
+		$arParams["SET_STATUS_404"] == "Y",
+		$arParams["SHOW_404"] == "Y",
+		$arParams["FILE_404"]
+		);
 /* -------------------------------------------------------------------- */
 /* --------------------------- filter html ---------------------------- */
 /* -------------------------------------------------------------------- */
-if($pageType != 'detail' && $arParams["USE_FILTER"] == 'Y')
+if($pageType != "detail" && $arParams["USE_FILTER"] == "Y")
 	{
 	$emptyFilterUrl   = $urlTemplates["news"];
 	$appliedFilterUrl = $urlTemplates["filter"];
@@ -90,27 +125,53 @@ if($pageType != 'detail' && $arParams["USE_FILTER"] == 'Y')
 			"CACHE_TIME"   => $arParams["CACHE_TIME"],
 			"CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
 
-			"SAVE_IN_SESSION"   => 'N',
+			"SAVE_IN_SESSION"   => "N",
 			"PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
 
-			"PARENT_SECTION"      => $parentSectionInfo["ID"]   ? $parentSectionInfo["ID"]   : $sectionInfo["ID"],
-			"PARENT_SECTION_CODE" => $parentSectionInfo["CODE"] ? $parentSectionInfo["CODE"] : $sectionInfo["CODE"],
-			"SUBSECTION"          => $parentSectionInfo["ID"]   ? $sectionInfo["ID"]         : '',
-			"SUBSECTION_CODE"     => $parentSectionInfo["CODE"] ? $sectionInfo["CODE"]       : '',
+			"SECTION_ID"          => $sectionInfo["ID"],
+			"SECTION_CODE"        => $sectionInfo["CODE"],
+			"PARENT_SECTION_ID"   => $parentSectionInfo["ID"]   ? $parentSectionInfo["ID"]   : "",
+			"PARENT_SECTION_CODE" => $parentSectionInfo["CODE"] ? $parentSectionInfo["CODE"] : "",
 
 			"MARKUP_TYPE"        => $arParams["FILTER_MARKUP_TYPE"],
 			"FIELDS_SORT"        => $arParams["FILTER_FIELDS_SORT"],
 			"LIST_URL"           => $arResult["FOLDER"].$urlTemplates["news"],
 			"EMPTY_FILTER_URL"   => $arResult["FOLDER"].$emptyFilterUrl,
-			"APPLIED_FILTER_URL" => $appliedFilterUrl           ? $arResult["FOLDER"].$appliedFilterUrl           : '',
-			"SECTION_URL"        => $urlTemplates["section"]    ? $arResult["FOLDER"].$urlTemplates["section"]    : '',
-			"SUBSECTION_URL"     => $urlTemplates["subsection"] ? $arResult["FOLDER"].$urlTemplates["subsection"] : '',
-			"FILTER_URL_PARAMS"  => $arResult["VARIABLES"]["FILTER_PARAMS"],
+			"APPLIED_FILTER_URL" => $appliedFilterUrl           ? $arResult["FOLDER"].$appliedFilterUrl           : "",
+			"SECTION_URL"        => $urlTemplates["section"]    ? $arResult["FOLDER"].$urlTemplates["section"]    : "",
+			"SUBSECTION_URL"     => $urlTemplates["subsection"] ? $arResult["FOLDER"].$urlTemplates["subsection"] : "",
+			"FILTER_URL_PARAMS"  => $urlVariables["FILTER_PARAMS"],
 			"SUBSECTION_TITLE"   => $arParams["FILTER_SUBSECTION_TITLE"],
 			"FIELDS_CHANGE_TYPE" => $arParams["FILTER_FIELDS_CHANGE_TYPE"]
-			]
+			],
+		false, ["HIDE_ICONS" => 'Y']
 		);
 	$arResult["FILTER_HTML"] = ob_get_contents();
+	ob_end_clean();
+	}
+/* -------------------------------------------------------------------- */
+/* ---------------------------- menu html ----------------------------- */
+/* -------------------------------------------------------------------- */
+if($pageType != "detail" && $arParams["SHOW_LEFT_MENU"] == "Y")
+	{
+	ob_start();
+		$APPLICATION->IncludeComponent
+			(
+			"bitrix:menu", $arParams["LEFT_MENU_TEMPLATE"],
+				array(
+				"ROOT_MENU_TYPE"     => "left",
+				"MAX_LEVEL"          => "",
+				"CHILD_MENU_TYPE"    => "left",
+				"USE_EXT"            => "Y",
+				"DELAY"              => "N",
+				"ALLOW_MULTI_SELECT" => "N",
+
+				"MENU_CACHE_TYPE"       => "A",
+				"MENU_CACHE_TIME"       => 360000,
+				"MENU_CACHE_USE_GROUPS" => "Y"
+				)
+			);
+	$arResult["MENU_HTML"] = ob_get_contents();
 	ob_end_clean();
 	}
 /* -------------------------------------------------------------------- */
@@ -144,8 +205,8 @@ if($pageType != 'detail')
 
 			"DETAIL_URL"         => $arResult["FOLDER"].$urlTemplates["detail"],
 			"IBLOCK_URL"         => $arResult["FOLDER"].$urlTemplates["news"],
-			"SECTION_URL"        => $urlTemplates["section"]        ? $arResult["FOLDER"].$urlTemplates["section"]        : '',
-			"FILTER_SECTION_URL" => $urlTemplates["section_filter"] ? $arResult["FOLDER"].$urlTemplates["section_filter"] : '',
+			"SECTION_URL"        => $urlTemplates["section"]        ? $arResult["FOLDER"].$urlTemplates["section"]        : "",
+			"FILTER_SECTION_URL" => $urlTemplates["section_filter"] ? $arResult["FOLDER"].$urlTemplates["section_filter"] : "",
 
 			"PREVIEW_TRUNCATE_LEN"      => $arParams["PREVIEW_TRUNCATE_LEN"],
 			"ACTIVE_DATE_FORMAT"        => $arParams["LIST_ACTIVE_DATE_FORMAT"],
@@ -192,9 +253,11 @@ if($pageType != 'detail')
 			"VOTE_NAMES" => $arParams["VOTE_NAMES"],
 
 			"MARKUP_TYPE"       => $arParams["LIST_MARKUP_TYPE"],
-			"FILTER_URL_PARAMS" => $arResult["VARIABLES"]["FILTER_PARAMS"],
+			"DATA_MARKUP_TYPE"  => $arParams["DATA_MARKUP_TYPE"],
+			"FILTER_URL_PARAMS" => $urlVariables["FILTER_PARAMS"],
 			"FULL_PARAMS"       => $arParams
-			]
+			],
+		false, ["HIDE_ICONS" => 'Y']
 		);
 	$arResult["LIST_HTML"] = ob_get_contents();
 	ob_end_clean();
@@ -202,7 +265,7 @@ if($pageType != 'detail')
 /* -------------------------------------------------------------------- */
 /* --------------------------- sharing html --------------------------- */
 /* -------------------------------------------------------------------- */
-if($pageType != 'detail' && $arParams["USE_SHARE"] == 'Y')
+if($pageType != "detail" && $arParams["USE_SHARE"] == "Y")
 	{
 	ob_start();
 	$APPLICATION->IncludeComponent
@@ -211,8 +274,9 @@ if($pageType != 'detail' && $arParams["USE_SHARE"] == 'Y')
 			[
 			"HANDLERS"   => $arParams["SHARE_HANDLERS"],
 			"PAGE_TITLE" => $APPLICATION->GetTitle(),
-			"PAGE_URL"   => CURRENT_PROTOCOL.'://'.SITE_SERVER_NAME.str_replace('index.php', '', $_SERVER["SCRIPT_URL"])
-			]
+			"PAGE_URL"   => CURRENT_PROTOCOL.'://'.SITE_SERVER_NAME.str_replace('index.php', "", $_SERVER["SCRIPT_URL"])
+			],
+		false, ["HIDE_ICONS" => 'Y']
 		);
 	$arResult["SHARING_HTML"] = ob_get_contents();
 	ob_end_clean();
@@ -240,19 +304,21 @@ if($pageType == 'detail' && $arParams["USE_CATEGORIES"] == 'Y')
 /* -------------------------------------------------------------------- */
 /* ------------------------- list/section info ------------------------ */
 /* -------------------------------------------------------------------- */
-if($pageType == 'list' && ($arParams["MARKUP_TYPE"] == 'TWO_COLUMNS' || $currentListPage == 1))
-	$arResult["LIST_DESCRIPTION"] = CIBlock::GetArrayByID($arParams["IBLOCK_ID"])["DESCRIPTION"];
-
-if(in_array($pageType, ["section", "subsection"]) && $currentListPage == 1)
+if($arParams["SHOW_LIST_DESCRIPTION"] == "Y")
 	{
-	$sectionSeoInfo = (new \Bitrix\Iblock\InheritedProperty\SectionValues($arParams["IBLOCK_ID"], $sectionInfo["ID"]))->getValues();
-	$APPLICATION->SetTitle($sectionSeoInfo["SECTION_PAGE_TITLE"]);
-	$arResult["LIST_DESCRIPTION"] = CIBlockSection::GetList([], ["ID" => $sectionInfo["ID"]], false, ["ID", "DESCRIPTION"])->GetNext()["DESCRIPTION"];
+	if($pageType == "list" && ($arParams["MARKUP_TYPE"] == "TWO_COLUMNS" || $listPage == 1))
+		$arResult["LIST_DESCRIPTION"] = CIBlock::GetArrayByID($arParams["IBLOCK_ID"])["DESCRIPTION"];
+	elseif(in_array($pageType, ["section", "subsection"]) && $listPage == 1)
+		{
+		$sectionSeoInfo = (new SectionValues($arParams["IBLOCK_ID"], $sectionInfo["ID"]))->getValues();
+		$APPLICATION->SetTitle($sectionSeoInfo["SECTION_PAGE_TITLE"]);
+		$arResult["LIST_DESCRIPTION"] = CIBlockSection::GetList([], ["ID" => $sectionInfo["ID"]], false, ["ID", "DESCRIPTION"])->GetNext()["DESCRIPTION"];
+		}
 	}
 /* -------------------------------------------------------------------- */
 /* ------------------------- navigation chain ------------------------- */
 /* -------------------------------------------------------------------- */
-if($arParams["ADD_SUBSECTIONS_CHAIN"] == 'Y' && $arParams["ADD_SECTIONS_CHAIN"] != 'Y')
+if($arParams["ADD_SUBSECTIONS_CHAIN"] == "Y" && $arParams["ADD_SECTIONS_CHAIN"] != "Y")
 	{
 	if(count($sectionInfo) || count($parentSectionInfo))
 		$APPLICATION->SetTitle($sectionInfo["NAME"]);

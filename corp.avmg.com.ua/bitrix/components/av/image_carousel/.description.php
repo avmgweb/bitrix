@@ -13,4 +13,3 @@ $arComponentDescription =
 		"CHILD" => ["ID" => 'other']
 		]
 	];
-?>

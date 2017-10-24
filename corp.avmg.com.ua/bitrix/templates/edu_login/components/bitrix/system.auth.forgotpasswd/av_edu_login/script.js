@@ -13,7 +13,7 @@ $(function()
 				{
 				CreateAvAlertPopup(BX.message("AV_EDU_LOGIN_FORGOTPASS_VALIDATION_ALERT"), "alert")
 					.positionCenter(1000, 'Y')
-					.hideOnClickout("remove");
+					.onClickout(function() {$(this).remove()});
 				return false;
 				}
 			});

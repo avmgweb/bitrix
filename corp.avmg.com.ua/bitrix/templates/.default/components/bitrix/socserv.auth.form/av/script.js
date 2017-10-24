@@ -28,7 +28,7 @@ function avSocAuth(params)
 			else if(scriptResultStatus == 'error')
 				CreateAvAlertPopup('<b>'+BX.message("AV_SOC_AUTH_ERROR_TITLE")+'</b><br>'+scriptResultMessage, "alert")
 					.positionCenter(3000, 'Y')
-					.hideOnClickout("remove");
+					.onClickout(function() {$(this).remove()});
 			},
 		complete: function() {AvWaitingScreen("off")}
 		});

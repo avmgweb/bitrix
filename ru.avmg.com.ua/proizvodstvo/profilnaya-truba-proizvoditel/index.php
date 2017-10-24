@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Труба электросварная прямошовная");
 $APPLICATION->SetPageProperty("title",       "Труба профильная от производителя | АВ металл групп Украина, Днепр производитель круглой, квадратной, прямоугольной стальной трубы | Купить профильную трубу оптом: телефон для заказа ☎ (056)790-01-22");
@@ -593,4 +593,4 @@ $APPLICATION->SetPageProperty("description", "Нужна профильная т
 <p>
 	<img alt="1.jpg" src="/upload/medialibrary/e09/1.jpg" style="width: 100%" title="1.jpg">
 </p>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

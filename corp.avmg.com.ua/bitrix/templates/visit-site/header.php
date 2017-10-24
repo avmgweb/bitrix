@@ -1,126 +1,117 @@
 <?
-use Bitrix\Main\Page\Asset;
+use \Bitrix\Main\Page\Asset;
 
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* ============================================================================================= */
 /* ========================================= COUNTINGS ========================================= */
 /* ============================================================================================= */
-$currentPage         = $APPLICATION->GetCurPage(false);
-$dirProperty         = $APPLICATION->GetDirPropertyList();
-$workAreaType        = '';
-$leftMenuSeted       = false;
-$useBreadcrumbs      = $dirProperty["NOT_SHOW_NAV_CHAIN"] == 'Y' ? false : true;
-$availableMarkupType = ["container_page", "left_menu_page", "full_screen_page"];
+$currentDirectory = $APPLICATION->GetCurDir();
+$dirProperty      = $APPLICATION->GetDirPropertyList();
+$leftMenu         = "";
+$hasLeftColumn    = false;
 
-foreach(["top", "left"] as $menuType)
-	{
-	$menuObj = new CMenu($menuType);
-	$menuObj->Init($APPLICATION->GetCurPage());
-	if($menuType == 'left' && count($menuObj->arMenu)) $leftMenuSeted = true;
+ob_start();
+if($dirProperty["NOT_SHOW_LEFT_MENU"] != "Y" && $currentDirectory != SITE_DIR && ERROR_404 != "Y")
+	$APPLICATION->IncludeComponent
+		(
+		"bitrix:menu", "av-vertical",
+			array(
+			"ROOT_MENU_TYPE"     => "left",
+			"MAX_LEVEL"          => 1,
+			"CHILD_MENU_TYPE"    => "left",
+			"USE_EXT"            => "Y",
+			"DELAY"              => "N",
+			"ALLOW_MULTI_SELECT" => "N",
 
-	foreach($menuObj->arMenu as $menuInfo)
-		{
-		$menuLink            = explode('?', $menuInfo[1])[0];
-		$menuSubstring       = substr_count($currentPage, $menuLink)        ? true : false;
-		$inheritWorkareaType = $menuInfo[3]["inherit_workarea_type"] == 'Y' ? true : false;
-
-		if
-			(
-			in_array($menuInfo[3]["workarea_type"], $availableMarkupType)
-			&&
-				(
-				$currentPage == $menuLink
-				||
-				($menuSubstring && $inheritWorkareaType)
-				)
+			"MENU_CACHE_TYPE"       => "A",
+			"MENU_CACHE_TIME"       => 360000,
+			"MENU_CACHE_USE_GROUPS" => "Y"
 			)
-			$workAreaType = $menuInfo[3]["workarea_type"];
-		elseif
-			(
-			in_array($menuInfo[3]["children_workarea_type"], $availableMarkupType)
-			&&
-			$currentPage != $menuLink
-			&&
-			$menuSubstring
-			)
-			$workAreaType = $menuInfo[3]["children_workarea_type"];
-		}
-	}
+		);
+$leftMenu = ob_get_contents();
+ob_end_clean();
 
-if(!$workAreaType && $leftMenuSeted)             $workAreaType   = 'left_menu_page';
-if(!$workAreaType)                               $workAreaType   = 'container_page';
-if($currentPage == SITE_DIR || ERROR_404 == 'Y') $workAreaType   = 'full_screen_page';
-if($workAreaType == 'full_screen_page')          $useBreadcrumbs = false;
+$hasLeftColumn = $leftMenu || (file_exists($_SERVER["DOCUMENT_ROOT"].$currentDirectory."sect_inc.php") && $dirProperty["NOT_SHOW_LEFT_MENU"] != "Y") ? true : false;
 /* ============================================================================================= */
 /* ========================================== DOCUMENT ========================================= */
 /* ============================================================================================= */
 ?>
 <!DOCTYPE html>
-<html lang="<?=LANGUAGE_ID?>">
+<html itemscope itemtype="http://schema.org/WebPage" lang="<?=LANGUAGE_ID?>">
 	<?
 	/* -------------------------------------------------------------------- */
 	/* ------------------------------- HEAD ------------------------------- */
 	/* -------------------------------------------------------------------- */
 	?>
 	<head>
+		<meta itemprop="inLanguage" content="<?=LANGUAGE_ID?>">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 		<title><?$APPLICATION->ShowTitle()?></title>
 		<link rel="icon" type="image/x-icon" href="/favicon.ico">
 
 		<?$APPLICATION->ShowHead()?>
-		<?CJSCore::Init(["bootstrap", "av_site"])?>
-		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH.'/scripts/main.js')?>
-		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH.'/scripts/'.LANGUAGE_ID.'/google_analytics.js')?>
-		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH.'/scripts/'.LANGUAGE_ID.'/yandex_metrika.js')?>
+		<?CJSCore::Init(["av_site"])?>
+		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/scripts/main.js")?>
+		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/scripts/".LANGUAGE_ID."/google_analytics.js")?>
+		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/scripts/".LANGUAGE_ID."/yandex_metrika.js")?>
 	</head>
 	<?
 	/* -------------------------------------------------------------------- */
 	/* ------------------------------- BODY ------------------------------- */
 	/* -------------------------------------------------------------------- */
 	?>
-	<body id="av-vst">
+	<body>
 		<?$APPLICATION->ShowPanel()?>
+		<span itemprop="headline" content="<?$APPLICATION->ShowTitle(false)?>"></span>
 		<?
 		/* ------------------------------------------- */
 		/* ------------------ header ----------------- */
 		/* ------------------------------------------- */
 		?>
-		<header>
-			<div class="hidden-lg hidden-md mobile-first-row">
-				<div>
-					<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => 'file', "PATH" => '/include/hot_line.php'))?>
-				</div>
-				<div>
+		<header itemscope itemtype="http://schema.org/WPHeader" id="page-header">
+			<?
+			/* ---------------------------- */
+			/* -------- first row --------- */
+			/* ---------------------------- */
+			?>
+			<div class="first-row">
+				<?
+				$APPLICATION->IncludeComponent
+					(
+					"bitrix:main.include", "",
+					array("AREA_FILE_SHOW" => "file", "PATH" => "/include/hot_line.php")
+					);
+				$APPLICATION->IncludeComponent
+					(
+					"bitrix:main.site.selector", "av",
+						array(
+						"SITE_LIST"  => array("AV", "RU", "EN"),
+						"CACHE_TIME" => 3600000,
+						"CACHE_TYPE" => "A"
+						)
+					);
+				?>
+			</div>
+			<?
+			/* ---------------------------- */
+			/* ---- second row desktop ---- */
+			/* ---------------------------- */
+			?>
+			<div class="second-row-desktop av-responsive-block">
+				<a class="logo-cell" href="/" <?if($currentDirectory == SITE_DIR):?>rel="nofollow"<?endif?>>
 					<?
 					$APPLICATION->IncludeComponent
 						(
-						"bitrix:main.site.selector", "av",
-							array(
-							"SITE_LIST"  => array("AV", "RU", "EN"),
-							"CACHE_TIME" => 3600000,
-							"CACHE_TYPE" => 'A'
-							)
+						"bitrix:main.include", "",
+						array("AREA_FILE_SHOW" => "file", "PATH" => "/include/logo.php")
 						);
 					?>
-				</div>
-			</div>
+				</a>
 
-			<div class="container">
-				<?
-				/* ---------------------------- */
-				/* --------- desktop ---------- */
-				/* ---------------------------- */
-				?>
-				<div class="col-lg-2 col-md-2 hidden-sm hidden-xs desktop-left-col">
-					<?if($currentPage != SITE_DIR):?><a href="/"><?endif?>
-					<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => 'file', "PATH" => '/include/logo.php'))?>
-					<?if($currentPage != SITE_DIR):?></a><?endif?>
-				</div>
-
-				<div class="col-lg-10 col-md-10 hidden-sm hidden-xs desktop-right-col">
-					<div class="desktop-gadgets-row">
-						<div class="desktop-lang-twister-cell">
+				<div class="info-cell">
+					<div itemscope itemtype="http://schema.org/WPSideBar" id="gadgets-row" class="gadgets-row">
+						<div class="lang-twister-cell">
 							<?
 							$APPLICATION->IncludeComponent
 								(
@@ -128,18 +119,30 @@ if($workAreaType == 'full_screen_page')          $useBreadcrumbs = false;
 									array(
 									"SITE_LIST"  => array("AV", "RU", "EN"),
 									"CACHE_TIME" => 3600000,
-									"CACHE_TYPE" => 'A'
+									"CACHE_TYPE" => "A"
 									)
 								);
 							?>
 						</div>
 
-						<div class="desktop-phone-cell">
-							<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => 'file', "PATH" => '/include/hot_line.php'))?>
+						<div class="phone-cell">
+							<?
+							$APPLICATION->IncludeComponent
+								(
+								"bitrix:main.include", "",
+								array("AREA_FILE_SHOW" => "file", "PATH" => "/include/hot_line.php")
+								);
+							?>
 						</div>
 
-						<div class="desktop-search-cell">
-							<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => 'file', "PATH" => '/include/search.php'))?>
+						<div class="search-cell">
+							<?
+							$APPLICATION->IncludeComponent
+								(
+								"bitrix:main.include", "",
+								array("AREA_FILE_SHOW" => "file", "PATH" => "/include/search.php")
+								);
+							?>
 						</div>
 
 						<div>
@@ -148,14 +151,14 @@ if($workAreaType == 'full_screen_page')          $useBreadcrumbs = false;
 								(
 								"av:visit_site.user.panel", "",
 									array(
-									"USER_MENU_TYPE" => 'user',
+									"USER_MENU_TYPE" => "user",
 
 									"REGISTRATION_SHOW_FIELDS"         => array("EMAIL", "NAME", "LAST_NAME", "PERSONAL_MOBILE"),
 									"REGISTRATION_SHOW_USER_PROPS"     => array(),
 									"REGISTRATION_REQUIRED_FIELDS"     => array(),
 									"REGISTRATION_REQUIRED_USER_PROPS" => array()
 									)
-								)
+								);
 							?>
 						</div>
 					</div>
@@ -163,102 +166,111 @@ if($workAreaType == 'full_screen_page')          $useBreadcrumbs = false;
 					<?
 					$APPLICATION->IncludeComponent
 						(
-						"bitrix:menu", "av_vs",
+						"bitrix:menu", "av",
 							array(
-							"ROOT_MENU_TYPE"     => 'top',
+							"ROOT_MENU_TYPE"     => "top",
 							"MAX_LEVEL"          => 2,
-							"CHILD_MENU_TYPE"    => 'left',
-							"USE_EXT"            => 'Y',
-							"DELAY"              => 'N',
-							"ALLOW_MULTI_SELECT" => 'Y',
+							"CHILD_MENU_TYPE"    => "left",
+							"USE_EXT"            => "Y",
+							"DELAY"              => "N",
+							"ALLOW_MULTI_SELECT" => "Y",
 
-							"MENU_CACHE_TYPE"       => 'A',
+							"MENU_CACHE_TYPE"       => "A",
 							"MENU_CACHE_TIME"       => 360000,
-							"MENU_CACHE_USE_GROUPS" => 'Y'
+							"MENU_CACHE_USE_GROUPS" => "Y"
 							)
 						)
 					?>
 				</div>
+			</div>
+			<?
+			/* ---------------------------- */
+			/* ---- second row mobile ----- */
+			/* ---------------------------- */
+			?>
+			<div class="second-row-mobile av-responsive-block">
 				<?
-				/* ---------------------------- */
-				/* ---------- mobile ---------- */
-				/* ---------------------------- */
+				$APPLICATION->IncludeComponent
+					(
+					"bitrix:menu", "av_vs_mobile",
+						array(
+						"ROOT_MENU_TYPE"     => "top",
+						"MAX_LEVEL"          => 2,
+						"CHILD_MENU_TYPE"    => "left",
+						"USE_EXT"            => "Y",
+						"DELAY"              => "N",
+						"ALLOW_MULTI_SELECT" => "Y",
+
+						"MENU_CACHE_TYPE"       => "A",
+						"MENU_CACHE_TIME"       => 360000,
+						"MENU_CACHE_USE_GROUPS" => "Y"
+						)
+					);
 				?>
-				<div class="hidden-lg hidden-md mobile-second-row">
+
+				<a class="logo-cell" href="/" rel="nofollow">
 					<?
 					$APPLICATION->IncludeComponent
 						(
-						"bitrix:menu", "av_vs_mobile",
-							array(
-							"ROOT_MENU_TYPE"     => 'top',
-							"MAX_LEVEL"          => 2,
-							"CHILD_MENU_TYPE"    => 'left',
-							"USE_EXT"            => 'Y',
-							"DELAY"              => 'N',
-							"ALLOW_MULTI_SELECT" => 'Y',
-
-							"MENU_CACHE_TYPE"       => 'A',
-							"MENU_CACHE_TIME"       => 360000,
-							"MENU_CACHE_USE_GROUPS" => 'Y'
-							)
+						"bitrix:main.include", "",
+						array("AREA_FILE_SHOW" => "file", "PATH" => "/include/logo_mobile.php")
 						);
 					?>
+				</a>
 
-					<?if($currentPage != SITE_DIR):?><a href="/"><?endif?>
-					<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => 'file', "PATH" => '/include/logo_mobile.php'))?>
-					<?if($currentPage != SITE_DIR):?></a><?endif?>
-
-					<div class="mobile-search-cell">
-						<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => 'file', "PATH" => '/include/search_mobile.php'))?>
-					</div>
+				<div class="search-cell">
+					<?
+					$APPLICATION->IncludeComponent
+						(
+						"bitrix:main.include", "",
+						array("AREA_FILE_SHOW" => "file", "PATH" => "/include/search_mobile.php")
+						);
+					?>
 				</div>
 			</div>
 		</header>
 		<?
 		/* ------------------------------------------- */
-		/* ------------------ body ------------------- */
+		/* ------------------- H1 -------------------- */
 		/* ------------------------------------------- */
 		?>
-		<?if($currentPage != SITE_DIR && ERROR_404 != 'Y'):?>
-		<h1 class="page-main-title" <?if($dirProperty["TITLE_BACKGROUND"]):?>style="background-image: url(<?=$dirProperty["TITLE_BACKGROUND"]?>)"<?endif?>>
+		<?if($dirProperty["NOT_SHOW_MAIN_TITLE"] != "Y" && $currentDirectory != SITE_DIR && ERROR_404 != "Y"):?>
+		<h1
+			id="page-title"
+			<?if($dirProperty["TITLE_BACKGROUND"]):?>
+			style="background-image: url(<?=$dirProperty["TITLE_BACKGROUND"]?>)"
+			<?endif?>
+		>
 			<?$APPLICATION->ShowTitle(false)?>
 		</h1>
 		<?endif?>
+		<?
+		/* ------------------------------------------- */
+		/* --------------- breadcrumb ---------------- */
+		/* ------------------------------------------- */
+		?>
+		<?if($dirProperty["NOT_SHOW_NAV_CHAIN"] != "Y" && $currentDirectory != SITE_DIR && ERROR_404 != "Y"):?>
+		<div id="page-breadcrumbs" class="av-responsive-block">
+			<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "av")?>
+		</div>
+		<?endif?>
+		<?
+		/* ------------------------------------------- */
+		/* ------------------ body ------------------- */
+		/* ------------------------------------------- */
+		?>
+		<div
+			id="page-workarea"
+			class="
+				<?if($dirProperty["FULL_SCREEN_WORKAREA"] != "Y" && $currentDirectory != SITE_DIR):?>responsive av-responsive-block<?endif?>
+				<?if($dirProperty["FULL_SCREEN_WORKAREA"] != "Y" && $hasLeftColumn):?>has-menu<?endif?>
+				"
+		>
+			<?if($hasLeftColumn):?>
+			<div class="menu-col">
+				<div><?=$leftMenu?></div>
+				<div><?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => "sect"))?></div>
+			</div>
 
-		<div class="page-workarea <?=$workAreaType?><?if($workAreaType != 'full_screen_page'):?> container<?endif?>">
-			<?if($workAreaType != 'full_screen_page'):?>
-			<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+			<div class="content-col">
 			<?endif?>
-				<?if($useBreadcrumbs):?>
-				<div class="page-breadcrumbs">
-					<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "av")?>
-				</div>
-				<?endif?>
-
-				<?if($workAreaType == 'left_menu_page'):?>
-				<div class="col-lg-4 col-md-4 hidden-sm hidden-xs left-column">
-					<?
-					$APPLICATION->IncludeComponent
-						(
-						"bitrix:menu", "av_vs_vertical",
-							array(
-							"ROOT_MENU_TYPE"     => 'left',
-							"MAX_LEVEL"          => 1,
-							"CHILD_MENU_TYPE"    => 'left',
-							"USE_EXT"            => 'Y',
-							"DELAY"              => 'N',
-							"ALLOW_MULTI_SELECT" => 'N',
-
-							"MENU_CACHE_TYPE"       => 'A',
-							"MENU_CACHE_TIME"       => 360000,
-							"MENU_CACHE_USE_GROUPS" => 'Y'
-							)
-						)
-					?>
-					<div class="bottom">
-						<?$APPLICATION->IncludeComponent("bitrix:main.include", "", array("AREA_FILE_SHOW" => 'sect'))?>
-					</div>
-				</div>
-
-				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 right-column">
-				<?endif?>

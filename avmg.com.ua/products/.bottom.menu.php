@@ -1,5 +1,6 @@
 <?
-$aMenuLinks = array(
+$aMenuLinks = array
+	(
 	array("Чорний металопрокат",         "/products/black-metal/"),
 	array("Нержавіючий металопрокат",    "/products/stainless-steel-metal/"),
 	array("Оцинкований металопрокат",    "/products/galvanized-metal/"),

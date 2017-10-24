@@ -3,45 +3,76 @@
 /* -------------------------------------------------------------------- */
 function AvWaitingScreen(value)
 	{
-	var $body = $('body');
-	     if(value == 'on')  $body.setAvWaitingScreenOn("fixed");
-	else if(value == 'off') $body.setAvWaitingScreenOff();
+	var
+		waitingScreenId = 'av-waiting-screen',
+	    $waitingScreen  = $('#'+waitingScreenId);
+
+	if(value == 'on' && !$waitingScreen.length)
+		setTimeout(function()
+			{
+			$('<div></div>')
+				.attr("id", waitingScreenId)
+				.append('<div></div>')
+				.appendTo('body');
+			}, 50);
+	else if(value == 'off' && $waitingScreen.length)
+		$waitingScreen.remove();
 	}
 /* -------------------------------------------------------------------- */
 /* ----------------------- blur screen function ----------------------- */
 /* -------------------------------------------------------------------- */
 function AvBlurScreen(value, zIndex)
 	{
-	var $blurScreen = $('#av-blur-screen');
+	var
+		blurScreenZIndex = parseInt(zIndex) ? parseInt(zIndex) : 100,
+		fadeSpeed        = 500,
+		blurScreenId     = 'av-blur-screen',
+		$blurScreen      = $('#'+blurScreenId);
 
 	if(value == 'on' && !$blurScreen.length)
 		setTimeout(function()
 			{
-			$('<div id="av-blur-screen"></div>')
-				.css("z-index", zIndex ? zIndex : '100')
+			$('<div></div>')
+				.attr("id", blurScreenId)
+				.css("z-index", blurScreenZIndex)
 				.appendTo('body')
-				.fadeTo(500, 0.7);
+				.fadeTo(fadeSpeed, 0.7);
 			}, 50);
-	else if(value == 'off')
-		$blurScreen.fadeTo(500, 0, function() {$blurScreen.remove()});
+	else if(value == 'off' && $blurScreen.length)
+		$blurScreen.fadeTo(fadeSpeed, 0, function()
+			{
+			$blurScreen.remove();
+			});
 	}
 /* -------------------------------------------------------------------- */
 /* ----------------------- alert popup function ----------------------- */
 /* -------------------------------------------------------------------- */
-function CreateAvAlertPopup(alertText, type, options)
+function CreateAvAlertPopup(alertText, type)
 	{
-	return $
-		(
-		'<div class="av-alert-popup" type="'+(type ? type : 'simple')+'">'+
-			'<div class="content">'+
-				'<div class="image"></div>'+
-				'<div class="text">'+alertText+'</div>'+
-			'</div>'+
-			'<div class="close-form-button"></div>'+
-		'</div>'
-		)
-		.appendTo('body')
-		.on("vclick", '.close-form-button', function() {$(this).getAvAlertPopup().remove()});
+	var
+		$popUp       = $('<div></div>').addClass("av-alert-popup"),
+		$content     = $('<div></div>').addClass("content"),
+		$closeButton = $('<div></div>').addClass("close-form-button"),
+		$image       = $('<div></div>').addClass("image"),
+		$text        = $('<div></div>').addClass("text");
+
+	$popUp
+		.addClass(type ? type : "simple")
+		.append($content)
+		.append($closeButton)
+		.appendTo('body');
+	$content
+		.append($image)
+		.append($text);
+	$text
+		.html(alertText);
+	$closeButton
+		.click(function()
+			{
+			$popUp.remove();
+			});
+
+	return $popUp;
 	}
 /* ------------------------------------------------------------------- */
 /* ----------------------------- methods ----------------------------- */
@@ -69,28 +100,6 @@ function CreateAvAlertPopup(alertText, type, options)
 		return !!($objectDate && $objectDate.clicked);
 		};
 	/* ------------------------------------------- */
-	/* ------------ preloader behavior ----------- */
-	/* ------------------------------------------- */
-	jQuery.fn.setAvWaitingScreenOn = function(type)
-		{
-		var $obj = this;
-
-		$obj.css
-	        ({
-	        "position"   : 'relative',
-	        "min-height" : '100px',
-	        "min-width"  : '100px'
-	        });
-		setTimeout(function()
-			{
-			$('<div id="av-waiting-screen" class="'+(type == 'fixed' ? 'fixed' : 'simple')+'"><div></div></div>').appendTo($obj);
-			}, 10);
-		};
-	jQuery.fn.setAvWaitingScreenOff = function()
-		{
-		this.find('#av-waiting-screen').remove();
-		};
-	/* ------------------------------------------- */
 	/* ---------------- get popup ---------------- */
 	/* ------------------------------------------- */
 	jQuery.fn.getAvAlertPopup = function()
@@ -105,6 +114,7 @@ function CreateAvAlertPopup(alertText, type, options)
 		var $currentObject = this;
 
 		$currentObject.objectCentering(zIndex);
+
 		if(centering == 'Y')
 			$(window).on("scroll resize", function()
 				{
@@ -125,7 +135,8 @@ function CreateAvAlertPopup(alertText, type, options)
 	jQuery.fn.objectCentering = function(zIndex, smooth)
 		{
 		var
-			currentZIndex = this.css("z-index"),
+			currentZIndex = parseInt(this.css("z-index")) ? parseInt(this.css("z-index")) : 0,
+			needZIndex    = parseInt(zIndex)              ? parseInt(zIndex)              : 0,
 			screenWidth   = $(window).width(),
 			screenHeight  = $(window).height(),
 			scrollTop     = $(window).scrollTop(),
@@ -135,10 +146,10 @@ function CreateAvAlertPopup(alertText, type, options)
 			formOffset    = this.offset(),
 		    paramsArray   =
 				{
-				"z-index": currentZIndex && currentZIndex > 1 ? currentZIndex  : parseInt(zIndex ? zIndex : 100),
-				"top"    : formHeight     > screenHeight      ? scrollTop + 50 : scrollTop  + (screenHeight - formHeight) / 2,
-				"left"   : screenWidth   <= formWidth + 5     ? 0              : scrollLeft + (screenWidth  - formWidth)  / 2,
-				"right"  : screenWidth   <= formWidth + 5     ? 0              : ''
+				"z-index": currentZIndex > 1             ? currentZIndex  : needZIndex,
+				"top"    : formHeight    > screenHeight  ? scrollTop + 50 : scrollTop  + (screenHeight - formHeight) / 2,
+				"left"   : screenWidth  <= formWidth + 5 ? 0              : scrollLeft + (screenWidth  - formWidth)  / 2,
+				"right"  : screenWidth  <= formWidth + 5 ? 0              : ''
 				};
 		if(!formOffset) return this;
 
@@ -146,21 +157,21 @@ function CreateAvAlertPopup(alertText, type, options)
 			{
 			     if(formOffset.top < scrollTop && formOffset.top + formHeight > scrollTop + screenHeight) paramsArray.top = 'auto';
 			else if(formOffset.top + formHeight < scrollTop + screenHeight && formHeight > screenHeight)  paramsArray.top = scrollTop + screenHeight - 50 - formHeight;
-			this.width(this.width());
 			return this.animate(paramsArray, 300);
 			}
 		else
 			return this.css(paramsArray);
 		};
 	/* ------------------------------------------- */
-	/* --------- object hide on clickout --------- */
+	/* --------------- on clickout --------------- */
 	/* ------------------------------------------- */
-	jQuery.fn.hideOnClickout = function(functionType, callback)
+	jQuery.fn.onClickout = function(callback)
 		{
+		if(!callback || typeof callback != 'function') return this;
 		var
-			behaviorType   = functionType == 'remove' ? 'remove' : 'hide',
-			$currentObject = this,
-			$popUpHider    =
+			$object     = this,
+			zIndex      = parseInt($(this).css("z-index")) ? parseInt($(this).css("z-index")) : 0,
+			$popUpHider =
 				$('<div class="av-alert-popup-hider"></div>')
 					.css
 						({
@@ -168,26 +179,31 @@ function CreateAvAlertPopup(alertText, type, options)
 						"top"     : '0',
 						"bottom"  : '0',
 						"left"    : '0',
-						"right"   : '0',
-						"z-index" : (parseInt($(this).css("z-index")) - 1)
+						"right"   : '0'
 						})
 					.appendTo('body');
+
+		if(zIndex < 10)
+			{
+			zIndex = 10;
+			this.css("z-index", 10);
+			}
+		$popUpHider.css("z-index", zIndex - 1);
 
 		setTimeout(function()
 			{
 			$popUpHider.on("vclick", function()
 				{
-				if(behaviorType == 'hide') $currentObject.hide();
-				else                       $currentObject.remove();
-				if(callback && typeof callback == 'function') callback();
+				$popUpHider.remove();
+				callback.call($object);
 				});
-			$currentObject.on(behaviorType, function()
+			$object.on("remove hide", function()
 				{
 				$popUpHider.remove();
 				});
 			}, 300);
 
-		return $currentObject;
+		return this;
 		};
 	/* ------------------------------------------- */
 	/* --------------- flood image --------------- */
@@ -197,21 +213,57 @@ function CreateAvAlertPopup(alertText, type, options)
 		return this.each(function()
             {
 			var
-				$img       = $(this).find('img'),
-				$imgParent = $img.parent();
+				$img      = $(this).find("img"),
+			    imgWidth  = $img.attr("data-natural-width"),
+			    imgHeight = $img.attr("data-natural-height");
+			if(!$img.length) return;
 
-			$imgParent.css
-				({
-				"align-items"    : 'center',
-				"display"        : 'flex',
-				"justify-content": 'center',
-				"overflow"       : 'hidden'
-				});
+			if(!$img.attr("data-natural-width") || !$img.attr("data-natural-height"))
+	            $(window).load(function()
+		            {
+		            $img
+		                .attr("data-natural-width",  $img.prop("naturalWidth"))
+		                .attr("data-natural-height", $img.prop("naturalHeight"))
+		                .floodImageSetSize();
+		            });
 
-			if($imgParent.width()/$imgParent.height() >= $img.width()/$img.height()) $img.css({width: '100%', height: 'auto'});
-			else                                                                     $img.css({width: 'auto', height: '100%'});
+            $img.floodImageSetSize();
             });
         };
+	jQuery.fn.floodImageSetSize = function()
+		{
+		var
+			$img       = this.filter("img"),
+			$imgParent = $img.parent(),
+			imgWidth   = $img.attr("data-natural-width"),
+			imgHeight  = $img.attr("data-natural-height");
+		if(!$img.length || !imgWidth || !imgHeight) return;
+
+		$img.add($imgParent).removeAttr("style");
+		$imgParent.css("overflow", "hidden");
+
+		if(imgWidth * $imgParent.height() > $imgParent.width() * imgHeight)
+			$img.css
+				({
+				"margin-left": "50%",
+				"transform"  : "translateX(-50%)",
+				"width"      : "auto",
+				"height"     : "100%"
+				});
+		else
+			{
+			$imgParent.css
+				({
+				"align-items": "center",
+				"display"    : "flex"
+				});
+			$img.css
+				({
+				"width" : "100%",
+				"height": "auto"
+				});
+			}
+		};
 	/* ------------------------------------------- */
 	/* ----------- form submit control ----------- */
 	/* ------------------------------------------- */
@@ -220,7 +272,8 @@ function CreateAvAlertPopup(alertText, type, options)
 		return this.each(function()
 			{
 			var $form = $(this).is('form') ? $(this) : $(this).closest('form');
-			if(value == 'off') $form.addClass("form-submit-cancel");
+
+			     if(value == 'off') $form.addClass("form-submit-cancel");
 			else if(value == 'on')  $form.removeClass("form-submit-cancel");
 			});
 		};
@@ -241,6 +294,10 @@ function CreateAvAlertPopup(alertText, type, options)
 $(function()
 	{
 	$(document)
+		.on("keyup", "[tabindex]:not(a, input, button)", function(event)
+			{
+			if(event.keyCode == 13) $(this).click();
+			})
 		.onFirst("vclick", function(event)
 			{
 			var $object = $(event.target);

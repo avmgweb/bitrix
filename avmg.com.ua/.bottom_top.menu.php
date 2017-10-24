@@ -1,5 +1,6 @@
 <?
-$aMenuLinks = array(
+$aMenuLinks = array
+	(
 	array("Про нас",     "/about/"),
 	array("Продукція",   "/products/"),
 	array("Виробництво", "/proizvodstvo/"),

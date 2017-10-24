@@ -83,6 +83,15 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 ?>
 <div class="av-bases-detail<?if($arResult["PROPERTIES"]["closed"]["VALUE_XML_ID"]):?> closed<?endif?><?if(!$cordinateX || !$cordinateY):?> no-map<?endif?>">
 	<?
+	$buttonsArray = CIBlock::GetPanelButtons
+		(
+		$arResult["IBLOCK_ID"],
+		$arResult["ID"],
+		0, ["SECTION_BUTTONS" => false, "SESSID" => false]
+		);
+
+	$this->AddEditAction  ($arResult["ID"], $buttonsArray["edit"]["edit_element"]["ACTION_URL"],   CIBlock::GetArrayByID($arResult["IBLOCK_ID"], "ELEMENT_EDIT"));
+	$this->AddDeleteAction($arResult["ID"], $buttonsArray["edit"]["delete_element"]["ACTION_URL"], CIBlock::GetArrayByID($arResult["IBLOCK_ID"], "ELEMENT_DELETE"));
 	/* ------------------------------------------- */
 	/* ----------------- info col ---------------- */
 	/* ------------------------------------------- */
@@ -148,9 +157,9 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 						<?if($streamInfo["PRICE"]):?>
 						<a
 							class="price-link"
-							title="<?=Loc::getMessage("AV_BASES_ELEMENT_STREAMS_INFO_PRICE")?>"
+							title="<?=Loc::getMessage("AV_BASES_ELEMENT_STREAMS_INFO_PRICE")?>, <?=$arResult["NAME"]?>, <?=$streamInfo["TITLE"]?>"
 							href="<?=$streamInfo["PRICE"]?>"
-							download
+							target="_blank"
 						>
 							<?=Loc::getMessage("AV_BASES_ELEMENT_STREAMS_INFO_PRICE")?>
 						</a>

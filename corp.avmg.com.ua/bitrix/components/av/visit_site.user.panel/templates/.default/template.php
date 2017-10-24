@@ -273,8 +273,14 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 	AvBlurScreen("on", 1000);
 	CreateAvAlertPopup('<?=Loc::getMessage("AV_AUTH_REGISTER_FORM_SUCCESS")?>', "ok")
 		.positionCenter(1100, 'Y')
-		.hideOnClickout("remove")
-		.on("remove", function() {AvBlurScreen("off")});
+		.onClickout(function()
+			{
+			$(this).remove();
+			})
+		.on("remove", function()
+			{
+			AvBlurScreen("off");
+			});
 	<?endif?>
 
 	<?if(count($arResult["AUTH"]["ERRORS"]) || count($arResult["REGISTER"]["ERRORS"])):?>

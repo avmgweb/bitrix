@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Профлист і Металочерепиця");
 $APPLICATION->SetPageProperty("title",       "Металочерепиця і профнастил від виробника ▥ | АВ метал груп ⓊⒶ національний виробник профнастилу в Україні: Київ, Дніпро, Харків, Львів, Херсон | Купити профлист оптом: телефон для замовлення ☎ (056) 376-79-97");
@@ -31,4 +31,4 @@ $APPLICATION->SetPageProperty("description", "Потрібен профлист 
 <p><img style="width: 100%" alt="proizvodstvo2.jpg"          title="proizvodstvo2.jpg"          src="/upload/medialibrary/69c/proizvodstvo2.jpg"></p>
 <p><img style="width: 100%" alt="proizvodstvo-proflista.jpg" title="proizvodstvo-proflista.jpg" src="/upload/medialibrary/000/proizvodstvo_proflista.jpg"></p>
 <p><img style="width: 100%" alt="list.jpg"                   title="list.jpg"                   src="/upload/medialibrary/11b/list.jpg"></p>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

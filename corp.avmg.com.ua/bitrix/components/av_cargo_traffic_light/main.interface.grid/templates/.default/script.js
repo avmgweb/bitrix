@@ -11,11 +11,12 @@ $(function()
 
 			AvBlurScreen("on");
 			$('.av-cargo-traffic-light-list-delete-form')
-				.find('button').attr("data-element-id", elementId)
-				.closest('.av-cargo-traffic-light-list-delete-form')
 				.show()
 				.positionCenter(1200, 'Y')
-				.hideOnClickout()
+				.onClickout(function()
+					{
+					$(this).find('[data-cancel-button]').click();
+					})
 				.on("vclick", 'button', function()
 					{
 					var
@@ -23,7 +24,7 @@ $(function()
 						elementId = $(this).attr("data-element-id");
 					if(!elementId) return;
 
-					$(this).closest('.av-cargo-traffic-light-list-delete-form').hide();
+					$(this).find('[data-cancel-button]').click();
 					$mainForm.find('.action-type-input') .attr("value", 'delete') .val("delete");
 					$mainForm.find('.action-value-input').attr("value", elementId).val(elementId);
 					$mainForm.submit();
@@ -31,11 +32,10 @@ $(function()
 				.on("vclick", '[data-cancel-button]', function()
 					{
 					$(this).closest('.av-cargo-traffic-light-list-delete-form').hide();
+					AvBlurScreen("off");
 					})
-				.on("hide", function()
-					{
-					AvBlurScreen("off")
-					});
+				.find('button')
+					.attr("data-element-id", elementId);
 			});
 	});
 /* -------------------------------------------------------------------- */

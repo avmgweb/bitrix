@@ -1,5 +1,6 @@
 <?
-$aMenuLinks = array(
+$aMenuLinks = array
+	(
 	array("Блог",                        "/about/blog/"),
 	array("Партнерство",                 "/about/partnersavmg/"),
 	array("Пользовательское соглашение", "/user_agreement/"),

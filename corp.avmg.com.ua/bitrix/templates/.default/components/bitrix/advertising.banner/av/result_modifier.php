@@ -2,10 +2,10 @@
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 $arResult["BANNERS_INFO"] = [];
-$bannersDomObject         = new DOMXPath(DOMDocument::loadHTML(mb_convert_encoding($arResult["BANNER"], 'HTML-ENTITIES', "UTF-8")));
+$bannersDomObject         = new DOMXPath(DOMDocument::loadHTML(mb_convert_encoding($arResult["BANNER"], "HTML-ENTITIES", "UTF-8")));
 
 if($bannersDomObject)
-	foreach($bannersDomObject->query('//*[contains(@class,"bx-slider-preset-1")]') as $domElementObject)
+	foreach($bannersDomObject->query("//*[contains(@class,\"bx-slider-preset-1\")]") as $domElementObject)
 		{
 		$bannerInfo = [];
 		$link       = false;
@@ -16,13 +16,13 @@ if($bannersDomObject)
 
 		foreach($domElementObject->getElementsByTagName("a") as $elementObject)
 			{
-			$classesArray = explode(' ', $elementObject->GetAttribute("class"));
+			$classesArray = explode(" ", $elementObject->GetAttribute("class"));
 			if(in_array("bx-advertisingbanner-btn", $classesArray)) $button = $elementObject;
 			else                                                    $link   = $elementObject;
 			}
 		foreach($domElementObject->getElementsByTagName("div") as $elementObject)
 			{
-			$classesArray = explode(' ', $elementObject->GetAttribute("class"));
+			$classesArray = explode(" ", $elementObject->GetAttribute("class"));
 			    if(in_array("bx-advertisingbanner-text-title", $classesArray)) $title   = $elementObject;
 			elseif(in_array("bx-advertisingbanner-text-block", $classesArray)) $preview = $elementObject;
 			}

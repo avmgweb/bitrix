@@ -23,7 +23,8 @@ foreach($arResult["OFFERS"] as $index => $offerInfo)
 /* ------------------------ element props info ------------------------ */
 /* -------------------------------------------------------------------- */
 $arResult["OFFERS_VALUES"] = [];
-$sectionProps              = CIBlockSectionPropertyLink::GetArray($arResult["IBLOCK_ID"], $arResult["IBLOCK_SECTION_ID"]);
+$sectionProps              = CIBlockSectionPropertyLink::GetArray($arResult["IBLOCK_ID"],                                                   $arResult["IBLOCK_SECTION_ID"]);
+$sectionSkuProps           = CIBlockSectionPropertyLink::GetArray(CCatalogSKU::GetInfoByProductIBlock($arResult["IBLOCK_ID"])["IBLOCK_ID"], $arResult["IBLOCK_SECTION_ID"]);
 /* ------------------------------------------- */
 /* -------------- element props -------------- */
 /* ------------------------------------------- */
@@ -60,30 +61,31 @@ foreach($arResult["DISPLAY_PROPERTIES"] as $propInfo)
 /* ------------------------------------------- */
 foreach($arResult["OFFERS"] as $index => $offerInfo)
 	foreach($offerInfo["DISPLAY_PROPERTIES"] as $propInfo)
-		{
-		$nativeValue = strip_tags($propInfo["DISPLAY_VALUE"]);
-		$value       = $nativeValue;
-		$valueType   = 'TEXT';
-		$measure     = '';
-
-		if(is_numeric($nativeValue[0]))
+		if(count($sectionSkuProps[$propInfo["ID"]]))
 			{
-			$valueType   = 'NUMBER';
-			$nativeValue = str_replace(',', '.', $nativeValue);
-			$value       = floatval($nativeValue);
+			$nativeValue = strip_tags($propInfo["DISPLAY_VALUE"]);
+			$value       = $nativeValue;
+			$valueType   = 'TEXT';
+			$measure     = '';
+
+			if(is_numeric($nativeValue[0]))
+				{
+				$valueType   = 'NUMBER';
+				$nativeValue = str_replace(',', '.', $nativeValue);
+				$value       = floatval($nativeValue);
+				}
+
+			if(!count($arResult["OFFERS_VALUES"][$propInfo["ID"]]))
+				$arResult["OFFERS_VALUES"][$propInfo["ID"]] =
+					[
+					"NAME"       => $propInfo["NAME"],
+					"CODE"       => $propInfo["CODE"],
+					"VALUE_TYPE" => $valueType,
+					"MEASURE"    => $valueType == 'NUMBER' && stripos($nativeValue, ' ')
+						? trim(str_replace($value, '', $nativeValue))
+						: '',
+					"VALUES"     => []
+					];
+
+			if($value) $arResult["OFFERS_VALUES"][$propInfo["ID"]]["VALUES"][] = $value;
 			}
-
-		if(!count($arResult["OFFERS_VALUES"][$propInfo["ID"]]))
-			$arResult["OFFERS_VALUES"][$propInfo["ID"]] =
-				[
-				"NAME"       => $propInfo["NAME"],
-				"CODE"       => $propInfo["CODE"],
-				"VALUE_TYPE" => $valueType,
-				"MEASURE"    => $valueType == 'NUMBER' && stripos($nativeValue, ' ')
-					? trim(str_replace($value, '', $nativeValue))
-					: '',
-				"VALUES"     => []
-				];
-
-		if($value) $arResult["OFFERS_VALUES"][$propInfo["ID"]]["VALUES"][] = $value;
-		}

@@ -1,5 +1,5 @@
 <?
-use Bitrix\Main\Page\Asset;
+use \Bitrix\Main\Page\Asset;
 
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
@@ -13,7 +13,6 @@ $templateFolder = '/'.implode('/', $templateFolderArray);
 
 CJSCore::Init(["av_site"]);
 Asset::getInstance()->addString('<script>AvCatalogSectionChangeViewTypeFile = "'.CURRENT_PROTOCOL.'://'.SITE_SERVER_NAME.$templateFolder.'/ajax/change_view_type.php";</script>');
-
 
 AvComponentsIncludings::getInstance()
 	->setIncludings("bitrix", "catalog.item", "av-tablet")

@@ -1,5 +1,6 @@
 <?
-$sSectionName    = 'Результаты поиска';
-$arDirProperties = array(
-   "NOT_SHOW_NAV_CHAIN" => 'Y'
+$sSectionName    = "Результаты поиска";
+$arDirProperties = array
+	(
+   "NOT_SHOW_NAV_CHAIN" => "Y"
 	);

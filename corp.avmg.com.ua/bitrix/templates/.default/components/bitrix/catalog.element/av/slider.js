@@ -247,13 +247,14 @@
 	jQuery.fn.prepareAvCatalogElementSlider = function(type)
 		{
 		var
-			$slider       = this,
-			preparingType = $.inArray(type, ["horizontal", "vertical"]) == -1 ? 'horizontal'    : type,
-			mode          = $(window).width() <= 767 ? 'mobile'                                 : 'desktop',
-		    slidesCount   = mode == 'mobile'         ? $slider.attr("data-slides-count-mobile") : $slider.attr("data-slides-count"),
-			$sliderBlock  = $slider.find('.slider-block'),
-			$firstSlide   = $slider.getAvCatalogElementSliderSlides().first(),
-			slideSize     = preparingType == 'horizontal'
+			$slider         = this,
+			preparingType   = $.inArray(type, ["horizontal", "vertical"]) == -1 ? 'horizontal'    : type,
+			mode            = $(window).width() <= 767 ? 'mobile'                                 : 'desktop',
+		    slidesCount     = mode == 'mobile'         ? $slider.attr("data-slides-count-mobile") : $slider.attr("data-slides-count"),
+			$sliderBlock    = $slider.find('.slider-block'),
+			$firstSlide     = $slider.getAvCatalogElementSliderSlides().first(),
+			noSlidesToSlide = $slider.getAvCatalogElementSliderSlides().length <= slidesCount,
+			slideSize       = preparingType == 'horizontal'
 				?
 					(
 					$sliderBlock.width()
@@ -278,18 +279,10 @@
 			});
 
 		$slider
-			.setAvCatalogElementSliderWorkavailable
-				(
-				true,
-				$slider.getAvCatalogElementSliderSlides().length <= slidesCount
-				)
-			.setAvCatalogElementSliderAllowAutoplay(mode == 'desktop')
+			.setAvCatalogElementSliderWorkavailable(true, noSlidesToSlide)
+			.setAvCatalogElementSliderAllowAutoplay(mode == 'desktop' && !noSlidesToSlide)
 			.attr("data-slides-count-current", slidesCount)
-			.find('.navigation').css
-				(
-				"visibility",
-				$slider.getAvCatalogElementSliderSlides().length <= slidesCount ? 'hidden' : 'visible'
-				);
+			.find('.navigation').css("visibility", noSlidesToSlide ? 'hidden' : 'visible');
 
 		return $slider;
 		};
@@ -316,14 +309,21 @@ $(function()
 			$mainSlider.runAvCatalogElementSlider($(this).hasClass("prev") ? 'back' : 'forward');
 			});
 	$imageBlock
-		.on("vclick", 'img', function()
+		.on("vclick", 'img:not(.default)', function()
 			{
 			AvBlurScreen("on", 1000);
 			$imageViewer
 				.show()
 				.positionCenter(1100, 'Y', 'Y')
-				.hideOnClickout("hide", function() {AvBlurScreen("off")})
-				.on("vclick", '.close', function() {AvBlurScreen("off");$imageViewer.hide()});
+				.onClickout(function()
+					{
+					$(this).find('.close').click();
+					})
+				.on("vclick", '.close', function()
+					{
+					$imageViewer.hide();
+					AvBlurScreen("off");
+					});
 
 			$imageViewerMainSlider    .prepareAvCatalogElementSlider("horizontal").jumpAvCatalogElementSlider($(this).attr("src"));
 			$imageViewerVerticalSlider.prepareAvCatalogElementSlider("vertical")  .jumpAvCatalogElementSlider($(this).attr("src"));

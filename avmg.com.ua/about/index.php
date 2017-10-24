@@ -1,7 +1,7 @@
 <?
-use Bitrix\Main\Page\Asset;
+use \Bitrix\Main\Page\Asset;
 
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Про нас");
 $APPLICATION->SetPageProperty("title",       "Про компанію АВ метал груп: місія, цінності, принципи бізнесу");
@@ -185,4 +185,4 @@ Asset::getInstance()->addJs ("/bitrix/js/av_site/pages/about.js");
 			Компанія "АВ метал груп" бере активну участь у суспільно-громадському житті країни. У першу чергу ми надаємо матеріально-технічну підтримку соціально-незахищеним категоріям населення: утеплюємо дитячі будинки, підтримуємо сім'ї учасників АТО.
 		</div>
 	</div>
-</div><?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+</div><?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

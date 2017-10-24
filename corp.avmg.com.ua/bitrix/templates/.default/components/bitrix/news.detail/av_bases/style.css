@@ -70,6 +70,12 @@
 	font-size: 90%;
 	padding: 0 6px;
 	margin-top: 13px;
+	overflow: hidden;
+	text-align: center;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+	max-width: 150px;
 	}
 .av-bases-detail .streams-info-col .item .price-link:hover,
 .av-bases-detail .streams-info-col .item .price-link:active,

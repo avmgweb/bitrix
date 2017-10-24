@@ -35,7 +35,7 @@ $(function()
 				{
 				CreateAvAlertPopup(BX.message("AVCTL_FORM_VALIDATION_ALERT"), "alert")
 					.positionCenter(1000, 'Y')
-					.hideOnClickout("remove");
+					.onClickout(function() {$(this).remove()});
 				return false;
 				}
 			})
@@ -48,7 +48,10 @@ $(function()
 			$('.av-cargo-traffic-light-item-form-delete')
 				.show()
 				.positionCenter(1100, 'Y')
-				.hideOnClickout()
-				.on("hide", function() {AvBlurScreen("off")});
+				.onClickout(function()
+					{
+					$(this).hide();
+					AvBlurScreen("off");
+					});
 			});
 	});

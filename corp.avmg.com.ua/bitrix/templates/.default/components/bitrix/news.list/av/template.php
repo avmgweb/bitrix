@@ -35,6 +35,11 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		class="checkable"
 		<?endif?>
 	>
+		<?
+		/* ------------------------------------------- */
+		/* ------------------ image ------------------ */
+		/* ------------------------------------------- */
+		?>
 		<a class="image-link" <?if($itemLink):?>href="<?=$itemLink?>"<?endif?> rel="nofollow">
 			<img
 				src="<?=($arItem["PREVIEW_PICTURE"]["SRC"] ? $arItem["PREVIEW_PICTURE"]["SRC"] : $this->GetFolder().'/images/default_image.jpg')?>"
@@ -42,7 +47,11 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 				alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>"
 			>
 		</a>
-
+		<?
+		/* ------------------------------------------- */
+		/* ----------------- content ----------------- */
+		/* ------------------------------------------- */
+		?>
 		<div class="content-cell">
 			<?if($arItem["ACTIVE_FROM"] || $arParams["USE_RATING"] == 'Y'):?>
 			<div class="rating-row">
@@ -90,6 +99,42 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 			</a>
 			<?endif?>
 		</div>
+		<?
+		/* ------------------------------------------- */
+		/* -------- microdata schema.org Blog -------- */
+		/* ------------------------------------------- */
+		?>
+		<?if($arParams["DATA_MARKUP_TYPE"] == "BLOG" && $itemLink):?>
+		<div itemscope itemtype="http://schema.org/BlogPosting">
+			<span itemprop="headline"         content="<?=$arItem["NAME"]?>"></span>
+			<span itemprop="datePublished"    content="<?=date("Y-m-d", strtotime($arItem["DATE_CREATE"]))?>"></span>
+			<span itemprop="mainEntityOfPage" content="<?=CURRENT_PROTOCOL?>://<?=$_SERVER["SERVER_NAME"].$itemLink?>"></span>
+
+			<?if($arItem["DATE_CREATE"]):?>
+			<span itemprop="datePublished" content="<?=date("Y-m-d", strtotime($arItem["DATE_CREATE"]))?>"></span>
+			<?endif?>
+
+			<?if($arItem["TIMESTAMP_X"]):?>
+			<span itemprop="dateModified" content="<?=date("Y-m-d", strtotime($arItem["TIMESTAMP_X"]))?>"></span>
+			<?endif?>
+
+			<div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+				<span itemprop="name" content="<?=$_SERVER["SERVER_NAME"]?>"></span>
+			</div>
+
+			<div itemprop="author" itemscope itemtype="https://schema.org/CreativeWork">
+				<span itemprop="name" content="<?=$_SERVER["SERVER_NAME"]?>"></span>
+			</div>
+
+			<?if($arItem["PREVIEW_PICTURE"]["SRC"]):?>
+			<div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+				<span itemprop="url"    content="<?=CURRENT_PROTOCOL?>://<?=$_SERVER["SERVER_NAME"].$arItem["PREVIEW_PICTURE"]["SRC"]?>"></span>
+				<span itemprop="width"  content="<?=$arItem["PREVIEW_PICTURE"]["WIDTH"]?>"></span>
+				<span itemprop="height" content="<?=$arItem["PREVIEW_PICTURE"]["HEIGHT"]?>"></span>
+			</div>
+			<?endif?>
+		</div>
+		<?endif?>
 	</div>
 <?endforeach?>
 </div>

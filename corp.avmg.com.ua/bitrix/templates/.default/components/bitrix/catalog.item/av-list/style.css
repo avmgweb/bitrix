@@ -14,16 +14,14 @@
 	cursor: pointer;
 	display: flex;
 	flex-wrap: wrap;
-	padding: 13px;
+	justify-content: space-between;
+	padding: 10px;
 	transition: .3s;
 	}
-.av-ctatalog-item-list:hover
-	{
-	box-shadow: 0 4px 8px rgba(76,82,85,0.25);
-	}
+.av-ctatalog-item-list:hover {box-shadow: 0 4px 8px rgba(76, 82, 85, 0.25)}
+
 .av-ctatalog-item-list .image-link
 	{
-	margin-right: 13px;
 	overflow: hidden;
 	width:  200px;
 	height: 200px;
@@ -39,12 +37,12 @@
 	align-content: flex-start;
 	display: flex;
 	flex-wrap: wrap;
-	width: calc(100% - 200px - 13px);
+	width: calc(100% - 200px - 10px);
 	}
 .av-ctatalog-item-list .element-title
 	{
 	font-weight: bold;
-	margin-bottom: 13px;
+	margin-bottom: 10px;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -52,7 +50,7 @@
 	}
 .av-ctatalog-item-list .sku-info
 	{
-	font-size: 80%;
+	font-size: 12px;
 	width: calc(100% - 150px);
 	}
 .av-ctatalog-item-list .sku-info .prop-row
@@ -70,16 +68,13 @@
 	}
 .av-ctatalog-item-list .price
 	{
-	font-size: 90%;
 	font-weight: bold;
-	margin-bottom: 26px;
+	margin-bottom: 25px;
 	text-align: center;
 	width: 100%;
 	}
-.av-ctatalog-item-list .price.mobile
-	{
-	display: none;
-	}
+.av-ctatalog-item-list .price.mobile {display: none}
+
 .av-ctatalog-item-list .read-more
 	{
 	align-items: center;
@@ -87,11 +82,10 @@
 	border-radius: 2px;
 	color: #B6C0C6 !important;
 	display: flex;
-	font-size: 80%;
+	font-size: 12px;
 	justify-content: center;
 	transition: .3s;
 	width:  100px;
-	height: 30px;
 	}
 .av-ctatalog-item-list:hover .read-more
 	{
@@ -109,12 +103,12 @@
 /* -------------------------------------------------------------------- */
 @media (max-width: 767px)
 	{
-	.av-ctatalog-item-list .image-link         {margin: 0 0 13px 0;width: 100%;height: 150px}
+	.av-ctatalog-item-list .image-link         {margin-bottom: 10px;width: 100%;height: 150px}
 	.av-ctatalog-item-list .content            {width: 100%}
-	.av-ctatalog-item-list .element-title      {margin-bottom: 6px;text-align: center}
+	.av-ctatalog-item-list .element-title      {margin-bottom: 5px;text-align: center}
 	.av-ctatalog-item-list .price:not(.mobile) {display: none}
-	.av-ctatalog-item-list .price.mobile       {display: block;margin-bottom: 13px}
+	.av-ctatalog-item-list .price.mobile       {display: block;margin-bottom: 10px}
 	.av-ctatalog-item-list .sku-info,
 	.av-ctatalog-item-list .read-more-block    {width: 100%}
-	.av-ctatalog-item-list .read-more          {margin-top: 13px}
+	.av-ctatalog-item-list .read-more          {margin-top: 10px}
 	}

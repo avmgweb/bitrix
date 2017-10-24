@@ -1,12 +1,12 @@
 $(function()
 	{
 	$(document)
-		.on("change", '.av-catalog.section .page-type-controller-col select', function()
+		.on("change", '.av-catalog.section > .page-controller-cell select', function()
 			{
 			document.cookie = 'avCatalogPageSize='+$(this).val()+';domain='+document.domain+';path=/';
 			location.reload();
 			})
-		.on("vclick", '.av-catalog.section .page-type-controller-col .type-selector > *:not(.selected)', function()
+		.on("vclick", '.av-catalog.section > .page-controller-cell .type-selector > *:not(.selected)', function()
 			{
 			var type = $(this).attr("data-type");
 

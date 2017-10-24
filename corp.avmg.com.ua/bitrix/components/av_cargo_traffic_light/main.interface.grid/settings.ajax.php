@@ -1,11 +1,11 @@
 <?
+use
+	\Bitrix\Main\Grid\Actions,
+	\Bitrix\Main\Web;
 
 define("NO_KEEP_STATISTIC", true);
 define("NO_AGENT_STATISTIC", true);
 define("NOT_CHECK_PERMISSIONS", true);
-
-use Bitrix\Main\Grid\Actions;
-use Bitrix\Main\Web;
 
 require_once($_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/prolog_before.php");
 

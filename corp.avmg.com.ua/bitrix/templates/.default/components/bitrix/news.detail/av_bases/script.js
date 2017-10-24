@@ -33,6 +33,20 @@ $(function()
 			$(this).closest('.item')
 				.toggleClass("open")
 				.find('.body').slideToggle();
+			})
+		.on("vclick", '.av-bases-detail .streams-info-col .price-link', function()
+			{
+			if(typeof(ga) == "function")
+				ga
+					(
+					"send", "event",
+						{
+						eventCategory: "AV bases prices",
+						eventAction  : "click",
+						eventLabel   : $(this).attr("href"),
+						transport    : "beacon"
+						}
+					);
 			});
 
 	$(window)

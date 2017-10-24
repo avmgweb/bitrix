@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Кладочна сітка");
 $APPLICATION->SetPageProperty("title",       "Кладочна сітка від виробника | АВ метал груп Україна, Дніпро: виробник сітки з дроту ВР-1, діаметром 2,5-5мм | Купити сітку оптом: телефон для замовлення ☎ (056) 790-01-22");
@@ -26,4 +26,4 @@ $APPLICATION->SetPageProperty("description", "Потрібна кладочна 
 
 <p>На вимогу замовника наша компанія може виготовляти інші розміри кладочної сітки.</p>
 <p><img style="width: 100%" src="/upload/medialibrary/9fd/63.jpg" alt="63.jpg" title="63.jpg"></p>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

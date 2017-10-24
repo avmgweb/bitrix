@@ -1,6 +1,6 @@
 <?
 define("NEED_AUTH", true);
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Личные данные");
 
@@ -10,12 +10,12 @@ $APPLICATION->IncludeComponent
 		array(
 		"USER_PROPERTY_NAME" => '',
 
-		"SET_TITLE"     => 'N',
+		"SET_TITLE"     => "N",
 		"USER_PROPERTY" => array(),
-		"SEND_INFO"     => 'N',
-		"CHECK_RIGHTS"  => 'Y',
+		"SEND_INFO"     => "N",
+		"CHECK_RIGHTS"  => "Y",
 
-		"AJAX_MODE"              => 'N',
+		"AJAX_MODE"              => "N",
 		"AJAX_OPTION_JUMP"       => '',
 		"AJAX_OPTION_STYLE"      => '',
 		"AJAX_OPTION_HISTORY"    => '',
@@ -23,4 +23,4 @@ $APPLICATION->IncludeComponent
 		)
 	);
 
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php";

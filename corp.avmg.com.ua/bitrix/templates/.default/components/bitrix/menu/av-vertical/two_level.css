@@ -1,0 +1,87 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-menu-vertical-two-level a,
+.av-menu-vertical-two-level a:hover,
+.av-menu-vertical-two-level a:active,
+.av-menu-vertical-two-level a:focus,
+.av-menu-vertical-two-level a:visited {color: inherit;text-decoration: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- menu ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-menu-vertical-two-level
+	{
+	margin-bottom: 26px;
+	}
+/* ------------------------------------------- */
+/* ------------------ head ------------------- */
+/* ------------------------------------------- */
+.av-menu-vertical-two-level .head
+	{
+	background: #FAFAFA;
+	display: flex;
+	padding: 13px 6px 13px 26px;
+	}
+.av-menu-vertical-two-level.active .head {border-bottom: 2px solid #CC0000}
+
+.av-menu-vertical-two-level .head .title
+	{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	}
+.av-menu-vertical-two-level              .head a.title:hover,
+.av-menu-vertical-two-level              .head a.title:active,
+.av-menu-vertical-two-level              .head a.title:focus {color: #CC0000;text-decoration: underline}
+.av-menu-vertical-two-level.parent       .head  .title       {width: calc(100% - 24px)}
+.av-menu-vertical-two-level:not(.parent) .head  .title       {width: calc(100% - 13px)}
+
+.av-menu-vertical-two-level .head .arrow
+	{
+	background: url(images/close.svg) center center no-repeat;
+	background-size: 10px;
+	cursor: pointer;
+	transition: .3s;
+	width:  24px;
+	height: 24px;
+	}
+.av-menu-vertical-two-level:not(.active) .head .arrow       {transform: rotate(45deg)}
+.av-menu-vertical-two-level              .head .arrow:hover {background-image: url(images/close_active.svg);}
+/* ------------------------------------------- */
+/* ------------------ body ------------------- */
+/* ------------------------------------------- */
+.av-menu-vertical-two-level              .body {padding-top: 13px}
+.av-menu-vertical-two-level:not(.active) .body {display: none}
+
+.av-menu-vertical-two-level .body a                  {display: flex;padding: 13px 6px 13px 26px;transition: .3s}
+.av-menu-vertical-two-level .body a.selected,
+.av-menu-vertical-two-level .body a:hover,
+.av-menu-vertical-two-level .body a:focus            {color: #CC0000}
+.av-menu-vertical-two-level .body a:hover,
+.av-menu-vertical-two-level .body a:focus            {box-shadow: 0 2px 4px rgba(76, 82, 85, 0.25)}
+.av-menu-vertical-two-level .body a:active           {background: #CC0000;border-color: #CC0000;color: #FFF}
+.av-menu-vertical-two-level .body a:not(:last-child) {border-bottom: 1px solid #B6C0C6}
+
+.av-menu-vertical-two-level .body a .title
+	{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: calc(100% - 24px);
+	}
+.av-menu-vertical-two-level .body a .arrow
+	{
+	background: url(images/arrow.svg) center center no-repeat;
+	background-size: 10px;
+	content: "";
+	cursor: pointer;
+	display: block;
+	transform: rotate(-90deg);
+	transition: .3s;
+	width:  24px;
+	height: 24px;
+	}
+.av-menu-vertical-two-level .body a.selected .arrow,
+.av-menu-vertical-two-level .body a:hover    .arrow,
+.av-menu-vertical-two-level .body a:focus    .arrow {background-image: url(images/arrow_hover.svg)}
+.av-menu-vertical-two-level .body a:active   .arrow {background-image: url(images/arrow_active.svg)}

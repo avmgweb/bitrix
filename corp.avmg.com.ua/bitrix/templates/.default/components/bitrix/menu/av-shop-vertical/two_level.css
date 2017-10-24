@@ -1,0 +1,87 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-shop-menu-vertical-two-level a,
+.av-shop-menu-vertical-two-level a:hover,
+.av-shop-menu-vertical-two-level a:active,
+.av-shop-menu-vertical-two-level a:focus,
+.av-shop-menu-vertical-two-level a:visited {color: inherit;text-decoration: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- menu ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-shop-menu-vertical-two-level
+	{
+	margin-bottom: 25px;
+	}
+/* ------------------------------------------- */
+/* ------------------ head ------------------- */
+/* ------------------------------------------- */
+.av-shop-menu-vertical-two-level .head
+	{
+	background: #FAFAFA;
+	display: flex;
+	padding: 5px 0 5px 25px;
+	}
+.av-shop-menu-vertical-two-level.active .head {border-bottom: 2px solid #CC0000}
+
+.av-shop-menu-vertical-two-level .head .title
+	{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	}
+.av-shop-menu-vertical-two-level              .head a.title:hover,
+.av-shop-menu-vertical-two-level              .head a.title:active,
+.av-shop-menu-vertical-two-level              .head a.title:focus {color: #CC0000;text-decoration: underline}
+.av-shop-menu-vertical-two-level.parent       .head  .title       {width: calc(100% - 24px)}
+.av-shop-menu-vertical-two-level:not(.parent) .head  .title       {width: calc(100% - 13px)}
+
+.av-shop-menu-vertical-two-level .head .arrow
+	{
+	background: url(images/close.svg) center center no-repeat;
+	background-size: 10px;
+	cursor: pointer;
+	transition: .3s;
+	width:  24px;
+	height: 24px;
+	}
+.av-shop-menu-vertical-two-level:not(.active) .head .arrow       {transform: rotate(45deg)}
+.av-shop-menu-vertical-two-level              .head .arrow:hover {background-image: url(images/close_active.svg);}
+/* ------------------------------------------- */
+/* ------------------ body ------------------- */
+/* ------------------------------------------- */
+.av-shop-menu-vertical-two-level              .body {padding-top: 10px}
+.av-shop-menu-vertical-two-level:not(.active) .body {display: none}
+
+.av-shop-menu-vertical-two-level .body a                  {display: flex;padding: 5px 0 5px 25px;transition: .3s}
+.av-shop-menu-vertical-two-level .body a.selected,
+.av-shop-menu-vertical-two-level .body a:hover,
+.av-shop-menu-vertical-two-level .body a:focus            {color: #CC0000}
+.av-shop-menu-vertical-two-level .body a:hover,
+.av-shop-menu-vertical-two-level .body a:focus            {box-shadow: 0 2px 4px rgba(76, 82, 85, 0.25)}
+.av-shop-menu-vertical-two-level .body a:active           {background: #CC0000;border-color: #CC0000;color: #FFF}
+.av-shop-menu-vertical-two-level .body a:not(:last-child) {border-bottom: 1px solid #B6C0C6}
+
+.av-shop-menu-vertical-two-level .body a .title
+	{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: calc(100% - 24px);
+	}
+.av-shop-menu-vertical-two-level .body a .arrow
+	{
+	background: url(images/arrow.svg) center center no-repeat;
+	background-size: 10px;
+	content: "";
+	cursor: pointer;
+	display: block;
+	transform: rotate(-90deg);
+	transition: .3s;
+	width:  24px;
+	height: 24px;
+	}
+.av-shop-menu-vertical-two-level .body a.selected .arrow,
+.av-shop-menu-vertical-two-level .body a:hover    .arrow,
+.av-shop-menu-vertical-two-level .body a:focus    .arrow {background-image: url(images/arrow_hover.svg)}
+.av-shop-menu-vertical-two-level .body a:active   .arrow {background-image: url(images/arrow_active.svg)}

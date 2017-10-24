@@ -1,21 +1,47 @@
-.av-news-list-col .share-block        {align-items: center;border-top: 1px solid #ECEFF1;display: flex;padding: 26px 0}
-.av-news-list-col .share-block > span {font-weight: bold;margin-right: 10px;text-transform: uppercase}
+.av-news-standart-markup
+	{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	}
+.av-news-standart-markup .left-col
+	{
+	border-right: 1px solid #ECEFF1;
+	padding-right: 65px;
+	width: calc(100% / 3);
+	}
+.av-news-standart-markup .left-col > * {margin-bottom: 26px}
+.av-news-standart-markup .right-col    {width: calc(100% / 3 * 2 - 65px)}
+
+.av-news-standart-markup .share-block
+	{
+	align-items: center;
+	border-top: 1px solid #ECEFF1;
+	display: flex;
+	justify-content: flex-end;
+	padding: 26px 0;
+	}
+.av-news-standart-markup .share-block > span
+	{
+	font-weight: bold;
+	margin-right: 10px;
+	text-transform: uppercase;
+	}
 /* -------------------------------------------------------------------- */
 /* ------------------------------- media ------------------------------ */
 /* -------------------------------------------------------------------- */
-@media (min-width: 992px)
+@media (max-width: 991px)
 	{
-	.av-news-filter-col            {border-right: 1px solid #ECEFF1;padding-right: 65px !important}
-	.av-news-list-col              {border-left:  1px solid #ECEFF1;padding-left:  66px !important;margin-left: -1px !important}
-	.av-news-list-col .share-block {justify-content: flex-end}
-	}
-@media (min-width: 768px) and (max-width: 991px)
-	{
-	.av-news-filter-col            {padding-bottom: 52px}
-	.av-news-list-col .share-block {justify-content: flex-end}
+	.av-news-standart-markup .left-col
+		{
+		border-right: none;
+		padding-right: 0;
+		margin-bottom: 52px;
+		width: 100%;
+		}
+	.av-news-standart-markup .right-col {width: 100%}
 	}
 @media (max-width: 767px)
 	{
-	.av-news-filter-col                   {padding-bottom: 52px}
-	.av-news-list-col .share-block > span {display: none}
+	.av-news-standart-markup .share-block > span {display: none}
 	}

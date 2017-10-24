@@ -1,7 +1,7 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+use \Bitrix\Main\Page\Asset;
 
-use Bitrix\Main\Page\Asset;
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Реквизиты");
 
@@ -180,4 +180,4 @@ Asset::getInstance()->addCss("/bitrix/css/av_corp/pages/about_info.css");
 		<td>Веб сторінка: <a href = "https://avmg.com.ua/">avmg.com.ua</a></td>
 	</tr>
 </table>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

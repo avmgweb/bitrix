@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Плазменная резка металла");
 $APPLICATION->SetPageProperty("title",       "Резка металла плазмой Днепр | АВ металл групп продажа и порезка металла | ☎ телефон (056) 790-01-22, (097) 208-29-98");
@@ -38,4 +38,4 @@ $APPLICATION->SetPageProperty("description", "Плазменная резка м
 	<li>художественная работа — заготовки можно делать любой геометрической формы </li>
 	<li>доступна фигурная резка повышенной сложности, художественная резка деталей</li>
 </ul>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

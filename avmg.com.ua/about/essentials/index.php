@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 $APPLICATION->SetTitle("Реквізити");
 ?>
 <table width="100%">
@@ -167,4 +167,4 @@ $APPLICATION->SetTitle("Реквізити");
 		<td>Веб сторінка: <a href="/">avmg.com.ua</a></td>
 	</tr>
 </table>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

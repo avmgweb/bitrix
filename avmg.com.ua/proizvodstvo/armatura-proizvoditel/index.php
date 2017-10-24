@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Гарячекатана арматура");
 $APPLICATION->SetPageProperty("title",       "Арматура А500С від виробника | АВ метал груп Україна, Дніпро виробник гарячекатаної арматури А500С, діаметром 6 мм | Купити г/к арматуру оптом: телефон для замовлення ☎ (056) 790-01-22");
@@ -18,4 +18,4 @@ $APPLICATION->SetPageProperty("description", "Потрібна арматура 
 	АВ метал груп є єдиним виробником гарячекатаної арматури, діаметром 6 мм в Україні.
 </p>
 <p><img style="width: 100%" src="/upload/medialibrary/7eb/armatura.jpg" alt="арматура" title="арматура"></p>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

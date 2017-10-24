@@ -1,2 +1,2 @@
 <?
-$sSectionName = 'Карта сайта';
+$sSectionName = "Карта сайта";

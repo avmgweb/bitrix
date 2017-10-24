@@ -1,10 +1,10 @@
 <?
-use Bitrix\Main\Page\Asset;
+use \Bitrix\Main\Page\Asset;
 
-include_once $_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/urlrewrite.php';
+include_once $_SERVER["DOCUMENT_ROOT"]."/bitrix/modules/main/include/urlrewrite.php";
 CHTTP::SetStatus("404 Not Found");
 @define("ERROR_404","Y");
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Сторінка не знайдена");
 
@@ -24,23 +24,23 @@ Asset::getInstance()->addCss("/bitrix/css/av_site/pages/404.css");
 			(
 			"av:form.button", "av_alt",
 				[
-				"BUTTON_TYPE" => 'label',
-				"TITLE"       => 'Попередня сторінка',
-				"ATTR"        => ["onclick" => 'parent.history.back()']
+				"BUTTON_TYPE" => "label",
+				"TITLE"       => "Попередня сторінка",
+				"ATTR"        => ["onclick" => "parent.history.back()"]
 				],
-			false, ["HIDE_ICONS" => 'Y']
+			false, ["HIDE_ICONS" => "Y"]
 			);
 		$APPLICATION->IncludeComponent
 			(
 			"av:form.button", "av",
 				[
-				"BUTTON_TYPE" => 'link',
-				"TITLE"       => 'На головну',
-				"LINK"        => '/'
+				"BUTTON_TYPE" => "link",
+				"TITLE"       => "На головну",
+				"LINK"        => "/"
 				],
-			false, ["HIDE_ICONS" => 'Y']
+			false, ["HIDE_ICONS" => "Y"]
 			);
 		?>
 	</div>
 </div>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

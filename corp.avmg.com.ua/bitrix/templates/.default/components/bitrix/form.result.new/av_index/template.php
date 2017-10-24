@@ -131,7 +131,13 @@ CJSCore::Init(["av_form_elements"]);
 	AvBlurScreen("on", 1000);
 	CreateAvAlertPopup(BX.message("AV_FORM_INDEX_RESULT_OK_MESSAGE"), "ok")
 		.positionCenter(1100, 'Y')
-		.hideOnClickout("remove")
-		.on("remove", function() {AvBlurScreen("off")});
+		.onClickout(function()
+			{
+			$(this).remove();
+			})
+		.on("remove", function()
+			{
+			AvBlurScreen("off");
+			});
 	<?endif?>
 </script>

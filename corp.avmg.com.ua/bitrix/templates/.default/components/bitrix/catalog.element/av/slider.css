@@ -11,7 +11,7 @@
 	{
 	align-items: center;
 	display: flex;
-	margin: 13px -27px 0 -24px;
+	margin: 10px -27px 0 -24px;
 	}
 .av-catalog-element .images-block .slider .navigation
 	{
@@ -40,7 +40,7 @@
 	margin-right: 3px;
 	overflow: hidden;
 	width:  25%;
-	height: inherit;
+	height: 100%;
 	}
 .av-catalog-element .images-block .slider .slider-block .slider-image img
 	{
@@ -55,14 +55,14 @@
 	{
 	background: #FFF;
 	display: none;
-	padding: 13px;
+	padding: 10px;
 	width:  800px;
 	height: 600px;
 	}
 .av-catalog-element-image-viewer .close
 	{
 	background: url(images/close.svg) center center no-repeat;
-	background-size: 18px;
+	background-size: 16px;
 	cursor: pointer;
 	float: right;
 	width:  24px;
@@ -70,12 +70,21 @@
 	transition: .3s;
 	}
 .av-catalog-element-image-viewer .close:hover {background-image: url(images/close_hover.svg)}
+.av-catalog-element-image-viewer .title
+	{
+	font-size:   26px;
+	line-height: 30px;
+	overflow: hidden;
+	text-align: center;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: calc(100% - 24px);
+	}
 .av-catalog-element-image-viewer .body
 	{
 	align-items: center;
 	display: flex;
-	margin-top: 24px;
-	height: calc(600px - 13px * 2 - 24px);
+	height: calc(600px - 10px * 2 - 30px - 5px);
 	}
 /* ------------------------------------------- */
 /* --------------- main slider --------------- */
@@ -84,7 +93,7 @@
 	{
 	align-items: center;
 	display: flex;
-	height: inherit;
+	height: 100%;
 	}
 .av-catalog-element-image-viewer.has-slider       .slider-main {width: calc(100% - 150px)}
 .av-catalog-element-image-viewer:not(.has-slider) .slider-main {width: 100%}
@@ -107,14 +116,15 @@
 	{
 	align-items: center;
 	display: flex;
-	height: inherit;
 	overflow: hidden;
-	width: calc(100% - 48px * 2);
+	width:  calc(100% - 48px * 2);
+	height: calc(100% - 24px * 2);
 	}
 .av-catalog-element-image-viewer .slider-main .slider-block .slider-image
 	{
 	overflow: hidden;
-	width: 100%;
+	width:  100%;
+	height: 100%;
 	}
 .av-catalog-element-image-viewer .slider-main .slider-block .slider-image img
 	{
@@ -131,7 +141,7 @@
 	display: flex;
 	flex-direction: column;
 	width:  150px;
-	height: inherit;
+	height: 100%;
 	}
 .av-catalog-element-image-viewer .slider-vertical .navigation
 	{
@@ -153,7 +163,7 @@
 	flex-direction: column;
 	justify-content: center;
 	overflow: hidden;
-	width:  inherit;
+	width:  100%;
 	height: calc(100% - 24px * 2);
 	}
 .av-catalog-element-image-viewer .slider-vertical .slider-block .slider-image
@@ -183,7 +193,7 @@
 	.av-catalog-element .images-block .main-image-wraper,
 	.av-catalog-element .images-block .slider {margin-left: auto;margin-right: auto;width: 350px}
 	.av-catalog-element-image-viewer          {width: 700px;height: 550px}
-	.av-catalog-element-image-viewer .body    {height: calc(550px - 13px * 2 - 24px)}
+	.av-catalog-element-image-viewer .body    {height: calc(550px - 10px * 2 - 30px - 5px)}
 	}
 @media (max-width: 767px)
 	{
@@ -197,7 +207,7 @@
 		}
 	.av-catalog-element .images-block .slider .slider-block  {width: calc(100% - 48px * 2)}
 	.av-catalog-element-image-viewer                         {width: 100%;height: 400px}
-	.av-catalog-element-image-viewer .body                   {height: calc(400px - 13px * 2 - 24px)}
+	.av-catalog-element-image-viewer .body                   {height: calc(400px - 10px * 2 - 30px - 5px)}
 	.av-catalog-element-image-viewer.has-slider .slider-main {width: 100%}
 	.av-catalog-element-image-viewer .slider-vertical        {display: none}
 	}

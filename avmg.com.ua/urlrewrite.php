@@ -1,54 +1,67 @@
 <?
 $arUrlRewrite = array(
-	array(
+	array
+		(
 		"CONDITION" => "#^/about/blog/#",
 		"PATH"      => "/about/blog/index.php"
 		),
-	array(
+	array
+		(
 		"CONDITION" => "#^/certificats/#",
 		"PATH"      => "/certificats/index.php"
 		),
-	array(
+	array
+		(
 		"CONDITION" => "#^/metallobaza/#",
 		"PATH"      => "/metallobaza/index.php"
 		),
-	array(
+	array
+		(
 		"CONDITION" => "#^/directory/#",
 		"PATH"      => "/directory/index.php"
 		),
-	array(
+	array
+		(
 		"CONDITION" => "#^/career/#",
 		"PATH"      => "/career/index.php"
 		),
-	array(
+	array
+		(
 		"CONDITION" => "#^/products/galvanized-metal/#",
 		"PATH"      => "/products/galvanized-metal/index.php"
 		),
-	array(
+	array
+		(
 		"CONDITION" => "#^/products/black-metal/#",
 		"PATH"      => "/products/black-metal/index.php"
 		),
-	array(
+	array
+		(
 		"CONDITION" => "#^/products/stainless-steel-metal/#",
 		"PATH"      => "/products/stainless-steel-metal/index.php"
 		),
-	array(
+	array
+		(
 		"CONDITION" => "#^/products/ironwares/#",
 		"PATH"      => "/products/ironwares/index.php"
 		),
-	array(
+	array
+		(
 		"CONDITION" => "#^/products/profnastil-metallocherepitsa/#",
 		"PATH"      => "/products/profnastil-metallocherepitsa/index.php"
 		),
-	array(
+	array
+		(
 		"CONDITION" => "#^/products/building-hardware/#",
 		"PATH"      => "/products/building-hardware/index.php"
 		),
-	array(
+	array
+		(
 		"CONDITION" => "#^/products/elektrody-svarochnye/#",
 		"PATH"      => "/products/elektrody-svarochnye/index.php"
 		),
-	array(
+	array
+		(
 		"CONDITION" => "#^/products/setka/#",
 		"PATH"      => "/products/setka/index.php"
 		)

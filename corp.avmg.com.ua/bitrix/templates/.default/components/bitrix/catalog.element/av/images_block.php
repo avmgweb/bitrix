@@ -1,5 +1,10 @@
 <?
+use \Bitrix\Main\Page\Asset;
+
 if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
+
+Asset::getInstance()->addCss($this->GetFolder().'/slider.css');
+Asset::getInstance()->addJs ($this->GetFolder().'/slider.js');
 /* -------------------------------------------------------------------- */
 /* --------------------------- image block ---------------------------- */
 /* -------------------------------------------------------------------- */
@@ -52,6 +57,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 <?if(count($arResult["IMAGES"][0])):?>
 <div class="av-catalog-element-image-viewer<?if(count($arResult["IMAGES"]) > 1):?> has-slider<?endif?>">
 	<div class="close"></div>
+	<div class="title"><?=$arResult["NAME"]?></div>
 	<div class="body">
 		<div class="slider-main" data-slides-count="1" data-slides-count-mobile="1">
 			<div class="navigation prev"></div>

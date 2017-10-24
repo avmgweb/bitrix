@@ -108,9 +108,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		if($arParams["LIST_URL"] && $arParams["SAVE_IN_SESSION"] != 'Y')
 			$APPLICATION->IncludeComponent
 				(
-				"av:form_elements", "default_alt",
+				"av:form.button", "av_alt2",
 					[
-					"TYPE"        => 'button',
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => $arParams["LIST_URL"],
 					"TITLE"       => Loc::getMessage("AV_FILTER_CANCEL_FILTER"),
@@ -121,9 +120,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		else
 			$APPLICATION->IncludeComponent
 				(
-				"av:form_elements", "default_alt",
+				"av:form.button", "av_alt2",
 					[
-					"TYPE"  => 'button',
 					"NAME"  => 'del_filter',
 					"TITLE" => Loc::getMessage("AV_FILTER_CANCEL_FILTER"),
 					"ATTR"  => 'cancel-button'

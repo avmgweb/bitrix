@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Круг сталевий");
 $APPLICATION->SetPageProperty("title",       "Сталевий круг від виробника | АВ метал груп Україна, Дніпро: виробник круглого прута, діаметр 6,5 - 14 мм, довжина 6 метрів | Купити круглий прокат оптом: телефон для замовлення ☎ (056) 790-01-22");
@@ -22,4 +22,4 @@ $APPLICATION->SetPageProperty("description", "Потрібен круглий п
 
 <p>Потужності з виробництва сталевого круга складають близько 1 тис. тон в місяць.</p>
 <p><img style="width: 100%" src="/upload/medialibrary/8c3/krug.jpg" alt="круг сталевий" title="круг сталевий"></p>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

@@ -25,6 +25,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 	class="av-form-button-alt"
 	title="<?=$arResult["PLACEHOLDER"]?>"
 	<?=$arResult["ATTR"]?>
+	tabindex="0"
 >
 	<?=$arResult["TITLE"]?>
 </span>

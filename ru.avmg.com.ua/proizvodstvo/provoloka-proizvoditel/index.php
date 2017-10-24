@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Проволока металлическая");
 $APPLICATION->SetPageProperty("title",       "Стальная проволока ОК ГОСТ 3282-74, ВР-1 ГОСТ 6727-80 от производителя | АВ металл групп Украина, Днепр производитель стальной проволоки диаметром от 1,2 до 5 мм | Купить проволоку ОК, ВР-1 оптом: телефон для заказа ☎ (056)790-01-22");
@@ -26,4 +26,4 @@ $APPLICATION->SetPageProperty("description", "Нужна проволока от
 
 <p>Компания АВ металл групп производит проволоку стальную в бухтах, также осуществляет порезку проволоки на стальные прутки от 1 до 4 метров.</p>
 <p><img style="width: 100%" alt="6.jpg" src="/upload/medialibrary/bc7/6.jpg" title="6.jpg"></p>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

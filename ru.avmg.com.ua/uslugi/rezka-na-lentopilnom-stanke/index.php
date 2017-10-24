@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Резка металла на ленточнопильном станке");
 $APPLICATION->SetPageProperty("title",       "Резка металла на ленточнопильном станке Днепр | АВ металл групп продажа и порезка ленточной пилой | ☎ телефон (056) 790-01-22");
@@ -22,4 +22,4 @@ $APPLICATION->SetPageProperty("description", "Порезка металла на
 
 <h3>Дополнительные преимущества</h3>
 <p>Любой заказ на нашем предприятии выполняется точно по техническим заданиям клиента на современном оборудовании и в максимально короткие сроки.</p>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

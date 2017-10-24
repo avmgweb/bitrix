@@ -1,5 +1,5 @@
 <?
-require $_SERVER["DOCUMENT_ROOT"].'/bitrix/header.php';
+require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Газове різання металу");
 $APPLICATION->SetPageProperty("title",       "Газове різання металу Дніпро | АВ метал груп продаж і різання металу | ☎ телефон (056) 790-01-22, (097) 208-29-98");
@@ -29,4 +29,4 @@ $APPLICATION->SetPageProperty("description", "Різання металу газ
 	<li>товщина - 20 – 80 мм</li>
 	<li>довжина - до 6000 мм</li>
 </ul>
-<?require $_SERVER["DOCUMENT_ROOT"].'/bitrix/footer.php'?>
+<?require $_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php"?>

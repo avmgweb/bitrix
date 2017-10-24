@@ -1,21 +1,42 @@
-.av-catalog.section .pager-row        {margin: -13px 0 13px 0}
-.av-catalog.section .menu-col         {padding-right: 52px}
-.av-catalog.section .filter-cell,
-.av-catalog.section .subsections-cell {margin-bottom: 26px}
+.av-catalog.section
+	{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	}
+.av-catalog.section > .page-controller-cell     {margin-bottom: 10px;width: 100%}
+.av-catalog.section > .menu-cell-mobile         {display: none}
+.av-catalog.section > .menu-cell                {width: calc(100% / 3 - 50px)}
+.av-catalog.section > .body-cell                {width: calc(100% / 3 * 2)}
+.av-catalog.section > .body-cell > .filter-cell {margin-bottom: 20px}
+
+.av-catalog.section > .body-cell > .subsections-cell::after
+	{
+	background: #EFEFEF;
+	content: "";
+	display: block;
+	margin: 10px auto 30px auto;
+	width:  90%;
+	height: 1px;
+	}
 /* -------------------------------------------------------------------- */
 /* ----------------------- page type controller ----------------------- */
 /* -------------------------------------------------------------------- */
-.av-catalog.section .page-type-controller-col
+.av-catalog.section > .page-controller-cell
 	{
 	align-items: center;
-	color: #8698A2;
+	color: #78909C;
 	display: flex;
-	font-size: 81.25%;
+	font-size: 12px;
 	justify-content: flex-end;
 	}
-.av-catalog.section .page-type-controller-col .title                              {padding: 0 6px 0 13px}
-.av-catalog.section .page-type-controller-col .type-selector                      {display: flex;padding-left: 13px}
-.av-catalog.section .page-type-controller-col .type-selector > *
+.av-catalog.section > .page-controller-cell > *:not(:last-child) {margin-right: 10px}
+
+.av-catalog.section > .page-controller-cell .type-selector
+	{
+	display: flex;
+	}
+.av-catalog.section > .page-controller-cell .type-selector > *
 	{
 	background-size: 18px;
 	background-position: center center;
@@ -25,22 +46,60 @@
 	width:  24px;
 	height: 24px;
 	}
-.av-catalog.section .page-type-controller-col .type-selector > *:not(:last-child) {margin-right: 6px}
-.av-catalog.section .page-type-controller-col .type-selector > *:not(.selected)   {cursor: pointer}
-.av-catalog.section .page-type-controller-col .type-selector > .tablet            {background-image: url(images/type_selector_tablet.svg)}
-.av-catalog.section .page-type-controller-col .type-selector > .list              {background-image: url(images/type_selector_list.svg)}
-.av-catalog.section .page-type-controller-col .type-selector > *.selected,
-.av-catalog.section .page-type-controller-col .type-selector > *:hover            {border: 1px solid #8698A2}
-.av-catalog.section .page-type-controller-col .type-selector > .tablet.selected,
-.av-catalog.section .page-type-controller-col .type-selector > .tablet:hover      {background-image: url(images/type_selector_tablet_active.svg)}
-.av-catalog.section .page-type-controller-col .type-selector > .list.selected,
-.av-catalog.section .page-type-controller-col .type-selector > .list:hover        {background-image: url(images/type_selector_list_active.svg)}
+.av-catalog.section > .page-controller-cell .type-selector > *:not(:last-child) {margin-right: 5px}
+.av-catalog.section > .page-controller-cell .type-selector > *:not(.selected)   {cursor: pointer}
+.av-catalog.section > .page-controller-cell .type-selector > .tablet            {background-image: url(images/type_selector_tablet.svg)}
+.av-catalog.section > .page-controller-cell .type-selector > .list              {background-image: url(images/type_selector_list.svg)}
+.av-catalog.section > .page-controller-cell .type-selector > *.selected,
+.av-catalog.section > .page-controller-cell .type-selector > *:hover            {border-color: #78909C}
+.av-catalog.section > .page-controller-cell .type-selector > .tablet.selected,
+.av-catalog.section > .page-controller-cell .type-selector > .tablet:hover      {background-image: url(images/type_selector_tablet_active.svg)}
+.av-catalog.section > .page-controller-cell .type-selector > .list.selected,
+.av-catalog.section > .page-controller-cell .type-selector > .list:hover        {background-image: url(images/type_selector_list_active.svg)}
 /* -------------------------------------------------------------------- */
 /* ------------------------------- media ------------------------------ */
 /* -------------------------------------------------------------------- */
 @media (max-width: 991px)
 	{
-	.av-catalog.section                                  {margin-top: 0}
-	.av-catalog.section .page-type-controller-col        {justify-content: flex-start}
-	.av-catalog.section .page-type-controller-col .title {padding-left: 0}
+	.av-catalog.section > .menu-cell {display: none}
+
+	.av-catalog.section > .menu-cell-mobile
+		{
+		display: block;
+		margin-bottom: 50px;
+		order: 1;
+		width: 100%;
+		}
+	.av-catalog.section > .page-controller-cell
+		{
+		justify-content: flex-start;
+		order: 2;
+		}
+	.av-catalog.section > .body-cell
+		{
+		order: 3;
+		width: 100%;
+		}
+	}
+@media (max-width: 767px)
+	{
+	.av-catalog.section > .page-controller-cell {display: none}
+
+	.av-catalog.section > .menu-cell-mobile,
+	.av-catalog.section > .body-cell
+		{
+		margin-left:  auto;
+		margin-right: auto;
+		max-width: 500px;
+		}
+	.av-catalog.section > .body-cell > .subsections-cell
+		{
+		margin: auto;
+		width: calc(100% - 37px * 2);
+		}
+	.av-catalog.section > .body-cell > .subsections-cell::after
+		{
+		margin: 26px -37px;
+		width: calc(100% + 37px * 2);
+		}
 	}

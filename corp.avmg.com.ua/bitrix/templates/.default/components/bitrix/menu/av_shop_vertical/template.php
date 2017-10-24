@@ -5,13 +5,12 @@ if(!count($arResult))                                           return;
 <ul class="av-shop-menu-vertical" data-av-at-avmg-main-menu="menu">
 	<?foreach($arResult as $index => $itemInfo):?>
 		<?if($itemInfo["DEPTH_LEVEL"] == 1):?>
-		<li
-			class="
-				item
-				<?if($itemInfo["SELECTED"]):?>                       selected<?endif?>
-				<?if($itemInfo["ACTIVE"] || $itemInfo["SELECTED"]):?>active  <?endif?>
-				<?if($itemInfo["PARENT"]):?>                         parent  <?endif?>
-				"
+		<li class="
+			item
+			<?if($itemInfo["SELECTED"]):?>                       selected<?endif?>
+			<?if($itemInfo["ACTIVE"] || $itemInfo["SELECTED"]):?>active  <?endif?>
+			<?if($itemInfo["PARENT"]):?>                         parent  <?endif?>
+			"
 		>
 			<div>
 				<a href="<?=$itemInfo["LINK"]?>"><?=$itemInfo["TEXT"]?></a>

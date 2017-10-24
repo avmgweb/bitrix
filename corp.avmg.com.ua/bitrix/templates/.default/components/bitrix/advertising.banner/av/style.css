@@ -28,15 +28,16 @@
 	left:   0;
 	right:  0;
 	}
-.av-banner > .item:not(.first)
-	{
-	display: none;
-	}
+.av-banner > .item:not(.first) {display: none}
+
 .av-banner > .item .image
 	{
 	display: block;
 	height: inherit;
+	overflow: hidden;
 	}
+.av-banner > .item .image img {width: 100%}
+
 .av-banner > .item .text-block
 	{
 	align-items: center;
@@ -44,7 +45,7 @@
 	display: flex;
 	flex-direction: column;
 	position: absolute;
-	top:  100px;
+	top:  25%;
 	left: calc((100% - 500px) / 2);
 	width: 500px;
 	}
@@ -59,14 +60,16 @@
 	}
 .av-banner > .item .text-block h2
 	{
-	font-size: 45px;
-	height: 60px;
+	font-size:   45px;
+	line-height: 45px;
+	margin-bottom: 13px;
 	white-space: nowrap;
 	}
 .av-banner > .item .text-block .text
 	{
-	font-size: 25px;
-	max-height: 120px;
+	font-size:   25px;
+	line-height: 25px;
+	max-height: calc(25px * 4);
 	margin-bottom: 26px;
 	}
 /* -------------------------------------------------------------------- */
@@ -75,31 +78,43 @@
 .av-banner .pager
 	{
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	margin: 0 5%;
 	position: absolute;
-	bottom: 30px;
+	bottom: 6.25%;
 	width: 90%;
-	height: 12px;
 	}
 .av-banner .pager > *
 	{
 	border: 1px solid #FFF;
 	border-radius: 12px;
 	cursor: pointer;
+	margin: 3px;
+	outline: none;
 	width:  12px;
 	height: 12px;
 	}
-.av-banner .pager > *.selected         {background: #FFF}
-.av-banner .pager > *:not(:last-child) {margin-right: 6px}
+.av-banner .pager > *:not(.selected):focus {border-color: #CC0000}
+.av-banner .pager > *.selected             {background: #FFF}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ media ------------------------------- */
 /* -------------------------------------------------------------------- */
 @media(max-width: 767px)
 	{
-	.av-banner                           {height: 300px}
-	.av-banner > .item .text-block       {top: 40px;left: 5%;width: 90%}
-	.av-banner > .item .text-block h2    {font-size: 30px;height: 40px}
-	.av-banner > .item .text-block .text {font-size: 18px;max-height: 110px;margin-bottom: 13px}
-	.av-banner .pager                    {bottom: 20px}
+	.av-banner                     {height: 300px}
+	.av-banner > .item .text-block {top: 10%;left: 5%;width: 90%}
+
+	.av-banner > .item .text-block h2
+		{
+		font-size:   30px;
+		line-height: 30px;
+		}
+	.av-banner > .item .text-block .text
+		{
+		font-size:   18px;
+		line-height: 22px;
+		max-height: calc(22px * 5);
+		margin-bottom: 13px;
+		}
 	}

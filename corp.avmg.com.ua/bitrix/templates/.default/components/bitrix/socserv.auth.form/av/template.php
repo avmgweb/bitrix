@@ -1,8 +1,8 @@
 <?
-if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-if($USER->IsAuthorized())                                       die();
+use \Bitrix\Main\Page\Asset;
 
-use Bitrix\Main\Page\Asset;
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+if($USER->IsAuthorized())                                       return;
 
 CJSCore::Init(["av_site"]);
 Asset::getInstance()->addString('<script>AvSocAuthAjaxFile = "'.CURRENT_PROTOCOL.'://'.SITE_SERVER_NAME.$this->GetFolder().'/ajax/user_login.php";</script>');
