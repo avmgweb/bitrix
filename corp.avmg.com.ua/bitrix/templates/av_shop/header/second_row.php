@@ -4,12 +4,12 @@ use \Bitrix\Main\Localization\Loc;
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 $filePathExplode = explode(SITE_TEMPLATE_PATH, __FILE__);
-Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/header.php");
+Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/template.php");
 /* -------------------------------------------------------------------- */
 /* ------------------------ sidebar call button ----------------------- */
 /* -------------------------------------------------------------------- */
 ?>
-<div class="sidebar-call-button">
+<div id="page-header-sidebar-button" tabindex="0">
 	<div></div>
 	<div></div>
 	<div></div>
@@ -24,7 +24,8 @@ Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/header.php");
 	$APPLICATION->IncludeComponent
 		(
 		"bitrix:main.include", "",
-		array("AREA_FILE_SHOW" => "file", "PATH" => "/include/logo.php")
+		["AREA_FILE_SHOW" => "file", "PATH" => "/include/logo.php"],
+		false, ["HIDE_ICONS" => true]
 		);
 	?>
 </a>
@@ -33,7 +34,8 @@ Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/header.php");
 	$APPLICATION->IncludeComponent
 		(
 		"bitrix:main.include", "",
-		array("AREA_FILE_SHOW" => "file", "PATH" => "/include/logo_mobile.php")
+		["AREA_FILE_SHOW" => "file", "PATH" => "/include/logo_mobile.php"],
+		false, ["HIDE_ICONS" => true]
 		);
 	?>
 </a>
@@ -46,8 +48,8 @@ Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/header.php");
 	<?=$hotLineHtml?>
 	<div class="call-button"></div>
 </div>
-<div class="phone-list av-shop-popup" data-type="phone-list">
-	<div class="list"><?=$phoneListHtml?></div>
+<div class="header-phone-list-block av-shop-popup" data-type="phone-list">
+	<?=$phoneListHtml?>
 	<div class="working-houres"><?=$workingHouresHtml?></div>
 </div>
 <?
@@ -55,7 +57,7 @@ Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/header.php");
 /* ----------------------- call back call button ---------------------- */
 /* -------------------------------------------------------------------- */
 ?>
-<div class="call-back-form-button" data-call-back-form-button tabindex="0">
+<div id="page-header-call-back-form-button" data-header-call-back-form-button tabindex="0">
 	<?=Loc::getMessage("AV_SHOP_CALL_BACK")?>
 </div>
 <?
@@ -68,7 +70,8 @@ Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/header.php");
 	$APPLICATION->IncludeComponent
 		(
 		"bitrix:main.include", "",
-		array("AREA_FILE_SHOW" => "file", "PATH" => "/include/search.php")
+		["AREA_FILE_SHOW" => "file", "PATH" => "/include/search.php"],
+		false, ["HIDE_ICONS" => true]
 		);
 	?>
 </div>

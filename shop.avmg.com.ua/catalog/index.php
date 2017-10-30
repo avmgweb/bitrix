@@ -80,7 +80,7 @@ $morePhotoPropId = count($iblockInfo)
 if(!count($iblockInfo))
 	$APPLICATION->IncludeComponent
 		(
-		"bitrix:menu", "av_tablet",
+		"bitrix:menu", "av-tablet",
 			array(
 			"ROOT_MENU_TYPE"     => "left",
 			"MAX_LEVEL"          => 1,

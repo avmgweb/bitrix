@@ -4,7 +4,7 @@ use \Bitrix\Main\Localization\Loc;
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 $filePathExplode = explode(SITE_TEMPLATE_PATH, __FILE__);
-Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/header.php");
+Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/template.php");
 /* -------------------------------------------------------------------- */
 /* ----------------------------- faq link ----------------------------- */
 /* -------------------------------------------------------------------- */
@@ -26,7 +26,7 @@ Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/header.php");
 /* -------------------------------------------------------------------- */
 ?>
 <div class="geo-block-cell">
-	<div class="link-block av-shop-popup-call-block" data-type="geo-block" data-call-type="onclick" tabindex="0">
+	<div class="page-active-block av-shop-popup-call-block" data-type="geo-block" data-call-type="onclick" tabindex="0">
 		<img
 			src="<?=SITE_TEMPLATE_PATH?>/images/map.svg"
 			alt="<?=Loc::getMessage("AV_SHOP_YOUR_CITY")?>"
@@ -49,14 +49,15 @@ Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/header.php");
 	$APPLICATION->IncludeComponent
 		(
 		"av:visit_site.user.panel", "",
-			array(
+			[
 			"USER_MENU_TYPE" => "user",
 
-			"REGISTRATION_SHOW_FIELDS"         => array("EMAIL", "NAME", "LAST_NAME", "PERSONAL_MOBILE"),
-			"REGISTRATION_SHOW_USER_PROPS"     => array(),
-			"REGISTRATION_REQUIRED_FIELDS"     => array(),
-			"REGISTRATION_REQUIRED_USER_PROPS" => array()
-			)
+			"REGISTRATION_SHOW_FIELDS"         => ["EMAIL", "NAME", "LAST_NAME", "PERSONAL_MOBILE"],
+			"REGISTRATION_SHOW_USER_PROPS"     => [],
+			"REGISTRATION_REQUIRED_FIELDS"     => [],
+			"REGISTRATION_REQUIRED_USER_PROPS" => []
+			],
+		false, ["HIDE_ICONS" => true]
 		);
 	?>
 </div>

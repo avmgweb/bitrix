@@ -111,7 +111,8 @@ $(function()
 					$(this).html()+
 				"</div>"
 				);
-			});
+			})
+		.appendTo("body");
 
 	$(document)
 		.on("vclick", ".av-shop-popup-call-block[data-call-type=\"onclick\"]", function()
@@ -132,8 +133,12 @@ $(function()
 			});
 
 	$(window)
-		.resize(function()
+		.scroll(function()
 			{
 			$(".av-shop-popup:visible").positionAvPopup();
+			})
+		.resize(function()
+			{
+			$(".av-shop-popup:visible").hideAvPopup();
 			});
 	});

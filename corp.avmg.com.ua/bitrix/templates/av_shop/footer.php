@@ -14,11 +14,12 @@
 					$APPLICATION->IncludeComponent
 						(
 						"bitrix:eshop.socnet.links", "av",
-							array(
+							[
 							"FACEBOOK" => "https://www.facebook.com/avmg.com.ua/",
 							"GOOGLE"   => "https://plus.google.com/u/2/114220723367013333669",
 							"TWITTER"  => "https://twitter.com/avmgua"
-							)
+							],
+						false, ["HIDE_ICONS" => "Y"]
 						);
 					?>
 				</div>
@@ -28,7 +29,7 @@
 					$APPLICATION->IncludeComponent
 						(
 						"bitrix:sender.subscribe", "av",
-							array(
+							[
 							"USE_PERSONALIZATION" => "Y",
 							"CONFIRMATION"        => "N",
 							"SHOW_HIDDEN"         => "N",
@@ -41,7 +42,8 @@
 
 							"CACHE_TYPE" => "A",
 							"CACHE_TIME" => 360000
-							)
+							],
+						false, ["HIDE_ICONS" => "Y"]
 						);
 					?>
 				</div>
@@ -51,7 +53,8 @@
 					$APPLICATION->IncludeComponent
 						(
 						"bitrix:main.include", "",
-						array("AREA_FILE_SHOW" => "file", "PATH" => "/include/contacts.php")
+						["AREA_FILE_SHOW" => "file", "PATH" => "/include/contacts.php"],
+						false, ["HIDE_ICONS" => "Y"]
 						);
 					?>
 				</div>

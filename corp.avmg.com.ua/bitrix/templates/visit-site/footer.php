@@ -13,7 +13,7 @@
 					<?
 					$APPLICATION->IncludeComponent
 						(
-						"bitrix:menu", "av_vs_bottom",
+						"bitrix:menu", "av-bottom",
 							array(
 							"ROOT_MENU_TYPE"     => "bottom_top",
 							"MAX_LEVEL"          => 2,

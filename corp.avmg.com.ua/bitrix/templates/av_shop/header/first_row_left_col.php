@@ -4,20 +4,20 @@ use \Bitrix\Main\Localization\Loc;
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 $filePathExplode = explode(SITE_TEMPLATE_PATH, __FILE__);
-Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/header.php");
+Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/template.php");
 /* -------------------------------------------------------------------- */
 /* ---------------------------- links block --------------------------- */
 /* -------------------------------------------------------------------- */
 ?>
 <div class="links-block-cell">
-	<div class="link-block av-shop-popup-call-block" data-type="links-block" data-call-type="onclick" tabindex="0">
+	<div class="page-active-block av-shop-popup-call-block" data-type="links-block" data-call-type="onclick" tabindex="0">
 		<div class="title"><?=Loc::getMessage("AV_SHOP_LINKS_BLOCK")?></div>
 		<div class="call-button"></div>
 	</div>
-	<div class="av-shop-popup" data-type="links-block">
-		<div><?=$companyLinkHtml?></div>
-		<div><?=$faqLinkHtml?></div>
-		<div><?=$supportLinkHtml?></div>
+	<div class="header-links-list-block av-shop-popup" data-type="links-block">
+		<div class="link-row"><?=$companyLinkHtml?></div>
+		<div class="link-row"><?=$faqLinkHtml?></div>
+		<div class="link-row"><?=$supportLinkHtml?></div>
 	</div>
 </div>
 <?
@@ -38,11 +38,12 @@ Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/header.php");
 	$APPLICATION->IncludeComponent
 		(
 		"bitrix:main.site.selector", "av",
-			array(
-			"SITE_LIST"  => array("AV", "SH", "EN"),
+			[
+			"SITE_LIST"  => ["AV", "SH", "EN"],
 			"CACHE_TIME" => 3600000,
 			"CACHE_TYPE" => "A"
-			)
+			],
+		false, ["HIDE_ICONS" => true]
 		);
 	?>
 </div>
@@ -52,7 +53,7 @@ Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/header.php");
 /* -------------------------------------------------------------------- */
 ?>
 <div class="bases-selector-cell">
-	<div class="link-block av-shop-popup-call-block" data-type="bases-list" data-call-type="onclick" tabindex="0">
+	<div class="page-active-block av-shop-popup-call-block" data-type="bases-list" data-call-type="onclick" tabindex="0">
 		<img
 			src="<?=SITE_TEMPLATE_PATH?>/images/bases.svg"
 			alt="<?=Loc::getMessage("AV_SHOP_BASES")?>"
@@ -61,25 +62,27 @@ Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/header.php");
 		<div class="title"><?=Loc::getMessage("AV_SHOP_BASES")?></div>
 		<div class="call-button"></div>
 	</div>
-	<div class="bases-list av-shop-popup" data-type="bases-list">
-		<div class="title">
+	<div class="header-bases-list-block av-shop-popup" data-type="bases-list">
+		<div class="bases-title">
 			<?=Loc::getMessage("AV_SHOP_BASES_SELECT_REGION")?>
 		</div>
-		<div class="list">
+		<div class="bases-list">
 			<?
 			$APPLICATION->IncludeComponent
 				(
 				"bitrix:main.include", "",
-				array("AREA_FILE_SHOW" => "file", "PATH" => "/include/bases_list.php")
+				["AREA_FILE_SHOW" => "file", "PATH" => "/include/bases_list.php"],
+				false, ["HIDE_ICONS" => true]
 				);
 			?>
 		</div>
-		<div class="link">
+		<div class="bases-link">
 			<?
 			$APPLICATION->IncludeComponent
 				(
 				"bitrix:main.include", "",
-				array("AREA_FILE_SHOW" => "file", "PATH" => "/include/bases_link.php")
+				["AREA_FILE_SHOW" => "file", "PATH" => "/include/bases_link.php"],
+				false, ["HIDE_ICONS" => true]
 				);
 			?>
 		</div>
@@ -91,7 +94,7 @@ Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/header.php");
 /* -------------------------------------------------------------------- */
 ?>
 <div class="phone-list-cell">
-	<div class="link-block av-shop-popup-call-block" data-type="phone-list-mobile" data-call-type="onclick" tabindex="0">
+	<div class="page-active-block av-shop-popup-call-block" data-type="phone-list-mobile" data-call-type="onclick" tabindex="0">
 		<img
 			src="<?=SITE_TEMPLATE_PATH?>/images/phone.svg"
 			alt="<?=Loc::getMessage("AV_SHOP_HOT_LINE")?>"
@@ -100,8 +103,8 @@ Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/header.php");
 		<div class="title"><?=$hotLineHtml?></div>
 		<div class="call-button"></div>
 	</div>
-	<div class="phone-list-mobile av-shop-popup" data-type="phone-list-mobile">
-		<div class="list"><?=$phoneListHtml?></div>
+	<div class="header-phone-list-mobile-block av-shop-popup" data-type="phone-list-mobile">
+		<?=$phoneListHtml?>
 		<div class="working-houres"><?=$workingHouresHtml?></div>
 		<?
 		$APPLICATION->IncludeComponent
@@ -110,8 +113,9 @@ Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/header.php");
 				[
 				"BUTTON_TYPE" => "label",
 				"TITLE"       => Loc::getMessage("AV_SHOP_CALL_BACK"),
-				"ATTR"        => "data-call-back-form-button"
-				]
+				"ATTR"        => "data-header-call-back-form-button"
+				],
+			false, ["HIDE_ICONS" => true]
 			);
 		?>
 	</div>

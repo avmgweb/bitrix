@@ -3,7 +3,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
 $APPLICATION->IncludeComponent
 	(
-	"bitrix:form.result.new", "av",
+	"bitrix:form.result.new", "av-ajax",
 		array(
 		"AJAX_MODE"           => "Y",
 		"AJAX_OPTION_JUMP"    => "N",
@@ -11,7 +11,7 @@ $APPLICATION->IncludeComponent
 		"AJAX_OPTION_HISTORY" => "N",
 
 		"SEF_MODE"    => "N",
-		"WEB_FORM_ID" => 52,
+		"WEB_FORM_ID" => 54,
 
 		"START_PAGE"     => "new",
 		"SHOW_LIST_PAGE" => "N",

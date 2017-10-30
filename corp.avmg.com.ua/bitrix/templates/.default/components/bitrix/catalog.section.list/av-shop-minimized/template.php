@@ -10,10 +10,10 @@ foreach($arResult["SECTIONS"] as $srctionInfo)
 if(count($linksArray))
 	$APPLICATION->IncludeComponent
 		(
-		"av:form.links_list", 'av-shop',
+		"av:form.links_list", "av-shop",
 			[
 			"TITLE" => $arResult["SECTION_TITLE"],
 			"LIST"  => $linksArray
 			],
-		false, ["HIDE_ICONS" => 'Y']
+		false, ["HIDE_ICONS" => "Y"]
 		);

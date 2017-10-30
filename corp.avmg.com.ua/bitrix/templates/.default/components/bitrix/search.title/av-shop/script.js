@@ -8,32 +8,47 @@
 	/* ------------------------------------------- */
 	jQuery.fn.prepareAvShopSearchTitle = function()
 		{
-		var windowWidth = $(window).width();
-
-		this
-			.removeClass("active")
-			.removeClass("run")
-				.add(this.find(":text"))
-				.add(this.find(".placeholder"))
-					.removeAttr("style");
-		$(document)
-			.trigger("avShopSearchTitleNormolize");
-
-		if(windowWidth >= 1200)
+		return this.each(function()
 			{
-			this.removeClass("transformed");
-			this.find(":text").hide();
-			this.find(".placeholder").show();
-			}
-		else
-			{
-			this.addClass("transformed");
-			if(windowWidth <= 767) this.addClass("mobile");
-			this.find(":text").hide();
-			this.find(".placeholder").hide();
-			}
+			var
+				$searchBlock       = $(this).filter(".av-shop-search-title"),
+				$seacrhResultBlock = $(".av-shop-search-title-result[data-search-id=\""+$searchBlock.attr("data-search-id")+"\"]"),
+				windowWidth        = $(window).width(),
+				currentMode        = $searchBlock.attr("data-mode-type"),
+			    needMode           = "huge",
+				transformed        = false;
 
-		return this;
+			     if(windowWidth <= 767)  needMode = "mobile";
+			else if(windowWidth <= 991)  needMode = "tablet";
+			else if(windowWidth <= 1199) needMode = "standart";
+			if(needMode != "huge") transformed = true;
+
+			$searchBlock.attr("data-mode-type", needMode);
+			if(transformed) $searchBlock   .addClass("transformed");
+			else            $searchBlock.removeClass("transformed");
+
+			if(currentMode != needMode)
+				{
+				$(document)
+					.trigger("avShopSearchTitleNormolize");
+				$searchBlock
+					.removeClass("active")
+					.removeClass("run");
+				$seacrhResultBlock
+					.hide();
+
+				if(transformed)
+					{
+					$searchBlock.find(":text").hide();
+					$searchBlock.find(".placeholder").hide();
+					}
+				else
+					{
+					$searchBlock.find(":text").hide();
+					$searchBlock.find(".placeholder").show();
+					}
+				}
+			});
 		};
 	/* ------------------------------------------- */
 	/* ------------- activate search ------------- */
@@ -144,7 +159,7 @@
 					"position": "absolute",
 					"top"     : $searchBlock.offset().top + $searchBlock.height() + 10,
 					"left"    : $searchBlock.offset().left,
-					"width"   : $searchBlock.hasClass("mobile") ? $(window).width() : $searchBlock.width()
+					"width"   : $searchBlock.width()
 					});
 
 			if(!$seacrhResultBlock.is(":visible") && $seacrhResultBlock.attr("data-empty") != "Y")
@@ -190,22 +205,22 @@ $(function()
 		/* ------------------------------------------- */
 		/* ----------------- behavior ---------------- */
 		/* ------------------------------------------- */
-		.on("vclick keyup", ".av-shop-search-title .placeholder, .av-shop-search-title .icon", function(event)
-			{
-			if(!event.keyCode || event.keyCode == 13)
-				$(this)
-					.closest(".av-shop-search-title")
-					.find(":text").focus();
-			})
-		.on("focus", ".av-shop-search-title :text", function()
+		.on("vclick", ".av-shop-search-title .placeholder, .av-shop-search-title .icon", function()
 			{
 			$(this)
 				.closest(".av-shop-search-title")
-				.activateAvShopSearchTitle(function()
-					{
-					$(".av-shop-search-title-result[data-search-id=\""+$(this).attr("data-search-id")+"\"]")
-						.showAvShopSearchTitleResult();
-					});
+				.find(":text").focus();
+			})
+		.on("focus", ".av-shop-search-title :text", function()
+			{
+			var
+				$searchBlock       = $(this).closest(".av-shop-search-title"),
+				$seacrhResultBlock = $(".av-shop-search-title-result[data-search-id=\""+$searchBlock.attr("data-search-id")+"\"]");
+
+			$searchBlock.activateAvShopSearchTitle(function()
+				{
+				$seacrhResultBlock.showAvShopSearchTitleResult();
+				});
 			})
 		.on("vclick", function()
 			{
@@ -216,11 +231,10 @@ $(function()
 					$seacrhResultBlock = $(".av-shop-search-title-result[data-search-id=\""+$searchBlock.attr("data-search-id")+"\"]");
 				if($searchBlock.isClicked() || $seacrhResultBlock.isClicked()) return;
 
-				$seacrhResultBlock
-					.hideAvShopSearchTitleResult(function()
-						{
-						$searchBlock.diactivateAvShopSearchTitle();
-						});
+				$seacrhResultBlock.hideAvShopSearchTitleResult(function()
+					{
+					$searchBlock.diactivateAvShopSearchTitle();
+					});
 				});
 			})
 		/* ------------------------------------------- */
@@ -281,8 +295,6 @@ $(function()
 			/* ---------- search ---------- */
 			/* ---------------------------- */
 			else if(inputValue && $input.attr("data-search_value") != inputValue)
-				{
-				$input.attr("data-search_value", inputValue);
 				BX.ajax.post
 					(
 					"/",
@@ -292,6 +304,7 @@ $(function()
 						},
 					function(result)
 						{
+						$input.attr("data-search_value", inputValue);
 						if(result)
 							$seacrhResultBlock
 								.html(result)
@@ -305,15 +318,18 @@ $(function()
 								.attr("data-empty", "Y");
 						}
 					);
-				}
 			});
 	/* ------------------------------------------- */
 	/* -------------- scroll/resize -------------- */
 	/* ------------------------------------------- */
 	$(window)
+		.scroll(function()
+			{
+			$(".av-shop-search-title-result:visible").showAvShopSearchTitleResult();
+			})
 		.resize(function()
 			{
+			$(".av-shop-search-title-result:visible").showAvShopSearchTitleResult();
 			$(".av-shop-search-title").prepareAvShopSearchTitle();
-			$(".av-shop-search-title-result:visible").hide();
 			});
 	});

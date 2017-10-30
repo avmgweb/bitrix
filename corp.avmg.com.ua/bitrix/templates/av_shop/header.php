@@ -1,16 +1,28 @@
 <?
-use
-	\Bitrix\Main\Page\Asset,
-	\Bitrix\Main\Localization\Loc;
+use \Bitrix\Main\Page\Asset;
 
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-
-Loc::loadMessages(__FILE__);
 /* ============================================================================================= */
 /* ========================================= COUNTINGS ========================================= */
 /* ============================================================================================= */
-$currentDirectory = $APPLICATION->GetCurDir();
-$dirProperty      = $APPLICATION->GetDirPropertyList();
+$currentDirectory      = $APPLICATION->GetCurDir();
+$dirProperty           = $APPLICATION->GetDirPropertyList();
+$userIsAuthorized      = $USER->IsAuthorized();
+$userName              = "";
+$userPersonalPhoto     = "";
+$registrationAvailable = COption::GetOptionString("main", "new_user_registration") == "Y";
+
+if($userIsAuthorized)
+	{
+	$userName = htmlspecialcharsEx($USER->GetFormattedName(false, false));
+	$queryList = CUser::GetList($by="ID", $order="desc", ["ID" => $USER->GetId()], ["ID", "PERSONAL_PHOTO"]);
+	while($queryElement = $queryList->Fetch())
+		if($queryElement["PERSONAL_PHOTO"])
+			{
+			$fileInfo = CFile::GetByID($queryElement["PERSONAL_PHOTO"])->Fetch();
+			if(is_array($fileInfo) && $fileInfo["FILE_NAME"]) $userPersonalPhoto = "/upload/".$fileInfo["SUBDIR"]."/".$fileInfo["FILE_NAME"];
+			}
+	}
 /* ============================================================================================= */
 /* ==================================== CONTENT BLOCKS HTML ==================================== */
 /* ============================================================================================= */
@@ -22,7 +34,8 @@ ob_start();
 $APPLICATION->IncludeComponent
 	(
 	"bitrix:main.include", "",
-	array("AREA_FILE_SHOW" => "file", "PATH" => "/include/link_company_site.php")
+	["AREA_FILE_SHOW" => "file", "PATH" => "/include/link_company_site.php"],
+	false, ["HIDE_ICONS" => "Y"]
 	);
 $companyLinkHtml = ob_get_contents();
 ob_end_clean();
@@ -34,7 +47,8 @@ ob_start();
 $APPLICATION->IncludeComponent
 	(
 	"bitrix:main.include", "",
-	array("AREA_FILE_SHOW" => "file", "PATH" => "/include/link_faq.php")
+	["AREA_FILE_SHOW" => "file", "PATH" => "/include/link_faq.php"],
+	false, ["HIDE_ICONS" => "Y"]
 	);
 $faqLinkHtml = ob_get_contents();
 ob_end_clean();
@@ -46,7 +60,8 @@ ob_start();
 $APPLICATION->IncludeComponent
 	(
 	"bitrix:main.include", "",
-	array("AREA_FILE_SHOW" => "file", "PATH" => "/include/link_support.php")
+	["AREA_FILE_SHOW" => "file", "PATH" => "/include/link_support.php"],
+	false, ["HIDE_ICONS" => "Y"]
 	);
 $supportLinkHtml = ob_get_contents();
 ob_end_clean();
@@ -58,7 +73,8 @@ ob_start();
 $APPLICATION->IncludeComponent
 	(
 	"bitrix:main.include", "",
-	array("AREA_FILE_SHOW" => "file", "PATH" => "/include/hot_line.php")
+	["AREA_FILE_SHOW" => "file", "PATH" => "/include/hot_line.php"],
+	false, ["HIDE_ICONS" => "Y"]
 	);
 $hotLineHtml = ob_get_contents();
 ob_end_clean();
@@ -70,7 +86,8 @@ ob_start();
 $APPLICATION->IncludeComponent
 	(
 	"bitrix:main.include", "",
-	array("AREA_FILE_SHOW" => "file", "PATH" => "/include/phone_list.php")
+	["AREA_FILE_SHOW" => "file", "PATH" => "/include/phone_list.php"],
+	false, ["HIDE_ICONS" => "Y"]
 	);
 $phoneListHtml = ob_get_contents();
 ob_end_clean();
@@ -82,7 +99,8 @@ ob_start();
 $APPLICATION->IncludeComponent
 	(
 	"bitrix:main.include", "",
-	array("AREA_FILE_SHOW" => "file", "PATH" => "/include/working_houres.php")
+	["AREA_FILE_SHOW" => "file", "PATH" => "/include/working_houres.php"],
+	false, ["HIDE_ICONS" => "Y"]
 	);
 $workingHouresHtml = ob_get_contents();
 ob_end_clean();
@@ -93,8 +111,8 @@ $basketLineHtml = "";
 ob_start();
 $APPLICATION->IncludeComponent
 	(
-	"bitrix:sale.basket.basket.line", "av",
-		array(
+	"bitrix:sale.basket.basket.line", "av-shop",
+		[
 		"PATH_TO_BASKET"    => "/personal/cart/",
 		"PATH_TO_ORDER"     => "/personal/orders/make/",
 		"SHOW_NUM_PRODUCTS" => "Y",
@@ -121,7 +139,8 @@ $APPLICATION->IncludeComponent
 		"POSITION_HORIZONTAL"  => "",
 		"POSITION_VERTICAL"    => "",
 		"HIDE_ON_BASKET_PAGES" => "N"
-		)
+		],
+	false, ["HIDE_ICONS" => "Y"]
 	);
 $basketLineHtml = ob_get_contents();
 ob_end_clean();
@@ -134,7 +153,7 @@ if($dirProperty["NOT_SHOW_LEFT_MENU"] != "Y" && $currentDirectory != SITE_DIR &&
 	$APPLICATION->IncludeComponent
 		(
 		"bitrix:menu", "av-shop-vertical",
-			array(
+			[
 			"ROOT_MENU_TYPE"     => "left",
 			"MAX_LEVEL"          => 1,
 			"CHILD_MENU_TYPE"    => "left",
@@ -145,7 +164,8 @@ if($dirProperty["NOT_SHOW_LEFT_MENU"] != "Y" && $currentDirectory != SITE_DIR &&
 			"MENU_CACHE_TYPE"       => "A",
 			"MENU_CACHE_TIME"       => 360000,
 			"MENU_CACHE_USE_GROUPS" => "Y"
-			)
+			],
+		false, ["HIDE_ICONS" => "Y"]
 		);
 $leftMenuHtml = ob_get_contents();
 ob_end_clean();
@@ -196,8 +216,13 @@ ob_end_clean();
 
 			<div class="second-row av-responsive-block"><?include "header/second_row.php"?></div>
 			<div class="third-row av-responsive-block"><?include "header/third_row.php"?></div>
-			<?include "header/tools.php"?>
 		</header>
+		<?
+		/* ------------------------------------------- */
+		/* ------------------ tools ------------------ */
+		/* ------------------------------------------- */
+		?>
+		<?include "header/tools.php"?>
 		<?
 		/* ------------------------------------------- */
 		/* --------------- breadcrumb ---------------- */
@@ -205,7 +230,14 @@ ob_end_clean();
 		?>
 		<?if($dirProperty["NOT_SHOW_NAV_CHAIN"] != "Y" && $currentDirectory != SITE_DIR && ERROR_404 != "Y"):?>
 		<div id="page-breadcrumbs" class="av-responsive-block">
-			<?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "av")?>
+			<?
+			$APPLICATION->IncludeComponent
+				(
+				"bitrix:breadcrumb", "av",
+				[],
+				false, ["HIDE_ICONS" => "Y"]
+				);
+			?>
 		</div>
 		<?endif?>
 		<?

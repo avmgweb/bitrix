@@ -4,8 +4,8 @@ use \Bitrix\Main\Page\Asset;
 require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("АВ металл групп - корпоративный сайт компании");
-$APPLICATION->SetPageProperty("title",       "АВ металл групп ведущая компания Украины на рынке металлопроката | Официальный сайт ru.avmg.com.ua ✔ Адрес г. Днепр, ул. Шолом-Алейхема, 5 ☎ телефон (056) 790-01-22");
-$APPLICATION->SetPageProperty("description", "АВ металл групп ™ крупнейший металлотрейдер Украины ✔ г. Днепр, ул. Шолом-Алейхема, 5 Звоните! ☎ (056)790-01-22");
+$APPLICATION->SetPageProperty("title",       "АВ металл групп ведущая компания Украины на рынке металлопроката | Официальный сайт ru.avmg.com.ua ✔ Адрес г. Днепр, ул. Шолом-Алейхема, 5 ☎ телефон +38(056) 790-01-22");
+$APPLICATION->SetPageProperty("description", "АВ металл групп ™ крупнейший металлотрейдер Украины ✔ г. Днепр, ул. Шолом-Алейхема, 5 Звоните! ☎ +38(056)790-01-22");
 
 CJSCore::Init(["bootstrap"]);
 Asset::getInstance()->addCss("/bitrix/css/av_site/pages/index.css");

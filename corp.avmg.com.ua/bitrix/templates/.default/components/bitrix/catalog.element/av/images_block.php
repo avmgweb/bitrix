@@ -1,10 +1,5 @@
 <?
-use \Bitrix\Main\Page\Asset;
-
-if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
-
-Asset::getInstance()->addCss($this->GetFolder().'/slider.css');
-Asset::getInstance()->addJs ($this->GetFolder().'/slider.js');
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* -------------------------------------------------------------------- */
 /* --------------------------- image block ---------------------------- */
 /* -------------------------------------------------------------------- */

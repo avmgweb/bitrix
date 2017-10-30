@@ -7,7 +7,6 @@ $APPLICATION->IncludeComponent
 		array(
 		"BUTTON_TYPE" => "link",
 		"LINK"        => "https://ru.avmg.com.ua/metallobaza/",
-		"TITLE"       => "Показать металлобазы",
-		"ATTR"        => ["rel" => "nofollow"]
+		"TITLE"       => "Показать металлобазы"
 		)
 	);

@@ -1,0 +1,88 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-shop-menu,
+.av-shop-menu ul,
+.av-shop-menu li        {padding: 0;margin: 0}
+.av-shop-menu li:before {display: none !important}
+
+.av-shop-menu a,
+.av-shop-menu a:hover,
+.av-shop-menu a:active,
+.av-shop-menu a:focus,
+.av-shop-menu a:visited {color: inherit;text-decoration: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- menu ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-shop-menu-wraper
+	{
+	height: 40px;
+	overflow: hidden;
+	}
+.av-shop-menu
+	{
+	display: flex;
+	justify-content: space-between;
+	margin: 0 -10px;
+	overflow-x: scroll;
+	}
+.av-shop-menu a.selected,
+.av-shop-menu a:hover,
+.av-shop-menu a:active,
+.av-shop-menu a:focus {text-decoration: underline}
+/* -------------------------------------------------------------------- */
+/* ------------------------ first level items ------------------------- */
+/* -------------------------------------------------------------------- */
+.av-shop-menu .first-level-item
+	{
+	margin: 0 10px;
+	}
+.av-shop-menu .first-level-item > a
+	{
+	align-items: center;
+	display: flex;
+	}
+.av-shop-menu .first-level-item > a img
+	{
+	margin-right: 10px;
+	height: 40px;
+	}
+.av-shop-menu .first-level-item > a .title
+	{
+	font-weight: bold;
+	line-height: 18px;
+	overflow: hidden;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------ second level items ------------------------ */
+/* -------------------------------------------------------------------- */
+.av-shop-menu .second-level-block
+	{
+	background: #FFF;
+	border-top: 1px solid #EFEFEF;
+	box-shadow: 0 5px 10px rgba(225, 228, 230, 0.5);
+	display: none;
+	flex-direction: column;
+	flex-wrap: wrap;
+	margin-top: 10px;
+	padding: 20px;
+	position: absolute;
+	max-height: calc(25px * 8 + 20px * 2 + 10px);
+	z-index: 100;
+	}
+.av-shop-menu .second-level-item,
+.av-shop-menu .third-level-item
+	{
+	line-height: 25px;
+	white-space: nowrap;
+	}
+.av-shop-menu .second-level-item
+	{
+	font-weight: bold;
+	padding-right: 50px;
+	}
+.av-shop-menu .third-level-item
+	{
+	color: #78909C;
+	padding: 0 50px 0 20px;
+	}

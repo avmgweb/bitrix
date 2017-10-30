@@ -126,8 +126,10 @@ $(function()
 	$(document)
 		.on("vclick", function()
 			{
-			if($('.av-auth-form-call-button').isClicked())                          $avAuthForm.activateAvAuthForm();
-			else if(!$avAuthForm.isClicked() && !$avAuthFormAlertPopup.isClicked()) $avAuthForm.diactivateAvAuthForm();
+			if($('.av-auth-form-call-button').isClicked())
+				$avAuthForm.activateAvAuthForm();
+			else if(!$avAuthForm.isClicked() && !$avAuthFormAlertPopup.isClicked() && !$("[data-header-login-button]").isClicked() && !$("[data-header-registration-button]").isClicked())
+				$avAuthForm.diactivateAvAuthForm();
 
 			if(GetAvUserMenuCallButton().isClicked())
 				{
@@ -139,5 +141,15 @@ $(function()
 
 			if(!$avAuthFormAlertPopup.isClicked() && !$avAuthForm.find('form button').isClicked())
 				$avAuthFormAlertPopup.remove();
+			});
+
+	$(document)
+		.on("vclick", "[data-header-login-button]", function()
+			{
+			$avAuthForm.activateAvAuthForm().changeAvAuthFormTab("auth");
+			})
+		.on("vclick", "[data-header-registration-button]", function()
+			{
+			$avAuthForm.activateAvAuthForm().changeAvAuthFormTab("register");
 			});
 	});

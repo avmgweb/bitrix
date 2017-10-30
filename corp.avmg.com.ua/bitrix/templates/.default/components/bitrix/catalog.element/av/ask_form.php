@@ -1,14 +1,4 @@
-<?
-use \Bitrix\Main\Page\Asset;
-
-if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
-
-Asset::getInstance()->addCss($this->GetFolder().'/ask_form.css');
-Asset::getInstance()->addJs ($this->GetFolder().'/ask_form.js');
-/* -------------------------------------------------------------------- */
-/* ------------------------------- form ------------------------------- */
-/* -------------------------------------------------------------------- */
-?>
+<?if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die()?>
 <div
 	class="av-catalog-element-ask-form-origin"
 	 data-link-field-id="<?=($arParams["ASK_FORM_LINK_FIELD_ID"]  ? $arParams["ASK_FORM_LINK_FIELD_ID"]  : 0)?>"
@@ -23,7 +13,7 @@ Asset::getInstance()->addJs ($this->GetFolder().'/ask_form.js');
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"bitrix:form.result.new", "av_ajax",
+			"bitrix:form.result.new", "av-ajax",
 				[
 				"AJAX_MODE"           => 'N',
 				"AJAX_OPTION_JUMP"    => 'N',

@@ -1,0 +1,173 @@
+.av-basket-line {position: relative}
+/* -------------------------------------------------------------------- */
+/* ----------------------------- main link ---------------------------- */
+/* -------------------------------------------------------------------- */
+.av-basket-line .main-link     {align-items: center;display: flex;position: relative}
+.av-basket-line .main-link img {margin-right: 5px;width: 24px}
+
+.av-basket-line .main-link .counter
+	{
+	align-items: center;
+	background: #FFF;
+	border: 2px solid #CC0000;
+	border-radius: calc(24px / 2);
+	color: #CC0000;
+	display: flex;
+	font-size: calc(100% - 2px);
+	font-weight: bold;
+	justify-content: center;
+	position: absolute;
+	width:  24px;
+	height: 24px;
+	top:   -14px;
+	left:   14px;
+	}
+.av-basket-line .main-link .counter.empty {display: none}
+/* -------------------------------------------------------------------- */
+/* ---------------------------- items list ---------------------------- */
+/* -------------------------------------------------------------------- */
+.av-basket-line .items-list
+	{
+	color: #4C5255;
+	display: none;
+	font-size: 13px;
+	left: calc(280px * -1 + 24px + (14px * 2 - 24px) / 2 + 14px * 2);
+	letter-spacing: normal;
+	position: relative;
+	z-index: 50;
+	}
+.av-basket-line .items-list .triangle
+	{
+	position: absolute;
+	width:  0;
+	height: 0;
+	}
+.av-basket-line .items-list .triangle.dark
+	{
+	border-left:   14px solid transparent;
+	border-right:  14px solid transparent;
+	border-bottom: 14px solid #B6C0C6;
+	left: calc(280px - 24px - (14px * 2 - 24px) / 2 - 14px * 2);
+	z-index: 60;
+	}
+.av-basket-line .items-list .triangle.light
+	{
+	border-left:   calc(14px - 2px) solid transparent;
+	border-right:  calc(14px - 2px) solid transparent;
+	border-bottom: calc(14px - 2px) solid #FFF;
+	left: calc(280px - 24px - (14px * 2 - 24px) / 2 - 14px * 2 + 2px);
+	top:  1px;
+	z-index: 80;
+	}
+.av-basket-line .items-list .body
+	{
+	background: #FFF;
+	border: 1px solid #B6C0C6;
+	padding: 10px 20px 20px 20px;
+	position: absolute;
+	top: calc(14px - 2px);
+	width: 280px;
+	z-index: 70;
+	}
+.av-basket-line .items-list .body .title
+	{
+	border-bottom: 1px solid #B6C0C6;
+	font-weight: bold;
+	padding-bottom: 6px;
+	margin-bottom: 13px;
+	text-transform: uppercase;
+	}
+.av-basket-line .items-list .body .item-row
+	{
+	align-items: center;
+	display: flex;
+	}
+.av-basket-line .items-list .body .item-row .delete
+	{
+	background: url(images/delete.svg) center center no-repeat;
+	background-size: 12px;
+	cursor: pointer;
+	margin: 0 6px 0 -6px;
+	width:  24px;
+	height: 24px;
+	transition: .3s;
+	}
+.av-basket-line .items-list .body .item-row .delete:hover
+	{
+	background-image: url(images/delete_active.svg);
+	}
+.av-basket-line .items-list .body .item-row .name
+	{
+	width: calc(100% - 24px - 40px - 6px);
+	}
+.av-basket-line .items-list .body .item-row .quantity-cell
+	{
+	margin-left: 6px;
+	overflow: hidden;
+	text-align: right;
+	text-overflow: ellipsis;
+	width: 40px;
+	white-space: nowrap;
+	}
+.av-basket-line .items-list .body .item-row .quantity-cell .quantity
+	{
+	font-weight: bold;
+	}
+.av-basket-line .items-list .body .price-info
+	{
+	border-top: 1px solid #B6C0C6;
+	display: flex;
+	justify-content: space-between;
+	padding: 6px 0;
+	margin-top: 13px;
+	}
+.av-basket-line .items-list .body .price-info .info
+	{
+	text-transform: uppercase;
+	}
+.av-basket-line .items-list .body .price-info .price
+	{
+	font-weight: bold;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 50%;
+	}
+.av-basket-line .items-list .body .buttons-row
+	{
+	display: flex;
+	justify-content: space-between;
+	}
+.av-basket-line .items-list .body .buttons-row > *
+	{
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	margin:  0;
+	padding: 0;
+	width: calc((100% - 13px) / 2);
+	height: 30px;
+	}
+.av-basket-line .items-list .body .read-more
+	{
+	color: #CC0000 !important;
+	display: flex;
+	justify-content: center;
+	text-decoration: underline;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ media ------------------------------- */
+/* -------------------------------------------------------------------- */
+@media (max-width: 991px)
+	{
+	.av-basket-line .main-link .icon  {width: 14px}
+	.av-basket-line .main-link .title {display: none}
+	.av-basket-line .main-link .counter
+		{
+		background: transparent;
+		border: none;
+		position: static;
+		width:  auto;
+		height: auto;
+		}
+	}
