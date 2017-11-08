@@ -1,0 +1,2 @@
+<?
+$MESS["AV_CATALOG_SECTION_LIST_VERTICAL_MINIMIZED_LIST_PAGE"] = "смотреть далее...";

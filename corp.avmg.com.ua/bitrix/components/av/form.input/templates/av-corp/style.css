@@ -1,0 +1,34 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-input-corp input,
+.av-form-input-corp label
+	{
+	background: transparent;
+	border: none;
+	color: inherit;
+	font-weight: normal;
+	margin:  0;
+	padding: 0;
+	outline: none;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ input ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-input-corp
+	{
+	border: 1px solid #DCE1E4;
+	border-radius: 2px;
+	padding: 6px 7px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	}
+.av-form-input-corp > *                {line-height: 14px;width: 100%}
+.av-form-input-corp:not(.disabled),
+.av-form-input-corp:not(.disabled) > * {cursor: text}
+
+.av-form-input-corp:not(.alert-input):not(.disabled):hover,
+.av-form-input-corp:not(.alert-input):not(.disabled).active {border-color: #B6CBD0}
+.av-form-input-corp.alert-input                             {border-color: #CC0000}
+.av-form-input-corp.disabled                                {background: #F5F6F7}

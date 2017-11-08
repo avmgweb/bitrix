@@ -21,7 +21,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form.input", "av_corp_learning_search",
+			"av:form.input", "av-corp-learning-search",
 				[
 				"NAME"         => 'q',
 				"VALUE"        => $arResult["q"],

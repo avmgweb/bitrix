@@ -13,9 +13,8 @@ AvComponentsIncludings::getInstance()->setIncludings("av", "visit_site.user.pane
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site_alt",
+			"av:form.button", "av-alt",
 				[
-				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'label',
 				"TITLE"       => Loc::getMessage("AV_AUTH_ALT_LINK"),
 				"ATTR"        => 'data-login-form-link'

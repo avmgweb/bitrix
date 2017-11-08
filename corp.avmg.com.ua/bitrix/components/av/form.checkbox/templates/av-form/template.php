@@ -1,0 +1,23 @@
+<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
+<div
+	data-av-form-item="checkbox"
+	data-av-form-library="av-styled"
+	class="
+		av-form-checkbox
+		<?if($arResult["REQUIRED"]):?>required<?endif?>
+		"
+	title="<?=$arResult["TITLE"]?>"
+	<?=$arResult["ATTR"]?>
+>
+	<input
+		type="checkbox"
+		name="<?=$arResult["NAME"]?>"
+		value="<?=$arResult["VALUE"]?>"
+		title=""
+		<?if($arResult["CHECKED"]):?>checked<?endif?>
+	>
+	<label></label>
+	<?if($arResult["TITLE"]):?>
+	<label><?=$arResult["TITLE"]?></label>
+	<?endif?>
+</div>

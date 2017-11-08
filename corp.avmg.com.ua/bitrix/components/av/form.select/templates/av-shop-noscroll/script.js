@@ -12,8 +12,6 @@ function AvFormSelectMinDiactivate()
 /* -------------------------------------------------------------------- */
 $(function()
 	{
-	SetFormElementsCurrentLibrary("av");
-
 	$(document)
 		/* ------------------------------------------- */
 		/* ------------ select drop down ------------- */

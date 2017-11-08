@@ -139,7 +139,7 @@ $APPLICATION->IncludeComponent
 		"LIST_TEMPLATE"                   => "av_career",
 		"DETAIL_TEMPLATE"                 => "av_career",
 		"DETAIL_PAGE_WEBFORM_ID"          => 38,
-		"DETAIL_PAGE_WEBFORM_TEMPLATE"    => "av_career",
+		"DETAIL_PAGE_WEBFORM_TEMPLATE"    => "av-career",
 		"SAME_ARTICLES_SEARCH_IN_SECTION" => "Y",
 		"CATEGORY_ADDITIONAL_FILTER"      => ["!PROPERTY_type_vacancy" => 389]
 		)

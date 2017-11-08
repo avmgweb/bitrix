@@ -34,7 +34,7 @@
 	left: calc(280px * -1 + 24px + (14px * 2 - 24px) / 2 + 14px * 2);
 	letter-spacing: normal;
 	position: relative;
-	z-index: 50;
+	z-index: 500;
 	}
 .av-basket-line .items-list .triangle
 	{
@@ -48,7 +48,7 @@
 	border-right:  14px solid transparent;
 	border-bottom: 14px solid #B6C0C6;
 	left: calc(280px - 24px - (14px * 2 - 24px) / 2 - 14px * 2);
-	z-index: 60;
+	z-index: 600;
 	}
 .av-basket-line .items-list .triangle.light
 	{
@@ -57,7 +57,7 @@
 	border-bottom: calc(14px - 2px) solid #FFF;
 	left: calc(280px - 24px - (14px * 2 - 24px) / 2 - 14px * 2 + 2px);
 	top:  1px;
-	z-index: 80;
+	z-index: 800;
 	}
 .av-basket-line .items-list .body
 	{
@@ -67,7 +67,7 @@
 	position: absolute;
 	top: calc(14px - 2px);
 	width: 280px;
-	z-index: 70;
+	z-index: 700;
 	}
 .av-basket-line .items-list .body .title
 	{

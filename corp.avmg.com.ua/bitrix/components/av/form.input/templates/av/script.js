@@ -3,32 +3,32 @@
 /* -------------------------------------------------------------------- */
 (function($)
 	{
-	jQuery.fn.getFormElememtNameInputAv     = function()      {return this.find('input').attr("name")};
-	jQuery.fn.setFormElememtNameInputAv     = function(value) {this.find('input').attr("name", value)};
-	jQuery.fn.getFormElememtValueInputAv    = function()      {return this.find('input').val()};
+	jQuery.fn.getFormElememtNameInputAv     = function()      {return this.find(":text").attr("name")};
+	jQuery.fn.setFormElememtNameInputAv     = function(value) {this.find(":text").attr("name", value)};
+	jQuery.fn.getFormElememtValueInputAv    = function()      {return this.find(":text").val()};
 	jQuery.fn.setFormElememtValueInputAv    = function(value)
 		{
-		this.find('input').attr("value", value).val(value);
+		this.find(":text").attr("value", value).val(value);
 		this.behaviorFormElememtInputAvPlaceholder();
 		};
 	jQuery.fn.getFormElememtRequiredInputAv = function()      {return this.hasClass("required")};
 	jQuery.fn.setFormElememtRequiredInputAv = function(value)
 		{
-		if(value == 'on')  this.addClass("required");
-		if(value == 'off') this.removeClass("required");
+		if(value == "on")  this.addClass("required");
+		if(value == "off") this.removeClass("required");
 		};
 	jQuery.fn.getFormElememtAlertInputAv    = function()      {return this.hasClass("alert-input")};
 	jQuery.fn.setFormElememtAlertInputAv    = function(value)
 		{
-		if(value == 'on')  this.addClass("alert-input");
-		if(value == 'off') this.removeClass("alert-input");
+		if(value == "on")  this.addClass("alert-input");
+		if(value == "off") this.removeClass("alert-input");
 		};
 	jQuery.fn.behaviorFormElememtInputAvPlaceholder    = function(value)
 		{
 		this.removeClass("placeholder-on placeholder-off");
-		if(!this.find('label').length) return;
+		if(!this.find("label").length) return;
 
-		if(this.find('input').val() || value == 'on') this.addClass("placeholder-off");
+		if(this.find(":text").val() || value == "on") this.addClass("placeholder-off");
 		else                                          this.addClass("placeholder-on");
 		};
 	})(jQuery);
@@ -48,9 +48,8 @@ SetFormElementsFunction("av", "input", "setFormElememtAlert",    "setFormElememt
 /* -------------------------------------------------------------------- */
 $(function()
 	{
-	SetFormElementsCurrentLibrary("av");
 	$(document)
-		.on("vclick",   '.av-form-input',       function() {$(this).parent().find('input').focus()})
-		.on("focus",    '.av-form-input input', function() {$(this).parent().addClass("active")   .behaviorFormElememtInputAvPlaceholder("on")})
-		.on("focusout", '.av-form-input input', function() {$(this).parent().removeClass("active").behaviorFormElememtInputAvPlaceholder()});
+		.on("vclick",   ".av-form-input",       function() {$(this).parent().find(":text").focus()})
+		.on("focus",    ".av-form-input :text", function() {$(this).parent().addClass("active")   .behaviorFormElememtInputAvPlaceholder("on")})
+		.on("focusout", ".av-form-input :text", function() {$(this).parent().removeClass("active").behaviorFormElememtInputAvPlaceholder()});
 	});

@@ -1,7 +1,5 @@
 $(function()
 	{
-	SetFormElementsCurrentLibrary("av_site");
-
 	$(document)
 		.on("vclick", '.av-catalog-element .ask-price-call-form', function()
 			{

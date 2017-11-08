@@ -19,9 +19,8 @@ if($USER->IsAuthorized())                                       die();
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site",
+			"av:form.input", "av-form",
 				[
-				"TYPE"  => 'input',
 				"NAME"  => 'USER_LOGIN',
 				"TITLE" => Loc::getMessage("AV_FORGOT_PASS_INPUT_TITLE"),
 				"VALUE" => $arResult["LAST_LOGIN"]
@@ -38,9 +37,8 @@ if($USER->IsAuthorized())                                       die();
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site",
+			"av:form.input", "av-form",
 				[
-				"TYPE"  => 'input',
 				"NAME"  => 'captcha_word',
 				"TITLE" => Loc::getMessage("AV_FORGOT_PASS_CAPCHA_TITLE"),
 				"ATTR"  => ["autocomplete" => 'off']
@@ -55,9 +53,8 @@ if($USER->IsAuthorized())                                       die();
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site",
+			"av:form.button", "av",
 				[
-				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'submit',
 				"NAME"        => 'send_account_info',
 				"TITLE"       => Loc::getMessage("AV_FORGOT_PASS_SUBMIT_TITLE")

@@ -1,0 +1,39 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-input-corp-learning-search input
+	{
+	background: transparent;
+	border: none;
+	color: inherit;
+	margin:  0;
+	padding: 0;
+	outline: none;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ input ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-input-corp-learning-search
+	{
+	align-items: center;
+	border: 1px solid #DCE1E4;
+	border-radius: 15px;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 15px 0 20px;
+	transition: .3s;
+	height: 30px;
+	}
+.av-form-input-corp-learning-search input {width: calc(100% - 25px)}
+.av-form-input-corp-learning-search .search-button
+	{
+	background: url(images/search_button.svg) center center no-repeat;
+	background-size: contain;
+	cursor: pointer;
+	transition: .3s;
+	width: 15px;
+	height: 100%;
+	}
+.av-form-input-corp-learning-search:hover,
+.av-form-input-corp-learning-search.active               {border-color: #B6CBD0}
+.av-form-input-corp-learning-search .search-button:hover {background-image: url(images/search_button_active.svg)}

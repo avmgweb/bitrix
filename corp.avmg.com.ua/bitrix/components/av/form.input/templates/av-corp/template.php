@@ -1,0 +1,29 @@
+<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
+<div
+	data-av-form-item="input"
+	data-av-form-library="av-corp"
+	class="
+		av-form-input-corp
+		<?if($arResult["REQUIRED"]):?>required<?endif?>
+		<?if($arResult["DISABLED"]):?>disabled<?endif?>
+		"
+	title="<?=$arResult["TITLE"]?>"
+>
+	<?if($arResult["PLACEHOLDER"]):?>
+	<label <?if($arResult["VALUE"]):?>style="display: none"<?endif?>>
+		<?=$arResult["PLACEHOLDER"]?>
+	</label>
+	<?endif?>
+
+	<input
+		type="text"
+		name="<?=$arResult["NAME"]?>"
+		value="<?=$arResult["VALUE"]?>"
+		title="<?=$arResult["TITLE"]?>"
+		<?if($arResult["DISABLED"]):?>disabled<?endif?>
+
+		data-avat="form-input-<?=$arResult["NAME"]?>"
+		<?if($arResult["PLACEHOLDER"] && !$arResult["VALUE"]):?>style="display: none"<?endif?>
+		<?=$arResult["ATTR"]?>
+	>
+</div>

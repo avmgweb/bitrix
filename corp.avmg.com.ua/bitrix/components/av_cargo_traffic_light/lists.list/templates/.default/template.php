@@ -10,7 +10,7 @@ CJSCore::Init(["av_site"]);
 	if($arResult["CAN_ADD_ELEMENT"])
 		$APPLICATION->IncludeComponent
 			(
-			"av:form.button", "av_corp",
+			"av:form.button", "av-corp",
 				[
 				"BUTTON_TYPE" => 'link',
 				"LINK"        => $arResult["LIST_NEW_ELEMENT_URL"],
@@ -21,7 +21,7 @@ CJSCore::Init(["av_site"]);
 	if($arParams["CAN_EDIT"])
 		$APPLICATION->IncludeComponent
 			(
-			"av:form.button", "av_corp_alt",
+			"av:form.button", "av-corp-alt",
 				[
 				"BUTTON_TYPE" => 'link',
 				"LINK"        => $arResult["LIST_EDIT_URL"],

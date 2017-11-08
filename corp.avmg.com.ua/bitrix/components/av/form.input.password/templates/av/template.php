@@ -1,6 +1,7 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
 <div
-	data-av-form-item="input"
+	data-av-form-item="password"
+	data-av-form-library="av"
 	class="
 		av-form-input-password
 		<?if($arResult["REQUIRED"]):?>required<?endif?>

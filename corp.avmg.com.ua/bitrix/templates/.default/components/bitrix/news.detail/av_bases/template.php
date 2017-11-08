@@ -256,7 +256,7 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 		if(count($arResult["ROOT_SECTION_INFO"]))
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.button", "av_alt",
+				"av:form.button", "av-alt",
 					[
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => str_replace(['#SECTION_ID#', '#SECTION_CODE#'], [$arResult["ROOT_SECTION_INFO"]["ID"], $arResult["ROOT_SECTION_INFO"]["CODE"]], $arParams["SECTION_URL"]),
@@ -266,7 +266,7 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 				);
 		$APPLICATION->IncludeComponent
 			(
-			"av:form.button", "av_alt",
+			"av:form.button", "av-alt",
 				[
 				"BUTTON_TYPE" => 'link',
 				"LINK"        => $arResult["LIST_PAGE_URL"],

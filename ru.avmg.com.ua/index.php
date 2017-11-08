@@ -253,7 +253,7 @@ $APPLICATION->IncludeComponent
 				<?
 				$APPLICATION->IncludeComponent
 					(
-					"bitrix:form.result.new", "av_index",
+					"bitrix:form.result.new", "av-index",
 						array(
 						"AJAX_MODE"           => "Y",
 						"AJAX_OPTION_JUMP"    => "N",

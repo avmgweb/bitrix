@@ -34,9 +34,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 			<?
 			$APPLICATION->IncludeComponent
 				(
-				"av:form_elements", "av_site_alt",
+				"av:form.button", "av-alt",
 					[
-					"TYPE"        => 'button',
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => $arResult["LIST_PAGE_URL"],
 					"TITLE"       => Loc::getMessage("AV_PRODUCTS_VIEW_BACK_LINK")
@@ -46,9 +45,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 			foreach($arParams["ADDITIONAL_LINKS"] as $index => $link)
 				$APPLICATION->IncludeComponent
 					(
-					"av:form_elements", "av_site_alt",
+					"av:form.button", "av-alt",
 						[
-						"TYPE"        => 'button',
 						"BUTTON_TYPE" => 'link',
 						"LINK"        => $link,
 						"TITLE"       => $arParams["ADDITIONAL_LINKS_TITLES"][$index]

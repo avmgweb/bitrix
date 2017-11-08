@@ -21,8 +21,9 @@ $basketItemObject   = NULL;
 $operationType      = $request->getPost("operationType");
 $resultOutput       =
 	[
-	"result" => "error",
-	"itemId" => 0
+	"result"       => "error",
+	"itemId"       => 0,
+	"itemQuantity" => 0
 	];
 
 if($siteId)                        $basketObject     = Basket::loadItemsForFUser(Fuser::getId(), $siteId);
@@ -34,17 +35,21 @@ if($basketItemObject && $operationType == "changeQuantity" && $basketItemQuantit
 	{
 	$basketItemObject->setField("QUANTITY", $basketItemQuantity);
 	$basketObject->save();
-	$resultOutput["result"] = "quantityChanged";
-	$resultOutput["itemId"] = $basketItemObject->getField("ID");
+	$resultOutput["result"]          = "quantityChanged";
+	$resultOutput["itemId"]          = $basketItemObject->getField("ID");
+	$resultOutput["productId"]       = $basketItemObject->getField("PRODUCT_ID");
+	$resultOutput["productQuantity"] = $basketItemObject->getField("QUANTITY");
 	}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ delete ------------------------------ */
 /* -------------------------------------------------------------------- */
 elseif($basketItemObject && $operationType == "delete")
 	{
+	$resultOutput["result"]    = "deleted";
+	$resultOutput["itemId"]    = $basketItemObject->getField("ID");
+	$resultOutput["productId"] = $basketItemObject->getField("PRODUCT_ID");
 	$basketItemObject->delete();
 	$basketObject->save();
-	$resultOutput["result"] = "deleted";
 	}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ delay ------------------------------- */
@@ -53,8 +58,9 @@ elseif($basketItemObject && $operationType == "delay" && $basketItemObject->getF
 	{
 	$basketItemObject->setField("DELAY", "Y");
 	$basketObject->save();
-	$resultOutput["result"] = "delayed";
-	$resultOutput["itemId"] = $basketItemObject->getField("ID");
+	$resultOutput["result"]    = "delayed";
+	$resultOutput["itemId"]    = $basketItemObject->getField("ID");
+	$resultOutput["productId"] = $basketItemObject->getField("PRODUCT_ID");
 	}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ return ------------------------------ */
@@ -77,12 +83,14 @@ elseif($basketItemObject && $operationType == "return" && $basketItemObject->get
 			$sameProductItemObject->getField("QUANTITY") + $basketItemObject->getField("QUANTITY")
 			);
 		$basketItemObject->delete();
-		$resultOutput["itemId"] = $sameProductItemObject->getField("ID");
+		$resultOutput["itemId"]    = $sameProductItemObject->getField("ID");
+		$resultOutput["productId"] = $sameProductItemObject->getField("PRODUCT_ID");
 		}
 	else
 		{
 		$basketItemObject->setField("DELAY", "N");
-		$resultOutput["itemId"] = $basketItemObject->getField("ID");
+		$resultOutput["itemId"]    = $basketItemObject->getField("ID");
+		$resultOutput["productId"] = $basketItemObject->getField("PRODUCT_ID");
 		}
 
 	$basketObject->save();

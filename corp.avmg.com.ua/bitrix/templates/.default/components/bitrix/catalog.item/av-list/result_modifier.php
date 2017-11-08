@@ -89,3 +89,10 @@ foreach($arResult["OFFERS"] as $index => $offerInfo)
 
 			if($value) $arResult["OFFERS_VALUES"][$propInfo["ID"]]["VALUES"][] = $value;
 			}
+/* ------------------------------------------- */
+/* --------------- props clear --------------- */
+/* ------------------------------------------- */
+foreach($arResult["OFFERS_VALUES"] as $index => $offerInfo)
+	if(!count($offerInfo["VALUES"]))
+		unset($arResult["OFFERS_VALUES"][$index]);
+$arResult["OFFERS_VALUES"] = array_values($arResult["OFFERS_VALUES"]);

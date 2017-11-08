@@ -213,19 +213,27 @@ function CreateAvAlertPopup(alertText, type)
 		return this.each(function()
             {
 			var
-				$img      = $(this).find("img"),
-			    imgWidth  = $img.attr("data-natural-width"),
-			    imgHeight = $img.attr("data-natural-height");
+				$img           = $(this).find("img"),
+			    getNaturalSize = function()
+					{
+					$img
+						.attr("data-natural-width",  $img.prop("naturalWidth"))
+						.attr("data-natural-height", $img.prop("naturalHeight"))
+						.floodImageSetSize();
+					};
 			if(!$img.length) return;
 
 			if(!$img.attr("data-natural-width") || !$img.attr("data-natural-height"))
-	            $(window).load(function()
-		            {
-		            $img
-		                .attr("data-natural-width",  $img.prop("naturalWidth"))
-		                .attr("data-natural-height", $img.prop("naturalHeight"))
-		                .floodImageSetSize();
-		            });
+				{
+				if(window.loaded)
+					getNaturalSize();
+				else
+					$(window).load(function()
+						{
+						getNaturalSize();
+						window.loaded = true;
+						});
+				}
 
             $img.floodImageSetSize();
             });
@@ -239,24 +247,42 @@ function CreateAvAlertPopup(alertText, type)
 			imgHeight  = $img.attr("data-natural-height");
 		if(!$img.length || !imgWidth || !imgHeight) return;
 
-		$img.add($imgParent).removeAttr("style");
-		$imgParent.css("overflow", "hidden");
+		$img.add($imgParent)
+		    .removeAttr("style");
+		$imgParent
+			.css
+				({
+				"display" : "flex",
+				"overflow": "hidden"
+				})
+			.removeAttr("data-image-flooded-by-width")
+			.removeAttr("data-image-flooded-by-height");
 
 		if(imgWidth * $imgParent.height() > $imgParent.width() * imgHeight)
+			{
+			$imgParent
+				.css
+					({
+					"align-items": "center"
+					})
+				.attr("data-image-flooded-by-height", true);
 			$img.css
-				({
-				"margin-left": "50%",
-				"transform"  : "translateX(-50%)",
-				"width"      : "auto",
-				"height"     : "100%"
-				});
+			    ({
+			    "margin-left": "50%",
+			    "transform"  : "translateX(-50%)",
+			    "width"      : "auto",
+			    "height"     : "100%"
+			    });
+			}
 		else
 			{
-			$imgParent.css
-				({
-				"align-items": "center",
-				"display"    : "flex"
-				});
+			$imgParent
+				.css
+					({
+					"align-items"    : "center",
+					"justify-content": "center"
+					})
+				.attr("data-image-flooded-by-width", true);
 			$img.css
 				({
 				"width" : "100%",

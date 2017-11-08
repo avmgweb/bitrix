@@ -80,7 +80,7 @@ $bracketLevel = 0;
 				<?
 				$APPLICATION->IncludeComponent
 					(
-					"av:form.button", "av_corp",
+					"av:form.button", "av-corp",
 						[
 						"BUTTON_TYPE" => 'link',
 						"LINK"        => $itemInfo["URL"],

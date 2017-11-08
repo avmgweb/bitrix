@@ -4,7 +4,7 @@
 (function($)
 	{
 	/* ------------------------------------------- */
-	/* ---------- search set need mode ----------- */
+	/* ------------- prepare search -------------- */
 	/* ------------------------------------------- */
 	jQuery.fn.prepareAvShopSearchTitle = function()
 		{
@@ -29,19 +29,12 @@
 
 			if(currentMode != needMode)
 				{
-				$(document)
-					.trigger("avShopSearchTitleNormolize");
-				$searchBlock
-					.removeClass("active")
-					.removeClass("run");
-				$seacrhResultBlock
-					.hide();
+				$(document).trigger("avShopSearchTitleNormolize");
+				$searchBlock.removeClass("active");
+				$seacrhResultBlock.hide();
 
 				if(transformed)
-					{
-					$searchBlock.find(":text").hide();
-					$searchBlock.find(".placeholder").hide();
-					}
+					$searchBlock.find(":text, .placeholder").hide();
 				else
 					{
 					$searchBlock.find(":text").hide();
@@ -71,8 +64,8 @@
 				$placeholder
 					.hide();
 				$searchBlock
-					.css("overflow", "hidden")
-					.addClass("run");
+					.addClass("active")
+					.css("overflow", "hidden");
 				$input
 					.css
 						({
@@ -81,16 +74,16 @@
 						})
 					.animate({"margin-right": 0}, 800, function()
 						{
-						$searchBlock.addClass("active").removeAttr("style");
-						$input.removeAttr("style").show().focus();
+						$searchBlock.add($input).removeAttr("style");
+						$input.show().focus();
 						if(callback) callback.call($searchBlock);
 						});
 				}
 			else
 				{
+				$searchBlock.addClass("active");
 				$input.show();
 				$placeholder.hide();
-				$searchBlock.addClass("active");
 				if(callback) callback.call($searchBlock);
 				}
 			});
@@ -156,10 +149,11 @@
 			$seacrhResultBlock
 				.css
 					({
-					"position": "absolute",
-					"top"     : $searchBlock.offset().top + $searchBlock.height() + 10,
+					"position": "fixed",
+					"top"     : $searchBlock.offset().top + $searchBlock.height() + 5 - $(window).scrollTop(),
 					"left"    : $searchBlock.offset().left,
-					"width"   : $searchBlock.width()
+					"width"   : $searchBlock.width(),
+					"z-index" : 500
 					});
 
 			if(!$seacrhResultBlock.is(":visible") && $seacrhResultBlock.attr("data-empty") != "Y")
@@ -192,73 +186,110 @@
 				callback.call($seacrhResultBlock);
 			});
 		};
+	/* ------------------------------------------- */
+	/* ------------- position result ------------- */
+	/* ------------------------------------------- */
+	jQuery.fn.positionAvShopSearchTitle = function()
+		{
+		return this.each(function()
+			{
+			var
+				$seacrhResultBlock      = $(this).filter(".av-shop-search-title-result"),
+				$searchBlock            = $(".av-shop-search-title[data-search-id=\""+$seacrhResultBlock.attr("data-search-id")+"\"]"),
+				scrollTop               = $(window).scrollTop(),
+				scrollBottom            = scrollTop + $(window).height(),
+				seacrhResultBlockTop    = $seacrhResultBlock.offset().top,
+				seacrhResultBlockBottom = seacrhResultBlockTop + $seacrhResultBlock.height(),
+				searchBlockBottom       = $searchBlock.offset().top + $searchBlock.height(),
+				lastScrollTop           = $seacrhResultBlock.data("data-scroll-top") ? $seacrhResultBlock.data("data-scroll-top") : 0,
+				scrollDirection         = scrollTop > lastScrollTop ? "down" : "up";
+			if(!$searchBlock.length || !$seacrhResultBlock.length || !$seacrhResultBlock.is(":visible")) return;
+			$seacrhResultBlock.data("data-scroll-top", scrollTop);
+
+			if(seacrhResultBlockBottom > scrollBottom && scrollDirection == "down")
+				$seacrhResultBlock.css
+					({
+					"position": "absolute",
+					"top"     : seacrhResultBlockTop,
+					"z-index" : 50
+					});
+			else if(seacrhResultBlockTop > searchBlockBottom && scrollDirection == "up")
+				$seacrhResultBlock.css
+					({
+					"position": "fixed",
+					"top"     : searchBlockBottom - scrollTop + 5,
+					"z-index" : 500
+					});
+			});
+		};
 	})(jQuery);
 /* -------------------------------------------------------------------- */
 /* ----------------------------- handlers ----------------------------- */
 /* -------------------------------------------------------------------- */
 $(function()
 	{
-	$(".av-shop-search-title").prepareAvShopSearchTitle();
-	$(".av-shop-search-title-result").appendTo("body");
-
-	$(document)
-		/* ------------------------------------------- */
-		/* ----------------- behavior ---------------- */
-		/* ------------------------------------------- */
-		.on("vclick", ".av-shop-search-title .placeholder, .av-shop-search-title .icon", function()
+	var
+		$searchBlock       = $(".av-shop-search-title").prepareAvShopSearchTitle(),
+		$seacrhResultBlock = $(".av-shop-search-title-result").appendTo("body");
+	/* ------------------------------------------- */
+	/* -------------- activate field ------------- */
+	/* ------------------------------------------- */
+	$searchBlock
+		.on("vclick", ".placeholder, .icon", function()
 			{
-			$(this)
-				.closest(".av-shop-search-title")
-				.find(":text").focus();
+			$(this).parent().find(":text").focus();
 			})
-		.on("focus", ".av-shop-search-title :text", function()
+		.on("focus", ":text", function()
 			{
 			var
-				$searchBlock       = $(this).closest(".av-shop-search-title"),
-				$seacrhResultBlock = $(".av-shop-search-title-result[data-search-id=\""+$searchBlock.attr("data-search-id")+"\"]");
+				$searchBlockItem       = $(this).parent(),
+				$seacrhResultBlockItem = $seacrhResultBlock.filter("[data-search-id=\""+$searchBlockItem.attr("data-search-id")+"\"]");
 
-			$searchBlock.activateAvShopSearchTitle(function()
-				{
-				$seacrhResultBlock.showAvShopSearchTitleResult();
-				});
-			})
-		.on("vclick", function()
-			{
-			$(".av-shop-search-title.active").each(function()
-				{
-				var
-					$searchBlock       = $(this),
-					$seacrhResultBlock = $(".av-shop-search-title-result[data-search-id=\""+$searchBlock.attr("data-search-id")+"\"]");
-				if($searchBlock.isClicked() || $seacrhResultBlock.isClicked()) return;
-
-				$seacrhResultBlock.hideAvShopSearchTitleResult(function()
+			if(!$searchBlockItem.hasClass("active"))
+				$searchBlockItem.activateAvShopSearchTitle(function()
 					{
-					$searchBlock.diactivateAvShopSearchTitle();
+					$seacrhResultBlockItem.showAvShopSearchTitleResult();
 					});
-				});
-			})
-		/* ------------------------------------------- */
-		/* ------------------ keyup ------------------ */
-		/* ------------------------------------------- */
-		.on("keyup", ".av-shop-search-title :text", function(event)
+			});
+	/* ------------------------------------------- */
+	/* ------------- diactivate field ------------ */
+	/* ------------------------------------------- */
+	$searchBlock
+		.on("focusout", ":text", function()
 			{
 			var
-				keyCode            = event.keyCode,
-				$input             = $(this),
-				$searchBlock       = $input.closest(".av-shop-search-title"),
-				$seacrhResultBlock = $(".av-shop-search-title-result[data-search-id=\""+$searchBlock.attr("data-search-id")+"\"]"),
-				$selectedItem      = $seacrhResultBlock.find("a.active"),
-				inputValue         = $input.val().length >= 2 ? $input.val() : "";
-			if(!$seacrhResultBlock.length) return;
+				$searchBlockItem       = $(this).parent(),
+				$seacrhResultBlockItem = $seacrhResultBlock.filter("[data-search-id=\""+$searchBlockItem.attr("data-search-id")+"\"]");
+
+			if($searchBlockItem.hasClass("active"))
+				$seacrhResultBlockItem.hideAvShopSearchTitleResult(function()
+					{
+					$searchBlockItem.diactivateAvShopSearchTitle();
+					});
+			});
+	/* ------------------------------------------- */
+	/* ------------------ keyup ------------------ */
+	/* ------------------------------------------- */
+	$searchBlock
+		.on("keyup", ":text", function(event)
+			{
+			var
+				keyCode                = event.keyCode,
+				$input                 = $(this),
+				$searchBlockItem       = $input.parent(),
+				$seacrhResultBlockItem = $seacrhResultBlock.filter("[data-search-id=\""+$searchBlockItem.attr("data-search-id")+"\"]"),
+				$selectedItem          = $seacrhResultBlockItem.find("a.active"),
+				inputValue             = $input.val().length >= 2 ? $input.val() : "";
+			if(!$seacrhResultBlockItem.length) return;
 			/* ---------------------------- */
 			/* -------- navigation -------- */
 			/* ---------------------------- */
-			if((keyCode == 38 || keyCode == 40) && $seacrhResultBlock.is(":visible"))
+			if((keyCode == 38 || keyCode == 40) && $seacrhResultBlockItem.is(":visible"))
 				{
 				var elementsLinks = [];
 
 				$selectedItem.removeClass("active");
-				$seacrhResultBlock.find("a").each(function() {elementsLinks.push($(this).attr("href"))});
+				$seacrhResultBlockItem.find("a").each(function() {elementsLinks.push($(this).attr("href"))});
 				if(!elementsLinks.length) return;
 
 				var selectIndex = elementsLinks.indexOf($selectedItem.attr("href"));
@@ -273,7 +304,7 @@ $(function()
 					if(keyCode == 38) selectIndex = elementsLinks.length - 1;
 					}
 
-				$seacrhResultBlock.find("a[href=\""+elementsLinks[selectIndex]+"\"]").addClass("active");
+				$seacrhResultBlockItem.find("a[href=\""+elementsLinks[selectIndex]+"\"]").addClass("active");
 				}
 			/* ---------------------------- */
 			/* -------- item select ------- */
@@ -288,7 +319,7 @@ $(function()
 			/* ---------------------------- */
 			else if(keyCode == 13 && inputValue)
 				{
-				window.location.replace($searchBlock.attr("data-search-page").replace("#SEACRH#", inputValue));
+				window.location.replace($searchBlockItem.attr("data-search-page").replace("#SEACRH#", inputValue));
 				AvWaitingScreen("on");
 				}
 			/* ---------------------------- */
@@ -306,13 +337,13 @@ $(function()
 						{
 						$input.attr("data-search_value", inputValue);
 						if(result)
-							$seacrhResultBlock
+							$seacrhResultBlockItem
 								.html(result)
 								.attr("data-empty", "N")
 								.showAvShopSearchTitleResult();
 						else
-							$seacrhResultBlock
-								.html("<div class=\"empty-result\">"+$searchBlock.attr("data-empty-result-title")+"</div>")
+							$seacrhResultBlockItem
+								.html("<div class=\"empty-result\">"+$searchBlockItem.attr("data-empty-result-title")+"</div>")
 								.attr("data-empty", "N")
 								.showAvShopSearchTitleResult()
 								.attr("data-empty", "Y");
@@ -325,11 +356,11 @@ $(function()
 	$(window)
 		.scroll(function()
 			{
-			$(".av-shop-search-title-result:visible").showAvShopSearchTitleResult();
+			$seacrhResultBlock.filter(":visible").positionAvShopSearchTitle();
 			})
 		.resize(function()
 			{
-			$(".av-shop-search-title-result:visible").showAvShopSearchTitleResult();
-			$(".av-shop-search-title").prepareAvShopSearchTitle();
+			$seacrhResultBlock.filter(":visible").showAvShopSearchTitleResult();
+			$searchBlock.prepareAvShopSearchTitle();
 			});
 	});

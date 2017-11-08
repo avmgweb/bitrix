@@ -12,32 +12,29 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 	<?foreach($arResult["FIELDS_INFO"] as $fieldInfo):?>
 	<div class="field-row <?=$fieldInfo["FIELD"]?>">
 		<?
-		$componenTemplate = '.default';
-		$componentParams  =
-			[
-			"TYPE"  => 'input',
-			"NAME"  => $fieldInfo["NAME"],
-			"VALUE" => $fieldInfo["VALUE"],
-			"TITLE" => $fieldInfo["TITLE"]
-			];
-
-		switch($fieldInfo["TYPE"])
-			{
-			case "LIST"  : $componentParams["TYPE"] = 'select';$componentParams["LIST"] = $fieldInfo["LIST"];break;
-			case "SEARCH": $componentParams["TYPE"] = 'element_search';                                      break;
-			}
-		switch($fieldInfo["FIELD"])
-			{
-			case "IBLOCK_ID": $componentParams["TITLE"] = Loc::getMessage("AV_DIRECTORIES_FILTER_IBLOCK_LIST_DEFAULT");$componenTemplate = 'default_alt';break;
-			case "NAME"     : $componentParams["TITLE"] = Loc::getMessage("AV_DIRECTORIES_FILTER_SEARCH_PLACEHOLDER");                                   break;
-			}
-
-		$APPLICATION->IncludeComponent
-			(
-			"av:form_elements", $componenTemplate,
-			$componentParams,
-			false, ["HIDE_ICONS" => 'Y']
-			);
+		if($fieldInfo["TYPE"] == "LIST" && $fieldInfo["FIELD"] == "IBLOCK_ID")
+			$APPLICATION->IncludeComponent
+				(
+				"av:form.select", "av-alt",
+					[
+					"NAME"  => $fieldInfo["NAME"],
+					"VALUE" => $fieldInfo["VALUE"],
+					"LIST"  => $fieldInfo["LIST"],
+					"TITLE" => Loc::getMessage("AV_DIRECTORIES_FILTER_IBLOCK_LIST_DEFAULT")
+					],
+				false, ["HIDE_ICONS" => 'Y']
+				);
+		elseif($fieldInfo["TYPE"] == "SEARCH" && $fieldInfo["FIELD"] == "NAME")
+			$APPLICATION->IncludeComponent
+				(
+				"av:form.input", "av-search",
+					[
+					"NAME"        => $fieldInfo["NAME"],
+					"VALUE"       => $fieldInfo["VALUE"],
+					"PLACEHOLDER" => Loc::getMessage("AV_DIRECTORIES_FILTER_SEARCH_PLACEHOLDER")
+					],
+				false, ["HIDE_ICONS" => 'Y']
+				);
 		?>
 	</div>
 	<?endforeach?>
@@ -52,7 +49,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "default_alt",
+			"av:form.button", "av-alt2",
 				[
 				"TYPE"  => 'button',
 				"NAME"  => $arResult["CANCEL_NAME"],

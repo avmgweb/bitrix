@@ -8,8 +8,8 @@ $aMenuLinks = Array(
 		"" 
 	),
 	Array(
-		"Підтримка", 
-		"/user/support/", 
+		"Звернення до компанії", 
+		"/user/uvaga/", 
 		Array(), 
 		Array(), 
 		"" 

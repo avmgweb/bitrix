@@ -14,21 +14,16 @@
 .av-form-button-shop-alt:hover,
 .av-form-button-shop-alt:focus,
 .av-form-button-shop-alt:active,
-.av-form-button-shop-alt:visited
-	{
-	outline: none;
-	text-decoration: none;
-	}
+.av-form-button-shop-alt:visited {text-decoration: none}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ button ------------------------------ */
 /* -------------------------------------------------------------------- */
-.av-form-button-shop-alt,
-.av-form-button-shop-alt:visited
+.av-form-button-shop-alt
 	{
 	background: #FFF;
 	border: 1px solid #CC0000;
 	border-radius: 2px;
-	color: #CC0000 !important;
+	color: #CC0000;
 	cursor: pointer;
 	display: inline-block;
 	font-size: calc(100% - 2px);
@@ -36,7 +31,8 @@
 	transition: .3s;
 	text-align: center;
 	}
+.av-form-button-shop-alt:visited {color: #CC0000}
 .av-form-button-shop-alt:hover,
 .av-form-button-shop-alt:active,
 .av-form-button-shop-alt:focus   {box-shadow: 0 2px 4px rgba(76,82,85,0.25)}
-.av-form-button-shop-alt:active  {background: #CC0000;color: #FFF !important}
+.av-form-button-shop-alt:active  {background: #CC0000;color: #FFF}

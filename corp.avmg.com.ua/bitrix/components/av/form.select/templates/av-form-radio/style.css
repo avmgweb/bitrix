@@ -1,0 +1,13 @@
+.av-form-styled-select-radio > label
+	{
+	color: #B6C0C6;
+	font-size: calc(100% - 2px);
+	padding: 5px;
+	}
+.av-form-styled-select-radio.required > label::after
+	{
+	color: #CC0000;
+	content: "*";
+	display: inline-block;
+	margin-left: 3px;
+	}

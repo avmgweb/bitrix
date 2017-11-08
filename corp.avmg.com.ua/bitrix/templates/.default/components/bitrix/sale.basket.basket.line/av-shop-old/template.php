@@ -71,7 +71,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 				<?
 				$APPLICATION->IncludeComponent
 					(
-					"av:form.button", "av_alt2",
+					"av:form.button", "av-alt2",
 						[
 						"BUTTON_TYPE" => 'link',
 						"LINK"        => $arParams["PATH_TO_BASKET"],

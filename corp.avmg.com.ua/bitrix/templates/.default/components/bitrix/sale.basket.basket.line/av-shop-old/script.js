@@ -60,7 +60,7 @@ $(function()
 						answerElementId = answerObj ? answerObj.element_id : 0;
 					if(answerResult == 'error' || answerElementId != elementId) return;
 
-					$('body')
+					$(document)
 						.data("catalog_element", $itemRow.attr("data-product-id"))
 						.trigger("avCatalogRefresh");
 					}
@@ -69,7 +69,7 @@ $(function()
 		/* ------------------------------------------- */
 		/* ------------- refresh catalog ------------- */
 		/* ------------------------------------------- */
-		.on("avCatalogRefresh", 'body', function()
+		.on("avCatalogRefresh", function()
 			{
 			var
 				$basket      = $('.av-basket-line'),

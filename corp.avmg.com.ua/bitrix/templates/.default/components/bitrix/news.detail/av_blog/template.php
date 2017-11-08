@@ -129,9 +129,8 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 			<?
 			$APPLICATION->IncludeComponent
 				(
-				"av:form_elements", "av_site_alt",
+				"av:form.button", "av-alt",
 					[
-					"TYPE"        => 'button',
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => $arResult["LIST_PAGE_URL"],
 					"TITLE"       => Loc::getMessage("AV_BLOG_VIEW_BACK_LINK")

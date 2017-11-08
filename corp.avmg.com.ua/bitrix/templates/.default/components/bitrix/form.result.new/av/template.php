@@ -6,7 +6,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* --------------------------- form sended ---------------------------- */
 /* -------------------------------------------------------------------- */
 ?>
-<?if($arResult["isFormNote"] == 'Y'):?>
+<?if($arResult["isFormNote"] == "Y"):?>
 <div class="av-form-result-ok"><?=Loc::getMessage("AV_FORM_RESULT_OK")?></div>
 <?endif?>
 <?
@@ -14,45 +14,153 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* ------------------------------- form ------------------------------- */
 /* -------------------------------------------------------------------- */
 ?>
-<?if($arResult["isFormNote"] != 'Y'):?>
+<?if($arResult["isFormNote"] != "Y"):?>
 <div class="av-form" data-avat-form-id="<?=$arResult["arForm"]["ID"]?>">
-	<?if($arResult["isFormErrors"] == 'Y'):?>
+	<?if($arResult["isFormErrors"] == "Y"):?>
 	<div class="errors-block"><?=$arResult["FORM_ERRORS"]?></div>
 	<?endif?>
 
 	<?=$arResult["FORM_HEADER"]?>
-		<?foreach($arResult["FIELDS"] as $fieldCode => $fieldInfo):?>
-		<div class="field-row <?=$fieldCode?>">
+		<?foreach($arResult["FIELDS"] as $fieldInfo):?>
+		<div>
 			<?
-			$fieldComponentParams =
-				[
-				"TYPE"     => 'input',
-				"NAME"     => $fieldInfo["NAME"],
-				"VALUE"    => $fieldInfo["VALUE"],
-				"TITLE"    => $fieldInfo["TITLE"],
-				"REQUIRED" => $fieldInfo["REQUIRED"]
-				];
-
-			switch($fieldInfo["TYPE"])
-				{
-				case "textarea": $fieldComponentParams["TYPE"] = 'textarea';                                                break;
-				case "password": $fieldComponentParams["TYPE"] = 'password';                                                break;
-				case "date"    : $fieldComponentParams["TYPE"] = 'date';                                                    break;
-				case "radio"   : $fieldComponentParams["TYPE"] = 'radio';$fieldComponentParams["LIST"] = $fieldInfo["LIST"];break;
-				case "dropdown": $fieldComponentParams["TYPE"] = 'list'; $fieldComponentParams["LIST"] = $fieldInfo["LIST"];break;
-				case "file"    :
-				case "image"   : $fieldComponentParams["TYPE"] = 'file';                                                    break;
-				case "email"   : $fieldComponentParams["TYPE"] = 'input';                                                   break;
-				}
-			if($fieldCode == 'contact_phone') $fieldComponentParams["TYPE"] = 'phone';
-
-			$APPLICATION->IncludeComponent
-				(
-				"av:form_elements", "av_site",
-				$fieldComponentParams,
-				false, ["HIDE_ICONS" => 'Y']
-				);
+			/* ------------------------------------------- */
+			/* -------------- checkbox list -------------- */
+			/* ------------------------------------------- */
 			?>
+			<?if($fieldInfo["TYPE"] == "checkbox"):?>
+				<?
+				$APPLICATION->IncludeComponent
+					(
+					"av:form.select", "av-form-checkbox",
+						[
+						"NAME"     => $fieldInfo["NAME"],
+						"VALUE"    => $fieldInfo["VALUE"],
+						"LIST"     => $fieldInfo["LIST"],
+						"TITLE"    => $fieldInfo["TITLE"],
+						"REQUIRED" => $fieldInfo["REQUIRED"]
+						],
+					false, ["HIDE_ICONS" => "Y"]
+					);
+				?>
+			<?
+			/* ------------------------------------------- */
+			/* --------------- radio list ---------------- */
+			/* ------------------------------------------- */
+			?>
+			<?elseif($fieldInfo["TYPE"] == "radio"):?>
+				<?
+				$APPLICATION->IncludeComponent
+					(
+					"av:form.select", "av-form-radio",
+						[
+						"NAME"     => $fieldInfo["NAME"],
+						"VALUE"    => $fieldInfo["VALUE"],
+						"LIST"     => $fieldInfo["LIST"],
+						"TITLE"    => $fieldInfo["TITLE"],
+						"REQUIRED" => $fieldInfo["REQUIRED"]
+						],
+					false, ["HIDE_ICONS" => "Y"]
+					);
+				?>
+			<?
+			/* ------------------------------------------- */
+			/* ------------------ list ------------------- */
+			/* ------------------------------------------- */
+			?>
+			<?elseif($fieldInfo["TYPE"] == "dropdown"):?>
+				<?
+				$APPLICATION->IncludeComponent
+					(
+					"av:form.select", "av-form",
+						[
+						"NAME"        => $fieldInfo["NAME"],
+						"VALUE"       => $fieldInfo["VALUE"],
+						"LIST"        => $fieldInfo["LIST"],
+						"TITLE"       => $fieldInfo["TITLE"],
+						"EMPTY_TITLE" => Loc::getMessage("AV_FORM_LIST_EMPTY_TITLE"),
+						"REQUIRED"    => $fieldInfo["REQUIRED"]
+						],
+					false, ["HIDE_ICONS" => "Y"]
+					);
+				?>
+			<?
+			/* ------------------------------------------- */
+			/* ---------------- textarea ----------------- */
+			/* ------------------------------------------- */
+			?>
+			<?elseif($fieldInfo["TYPE"] == "textarea"):?>
+				<?
+				$APPLICATION->IncludeComponent
+					(
+					"av:form.textarea", "av-form",
+						[
+						"NAME"     => $fieldInfo["NAME"],
+						"VALUE"    => $fieldInfo["VALUE"],
+						"TITLE"    => $fieldInfo["TITLE"],
+						"REQUIRED" => $fieldInfo["REQUIRED"]
+						],
+					false, ["HIDE_ICONS" => "Y"]
+					);
+				?>
+			<?
+			/* ------------------------------------------- */
+			/* ------------------ phone ------------------ */
+			/* ------------------------------------------- */
+			?>
+			<?elseif($fieldInfo["TYPE"] == "phone"):?>
+				<?
+				$APPLICATION->IncludeComponent
+					(
+					"av:form.input.phone", "av-form",
+						[
+						"NAME"     => $fieldInfo["NAME"],
+						"VALUE"    => $fieldInfo["VALUE"],
+						"TITLE"    => $fieldInfo["TITLE"],
+						"REQUIRED" => $fieldInfo["REQUIRED"]
+						],
+					false, ["HIDE_ICONS" => "Y"]
+					);
+				?>
+			<?
+			/* ------------------------------------------- */
+			/* ---------------- file/image --------------- */
+			/* ------------------------------------------- */
+			?>
+			<?elseif($fieldInfo["TYPE"] == "file" || $fieldInfo["TYPE"] == "image"):?>
+				<?
+				$APPLICATION->IncludeComponent
+					(
+					"av:form.file", "av-form",
+						[
+						"NAME"     => $fieldInfo["NAME"],
+						"VALUE"    => $fieldInfo["VALUE"],
+						"TITLE"    => $fieldInfo["TITLE"],
+						"REQUIRED" => $fieldInfo["REQUIRED"]
+						],
+					false, ["HIDE_ICONS" => "Y"]
+					);
+				?>
+			<?
+			/* ------------------------------------------- */
+			/* ------------------ input ------------------ */
+			/* ------------------------------------------- */
+			?>
+			<?else:?>
+				<?
+				$APPLICATION->IncludeComponent
+					(
+					"av:form.input", "av-form",
+						[
+						"NAME"     => $fieldInfo["NAME"],
+						"VALUE"    => $fieldInfo["VALUE"],
+						"TITLE"    => $fieldInfo["TITLE"],
+						"REQUIRED" => $fieldInfo["REQUIRED"]
+						],
+					false, ["HIDE_ICONS" => "Y"]
+					);
+				?>
+			<?endif?>
 		</div>
 		<?endforeach?>
 
@@ -60,14 +168,13 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 			<?
 			$APPLICATION->IncludeComponent
 				(
-				"av:form_elements", "av_site",
+				"av:form.button", "av",
 					[
-					"TYPE"        => 'button',
-					"BUTTON_TYPE" => 'submit',
-					"NAME"        => 'web_form_submit',
+					"BUTTON_TYPE" => "submit",
+					"NAME"        => "web_form_submit",
 					"TITLE"       => Loc::getMessage("AV_FORM_SUBMIT")
 					],
-				false, ["HIDE_ICONS" => 'Y']
+				false, ["HIDE_ICONS" => "Y"]
 				);
 			?>
 		</div>
@@ -80,13 +187,13 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* -------------------------------------------------------------------- */
 ?>
 <script>
-	BX.message({"AV_FORM_FORM_VALIDATION_ALERT": '<?=Loc::getMessage("AV_FORM_FORM_VALIDATION_ALERT")?>'});
-	BX.message({"AV_FORM_RESULT_OK_MESSAGE"    : '<?=Loc::getMessage("AV_FORM_RESULT_OK_MESSAGE")?>'});
+	BX.message({"AV_FORM_FORM_VALIDATION_ALERT": "<?=Loc::getMessage("AV_FORM_FORM_VALIDATION_ALERT")?>"});
+	BX.message({"AV_FORM_RESULT_OK_MESSAGE"    : "<?=Loc::getMessage("AV_FORM_RESULT_OK_MESSAGE")?>"});
 
-	<?if($arResult["isFormNote"] == 'Y'):?>
+	<?if($arResult["isFormNote"] == "Y"):?>
 	AvBlurScreen("on", 1000);
 	CreateAvAlertPopup(BX.message("AV_FORM_RESULT_OK_MESSAGE"), "ok")
-		.positionCenter(1100, 'Y')
+		.positionCenter(1100, "Y")
 		.onClickout(function()
 			{
 			$(this).remove();

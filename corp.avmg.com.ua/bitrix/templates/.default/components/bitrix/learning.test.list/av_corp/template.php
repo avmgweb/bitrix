@@ -45,7 +45,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form.button", "av_corp_alt3",
+			"av:form.button", "av-corp-alt3",
 				[
 				"BUTTON_TYPE" => 'submit',
 				"NAME"        => 'next',

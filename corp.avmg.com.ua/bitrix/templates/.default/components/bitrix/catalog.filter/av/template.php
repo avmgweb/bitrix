@@ -61,7 +61,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		elseif($fieldInfo["TYPE"] == 'RADIO')
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.select", 'av_alt',
+				"av:form.select", 'av-alt',
 					[
 					"NAME"  => $fieldInfo["INPUT_NAME"],
 					"VALUE" => $fieldInfo["INPUT_VALUE"],
@@ -84,7 +84,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		elseif($fieldInfo["TYPE"] == 'SEARCH')
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.input", 'av_search',
+				"av:form.input", 'av-search',
 					[
 					"NAME"        => $fieldInfo["INPUT_NAME"],
 					"VALUE"       => $fieldInfo["INPUT_VALUE"],
@@ -108,7 +108,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		if($arParams["LIST_URL"] && $arParams["SAVE_IN_SESSION"] != 'Y')
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.button", "av_alt2",
+				"av:form.button", "av-alt2",
 					[
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => $arParams["LIST_URL"],
@@ -120,7 +120,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		else
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.button", "av_alt2",
+				"av:form.button", "av-alt2",
 					[
 					"NAME"  => 'del_filter',
 					"TITLE" => Loc::getMessage("AV_FILTER_CANCEL_FILTER"),

@@ -12,7 +12,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form.input", "av_corp_learning_search",
+			"av:form.input", "av-corp-learning-search",
 				[
 				"NAME"         => 'q',
 				"TITLE"        => Loc::getMessage("AV_LEARNING_LIST_SEARCH_TITLE"),

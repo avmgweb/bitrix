@@ -75,7 +75,7 @@
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form.checkbox", "av",
+			"av:form.checkbox", "av-form",
 				[
 				"NAME"  => 'USER_REMEMBER',
 				"TITLE" => GetMessage("AV_EDU_LOGIN_AUTH_REMEMBER_ME"),

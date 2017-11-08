@@ -22,7 +22,7 @@ Asset::getInstance()->addCss("/bitrix/css/av_site/pages/404.css");
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form.button", "av_alt",
+			"av:form.button", "av-alt",
 				[
 				"BUTTON_TYPE" => "label",
 				"TITLE"       => "Попередня сторінка",

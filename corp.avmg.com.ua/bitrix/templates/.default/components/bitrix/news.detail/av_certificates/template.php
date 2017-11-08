@@ -20,9 +20,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site_alt",
+			"av:form.button", "av-alt",
 				[
-				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'label',
 				"TITLE"       => Loc::getMessage("AV_CERTIFICATES_DETAIL_CLOSE"),
 				"ATTR"        => $arParams["CLOSE_FORM_ATTR"]
@@ -32,9 +31,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		if($arResult["DETAIL_PICTURE"]["SRC"])
 			$APPLICATION->IncludeComponent
 				(
-				"av:form_elements", "av_site",
+				"av:form.button", "av",
 					[
-					"TYPE"        => 'button',
 					"BUTTON_TYPE" => 'link',
 					"TITLE"       => Loc::getMessage("AV_CERTIFICATES_DETAIL_UPLOAD"),
 					"LINK"        => $arResult["DETAIL_PICTURE"]["SRC"],

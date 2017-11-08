@@ -1,0 +1,56 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-styled-phone input,
+.av-form-styled-phone label
+	{
+	background: transparent;
+	border: none;
+	color: inherit;
+	font-weight: normal;
+	margin:  0;
+	padding: 0;
+	outline: none;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ input ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-styled-phone
+	{
+	border-bottom: 1px solid #868B8D;
+	position: relative;
+	}
+.av-form-styled-phone.alert-input     {border-color: #CC0000}
+.av-form-styled-phone.has-placeholder {margin-top: 30px}
+
+.av-form-styled-phone input,
+.av-form-styled-phone label
+	{
+	cursor: text;
+	display: block;
+	font-size: calc(100% - 2px);
+	line-height: 30px;
+	overflow: hidden;
+	padding: 0 5px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+	}
+.av-form-styled-phone label
+	{
+	color: #B6C0C6;
+	position: absolute;
+	top:  -30px;
+	left: -5px;
+	transition: .3s;
+	}
+.av-form-styled-phone.alert-input label {color: #CC0000}
+
+.av-form-styled-phone.required label::after
+	{
+	color: #CC0000;
+	content: "*";
+	display: inline-block;
+	margin-left: 3px;
+	}
+.av-form-styled-phone.has-placeholder.on label {left: 0;top: 0}

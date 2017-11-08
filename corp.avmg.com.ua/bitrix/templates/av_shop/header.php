@@ -257,9 +257,9 @@ ob_end_clean();
 		?>
 		<div
 			id="page-workarea"
-			<?if($dirProperty["FULL_SCREEN_WORKAREA"] != "Y"):?>
+			<?if($currentDirectory != SITE_DIR):?>
 			class="
-				<?if($currentDirectory != SITE_DIR):?>responsive av-responsive-block<?endif?>
+				responsive av-responsive-block
 				<?if($leftMenuHtml):?>has-menu<?endif?>
 				"
 			<?endif?>

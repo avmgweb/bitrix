@@ -1,0 +1,14 @@
+.av-form-radio-corp       {align-items: center;display: flex}
+.av-form-radio-corp label {cursor: pointer}
+.av-form-radio-corp input {display: none}
+
+.av-form-radio-corp input + label
+	{
+	background: url(images/unchecked.svg) left center no-repeat;
+	background-size: contain;
+	margin-right: 5px;
+	width:  18px;
+	height: 18px;
+	}
+.av-form-radio-corp input:checked + label         {background-image: url(images/checked.svg)}
+.av-form-radio-corp input         + label + label {width: calc(100% - 23px)}

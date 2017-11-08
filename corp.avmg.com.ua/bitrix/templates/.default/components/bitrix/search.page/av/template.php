@@ -4,30 +4,33 @@
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "",
+			"av:form.input", "av-search",
 				[
-				"TYPE"  => 'element_search',
-				"NAME"  => 'q',
+				"NAME"  => "q",
 				"VALUE" => $arResult["REQUEST"]["QUERY"],
-				"ATTR"  => 'size="40" autocomplete="off"'
+				"ATTR"  =>
+					[
+					"size"         => 40,
+					"autocomplete" => "off"
+					]
 				],
-			false, ["HIDE_ICONS" => 'Y']
+			false, ["HIDE_ICONS" => "Y"]
 			);
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site",
+			"av:form.button", "av",
 				[
-				"TYPE"        => 'button',
-				"BUTTON_TYPE" => 'submit',
-				"TITLE"       => GetMessage("AV_SEARCH_PAGE_SEARCH")
+				"BUTTON_TYPE" => "submit",
+				"TITLE"       => GetMessage("AV_SEARCH_PAGE_SEARCH"),
+				"NAME"        => "search"
 				],
-			false, ["HIDE_ICONS" => 'Y']
+			false, ["HIDE_ICONS" => "Y"]
 			);
 		?>
-		<input type="hidden" name="how" value="<?=$arResult["REQUEST"]["HOW"] == 'd' ? 'd': 'r'?>">
+		<input type="hidden" name="how" value="<?=$arResult["REQUEST"]["HOW"] == "d" ? "d": "r"?>">
 	</form>
 
-	<?if($arParams["DISPLAY_TOP_PAGER"] == 'Y' && count($arResult["SEARCH"])):?>
+	<?if($arParams["DISPLAY_TOP_PAGER"] == "Y" && count($arResult["SEARCH"])):?>
 	<div class="pagger-cell top">
 		<?=$arResult["NAV_STRING"]?>
 	</div>
@@ -40,14 +43,13 @@
 			<?
 			$APPLICATION->IncludeComponent
 				(
-				"av:form_elements", "av_site_alt",
+				"av:form.button", "av-alt",
 					[
-					"TYPE"        => 'button',
-					"BUTTON_TYPE" => 'link',
+					"BUTTON_TYPE" => "link",
 					"LINK"        => $arParams["PRODUCTS_LINK"],
 					"TITLE"       => GetMessage("AV_SEARCH_PRODUCTS_LINK")
 					],
-				false, ["HIDE_ICONS" => 'Y']
+				false, ["HIDE_ICONS" => "Y"]
 				);
 			?>
 		</div>
@@ -65,7 +67,7 @@
 	</div>
 	<?endif?>
 
-	<?if($arParams["DISPLAY_BOTTOM_PAGER"] == 'Y' && count($arResult["SEARCH"])):?>
+	<?if($arParams["DISPLAY_BOTTOM_PAGER"] == "Y" && count($arResult["SEARCH"])):?>
 	<div class="pagger-cell bottom">
 		<?=$arResult["NAV_STRING"]?>
 	</div>

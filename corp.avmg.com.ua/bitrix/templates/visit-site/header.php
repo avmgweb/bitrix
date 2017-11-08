@@ -125,6 +125,16 @@ $hasLeftColumn = $leftMenu || (file_exists($_SERVER["DOCUMENT_ROOT"].$currentDir
 							?>
 						</div>
 
+						<div class="support-cell">
+							<?
+							$APPLICATION->IncludeComponent
+								(
+								"bitrix:main.include", "",
+								array("AREA_FILE_SHOW" => "file", "PATH" => "/include/support.php")
+								);
+							?>
+						</div>
+
 						<div class="phone-cell">
 							<?
 							$APPLICATION->IncludeComponent

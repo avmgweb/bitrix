@@ -18,30 +18,30 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		</tr>
 		<tr>
 			<td><?=Loc::getMessage("LEARNING_USER_NAME")?>:</td>
-			<td><?$APPLICATION->IncludeComponent("av:form.input", "av_corp", ["NAME" => 'NAME', "VALUE" => $arResult["USER"]["NAME"]])?></td>
+			<td><?$APPLICATION->IncludeComponent("av:form.input", "av-corp", ["NAME" => 'NAME', "VALUE" => $arResult["USER"]["NAME"]])?></td>
 		</tr>
 		<tr>
 			<td><?=Loc::getMessage("LEARNING_USER_LAST_NAME")?>:</td>
-			<td><?$APPLICATION->IncludeComponent("av:form.input", "av_corp", ["NAME" => 'LAST_NAME', "VALUE" => $arResult["USER"]["LAST_NAME"]])?></td>
+			<td><?$APPLICATION->IncludeComponent("av:form.input", "av-corp", ["NAME" => 'LAST_NAME', "VALUE" => $arResult["USER"]["LAST_NAME"]])?></td>
 		</tr>
 		<tr>
 			<td><?=Loc::getMessage("LEARNING_USER_EMAIL")?>:</td>
-			<td><?$APPLICATION->IncludeComponent("av:form.input", "av_corp", ["NAME" => 'EMAIL', "VALUE" => $arResult["USER"]["EMAIL"]])?></td>
+			<td><?$APPLICATION->IncludeComponent("av:form.input", "av-corp", ["NAME" => 'EMAIL', "VALUE" => $arResult["USER"]["EMAIL"]])?></td>
 		</tr>
 		<tr>
 			<td><?=Loc::getMessage("LEARNING_USER_PERSONAL_WWW")?>:</td>
-			<td><?$APPLICATION->IncludeComponent("av:form.input", "av_corp", ["NAME" => 'PERSONAL_WWW', "VALUE" => $arResult["USER"]["PERSONAL_WWW"]])?></td>
+			<td><?$APPLICATION->IncludeComponent("av:form.input", "av-corp", ["NAME" => 'PERSONAL_WWW', "VALUE" => $arResult["USER"]["PERSONAL_WWW"]])?></td>
 		</tr>
 		<tr>
 			<td><?=Loc::getMessage("LEARNING_USER_PERSONAL_ICQ")?>:</td>
-			<td><?$APPLICATION->IncludeComponent("av:form.input", "av_corp", ["NAME" => 'PERSONAL_ICQ', "VALUE" => $arResult["USER"]["PERSONAL_ICQ"]])?></td>
+			<td><?$APPLICATION->IncludeComponent("av:form.input", "av-corp", ["NAME" => 'PERSONAL_ICQ', "VALUE" => $arResult["USER"]["PERSONAL_ICQ"]])?></td>
 		</tr>
 		<tr>
 			<th colspan="2"><?=Loc::getMessage("LEARNING_EDIT_PROFILE")?></th>
 		</tr>
 		<tr>
 			<td><?=Loc::getMessage("LEARNING_PUBLIC_PROFILE")?>:</td>
-			<td><?$APPLICATION->IncludeComponent("av:form.checkbox", "av_corp", ["NAME" => 'PUBLIC_PROFILE', "VALUE" => 'Y', "CHECKED" => $arResult["STUDENT"]["PUBLIC_PROFILE"]])?></td>
+			<td><?$APPLICATION->IncludeComponent("av:form.checkbox", "av-corp", ["NAME" => 'PUBLIC_PROFILE', "VALUE" => 'Y', "CHECKED" => $arResult["STUDENT"]["PUBLIC_PROFILE"]])?></td>
 		</tr>
 		<?if($arResult["STUDENT"]["TRANSCRIPT"]):?>
 		<tr>
@@ -51,7 +51,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		<?endif?>
 		<tr>
 			<td><?=Loc::getMessage("LEARNING_RESUME")?>:</td>
-			<td><?$APPLICATION->IncludeComponent("av:form.textarea", "av_corp", ["NAME" => 'RESUME', "VALUE" => $arResult["STUDENT"]["RESUME"]])?></td>
+			<td><?$APPLICATION->IncludeComponent("av:form.textarea", "av-corp", ["NAME" => 'RESUME', "VALUE" => $arResult["STUDENT"]["RESUME"]])?></td>
 		</tr>
 		<tr>
 			<td><?=Loc::getMessage("LEARNING_USER_PHOTO")?>:</td>

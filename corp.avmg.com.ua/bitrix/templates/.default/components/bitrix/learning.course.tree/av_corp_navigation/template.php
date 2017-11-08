@@ -45,7 +45,7 @@ foreach($arResult["ITEMS"] as $index => $itemInfo)
 	<?
 	$APPLICATION->IncludeComponent
 		(
-		"av:form.button", "av_corp_alt3",
+		"av:form.button", "av-corp-alt3",
 			[
 			"BUTTON_TYPE" => 'link',
 			"LINK"        => $arResult["ITEMS"][1]["URL"],

@@ -34,7 +34,7 @@ function AvSiteSearchFieldBehavior(workType)
 	var
 		$gadgetsRow       = $('#page-header').find('.second-row-desktop .gadgets-row'),
         $searchInput      = $gadgetsRow.find('.search-cell input[type=text]'),
-		$hideElements     = $gadgetsRow.find('.phone-cell, .lang-twister-cell'),
+		$hideElements     = $gadgetsRow.find('.phone-cell, .lang-twister-cell, .support-cell'),
         searchInputActive = !!$searchInput.attr("activate"),
 		workSpeed         = 400;
 

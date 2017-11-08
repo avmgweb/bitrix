@@ -6,6 +6,7 @@
 	align-items: center;
 	cursor: pointer;
 	display: flex;
+	transition: .3s;
 	}
 .page-active-block:hover,
 .page-active-block:active,
@@ -32,7 +33,7 @@
 #page-header
 	{
 	background: #FFF;
-	box-shadow: 0 5px 10px rgba(225, 228, 230, 0.5);
+	box-shadow: 0 4px 8px rgba(76, 82, 85, 0.2);
 	font-size: calc(100% - 2px);
 	letter-spacing: 1px;
 	}
@@ -93,12 +94,10 @@
 #page-header .second-row a:focus {color: #CC0000}
 
 #page-header .second-row .logo-cell,
-#page-header .second-row .logo-cell-mobile       {align-items: center;display: flex}
-#page-header .second-row .logo-cell:focus,
-#page-header .second-row .logo-cell-mobile:focus {outline: auto;outline-color: #CC0000}
-#page-header .second-row .logo-cell        img   {height: 50px}
-#page-header .second-row .logo-cell-mobile img   {height: 25px}
-#page-header .second-row .logo-cell-mobile       {display: none}
+#page-header .second-row .logo-cell-mobile     {align-items: center;display: flex}
+#page-header .second-row .logo-cell        img {height: 50px}
+#page-header .second-row .logo-cell-mobile img {height: 25px}
+#page-header .second-row .logo-cell-mobile     {display: none}
 
 #page-header .second-row .hot-line
 	{
@@ -129,11 +128,11 @@
 	background: #EFEFEF;
 	content: "";
 	display: block;
-	margin: 15px auto;
+	margin: 20px auto;
 	width: 85%;
 	height: 1px;
 	}
-#page-header .third-row {padding-bottom: 10px}
+#page-header .third-row {padding-bottom: 15px}
 /* -------------------------------------------------------------------- */
 /* ----------------------- header call back form ---------------------- */
 /* -------------------------------------------------------------------- */
@@ -355,11 +354,8 @@
 /* -------------------------------------------------------------------- */
 /* ------------------------------- body ------------------------------- */
 /* -------------------------------------------------------------------- */
-#page-workarea
-	{
-	min-height: 600px;
-	margin-top: 20px;
-	}
+#page-workarea            {min-height: 600px}
+#page-workarea.responsive {margin-top: 20px}
 #page-workarea.has-menu
 	{
 	display: flex;

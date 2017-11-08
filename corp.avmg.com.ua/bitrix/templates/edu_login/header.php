@@ -78,7 +78,7 @@ if(isset($APPLICATION->arAuthResult) && $APPLICATION->arAuthResult !== true)
 					<?
 					$APPLICATION->IncludeComponent
 						(
-						"av:form.button", "av_alt",
+						"av:form.button", "av-alt",
 							[
 							"BUTTON_TYPE" => 'label',
 							"TITLE"       => GetMessage("EDU_AUTH_CALL_BUTTON"),
@@ -95,7 +95,7 @@ if(isset($APPLICATION->arAuthResult) && $APPLICATION->arAuthResult !== true)
 					<?
 					$APPLICATION->IncludeComponent
 						(
-						"av:form.button", "av_alt",
+						"av:form.button", "av-alt",
 							[
 							"BUTTON_TYPE" => 'label',
 							"TITLE"       => GetMessage("EDU_REGISTRATION_CALL_BUTTON"),
@@ -192,7 +192,7 @@ if(isset($APPLICATION->arAuthResult) && $APPLICATION->arAuthResult !== true)
 
 					$APPLICATION->IncludeComponent
 						(
-						"av:form.button", "av_alt3",
+						"av:form.button", "av-alt3",
 							[
 							"BUTTON_TYPE" => 'label',
 							"TITLE"       => GetMessage("EDU_AUTH_CALL_BUTTON"),
@@ -203,7 +203,7 @@ if(isset($APPLICATION->arAuthResult) && $APPLICATION->arAuthResult !== true)
 					if($registrationAvailable)
 						$APPLICATION->IncludeComponent
 							(
-							"av:form.button", "av_alt3",
+							"av:form.button", "av-alt3",
 								[
 								"BUTTON_TYPE" => 'label',
 								"TITLE"       => GetMessage("EDU_REGISTRATION_CALL_BUTTON"),

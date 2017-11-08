@@ -1,0 +1,52 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-input-search input,
+.av-form-input-search label
+	{
+	background: transparent;
+	border: none;
+	color: inherit;
+	font-weight: normal;
+	margin:  0;
+	padding: 0;
+	outline: none;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ input ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-input-search
+	{
+	align-items: center;
+	border: 1px solid #B6C0C6;
+	border-radius: 2px;
+	display: flex;
+	justify-content: space-between;
+	padding: 12px 4px 12px 10px;
+	transition: .3s;
+	}
+.av-form-input-search.active,
+.av-form-input-search:not(.alert-input):hover,
+.av-form-input-search:not(.alert-input).active {border-color: #868B8D}
+.av-form-input-search.alert-input              {border-color: #CC0000}
+
+.av-form-input-search label,
+.av-form-input-search input
+	{
+	cursor: text;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: calc(100% - 20px);
+	}
+.av-form-input-search .icon
+	{
+	background: url(images/search.png) center center no-repeat;
+	background-size: cover;
+	cursor: text;
+	width:  18px;
+	height: 18px;
+	}
+.av-form-input-search label                          {color: #868B8D}
+.av-form-input-search.has-placeholder.on       input,
+.av-form-input-search.has-placeholder:not(.on) label {display: none}

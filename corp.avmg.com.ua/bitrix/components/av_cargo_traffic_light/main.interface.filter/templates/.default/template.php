@@ -88,7 +88,7 @@ foreach($arParams["FILTER"] as $fieldInfo)
 							<?
 							$APPLICATION->IncludeComponent
 								(
-								"av:form.input", "av_corp",
+								"av:form.input", "av-corp",
 									[
 									"NAME"        => 'NAME',
 									"TITLE"       => $fieldInfo["name"],
@@ -109,7 +109,7 @@ foreach($arParams["FILTER"] as $fieldInfo)
 								<?
 								$APPLICATION->IncludeComponent
 									(
-									"av:form.input.date", "av_corp",
+									"av:form.input.date", "av-corp",
 										[
 										"NAME"        => 'DATE_CREATE_from',
 										"TITLE"       => $fieldInfo["name"],
@@ -124,7 +124,7 @@ foreach($arParams["FILTER"] as $fieldInfo)
 								<?
 								$APPLICATION->IncludeComponent
 									(
-									"av:form.input.date", "av_corp",
+									"av:form.input.date", "av-corp",
 										[
 										"NAME"        => 'DATE_CREATE_to',
 										"TITLE"       => $fieldInfo["name"],
@@ -146,7 +146,7 @@ foreach($arParams["FILTER"] as $fieldInfo)
 								<?
 								$APPLICATION->IncludeComponent
 									(
-									"av:form.input.number", "av_corp",
+									"av:form.input.number", "av-corp",
 										[
 										"NAME"        => $fieldInfo["id"].'_from',
 										"TITLE"       => $fieldInfo["name"],
@@ -161,7 +161,7 @@ foreach($arParams["FILTER"] as $fieldInfo)
 								<?
 								$APPLICATION->IncludeComponent
 									(
-									"av:form.input.number", "av_corp",
+									"av:form.input.number", "av-corp",
 										[
 										"NAME"        => $fieldInfo["id"].'_to',
 										"TITLE"       => $fieldInfo["name"],
@@ -182,7 +182,7 @@ foreach($arParams["FILTER"] as $fieldInfo)
 							<?
 							$APPLICATION->IncludeComponent
 								(
-								"av:form.select", "av_corp",
+								"av:form.select", "av-corp",
 									[
 									"NAME"  => $fieldInfo["id"].'[]',
 									"TITLE" => $fieldInfo["name"],
@@ -210,7 +210,7 @@ foreach($arParams["FILTER"] as $fieldInfo)
 
 							$APPLICATION->IncludeComponent
 								(
-								"av:form.select", "av_corp",
+								"av:form.select", "av-corp",
 									[
 									"NAME"  => $fieldInfo["id"],
 									"TITLE" => $fieldInfo["name"],
@@ -230,7 +230,7 @@ foreach($arParams["FILTER"] as $fieldInfo)
 							<?
 							$APPLICATION->IncludeComponent
 								(
-								"av:form.input", "av_corp",
+								"av:form.input", "av-corp",
 									[
 									"NAME"        => $fieldInfo["id"],
 									"TITLE"       => $fieldInfo["name"],
@@ -254,7 +254,7 @@ foreach($arParams["FILTER"] as $fieldInfo)
 			<?
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.button", "av_corp",
+				"av:form.button", "av-corp",
 					[
 					"BUTTON_TYPE" => 'submit',
 					"NAME"        => 'filter',
@@ -265,7 +265,7 @@ foreach($arParams["FILTER"] as $fieldInfo)
 				);
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.button", "av_corp_alt2",
+				"av:form.button", "av-corp-alt2",
 					[
 					"BUTTON_TYPE" => 'label',
 					"TITLE"       => GetMessage("AVCTLF_BUTTON_CANCEL"),

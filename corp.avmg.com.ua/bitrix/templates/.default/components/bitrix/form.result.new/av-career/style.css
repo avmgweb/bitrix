@@ -1,0 +1,22 @@
+/* -------------------------------------------------------------------- */
+/* --------------------------- clear style ---------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-career .upload-file-cell .validation-info           {padding: 0;margin: 0}
+.av-form-career .upload-file-cell .validation-info li:before {display: none !important}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- page ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-career-result-ok     {color: #B6C0C6;margin-top: 10px;text-align: center}
+.av-form-career .errors-block {color: #CC0000;margin-bottom: 10px}
+.av-form-career .buttons-row  {margin-top: 26px}
+
+.av-form-career .upload-file-cell {margin: 13px 0}
+.av-form-career .upload-file-cell .validation-info
+	{
+	color: #A7A7A7;
+	font-size: calc(100% - 4px);
+	line-height: 150%;
+	margin-top: 6px;
+	}
+
+.av-form-career .comments-cell .text-block.hidden-field {display: none}

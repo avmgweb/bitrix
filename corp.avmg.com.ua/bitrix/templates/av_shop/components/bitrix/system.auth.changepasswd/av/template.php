@@ -21,9 +21,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 	<?
 	$APPLICATION->IncludeComponent
 		(
-		"av:form_elements", "av_site",
+		"av:form.input", "av-form",
 			[
-			"TYPE"  => 'input',
 			"NAME"  => 'USER_LOGIN',
 			"TITLE" => Loc::getMessage("AV_CHANGE_PASS_LOGIN"),
 			"VALUE" => $arResult["LAST_LOGIN"]
@@ -32,9 +31,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		);
 	$APPLICATION->IncludeComponent
 		(
-		"av:form_elements", "av_site",
+		"av:form.input", "av-form",
 			[
-			"TYPE"  => 'input',
 			"NAME"  => 'USER_CHECKWORD',
 			"TITLE" => Loc::getMessage("AV_CHANGE_PASS_CHECKWORD"),
 			"VALUE" => $arResult["USER_CHECKWORD"]
@@ -43,9 +41,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		);
 	$APPLICATION->IncludeComponent
 		(
-		"av:form_elements", "av_site",
+		"av:form.input.password", "av-form",
 			[
-			"TYPE"  => 'password',
 			"NAME"  => 'USER_PASSWORD',
 			"TITLE" => Loc::getMessage("AV_CHANGE_PASS_NEW_PASS"),
 			"VALUE" => $arResult["USER_PASSWORD"]
@@ -54,9 +51,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		);
 	$APPLICATION->IncludeComponent
 		(
-		"av:form_elements", "av_site",
+		"av:form.input.password", "av-form",
 			[
-			"TYPE"  => 'password',
 			"NAME"  => 'USER_CONFIRM_PASSWORD',
 			"TITLE" => Loc::getMessage("AV_CHANGE_PASS_NEW_PASS_CONFIRM"),
 			"VALUE" => $arResult["USER_CONFIRM_PASSWORD"]
@@ -72,9 +68,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site",
+			"av:form.input", "av-form",
 				[
-				"TYPE"  => 'input',
 				"NAME"  => 'captcha_word',
 				"TITLE" => Loc::getMessage("AV_CHANGE_PASS_CAPCHA"),
 				"ATTR"  => ["autocomplete" => 'off']
@@ -89,9 +84,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site",
+			"av:form.button", "av",
 				[
-				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'submit',
 				"NAME"        => 'change_pwd',
 				"TITLE"       => Loc::getMessage("AV_CHANGE_PASS_SUBMIT")

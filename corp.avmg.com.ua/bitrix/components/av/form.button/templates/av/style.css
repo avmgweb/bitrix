@@ -14,34 +14,29 @@
 .av-form-button:hover,
 .av-form-button:focus,
 .av-form-button:active,
-.av-form-button:visited
-	{
-	outline: none;
-	text-decoration: none;
-	}
+.av-form-button:visited {text-decoration: none}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ button ------------------------------ */
 /* -------------------------------------------------------------------- */
-.av-form-button,
-.av-form-button:visited
+.av-form-button
 	{
 	background: #CC0000;
 	border: 1px solid #CC0000;
 	border-radius: 2px;
-	color: #FFF !important;
+	color: #FFF;
 	cursor: pointer;
 	display: inline-block;
 	font-weight: bold;
 	padding: 7px 10px;
 	transition: .3s;
 	text-align: center;
-	text-decoration: none !important;
 	}
+.av-form-button:visited {color: #FFF}
 .av-form-button:hover,
 .av-form-button:focus,
 .av-form-button:active
 	{
 	background: #FFF;
 	box-shadow: 0 2px 4px rgba(76,82,85,0.25);
-	color: #CC0000 !important;
+	color: #CC0000;
 	}

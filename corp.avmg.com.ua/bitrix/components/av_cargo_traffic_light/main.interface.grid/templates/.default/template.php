@@ -133,7 +133,7 @@ $colspan = count($arResult["HEADERS"]) + 2;
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form.button", "av_corp",
+			"av:form.button", "av-corp",
 				[
 				"BUTTON_TYPE" => 'button',
 				"NAME"        => 'delete',
@@ -142,7 +142,7 @@ $colspan = count($arResult["HEADERS"]) + 2;
 			);
 		$APPLICATION->IncludeComponent
 			(
-			"av:form.button", "av_corp_alt",
+			"av:form.button", "av-corp-alt",
 				[
 				"BUTTON_TYPE" => 'label',
 				"TITLE"       => GetMessage("AVCTLL_DELETE_FORM_CANCEL"),

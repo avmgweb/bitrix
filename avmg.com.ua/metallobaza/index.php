@@ -133,7 +133,7 @@ $APPLICATION->IncludeComponent
 
 		"SHOW_LIST_DESCRIPTION"     => "Y",
 		"FILTER_TEMPLATE"           => "av",
-		"FILTER_FIELDS_SORT"        => array("SUBSECTION", "SECTION_ID", "type_bases", "streams"),
+		"FILTER_FIELDS_SORT"        => array("SECTION_ID", "SUBSECTION", "type_bases", "streams"),
 		"FILTER_FIELDS_CHANGE_TYPE" => array("streams" => "SELECT_MULTIPLE"),
 		"LIST_TEMPLATE"             => "av_bases",
 		"DETAIL_TEMPLATE"           => "av_bases",

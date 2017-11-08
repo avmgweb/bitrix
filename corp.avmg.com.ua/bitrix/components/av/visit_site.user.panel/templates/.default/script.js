@@ -87,7 +87,6 @@ $(function()
 	/* ------------------------------------------- */
 	/* -------------- dom changings -------------- */
 	/* ------------------------------------------- */
-	SetFormElementsCurrentLibrary("av_site");
 	$('body')
 		.append(GetAvAuthForm().remove())
 		.append(GetAvUserMenu().remove());

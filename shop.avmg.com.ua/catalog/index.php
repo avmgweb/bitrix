@@ -5,8 +5,7 @@ $APPLICATION->SetTitle("Каталог товаров");
 /* -------------------------------------------------------------------- */
 /* ---------------------------- constants ----------------------------- */
 /* -------------------------------------------------------------------- */
-$iblockType        = "catalog_products";
-$morePhotoPropCode = "more_photo";
+$iblockType = "catalog_products";
 /* -------------------------------------------------------------------- */
 /* --------------------------- iblock info ---------------------------- */
 /* -------------------------------------------------------------------- */
@@ -38,42 +37,6 @@ if(count($iblockInfo))
 $iblockListPage    = $iblockInfo["LIST_PAGE_URL"];
 $iblockSectionPage = str_replace($iblockListPage, "", $iblockInfo["SECTION_PAGE_URL"]);
 $iblockElementPage = str_replace($iblockListPage, "", $iblockInfo["DETAIL_PAGE_URL"]);
-/* -------------------------------------------------------------------- */
-/* --------------------- catalog/sku iblock props --------------------- */
-/* -------------------------------------------------------------------- */
-$iblockProps    = [];
-$skuIblockProps = [];
-
-if(count($iblockInfo))
-	{
-	$catalogInfo = CCatalog::GetList
-		(
-		[],
-			[
-			"IBLOCK_TYPE_ID" => $iblockType,
-			"IBLOCK_ID"      => $iblockInfo["ID"],
-			"ACTIVE"         => "Y"
-			],
-		false, false
-		)->GetNext();
-
-	$queryList = CIBlockProperty::GetList(["SORT" => "ASC"], ["IBLOCK_ID" => $catalogInfo["ID"]]);
-	while($queryElement = $queryList->GetNext()) $iblockProps[] = $queryElement["CODE"] ? $queryElement["CODE"] : $queryElement["ID"];
-
-	if($catalogInfo["OFFERS_IBLOCK_ID"] && $catalogInfo["OFFERS_PROPERTY_ID"])
-		{
-		$queryList = CIBlockProperty::GetList(["SORT" => "ASC"], ["IBLOCK_ID" => $catalogInfo["OFFERS_IBLOCK_ID"]]);
-		while($queryElement = $queryList->GetNext())
-			if($queryElement["ID"] != $catalogInfo["OFFERS_PROPERTY_ID"])
-				$skuIblockProps[] = $queryElement["CODE"] ? $queryElement["CODE"] : $queryElement["ID"];
-		}
-	}
-/* -------------------------------------------------------------------- */
-/* ----------------------- "more photo" prop id ----------------------- */
-/* -------------------------------------------------------------------- */
-$morePhotoPropId = count($iblockInfo)
-	? CIBlockProperty::GetList([], ["IBLOCK_ID" => $iblockInfo["ID"], "CODE" => $morePhotoPropCode])->GetNext()["ID"]
-	: "";
 /* -------------------------------------------------------------------- */
 /* ------------------------------- menu ------------------------------- */
 /* -------------------------------------------------------------------- */
@@ -118,7 +81,7 @@ else
 				"section"      => $iblockSectionPage,
 				"element"      => $iblockElementPage,
 				"compare"      => "",
-				"smart_filter" => $iblockSectionPage."filter/#SMART_FILTER_PATH#/apply/",
+				"smart_filter" => $iblockSectionPage."filter/#SMART_FILTER_PATH#/apply/"
 				),
 
 			"CACHE_TYPE"   => "A",
@@ -126,37 +89,29 @@ else
 			"CACHE_FILTER" => "Y",
 			"CACHE_GROUPS" => "Y",
 
-			"USE_FILTER"                  => "Y",
-			"FILTER_NAME"                 => "",
-			"FILTER_FIELD_CODE"           => array(),
-			"FILTER_PROPERTY_CODE"        => $iblockProps,
-			"FILTER_OFFERS_FIELD_CODE"    => array(),
-			"FILTER_OFFERS_PROPERTY_CODE" => $skuIblockProps,
+			"USE_FILTER"  => "Y",
+			"FILTER_NAME" => "",
 
 			"PRICE_CODE"        => array("BASE"),
 			"PRICE_VAT_INCLUDE" => "Y",
 			"CONVERT_CURRENCY"  => "Y",
 			"CURRENCY_ID"       => "UAH",
 
-			"ELEMENT_SORT_FIELD"        => "name",
-			"ELEMENT_SORT_ORDER"        => "asc",
-			"ELEMENT_SORT_FIELD2"       => "id",
-			"ELEMENT_SORT_ORDER2"       => "desc",
-			"LIST_PROPERTY_CODE"        => $iblockProps,
-			"INCLUDE_SUBSECTIONS"       => "Y",
-			"LIST_OFFERS_FIELD_CODE"    => array("NAME", "PREVIEW_PICTURE"),
-			"LIST_OFFERS_PROPERTY_CODE" => $skuIblockProps,
-			"PAGE_SIZE_VALUES"          => array(15, 30, 45),
+			"ELEMENT_SORT_FIELD"     => "name",
+			"ELEMENT_SORT_ORDER"     => "asc",
+			"ELEMENT_SORT_FIELD2"    => "id",
+			"ELEMENT_SORT_ORDER2"    => "desc",
+			"INCLUDE_SUBSECTIONS"    => "Y",
+			"LIST_OFFERS_FIELD_CODE" => array("NAME", "PREVIEW_PICTURE"),
+			"PAGE_SIZE_VALUES"       => array(15, 30, 45),
 
-			"DETAIL_PROPERTY_CODE"        => $iblockProps,
-			"DETAIL_SET_CANONICAL_URL"    => "N",
-			"DETAIL_OFFERS_FIELD_CODE"    => array("ID", "NAME"),
-			"DETAIL_OFFERS_PROPERTY_CODE" => $skuIblockProps,
-			"DETAIL_PICTURES_ALT"         => $morePhotoPropId,
-			"ASK_FORM_ID"                 => 52,
-			"ASK_FORM_LINK_FIELD_ID"      => "form_text_334",
-			"ASK_FORM_COUNT_FIELD_ID"     => "form_text_335",
-			"ASK_FORM_NAME_FIELD_ID"      => "form_text_419",
+			"DETAIL_SET_CANONICAL_URL" => "N",
+			"DETAIL_OFFERS_FIELD_CODE" => array("ID", "NAME"),
+			"DETAIL_PICTURES_ALT"      => "more_photo",
+			"ASK_FORM_ID"              => 52,
+			"ASK_FORM_LINK_FIELD_ID"   => "form_text_334",
+			"ASK_FORM_COUNT_FIELD_ID"  => "form_text_335",
+			"ASK_FORM_NAME_FIELD_ID"   => "form_text_419",
 
 			"OFFERS_SORT_FIELD"  => "sort",
 			"OFFERS_SORT_ORDER"  => "asc",

@@ -14,11 +14,7 @@
 .av-form-button-shop-alt2:hover,
 .av-form-button-shop-alt2:focus,
 .av-form-button-shop-alt2:active,
-.av-form-button-shop-alt2:visited
-	{
-	outline: none;
-	text-decoration: none;
-	}
+.av-form-button-shop-alt2:visited {text-decoration: none}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ button ------------------------------ */
 /* -------------------------------------------------------------------- */
@@ -27,7 +23,7 @@
 	background: #B6C0C6;
 	border: 1px solid #B6C0C6;
 	border-radius: 2px;
-	color: #FFF !important;
+	color: #FFF;
 	cursor: pointer;
 	display: block;
 	font-size: calc(100% - 2px);
@@ -36,6 +32,7 @@
 	text-align: center;
 	transition: .3s;
 	}
+.av-form-button-shop-alt2:visited {color: #FFF}
 .av-form-button-shop-alt2:hover,
 .av-form-button-shop-alt2:active,
 .av-form-button-shop-alt2:focus
@@ -43,5 +40,5 @@
 	background: #FFF;
 	border-color: #868B8D;
 	box-shadow: 0 2px 4px rgba(76,82,85,0.25);
-	color: #868B8D !important;
+	color: #868B8D;
 	}

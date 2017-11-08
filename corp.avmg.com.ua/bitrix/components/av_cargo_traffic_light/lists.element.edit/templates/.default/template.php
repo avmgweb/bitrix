@@ -88,7 +88,7 @@ ksort($fieldsGroups);
 					if($field == 'NAME'):
 						$APPLICATION->IncludeComponent
 							(
-							"av:form.input", "av_corp",
+							"av:form.input", "av-corp",
 								[
 								"NAME"     => 'NAME',
 								"TITLE"    => $fieldInfo["NAME"],
@@ -103,7 +103,7 @@ ksort($fieldsGroups);
 					elseif($fieldInfo["TYPE"] == 'S' && $fieldInfo["MULTIPLE"] == 'N'):
 						$APPLICATION->IncludeComponent
 							(
-							"av:form.input", "av_corp",
+							"av:form.input", "av-corp",
 								[
 								"NAME"     => $field.'['.$arResult["ELEMENT_ID"].':'.$fieldInfo["ID"].'][VALUE]',
 								"TITLE"    => $fieldInfo["NAME"],
@@ -118,7 +118,7 @@ ksort($fieldsGroups);
 					elseif($fieldInfo["TYPE"] == 'N' && $fieldInfo["MULTIPLE"] == 'N'):
 						$APPLICATION->IncludeComponent
 							(
-							"av:form.input.number", "av_corp",
+							"av:form.input.number", "av-corp",
 								[
 								"NAME"     => $field.'['.$arResult["ELEMENT_ID"].':'.$fieldInfo["ID"].'][VALUE]',
 								"TITLE"    => $fieldInfo["NAME"],
@@ -133,7 +133,7 @@ ksort($fieldsGroups);
 					elseif($fieldInfo["TYPE"] == 'L' && $fieldInfo["MULTIPLE"] == 'N'):
 						$APPLICATION->IncludeComponent
 							(
-							"av:form.select", "av_corp",
+							"av:form.select", "av-corp",
 								[
 								"NAME"        => $field,
 								"TITLE"       => $fieldInfo["NAME"],
@@ -276,7 +276,7 @@ ksort($fieldsGroups);
 			<?
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.button", "av_corp",
+				"av:form.button", "av-corp",
 					[
 					"BUTTON_TYPE" => 'submit',
 					"NAME"        => 'save',
@@ -286,7 +286,7 @@ ksort($fieldsGroups);
 				);
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.button", "av_corp_alt",
+				"av:form.button", "av-corp-alt",
 					[
 					"BUTTON_TYPE" => 'submit',
 					"NAME"        => 'apply',
@@ -296,7 +296,7 @@ ksort($fieldsGroups);
 				);
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.button", "av_corp_alt4",
+				"av:form.button", "av-corp-alt4",
 					[
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => $arResult["LIST_URL"],
@@ -309,7 +309,7 @@ ksort($fieldsGroups);
 			<?
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.button", "av_corp_alt",
+				"av:form.button", "av-corp-alt",
 					[
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => $arResult["LIST_URL"],
@@ -338,7 +338,7 @@ ksort($fieldsGroups);
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form.button", "av_corp",
+			"av:form.button", "av-corp",
 				[
 				"BUTTON_TYPE" => 'button',
 				"NAME"        => 'delete',
@@ -347,7 +347,7 @@ ksort($fieldsGroups);
 			);
 		$APPLICATION->IncludeComponent
 			(
-			"av:form.button", "av_corp_alt",
+			"av:form.button", "av-corp-alt",
 				[
 				"BUTTON_TYPE" => 'label',
 				"TITLE"       => GetMessage("AVCTL_DELETE_ELEMENT_CANCEL"),

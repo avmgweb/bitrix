@@ -16,5 +16,5 @@ Asset::getInstance()->addString('<script>AvBasketLineUpdate = "'.CURRENT_PROTOCO
 Asset::getInstance()->addString('<script>AvBasketLineDelete = "'.CURRENT_PROTOCOL.'://'.$_SERVER["SERVER_NAME"].$templateFolder.'/ajax/delete_item.php";</script>');
 
 AvComponentsIncludings::getInstance()
-	->setIncludings("av", "form.button", "av_alt2")
+	->setIncludings("av", "form.button", "av-alt2")
 	->setIncludings("av", "form.button", "av");

@@ -32,7 +32,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 			<?
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.button", "av_alt",
+				"av:form.button", "av-alt",
 					[
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => $arParams["PATH_TO_LIST"],

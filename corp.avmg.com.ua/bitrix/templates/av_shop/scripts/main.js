@@ -26,12 +26,18 @@ $(function()
 	$(window)
 		.scroll(function()
 			{
-			var
-				scrollTop            = $(window).scrollTop(),
-			    headerMinTopPosition = $header.attr("data-offset-position"),
-				headerTopPosition    = scrollTop > headerMinTopPosition ? scrollTop : headerMinTopPosition;
-
-			$header.css("top", headerTopPosition+"px");
+			if($(window).scrollTop() > $header.attr("data-offset-position"))
+				$header.css
+					({
+					"position": "fixed",
+					"top"     : 0
+					});
+			else
+				$header.css
+					({
+					"position": "absolute",
+					"top"     : $header.attr("data-offset-position")+"px"
+					});
 			})
 		.resize(function()
 			{
@@ -68,7 +74,7 @@ $(function()
 			})
 		.on("keyup", function(event)
 			{
-			if(event.keyCode == 27 && $callBackForm.if(":visible"))
+			if(event.keyCode == 27 && $callBackForm.is(":visible"))
 				$callBackForm
 					.find(".close")
 					.click();
@@ -192,8 +198,8 @@ $(function()
 					.css
 						({
 						"display"    : "block",
-						"position"   : "absolute",
-						"top"        : $header.offset().top + $header.height(),
+						"position"   : "fixed",
+						"top"        : $header.offset().top + $header.height() - $(window).scrollTop(),
 						"margin-left": "-100%"
 						})
 					.animate({"margin-left": 0}, 400);
@@ -223,23 +229,37 @@ $(function()
 		.scroll(function()
 			{
 			var
-				headerOffset  = $header .offset(),
-				sidebarOffset = $sidebar.offset(),
-				headerHeight  = $header .height(),
-				sidebarHeight = $sidebar.height(),
-			    scrollTop     = $(window).scrollTop(),
-			    windowHeight  = $(window).height();
+				scrollTop       = $(window).scrollTop(),
+				windowBottom    = scrollTop + $(window).height(),
+				sibebarTop      = $sidebar.offset().top,
+				sibebarBottom   = sibebarTop + $sidebar.height(),
+				sibebarPosition = $sidebar.css("position"),
+				headerTop       = $header.offset().top,
+				headerBottom    = headerTop + $header.height(),
+			    lastScrollTop   = $sidebar.data("data-scroll-top") ? $sidebar.data("data-scroll-top") : 0,
+			    scrollDirection = scrollTop > lastScrollTop ? "down" : "up";
 			if(!$sidebar.is(":visible")) return;
+			$sidebar.data("data-scroll-top", scrollTop);
 
-			if(sidebarOffset.top > headerOffset.top  + headerHeight || sidebarHeight < windowHeight)
-				$sidebar.css("top", headerOffset.top  + headerHeight);
-
-			else if(sidebarOffset.top + sidebarHeight < scrollTop + windowHeight)
+			if(sibebarBottom > windowBottom && scrollDirection == "down" && sibebarPosition == "fixed")
+				$sidebar.css
+					({
+					"position": "absolute",
+					"top"     : sibebarTop
+					});
+			else if(sibebarTop > headerBottom || sibebarTop < headerBottom && sibebarPosition == "fixed")
+				$sidebar.css
+					({
+					"position": "fixed",
+					"top"     : headerBottom - scrollTop
+					});
+			if(sibebarBottom < windowBottom && scrollDirection == "down" && sibebarPosition != "fixed")
 				{
-				clearTimeout($(this).data("scrollTimer"));
-				$(this).data("scrollTimer", setTimeout(function()
+				clearTimeout($(this).data("headerScrollTimer"));
+				$(this).data("headerScrollTimer", setTimeout(function()
 					{
-					$sidebar.animate({"top": scrollTop + windowHeight - sidebarHeight}, 300);
+					if($sidebar.offset().top + $sidebar.height() < $(window).scrollTop() + $(window).height())
+						$sidebar.animate({"top": $(window).scrollTop() + $(window).height() - $sidebar.height()}, 300);
 					}, 300));
 				}
 			})

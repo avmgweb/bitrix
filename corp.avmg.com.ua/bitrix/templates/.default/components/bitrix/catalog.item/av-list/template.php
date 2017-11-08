@@ -52,8 +52,8 @@ $price = count($arResult["PRICES_VALUES_ARRAY"])
 		/* ------------------------------------------- */
 		?>
 		<div class="sku-info">
-			<?foreach($arResult["OFFERS_VALUES"] as $offerInfo):?>
-				<?if(count($offerInfo["VALUES"])):?>
+			<?foreach($arResult["OFFERS_VALUES"] as $index => $offerInfo):?>
+				<?if($index + 1 <= 5):?>
 				<div class="prop-row">
 					<?=$offerInfo["NAME"]?>:
 					<?

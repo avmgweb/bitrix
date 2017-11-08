@@ -39,7 +39,6 @@ SetFormElementsFunction("av", "iblock_element_search", "setFormElememtAlert",   
 /* -------------------------------------------------------------------- */
 $(function()
 	{
-	SetFormElementsCurrentLibrary("av");
 	$(document)
 		/* ------------------------------------------- */
 		/* ----------- input focus/focusout ---------- */

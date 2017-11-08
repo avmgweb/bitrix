@@ -75,9 +75,8 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site",
+			"av:form.input", "av-form",
 				[
-				"TYPE"     => 'input',
 				"NAME"     => $arResult["AUTH"]["FORM_FIELDS"]["LOGIN"]["INPUT_NAME"],
 				"VALUE"    => $arResult["AUTH"]["FORM_FIELDS"]["LOGIN"]["VALUE"],
 				"TITLE"    => $arResult["AUTH"]["FORM_FIELDS"]["LOGIN"]["TITLE"],
@@ -87,9 +86,8 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 			);
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site",
+			"av:form.input.password", "av-form",
 				[
-				"TYPE"     => 'password',
 				"NAME"     => $arResult["AUTH"]["FORM_FIELDS"]["PASS"]["INPUT_NAME"],
 				"TITLE"    => $arResult["AUTH"]["FORM_FIELDS"]["PASS"]["TITLE"],
 				"REQUIRED" => 'Y'
@@ -103,9 +101,8 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 			<?
 			$APPLICATION->IncludeComponent
 				(
-				"av:form_elements", "av_site",
+				"av:form.checkbox", "av-form",
 					[
-					"TYPE"  => 'checkbox',
 					"NAME"  => $arResult["AUTH"]["FORM_FIELDS"]["REMEMBER_ME"]["INPUT_NAME"],
 					"TITLE" => Loc::getMessage("AV_AUTH_GUEST_FORM_REMEMBER_ME")
 					],
@@ -124,9 +121,8 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site",
+			"av:form.button", "av",
 				[
-				"TYPE"  => 'button',
 				"NAME"  => $arResult["AUTH"]["SUBMIT_BUTTON_NAME"],
 				"TITLE" => Loc::getMessage("AV_AUTH_GUEST_FORM_SUBMIT")
 				],
@@ -168,35 +164,46 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 		<?endif?>
 
 		<?foreach($arResult["REGISTER"]["FORM_FIELDS"] as $field => $fieldArray):?>
+		<div>
 			<?
-			$componentParams =
-				[
-				"TYPE"     => 'input',
-				"NAME"     => $fieldArray["INPUT_NAME"],
-				"VALUE"    => $fieldArray["VALUE"],
-				"TITLE"    => $fieldArray["TITLE"],
-				"REQUIRED" => $fieldArray["REQUIRED"]
-				];
-
-			switch($field)
-				{
-				case"PASSWORD":
-				case"CONFIRM_PASSWORD":
-					$componentParams["TYPE"]     = 'password';
-					$componentParams["REQUIRED"] = 'Y';
-					break;
-				case"PERSONAL_MOBILE":
-					$componentParams["TYPE"] = 'phone';
-					break;
-				}
-
-			$APPLICATION->IncludeComponent
-				(
-				"av:form_elements", "av_site",
-				$componentParams,
-				false, ["HIDE_ICONS" => 'Y']
-				);
+			if($field == "PERSONAL_MOBILE")
+				$APPLICATION->IncludeComponent
+					(
+					"av:form.input.phone", "av-form",
+						[
+						"NAME"     => $fieldArray["INPUT_NAME"],
+						"VALUE"    => $fieldArray["VALUE"],
+						"TITLE"    => $fieldArray["TITLE"],
+						"REQUIRED" => $fieldArray["REQUIRED"]
+						],
+					false, ["HIDE_ICONS" => 'Y']
+					);
+			elseif($field == "PASSWORD" || $field == "CONFIRM_PASSWORD")
+				$APPLICATION->IncludeComponent
+					(
+					"av:form.input.password", "av-form",
+						[
+						"NAME"     => $fieldArray["INPUT_NAME"],
+						"VALUE"    => $fieldArray["VALUE"],
+						"TITLE"    => $fieldArray["TITLE"],
+						"REQUIRED" => $fieldArray["REQUIRED"]
+						],
+					false, ["HIDE_ICONS" => 'Y']
+					);
+			else
+				$APPLICATION->IncludeComponent
+					(
+					"av:form.input", "av-form",
+						[
+						"NAME"     => $fieldArray["INPUT_NAME"],
+						"VALUE"    => $fieldArray["VALUE"],
+						"TITLE"    => $fieldArray["TITLE"],
+						"REQUIRED" => $fieldArray["REQUIRED"]
+						],
+					false, ["HIDE_ICONS" => 'Y']
+					);
 			?>
+		</div>
 		<?endforeach?>
 
 		<?if($arResult["REGISTER"]["RECAPTCHA_SITEKEY"]):?>
@@ -206,9 +213,8 @@ if (count($arResult["REGISTER"]["ERRORS"]) && !count($arResult["AUTH"]["ERRORS"]
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site",
+			"av:form.button", "av",
 				[
-				"TYPE"  => 'button',
 				"NAME"  => $arResult["REGISTER"]["SUBMIT_BUTTON_NAME"],
 				"TITLE" => Loc::getMessage("AV_AUTH_GUEST_FORM_REGISTER")
 				],

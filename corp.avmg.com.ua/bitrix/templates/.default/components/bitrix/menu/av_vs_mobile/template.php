@@ -87,4 +87,13 @@ $currentPageUrl = $APPLICATION->GetCurPage(false);
 			)
 		?>
 	</li>
+	<li class="support-row">
+		<?
+		$APPLICATION->IncludeComponent
+			(
+			"bitrix:main.include", "",
+			array("AREA_FILE_SHOW" => "file", "PATH" => "/include/support.php")
+			);
+		?>
+	</li>
 </ul>

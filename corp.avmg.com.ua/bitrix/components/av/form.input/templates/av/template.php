@@ -1,6 +1,7 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
 <div
 	data-av-form-item="input"
+	data-av-form-library="av"
 	class="
 		av-form-input
 		<?if($arResult["REQUIRED"]):?>required<?endif?>
@@ -20,8 +21,6 @@
 		value="<?=$arResult["VALUE"]?>"
 		title="<?=$arResult["TITLE"]?>"
 		<?if($arResult["DISABLED"]):?>disabled<?endif?>
-
-		data-avat="form-input-<?=$arResult["NAME"]?>"
 		<?=$arResult["ATTR"]?>
 	>
 

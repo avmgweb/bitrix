@@ -12,8 +12,6 @@
 	padding: 0;
 	outline: none;
 	}
-.av-form-input-password input:-webkit-autofill {-webkit-box-shadow: 0 0 0 1000px white inset !important}
-.av-form-input-password input::-ms-clear       {display: none}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ input ------------------------------- */
 /* -------------------------------------------------------------------- */

@@ -43,7 +43,7 @@ Asset::getInstance()->addCss("/bitrix/css/av_site/pages/partners.css");
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"bitrix:form.result.new", "av_parthners",
+			"bitrix:form.result.new", "av-parthners",
 				array(
 				"AJAX_MODE"           => "Y",
 				"AJAX_OPTION_JUMP"    => "N",

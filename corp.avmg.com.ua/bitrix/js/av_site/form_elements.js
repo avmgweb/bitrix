@@ -1,63 +1,54 @@
 /* -------------------------------------------------------------------- */
 /* ---------------------------- variables ----------------------------- */
 /* -------------------------------------------------------------------- */
-AV_FORM_ELEMENTS_CURRENT_LIB = 'basic';
+AV_FORM_ELEMENTS_CURRENT_LIB = "basic";
 AV_FORM_ELEMENTS_LIBRARIES   =
 	{
 	"basic":
 		{
 		"input":
 			{
-			"getFormElememtName"    : 'getFormElememtNameInput',
-			"setFormElememtName"    : 'setFormElememtNameInput',
+			"getFormElememtName"    : "getFormElememtNameInput",
+			"setFormElememtName"    : "setFormElememtNameInput",
 
-			"getFormElememtValue"   : 'getFormElememtValueInput',
-			"setFormElememtValue"   : 'setFormElememtValueInput',
+			"getFormElememtValue"   : "getFormElememtValueInput",
+			"setFormElememtValue"   : "setFormElememtValueInput",
 
-			"getFormElememtRequired": 'getFormElememtRequiredInput',
-			"setFormElememtRequired": 'setFormElememtRequiredInput',
+			"getFormElememtRequired": "getFormElememtRequiredInput",
+			"setFormElememtRequired": "setFormElememtRequiredInput",
 
-			"getFormElememtAlert"   : 'getFormElememtAlertInput',
-			"setFormElememtAlert"   : 'setFormElememtAlertInput'
+			"getFormElememtAlert"   : "getFormElememtAlertInput",
+			"setFormElememtAlert"   : "setFormElememtAlertInput"
 			}
 		}
 	};
 /* -------------------------------------------------------------------- */
 /* ----------------------------- functions ---------------------------- */
 /* -------------------------------------------------------------------- */
-function GetFormElementsLibraries()
-	{
-	var result = [];
-	$.each(AV_FORM_ELEMENTS_LIBRARIES, function(index) {result.push(index)});
-	return result;
-	}
-function GetFormElementsCurrentLibrary()
-	{
-	return AV_FORM_ELEMENTS_CURRENT_LIB;
-	}
-function SetFormElementsCurrentLibrary(libraryType)
-	{
-	if(!AV_FORM_ELEMENTS_LIBRARIES[libraryType]) {console.log('AvFormElements - '+libraryType+' - unknown library');return}
-	AV_FORM_ELEMENTS_CURRENT_LIB = libraryType;
-	}
-function ViewFormElementsFunctionMap(libraryType)
-	{
-	if(!AV_FORM_ELEMENTS_LIBRARIES[libraryType]) {console.log('AvFormElements - '+libraryType+' - unknown library');return}
-	console.log(AV_FORM_ELEMENTS_LIBRARIES[libraryType]);
-	}
 function SetFormElementsFunction(libraryType, inputType, functionType, functionName)
 	{
-	if(!libraryType || !inputType || !functionType || !functionName) {console.log('SetFormElementsFunction - params required: libraryType, inputType, functionType, functionName');return}
+	if(!libraryType || !inputType || !functionType || !functionName)
+		{
+		console.log("SetFormElementsFunction - params required: libraryType, inputType, functionType, functionName");
+		return;
+		}
+
 	if(!AV_FORM_ELEMENTS_LIBRARIES[libraryType])            AV_FORM_ELEMENTS_LIBRARIES[libraryType]            = {};
 	if(!AV_FORM_ELEMENTS_LIBRARIES[libraryType][inputType]) AV_FORM_ELEMENTS_LIBRARIES[libraryType][inputType] = {};
 	AV_FORM_ELEMENTS_LIBRARIES[libraryType][inputType][functionType] = functionName;
 	}
-function GetFormElementsFunction(inputType, functionType)
+function GetFormElementsFunction(libraryType, inputType, functionType)
 	{
-	var result = AV_FORM_ELEMENTS_LIBRARIES[AV_FORM_ELEMENTS_CURRENT_LIB][inputType];
-	if(!result) {console.log('AvFormElements - '+AV_FORM_ELEMENTS_CURRENT_LIB+' - unknown input type "'+inputType+'"');return}
-	result = result[functionType];
-	if(!result) {console.log('AvFormElements - '+AV_FORM_ELEMENTS_CURRENT_LIB+' - '+inputType+' - '+functionType+' - no function registered');return}
+	var result = AV_FORM_ELEMENTS_LIBRARIES[libraryType];
+	if(result) result = result[inputType];
+	if(result) result = result[functionType];
+
+	if(!result)
+		{
+		console.log("AvFormElements - "+libraryType+" - "+inputType+" - "+functionType+" - no function registered");
+		return;
+		}
+
 	return result;
 	}
 /* -------------------------------------------------------------------- */
@@ -75,14 +66,14 @@ function GetFormElementsFunction(inputType, functionType)
 	jQuery.fn.getFormElememtRequiredInput = function()      {return this.attr("requiredfield")};
 	jQuery.fn.setFormElememtRequiredInput = function(value)
 		{
-		if(value == 'on')  this.attr("requiredfield", true);
-		if(value == 'off') this.removeAttr("requiredfield");
+		if(value == "on")  this.attr("requiredfield", true);
+		if(value == "off") this.removeAttr("requiredfield");
 		};
 	jQuery.fn.getFormElememtAlertInput    = function()      {return this.attr("input-alert")};
 	jQuery.fn.setFormElememtAlertInput    = function(value)
 		{
-		if(value == 'on')  this.attr("input-alert", true);
-		if(value == 'off') this.removeAttr("input-alert");
+		if(value == "on")  this.attr("input-alert", true);
+		if(value == "off") this.removeAttr("input-alert");
 		};
 	})(jQuery);
 /* -------------------------------------------------------------------- */
@@ -97,10 +88,10 @@ function GetFormElementsFunction(inputType, functionType)
 		{
 		var
 			searchParams = $.extend({}, searchParams),
-			result       = this.find('[data-av-form-item]');
+			result       = this.find("[data-av-form-item]");
 
-		if(searchParams.type)      result = result.filter('[data-av-form-item="'+searchParams.type+'"]');
-		if(searchParams.attribute) result = result.filter('['+searchParams.attribute+']');
+		if(searchParams.type)      result = result.filter("[data-av-form-item=\""+searchParams.type+"\"]");
+		if(searchParams.attribute) result = result.filter("["+searchParams.attribute+"]");
 
 		if(searchParams.name && result)
 			{
@@ -119,26 +110,24 @@ function GetFormElementsFunction(inputType, functionType)
 		return result;
 		};
 	/* ------------------------------------------- */
-	/* ---------- get form element type ---------- */
-	/* ------------------------------------------- */
-	jQuery.fn.getFormElememtType = function()
-		{
-		return this.first().attr("data-av-form-item");
-		};
-	/* ------------------------------------------- */
 	/* -------------- get parameter -------------- */
 	/* ------------------------------------------- */
 	jQuery.fn.getFormElememtParam = function(paramType)
 		{
-		var functionName = '';
+		var
+			library      = this.attr("data-av-form-library"),
+			inputType    = this.attr("data-av-form-item"),
+			functionName = "";
+
 		switch(paramType)
 			{
-			case 'name'    : functionName = 'getFormElememtName';    break;
-			case 'value'   : functionName = 'getFormElememtValue';   break;
-			case 'required': functionName = 'getFormElememtRequired';break;
-			case 'alert'   : functionName = 'getFormElememtAlert';   break;
+			case "name"    : functionName = "getFormElememtName";    break;
+			case "value"   : functionName = "getFormElememtValue";   break;
+			case "required": functionName = "getFormElememtRequired";break;
+			case "alert"   : functionName = "getFormElememtAlert";   break;
 			}
-		if(functionName) functionName = GetFormElementsFunction(this.getFormElememtType(), functionName);
+
+		if(functionName) functionName = GetFormElementsFunction(library, inputType, functionName);
 		if(functionName) return this.first()[functionName]();
 		};
 	/* ------------------------------------------- */
@@ -148,16 +137,20 @@ function GetFormElementsFunction(inputType, functionType)
 		{
 		return this.each(function()
 			{
-			var functionName = '';
+			var
+				library      = $(this).attr("data-av-form-library"),
+				inputType    = $(this).attr("data-av-form-item"),
+				functionName = "";
+
 			switch(paramType)
 				{
-				case 'name'    : functionName = 'setFormElememtName';    break;
-				case 'value'   : functionName = 'setFormElememtValue';   break;
-				case 'required': functionName = 'setFormElememtRequired';break;
-				case 'alert'   : functionName = 'setFormElememtAlert';   break;
+				case "name"    : functionName = "setFormElememtName";    break;
+				case "value"   : functionName = "setFormElememtValue";   break;
+				case "required": functionName = "setFormElememtRequired";break;
+				case "alert"   : functionName = "setFormElememtAlert";   break;
 				}
 
-			if(functionName) functionName = GetFormElementsFunction($(this).getFormElememtType(), functionName);
+			if(functionName) functionName = GetFormElementsFunction(library, inputType, functionName);
 			if(functionName) $(this)[functionName](value);
 			});
 		};

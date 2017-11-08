@@ -3,34 +3,34 @@
 /* -------------------------------------------------------------------- */
 (function($)
 	{
-	jQuery.fn.getFormElememtNameInputAvCorp     = function()      {return this.find('input').attr("name")};
-	jQuery.fn.setFormElememtNameInputAvCorp     = function(value) {this.find('input').attr("name", value)};
-	jQuery.fn.getFormElememtValueInputAvCorp    = function()      {return this.find('input').val()};
-	jQuery.fn.setFormElememtValueInputAvCorp    = function(value)
+	jQuery.fn.getFormElememtNamePasswordAv     = function()      {return this.find(":text").attr("name")};
+	jQuery.fn.setFormElememtNamePasswordAv     = function(value) {this.find(":text").attr("name", value)};
+	jQuery.fn.getFormElememtValuePasswordAv    = function()      {return this.find(":text").val()};
+	jQuery.fn.setFormElememtValuePasswordAv    = function(value)
 		{
-		this.find('input').attr("value", value).val(value);
-		this.behaviorFormElememtInputAvCorp();
+		this.find(":text").attr("value", value).val(value);
+		this.behaviorFormElememtPasswordAv();
 		};
-	jQuery.fn.getFormElememtRequiredInputAvCorp = function()      {return this.hasClass("required")};
-	jQuery.fn.setFormElememtRequiredInputAvCorp = function(value)
+	jQuery.fn.getFormElememtRequiredPasswordAv = function()      {return this.hasClass("required")};
+	jQuery.fn.setFormElememtRequiredPasswordAv = function(value)
 		{
-		if(value == 'on')  this.addClass("required");
-		if(value == 'off') this.removeClass("required");
+		if(value == "on")  this.addClass("required");
+		if(value == "off") this.removeClass("required");
 		};
-	jQuery.fn.getFormElememtAlertInputAvCorp    = function()      {return this.hasClass("alert-input")};
-	jQuery.fn.setFormElememtAlertInputAvCorp    = function(value)
+	jQuery.fn.getFormElememtAlertPasswordAv    = function()      {return this.hasClass("alert-input")};
+	jQuery.fn.setFormElememtAlertPasswordAv    = function(value)
 		{
-		if(value == 'on')  this.addClass("alert-input");
-		if(value == 'off') this.removeClass("alert-input");
+		if(value == "on")  this.addClass("alert-input");
+		if(value == "off") this.removeClass("alert-input");
 		};
-	jQuery.fn.behaviorFormElememtInputAvCorp    = function(value)
+	jQuery.fn.behaviorFormElememtPasswordAv    = function(value)
 		{
 		var
-			$input       = this.find('input'),
-			$placeholder = this.find('label');
+			$input       = this.find(":text"),
+			$placeholder = this.find("label");
 		if(!$placeholder.length) return;
 
-		if($input.val() || value == 'on')
+		if($input.val() || value == "on")
 			{
 			$input.show();
 			$placeholder.hide();
@@ -45,22 +45,21 @@
 /* -------------------------------------------------------------------- */
 /* ------------- "av_form_elements" methods registration -------------- */
 /* -------------------------------------------------------------------- */
-SetFormElementsFunction("av_corp", "input", "getFormElememtName",     "getFormElememtNameInputAvCorp");
-SetFormElementsFunction("av_corp", "input", "setFormElememtName",     "setFormElememtNameInputAvCorp");
-SetFormElementsFunction("av_corp", "input", "getFormElememtValue",    "getFormElememtValueInputAvCorp");
-SetFormElementsFunction("av_corp", "input", "setFormElememtValue",    "setFormElememtValueInputAvCorp");
-SetFormElementsFunction("av_corp", "input", "getFormElememtRequired", "getFormElememtRequiredInputAvCorp");
-SetFormElementsFunction("av_corp", "input", "setFormElememtRequired", "setFormElememtRequiredInputAvCorp");
-SetFormElementsFunction("av_corp", "input", "getFormElememtAlert",    "getFormElememtAlertInputAvCorp");
-SetFormElementsFunction("av_corp", "input", "setFormElememtAlert",    "setFormElememtAlertInputAvCorp");
+SetFormElementsFunction("av", "password", "getFormElememtName",     "getFormElememtNamePasswordAv");
+SetFormElementsFunction("av", "password", "setFormElememtName",     "setFormElememtNamePasswordAv");
+SetFormElementsFunction("av", "password", "getFormElememtValue",    "getFormElememtValuePasswordAv");
+SetFormElementsFunction("av", "password", "setFormElememtValue",    "setFormElememtValuePasswordAv");
+SetFormElementsFunction("av", "password", "getFormElememtRequired", "getFormElememtRequiredPasswordAv");
+SetFormElementsFunction("av", "password", "setFormElememtRequired", "setFormElememtRequiredPasswordAv");
+SetFormElementsFunction("av", "password", "getFormElememtAlert",    "getFormElememtAlertPasswordAv");
+SetFormElementsFunction("av", "password", "setFormElememtAlert",    "setFormElememtAlertPasswordAv");
 /* -------------------------------------------------------------------- */
 /* -------------------------- input behavior -------------------------- */
 /* -------------------------------------------------------------------- */
 $(function()
 	{
-	SetFormElementsCurrentLibrary("av_corp");
 	$(document)
-		.on("vclick",   '.av-form-input-password',       function() {$(this).parent().find('input').focus()})
-		.on("focus",    '.av-form-input-password input', function() {$(this).parent().addClass("active")   .behaviorFormElememtInputAvCorp("on")})
-		.on("focusout", '.av-form-input-password input', function() {$(this).parent().removeClass("active").behaviorFormElememtInputAvCorp()});
+		.on("vclick",   ".av-form-input-password",       function() {$(this).parent().find(":text").focus()})
+		.on("focus",    ".av-form-input-password :text", function() {$(this).parent().addClass("active")   .behaviorFormElememtPasswordAv("on")})
+		.on("focusout", ".av-form-input-password :text", function() {$(this).parent().removeClass("active").behaviorFormElememtPasswordAv()});
 	});

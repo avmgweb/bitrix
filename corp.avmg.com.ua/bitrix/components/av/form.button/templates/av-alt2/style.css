@@ -1,0 +1,43 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-button-alt2
+	{
+	background: transparent;
+	border: none;
+	color: inherit;
+	font-weight: normal;
+	margin:  0;
+	padding: 0;
+	}
+.av-form-button-alt2,
+.av-form-button-alt2:hover,
+.av-form-button-alt2:focus,
+.av-form-button-alt2:active,
+.av-form-button-alt2:visited {text-decoration: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ button ------------------------------ */
+/* -------------------------------------------------------------------- */
+.av-form-button-alt2
+	{
+	background: #B6C0C6;
+	border: 1px solid #B6C0C6;
+	border-radius: 2px;
+	color: #FFF;
+	cursor: pointer;
+	display: block;
+	font-weight: bold;
+	padding: 12px 10px;
+	text-align: center;
+	transition: .3s;
+	}
+.av-form-button-alt2:visited {color: #FFF}
+.av-form-button-alt2:hover,
+.av-form-button-alt2:active,
+.av-form-button-alt2:focus
+	{
+	background: #FFF;
+	border-color: #868B8D;
+	box-shadow: 0 2px 4px rgba(76,82,85,0.25);
+	color: #868B8D;
+	}

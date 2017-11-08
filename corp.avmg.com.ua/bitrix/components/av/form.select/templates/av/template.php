@@ -3,8 +3,9 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 $inputTitle = $arResult["EMPTY_TITLE"] ? $arResult["EMPTY_TITLE"] : $arResult["TITLE"];
 ?>
 <div
-	class="av-form-select<?if($arResult["REQUIRED"]):?> required<?endif?>"
 	data-av-form-item="select"
+	data-av-form-library="av"
+	class="av-form-select<?if($arResult["REQUIRED"]):?> required<?endif?>"
 >
 	<select name="<?=$arResult["NAME"]?>" title="" <?=$arResult["ATTR"]?>>
 		<option value><?=$inputTitle?></option>

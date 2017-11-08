@@ -7,7 +7,7 @@
 			<?
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.checkbox", "av",
+				"av:form.checkbox", "av-form",
 					[
 					"NAME"    => $arResult["NAME"],
 					"VALUE"   => $value,

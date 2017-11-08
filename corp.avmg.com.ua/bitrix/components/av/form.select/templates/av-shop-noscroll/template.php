@@ -5,7 +5,6 @@ $inputTitle = $arResult["EMPTY_TITLE"] ? $arResult["EMPTY_TITLE"] : $arResult["T
 ?>
 <div
 	class="av-form-select-shop-noscroll<?if($arResult["REQUIRED"]):?> required<?endif?>"
-	data-av-form-item="select"
 >
 	<select name="<?=$arResult["NAME"]?>" title="" <?=$arResult["ATTR"]?>>
 		<option value><?=$inputTitle?></option>

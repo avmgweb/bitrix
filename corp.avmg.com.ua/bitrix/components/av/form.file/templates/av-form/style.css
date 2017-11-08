@@ -1,0 +1,63 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-styled-file label
+	{
+	font-weight: normal;
+	margin:  0;
+	padding: 0;
+	}
+.av-form-styled-file a,
+.av-form-styled-file a:hover,
+.av-form-styled-file a:active,
+.av-form-styled-file a:focus,
+.av-form-styled-file a:visited {color: #CC0000}
+.av-form-styled-file input     {display: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ input ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-styled-file label
+	{
+	align-items: center;
+	color: #CC0000;
+	display: flex;
+	font-size: calc(100% - 2px);
+	}
+.av-form-styled-file .default,
+.av-form-styled-file .new-value .title,
+.av-form-styled-file .current-value a
+	{
+	cursor: pointer;
+	overflow: hidden;
+	text-decoration: underline;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	}
+.av-form-styled-file .new-value .title,
+.av-form-styled-file .current-value a {max-width: calc(100% - 24px)}
+
+.av-form-styled-file label .delete
+	{
+	background: url(images/delete.svg) center center no-repeat;
+	background-size: 12px;
+	cursor: pointer;
+	width:  24px;
+	height: 24px;
+	}
+.av-form-styled-file label .delete:hover {background-image: url(images/delete_active.svg)}
+
+.av-form-styled-file.uploaded       .default,
+.av-form-styled-file.active         .default,
+.av-form-styled-file.uploaded       .new-value,
+.av-form-styled-file:not(.active)   .new-value,
+.av-form-styled-file:not(.uploaded) .current-value,
+.av-form-styled-file.active         .current-value {display: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- media ------------------------------ */
+/* -------------------------------------------------------------------- */
+@media (max-width: 767px)
+	{
+	.av-form-styled-file label .delete    {background-size: 18px;width: 48px;height: 48px}
+	.av-form-styled-file .new-value .title,
+	.av-form-styled-file .current-value a {max-width: calc(100% - 48px)}
+	}

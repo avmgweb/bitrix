@@ -56,7 +56,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 						<?
 						$APPLICATION->IncludeComponent
 							(
-							"av:form.select", "av_corp",
+							"av:form.select", "av-corp",
 								[
 								"NAME"        => 'answer[]',
 								"LIST"        => $questionList,
@@ -74,7 +74,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 					<?
 					$APPLICATION->IncludeComponent
 						(
-						"av:form.checkbox", "av_corp",
+						"av:form.checkbox", "av-corp",
 							[
 							"NAME"  => 'answer',
 							"VALUE" => $answerInfo["ID"],
@@ -92,7 +92,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 					<?
 					$APPLICATION->IncludeComponent
 						(
-						"av:form.checkbox", "av_corp_radio",
+						"av:form.checkbox", "av-corp-radio",
 							[
 							"NAME"  => 'answer',
 							"VALUE" => $answerInfo["ID"],
@@ -115,7 +115,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 			<?
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.button", "av_corp",
+				"av:form.button", "av-corp",
 					[
 					"BUTTON_TYPE" => 'label',
 					"TITLE"       => Loc::getMessage("AV_LEARNING_TEST_SELF_SUBMIT_NAME"),

@@ -62,7 +62,6 @@ $(function()
 	$(window)
 		.resize(function()
 			{
-			$(".av-banner").children(".item:visible")
-				.floodImage();
+			$(".av-banner").children(".item:visible").floodImage();
 			});
 	});

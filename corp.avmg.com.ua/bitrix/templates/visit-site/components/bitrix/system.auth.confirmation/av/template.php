@@ -18,9 +18,8 @@ AvComponentsIncludings::getInstance()->setIncludings("av", "visit_site.user.pane
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site_alt",
+			"av:form.button", "av-alt",
 				[
-				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'label',
 				"TITLE"       => Loc::getMessage("AV_AUTH_CONFIRMATION_REGISTRATION_LINK"),
 				"ATTR"        => 'data-registration-form-link'
@@ -29,9 +28,8 @@ AvComponentsIncludings::getInstance()->setIncludings("av", "visit_site.user.pane
 			);
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site_alt",
+			"av:form.button", "av-alt",
 				[
-				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'link',
 				"LINK"        => '/',
 				"TITLE"       => Loc::getMessage("AV_AUTH_CONFIRMATION_HOME_LINK")
@@ -52,9 +50,8 @@ AvComponentsIncludings::getInstance()->setIncludings("av", "visit_site.user.pane
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site_alt",
+			"av:form.button", "av-alt",
 				[
-				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'link',
 				"LINK"        => $arParams["PROFILE_URL"],
 				"TITLE"       => Loc::getMessage("AV_AUTH_CONFIRMATION_PROFILE_LINK")
@@ -63,9 +60,8 @@ AvComponentsIncludings::getInstance()->setIncludings("av", "visit_site.user.pane
 			);
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site_alt",
+			"av:form.button", "av-alt",
 				[
-				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'link',
 				"LINK"        => '/',
 				"TITLE"       => Loc::getMessage("AV_AUTH_CONFIRMATION_HOME_LINK")
@@ -86,9 +82,8 @@ AvComponentsIncludings::getInstance()->setIncludings("av", "visit_site.user.pane
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site_alt",
+			"av:form.button", "av-alt",
 				[
-				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'label',
 				"TITLE"       => Loc::getMessage("AV_AUTH_CONFIRMATION_LOGIN_LINK"),
 				"ATTR"        => 'data-login-form-link'
@@ -97,9 +92,8 @@ AvComponentsIncludings::getInstance()->setIncludings("av", "visit_site.user.pane
 			);
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site_alt",
+			"av:form.button", "av-alt",
 				[
-				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'link',
 				"LINK"        => '/',
 				"TITLE"       => Loc::getMessage("AV_AUTH_CONFIRMATION_HOME_LINK")
@@ -120,9 +114,8 @@ AvComponentsIncludings::getInstance()->setIncludings("av", "visit_site.user.pane
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site_alt",
+			"av:form.button", "av-alt",
 				[
-				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'label',
 				"TITLE"       => Loc::getMessage("AV_AUTH_CONFIRMATION_REGISTRATION_LINK"),
 				"ATTR"        => 'data-registration-form-link'
@@ -131,9 +124,8 @@ AvComponentsIncludings::getInstance()->setIncludings("av", "visit_site.user.pane
 			);
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site_alt",
+			"av:form.button", "av-alt",
 				[
-				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'link',
 				"LINK"        => '/',
 				"TITLE"       => Loc::getMessage("AV_AUTH_CONFIRMATION_HOME_LINK")
@@ -153,9 +145,8 @@ AvComponentsIncludings::getInstance()->setIncludings("av", "visit_site.user.pane
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site_alt",
+			"av:form.button", "av-alt",
 				[
-				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'label',
 				"TITLE"       => Loc::getMessage("AV_AUTH_CONFIRMATION_LOGIN_LINK"),
 				"ATTR"        => 'data-login-form-link'
@@ -164,9 +155,8 @@ AvComponentsIncludings::getInstance()->setIncludings("av", "visit_site.user.pane
 			);
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site_alt",
+			"av:form.button", "av-alt",
 				[
-				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'link',
 				"LINK"        => '/',
 				"TITLE"       => Loc::getMessage("AV_AUTH_CONFIRMATION_HOME_LINK")
@@ -187,9 +177,8 @@ AvComponentsIncludings::getInstance()->setIncludings("av", "visit_site.user.pane
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site_alt",
+			"av:form.button", "av-alt",
 				[
-				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'label',
 				"TITLE"       => Loc::getMessage("AV_AUTH_CONFIRMATION_REGISTRATION_LINK"),
 				"ATTR"        => 'data-registration-form-link'
@@ -198,9 +187,8 @@ AvComponentsIncludings::getInstance()->setIncludings("av", "visit_site.user.pane
 			);
 		$APPLICATION->IncludeComponent
 			(
-			"av:form_elements", "av_site_alt",
+			"av:form.button", "av-alt",
 				[
-				"TYPE"        => 'button',
 				"BUTTON_TYPE" => 'link',
 				"LINK"        => '/',
 				"TITLE"       => Loc::getMessage("AV_AUTH_CONFIRMATION_HOME_LINK")

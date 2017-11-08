@@ -9,4 +9,4 @@ Asset::getInstance()->addJs('https://maps.googleapis.com/maps/api/js?key='.COpti
 AvComponentsIncludings::getInstance()
 	->setIncludings("bitrix", "news.list",   "av_bases_same_bases")
 	->setIncludings("bitrix", "main.share",  "av")
-	->setIncludings("av",     "form.button", "av_alt");
+	->setIncludings("av",     "form.button", "av-alt");

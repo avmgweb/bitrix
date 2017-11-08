@@ -26,7 +26,7 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 		<?
 		$APPLICATION->IncludeComponent
 			(
-			"av:form.button", "av_corp_alt3",
+			"av:form.button", "av-corp-alt3",
 				[
 				"BUTTON_TYPE" => 'label',
 				"TITLE"       => '#ACCEPT_TEXT#',
@@ -36,7 +36,7 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 			);
 		$APPLICATION->IncludeComponent
 			(
-			"av:form.button", "av_corp",
+			"av:form.button", "av-corp",
 				[
 				"BUTTON_TYPE" => 'label',
 				"TITLE"       => '#CANCEL_TEXT#',
@@ -115,7 +115,7 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 						<?
 						$APPLICATION->IncludeComponent
 							(
-							"av:form.textarea", "av_corp",
+							"av:form.textarea", "av-corp",
 								[
 								"NAME"  => 'answer',
 								"VALUE" => $arResult["QBAR"][$currentQuestion]["RESPONSE"][0]
@@ -135,7 +135,7 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 								<?
 								$APPLICATION->IncludeComponent
 									(
-									"av:form.select", "av_corp",
+									"av:form.select", "av-corp",
 										[
 										"NAME"        => 'answer[]',
 										"LIST"        => $list,
@@ -154,7 +154,7 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 							<?
 							$APPLICATION->IncludeComponent
 								(
-								"av:form.checkbox", "av_corp",
+								"av:form.checkbox", "av-corp",
 									[
 									"NAME"    => 'answer[]',
 									"VALUE"   => $answerInfo["ID"],
@@ -172,7 +172,7 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 							<?
 							$APPLICATION->IncludeComponent
 								(
-								"av:form.checkbox", "av_corp_radio",
+								"av:form.checkbox", "av-corp-radio",
 									[
 									"NAME"    => 'answer',
 									"VALUE"   => $answerInfo["ID"],
@@ -212,7 +212,7 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 
 					$APPLICATION->IncludeComponent
 						(
-						"av:form.button", "av_corp",
+						"av:form.button", "av-corp",
 						$nextButtonParams,
 						false, ["HIDE_ICONS" => 'Y']
 						);
@@ -220,7 +220,7 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 					if($arResult["TEST"]["PASSAGE_TYPE"] > 0 && $arResult["NAV"]["PREV_QUESTION"])
 						$APPLICATION->IncludeComponent
 							(
-							"av:form.button", "av_corp_alt3",
+							"av:form.button", "av-corp-alt3",
 								[
 								"BUTTON_TYPE" => 'link',
 								"LINK"        => $arResult["QBAR"][$arResult["NAV"]["PREV_QUESTION"]]["URL"],
@@ -233,7 +233,7 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 					$APPLICATION->IncludeComponent
 						(
 						"av:form.button",
-						$arResult["TEST"]["PASSAGE_TYPE"] > 0 && $arResult["NAV"]["PREV_QUESTION"] ? 'av_corp_alt4' : 'av_corp_alt3',
+						$arResult["TEST"]["PASSAGE_TYPE"] > 0 && $arResult["NAV"]["PREV_QUESTION"] ? 'av-corp-alt4' : 'av-corp-alt3',
 							[
 							"BUTTON_TYPE" => 'submit',
 							"NAME"        => 'finish',
@@ -377,7 +377,7 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 		if($arResult["GRADEBOOK_URL"])
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.button", "av_corp_alt3",
+				"av:form.button", "av-corp-alt3",
 					[
 					"BUTTON_TYPE" => 'link',
 					"LINK"        => $arResult["GRADEBOOK_URL"],
@@ -435,7 +435,7 @@ $currentQuestion = $arResult["NAV"]["PAGE_NUMBER"];
 			<?
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.button", "av_corp_alt3",
+				"av:form.button", "av-corp-alt3",
 					[
 					"BUTTON_TYPE" => 'submit',
 					"NAME"        => 'next',
