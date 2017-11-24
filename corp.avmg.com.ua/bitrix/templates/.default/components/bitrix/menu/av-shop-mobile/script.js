@@ -12,12 +12,12 @@ $(function()
 			if($submenu.is(":visible"))
 				{
 				$fullBlock.removeClass("active");
-				$submenu.slideUp();
+				$submenu.slideUp(600);
 				}
 			else
 				{
 				$fullBlock.addClass("active");
-				$submenu.slideDown();
+				$submenu.slideDown(600);
 				}
 			});
 	});

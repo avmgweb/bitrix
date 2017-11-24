@@ -1,53 +1,42 @@
-/* -------------------------------------------------------------------- */
-/* -------------------- diactivate select function -------------------- */
-/* -------------------------------------------------------------------- */
-function AvFormLinksList()
-	{
-	$('.av-links-list')
-		.removeClass("active")
-		.children('.list').slideUp();
-	}
-/* -------------------------------------------------------------------- */
-/* ----------------------------- handlers ----------------------------- */
-/* -------------------------------------------------------------------- */
 $(function()
 	{
-	$('.av-links-list .list').mCustomScrollbar({"theme": 'dark'});
+	$(".av-links-list .list").mCustomScrollbar({"theme": "dark"});
 
 	$(document)
-		/* ------------------------------------------- */
-		/* ------------ select drop down ------------- */
-		/* ------------------------------------------- */
-		.on("vclick", '.av-links-list .title-label', function()
+		.on("vclick", ".av-links-list .title-block", function()
 			{
 			var
-				$select      = $(this).closest('.av-links-list'),
-				$optionsList = $select.find('.list');
+				$selectBlock = $(this).closest(".av-links-list"),
+				$optionsList = $selectBlock.find(".list");
 
-			if($optionsList.is(':visible'))
-				AvFormLinksList();
+			if($optionsList.is(":visible"))
+				{
+				$selectBlock.removeClass("active");
+				$optionsList.slideUp();
+				}
 			else
 				{
-				AvFormLinksList();
-				$select.addClass("active");
+				$selectBlock.addClass("active");
 				$optionsList
-					.css("width", $select[0].getBoundingClientRect().width)
-					.slideDown()
-					.focus();
+					.css("width", $selectBlock[0].getBoundingClientRect().width)
+					.slideDown();
 				}
 			})
-		/* ------------------------------------------- */
-		/* -------------- hide selector -------------- */
-		/* ------------------------------------------- */
-		.on("vclick", function(event)
+		.on("vclick", function()
 			{
-			if(!$(event.target).closest('.av-links-list').length)
-				AvFormLinksList();
+			$(".av-links-list").each(function()
+				{
+				if(!$(this).isClicked())
+					$(this)
+						.removeClass("active")
+						.children(".list").slideUp();
+				});
 			});
 
-	$(window)
-		.resize(function()
-			{
-			AvFormLinksList();
-			});
+	$(window).resize(function()
+		{
+		$(".av-links-list")
+			.removeClass("active")
+			.children(".list").slideUp();
+		});
 	});

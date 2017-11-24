@@ -54,7 +54,7 @@
 					.add($nextSlide)
 					.each(function()
 						{
-						$(this).animate({"left": (parseFloat($(this).css("left")) - slideWidth)+"px"}, 600);
+						$(this).animate({"left": (parseFloat($(this).css("left")) - slideWidth)+"px"}, 900);
 						});
 
 				$prevNav.removeClass("unactive");
@@ -68,7 +68,7 @@
 					.add($prevSlide)
 					.each(function()
 						{
-						$(this).animate({"left": (parseFloat($(this).css("left")) + slideWidth)+"px"}, 600);
+						$(this).animate({"left": (parseFloat($(this).css("left")) + slideWidth)+"px"}, 900);
 						});
 
 				$nextNav.removeClass("unactive");
@@ -85,15 +85,19 @@
 			{
 			$slider
 				.removeClass("in-process");
-			$sliderBlock
-				.removeAttr("style");
+			$sliderBlock.css
+				({
+				"position": "",
+				"width"   : "",
+				"height"  : ""
+				});
 			$slides
 				.css("position", "")
 				.css("left",     "")
 				.filter(".to-hide")
 					.hide()
 					.removeClass("to-hide");
-			}, 1000);
+			}, 1200);
 		return $slider;
 		};
 	/* ------------------------------------------- */
@@ -133,7 +137,7 @@
 		$slider
 			.removeClass("unactive");
 		$slides
-			.removeAttr("style")
+			.css("width", "")
 			.show();
 		$prevNav.add($nextNav)
 			.addClass("unactive");
@@ -168,9 +172,18 @@ $(function()
 			$(this).closest(".av-catalog-section-slider").runAvCatalogSectionSlider($(this).hasClass("prev") ? "back" : "forward");
 			});
 
-	$(window)
-		.resize(function()
+	setInterval(function()
+		{
+		$(".av-catalog-section-slider").each(function()
 			{
-			$(".av-catalog-section-slider").prepareAvCatalogSectionSlider();
+			var $nextButton = $(this).find(".navigation.next");
+			if($(this).is(":hover") && $nextButton.is(":visible") && !$nextButton.is(".unactive"))
+				$nextButton.click();
 			});
+		}, 2000);
+
+	$(window).resize(function()
+		{
+		$(".av-catalog-section-slider").prepareAvCatalogSectionSlider();
+		});
 	});

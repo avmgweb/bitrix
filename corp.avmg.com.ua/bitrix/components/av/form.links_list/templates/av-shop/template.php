@@ -1,8 +1,8 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
 <div class="av-links-list-shop">
-	<div class="title-label" title="<?=$arResult["TITLE"]?>">
-		<div><?=$arResult["VALUE"] ? $arResult["LIST"][$arResult["VALUE"]] : $arParams["TITLE"]?></div>
-		<div></div>
+	<div class="title-block" title="<?=$arResult["TITLE"]?>">
+		<div class="title"><?=$arResult["VALUE"] ? $arResult["LIST"][$arResult["VALUE"]] : $arResult["TITLE"]?></div>
+		<i class="arrow fa fa-angle-down"></i>
 	</div>
 
 	<div class="list">

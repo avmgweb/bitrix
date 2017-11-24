@@ -142,7 +142,8 @@ if($pageType != "detail" && $arParams["USE_FILTER"] == "Y")
 			"SUBSECTION_URL"     => $urlTemplates["subsection"] ? $arResult["FOLDER"].$urlTemplates["subsection"] : "",
 			"FILTER_URL_PARAMS"  => $urlVariables["FILTER_PARAMS"],
 			"SUBSECTION_TITLE"   => $arParams["FILTER_SUBSECTION_TITLE"],
-			"FIELDS_CHANGE_TYPE" => $arParams["FILTER_FIELDS_CHANGE_TYPE"]
+			"FIELDS_CHANGE_TYPE" => $arParams["FILTER_FIELDS_CHANGE_TYPE"],
+			"FIELDS_TEMPLATES"   => $arParams["FILTER_FIELDS_TEMPLATES"]
 			],
 		false, ["HIDE_ICONS" => 'Y']
 		);

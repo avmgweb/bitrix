@@ -3,8 +3,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* --------------------------------------------------------------------- */
 /* ------------------------------- params ------------------------------ */
 /* --------------------------------------------------------------------- */
-$arResult["REQUIRED"] = $arParams["REQUIRED"] == 'Y' ? true : false;
-$arResult["DISABLED"] = $arParams["DISABLED"] == 'Y' ? true : false;
+$arResult["REQUIRED"] = $arParams["REQUIRED"] == "Y" ? true : false;
+$arResult["DISABLED"] = $arParams["DISABLED"] == "Y" ? true : false;
 
 $arResult["NAME"]          = $arParams["NAME"];
 $arResult["NAME_DELETE"]   = $arParams["NAME_DELETE"];
@@ -18,7 +18,7 @@ if($arResult["VALUE"])
 	if($fileInfo["FILE_NAME"])
 		$arResult["UPLOADED_FILE"] =
 			[
-			"LINK" => '/upload/'.$fileInfo["SUBDIR"].'/'.$fileInfo["FILE_NAME"],
+			"LINK" => "/upload/".$fileInfo["SUBDIR"]."/".$fileInfo["FILE_NAME"],
 			"NAME" => $fileInfo["ORIGINAL_NAME"]
 			];
 	}
@@ -28,8 +28,8 @@ if(is_array($arResult["ATTR"]))
 	{
 	$attrArray = [];
 	foreach($arResult["ATTR"] as $index => $value)
-		$attrArray[] = $index.'="'.str_replace('\"', '\'', $value).'"';
-	$arResult["ATTR"] = implode(' ', $attrArray);
+		$attrArray[] = $index."=\"".str_replace("\"", "'", $value)."\"";
+	$arResult["ATTR"] = implode(" ", $attrArray);
 	}
 /* --------------------------------------------------------------------- */
 /* ------------------------------- output ------------------------------ */

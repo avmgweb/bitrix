@@ -5,16 +5,18 @@
 	}
 .av-catalog-section-slider .navigation
 	{
-	background: url(images/arrow.svg) center center no-repeat;
-	background-size: 48px;
+	color: #999;
 	cursor: pointer;
+	line-height: 48px;
+	font-size: 48px;
+	text-align: center;
+	transition: .3s;
 	width:  48px;
 	height: 48px;
-	transition: .3s;
 	}
-.av-catalog-section-slider .navigation:hover    {background-image: url(images/arrow_hover.svg)}
-.av-catalog-section-slider .navigation.prev     {transform: rotate( 90deg)}
-.av-catalog-section-slider .navigation.next     {transform: rotate(-90deg)}
+.av-catalog-section-slider .navigation:hover,
+.av-catalog-section-slider .navigation:active,
+.av-catalog-section-slider .navigation:focus    {color: #CC0000}
 .av-catalog-section-slider .navigation.unactive {visibility: hidden}
 
 .av-catalog-section-slider .slider-block

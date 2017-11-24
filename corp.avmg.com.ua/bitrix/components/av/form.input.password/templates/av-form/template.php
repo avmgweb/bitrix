@@ -5,14 +5,14 @@
 	class="
 		av-form-styled-password
 		<?if($arResult["REQUIRED"]):?>required<?endif?>
-		<?if($arResult["TITLE"] && !$arResult["VALUE"]):?>has-placeholder on<?endif?>
-		<?if($arResult["TITLE"] &&  $arResult["VALUE"]):?>has-placeholder<?endif?>
+		<?if($arResult["TITLE"] && !$arResult["VALUE"]):?>placeholder-on<?endif?>
+		<?if($arResult["TITLE"] &&  $arResult["VALUE"]):?>placeholder-off<?endif?>
 		"
+	title="<?=$arResult["TITLE"]?>"
+	<?=$arResult["ATTR"]?>
 >
 	<?if($arResult["TITLE"]):?>
-	<label title="<?=$arResult["TITLE"]?>">
-		<?=$arResult["TITLE"]?>
-	</label>
+	<label><?=$arResult["TITLE"]?></label>
 	<?endif?>
 
 	<input
@@ -20,7 +20,6 @@
 		autocomplete="off"
 		name="<?=$arResult["NAME"]?>"
 		value="<?=$arResult["VALUE"]?>"
-		title="<?=$arResult["TITLE"]?>"
-		<?=$arResult["ATTR"]?>
+		title=""
 	>
 </div>

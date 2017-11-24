@@ -1,5 +1,5 @@
 <?
 $aMenuLinks = array
 	(
-	array("Мій профіль", "/user/info/")
+	array("Мій профіль", "/personal/info/")
 	);

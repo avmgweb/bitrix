@@ -1,7 +1,3 @@
 <?
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-
-CJSCore::Init(["av_form_elements"]);
-
-AvComponentsIncludings::getInstance()
-	->setIncludings("av", "form.select", "av");
+CJSCore::Init(["av_form_elements", "av_form_elements"]);

@@ -1,5 +1,6 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
 <?
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
 $APPLICATION->IncludeComponent
 	(
 	"bitrix:search.title", "av-shop",
@@ -24,4 +25,3 @@ $APPLICATION->IncludeComponent
 		"CATEGORY_1_iblock_catalog_products" => array(139, 141, 143, 145, 147, 149)
 		)
 	);
-?>

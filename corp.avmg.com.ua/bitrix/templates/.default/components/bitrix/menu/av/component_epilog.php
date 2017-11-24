@@ -14,4 +14,4 @@ $templateFolder = '/'.implode('/', $templateFolderArray);
     if($arParams["MAX_LEVEL"] == 1) Asset::getInstance()->addCss($templateFolder."/one_level.css");
 elseif($arParams["MAX_LEVEL"] == 2) Asset::getInstance()->addCss($templateFolder."/two_level.css");
 
-CJSCore::Init(["av_site"]);
+CJSCore::Init(["av"]);

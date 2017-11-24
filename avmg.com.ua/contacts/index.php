@@ -8,7 +8,7 @@ $APPLICATION->SetPageProperty("title",       "АВ метал груп конт�
 $APPLICATION->SetPageProperty("description", "АВ метал груп найбільший металотрейдер України ☎ (056) 790-01-22, 🏠 м. Дніпро, вул.Шолом-Алейхема, 5");
 
 CJSCore::Init(["bootstrap"]);
-Asset::getInstance()->addCss("/bitrix/css/av_site/pages/contacts.css");
+Asset::getInstance()->addCss("/bitrix/css/av-site/pages/contacts.css");
 ?>
 <div class="row">
 	<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 av-contacts-page-block first-column">

@@ -8,38 +8,41 @@
 	jQuery.fn.getFormElememtValueSelectAv    = function()      {return this.find("select option:selected").attr("value")};
 	jQuery.fn.setFormElememtValueSelectAv    = function(value)
 		{
-		this.find("select option")                     .prop("selected", false);
-		this.find("select option[value=\""+value+"\"]").prop("selected", true);
-		this.behaviorFormElememtSelectAv();
+		var
+			$select            = this.find("select"),
+			$titleBlock        = this.find(".title-block"),
+			$selectedItem      = $select.find("option[value=\""+value+"\"]"),
+			$selectedItemLabel = this.find(".list .list-item[data-list-value=\""+value+"\"]");
+
+		$select.find("option")
+		    .removeAttr("selected")
+		    .prop("selected", false);
+		$selectedItem
+			.attr("selected", true)
+			.prop("selected", true);
+
+		this.find(".list .list-item")
+		    .removeClass("selected");
+		$selectedItemLabel
+			.addClass("selected", true);
+
+		$titleBlock.find(".title").text($selectedItemLabel.length ? $selectedItemLabel.text() : $titleBlock.attr("data-default-title"));
+		if($selectedItem.length) this.addClass("value-seted");
+		else                     this.removeClass("value-seted");
+
+		$select.trigger("change");
 		};
 	jQuery.fn.getFormElememtRequiredSelectAv = function()      {return this.hasClass("required")};
 	jQuery.fn.setFormElememtRequiredSelectAv = function(value)
 		{
-		if(value == "on")  this.addClass("required");
-		if(value == "off") this.removeClass("required");
+		     if(value == "on")  this.addClass("required");
+		else if(value == "off") this.removeClass("required");
 		};
 	jQuery.fn.getFormElememtAlertSelectAv    = function()      {return this.hasClass("alert-input")};
 	jQuery.fn.setFormElememtAlertSelectAv    = function(value)
 		{
-		if(value == "on")  this.addClass("alert-input");
-		if(value == "off") this.removeClass("alert-input");
-		};
-	jQuery.fn.behaviorFormElememtSelectAv    = function(value)
-		{
-		var
-			$select       = this.find("select"),
-			$selectedItem = $select.find("option:selected"),
-			$defaultLabel = this.find(".list [data-list-value]").first();
-		if(!$selectedItem.length) $selectedItem  = this.find("select option").first();
-
-		this.find(".title-label > *:nth-child(1)")                              .text($selectedItem.text());
-		this.find(".list [data-list-value]")                                    .removeClass("selected");
-		this.find(".list [data-list-value=\""+$selectedItem.attr("value")+"\"]").addClass("selected");
-
-		if($selectedItem.attr("value") && $defaultLabel.text()) $defaultLabel.show();
-		else                                                    $defaultLabel.hide();
-
-		$select.trigger("change");
+		     if(value == "on")  this.addClass("alert-input");
+		else if(value == "off") this.removeClass("alert-input");
 		};
 	})(jQuery);
 /* -------------------------------------------------------------------- */
@@ -54,15 +57,6 @@ SetFormElementsFunction("av", "select", "setFormElememtRequired", "setFormElemem
 SetFormElementsFunction("av", "select", "getFormElememtAlert",    "getFormElememtAlertSelectAv");
 SetFormElementsFunction("av", "select", "setFormElememtAlert",    "setFormElememtAlertSelectAv");
 /* -------------------------------------------------------------------- */
-/* -------------------- diactivate select function -------------------- */
-/* -------------------------------------------------------------------- */
-function AvFormSelectDiactivate()
-	{
-	$(".av-form-select")
-		.removeClass("active")
-		.children(".list").slideUp();
-	}
-/* -------------------------------------------------------------------- */
 /* ----------------------------- handlers ----------------------------- */
 /* -------------------------------------------------------------------- */
 $(function()
@@ -70,47 +64,50 @@ $(function()
 	$(".av-form-select .list").mCustomScrollbar({"theme": "dark"});
 
 	$(document)
-		/* ------------------------------------------- */
-		/* ------------ select drop down ------------- */
-		/* ------------------------------------------- */
-		.on("vclick", ".av-form-select:not(.disabled) .title-label", function()
+		.on("vclick", ".av-form-select .title-block", function()
 			{
 			var
 				$selectBlock = $(this).closest(".av-form-select"),
 				$optionsList = $selectBlock.find(".list");
 
 			if($optionsList.is(":visible"))
-				AvFormSelectDiactivate();
+				{
+				$selectBlock.removeClass("active");
+				$optionsList.slideUp();
+				}
 			else
 				{
-				AvFormSelectDiactivate();
 				$selectBlock.addClass("active");
 				$optionsList
-					.css("width", $(this)[0].getBoundingClientRect().width)
-					.slideDown()
-					.focus();
+					.css("width", $selectBlock[0].getBoundingClientRect().width)
+					.slideDown();
 				}
 			})
-		/* ------------------------------------------- */
-		/* --------------- check value --------------- */
-		/* ------------------------------------------- */
-		.on("vclick", ".av-form-select:not(.disabled) .list [data-list-value]", function()
+		.on("vclick", ".av-form-select .list .list-item", function()
 			{
-			$(this).closest(".av-form-select").setFormElememtValueSelectAv($(this).attr("data-list-value"));
-			AvFormSelectDiactivate();
+			var $selectBlock = $(this).closest(".av-form-select");
+
+			$selectBlock
+				.setFormElememtValueSelectAv($(this).attr("data-list-value"));
+			$selectBlock
+				.removeClass("active")
+				.children(".list").slideUp();
 			})
-		/* ------------------------------------------- */
-		/* -------------- hide selector -------------- */
-		/* ------------------------------------------- */
-		.on("vclick", function(event)
+		.on("vclick", function()
 			{
-			if(!$(event.target).closest(".av-form-select").length)
-				AvFormSelectDiactivate();
+			$(".av-form-select").each(function()
+				{
+				if(!$(this).isClicked())
+					$(this)
+						.removeClass("active")
+						.children(".list").slideUp();
+				});
 			});
 
-	$(window)
-		.resize(function()
-			{
-			AvFormSelectDiactivate();
-			});
+	$(window).resize(function()
+		{
+		$(".av-form-select")
+			.removeClass("active")
+			.children(".list").slideUp();
+		});
 	});

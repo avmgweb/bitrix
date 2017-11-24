@@ -1,7 +1,7 @@
 <?
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 
-CJSCore::Init(["av_site"]);
+CJSCore::Init(["av", "font_awesome"]);
 
 AvComponentsIncludings::getInstance()
 	->setIncludings("bitrix", "catalog.item", "av-tablet");

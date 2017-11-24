@@ -25,7 +25,7 @@ $MESS["AV_NEWS_PARAMS_DATA_MARKUP_TYPE_NONE"]     = "Без микроразме
 $MESS["AV_NEWS_PARAMS_DATA_MARKUP_TYPE_BLOG"]     = "Блог";
 
 $MESS["AV_NEWS_PARAMS_DETAIL_TEMPLATE"]                 = "Новость детально: шаблон компонента";
-$MESS["AV_NEWS_PARAMS_SAME_ARTICLES_SEARCH_IN_SECTION"] = "Материалы по теме: искать в разделе";
+$MESS["AV_NEWS_PARAMS_SAME_ARTICLES_SEARCH_IN_SECTION"] = "Искать материалы по теме в разделе";
 $MESS["AV_NEWS_PARAMS_ADD_SUBSECTIONS_CHAIN"]           = "Навигация: подразделы";
 $MESS["AV_NEWS_PARAMS_FILTER_SUBSECTION_TITLE"]         = "Заголовок свойства \"подраздел\"";
 

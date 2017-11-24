@@ -1,0 +1,16 @@
+.av-form-styled-select-checkbox
+	{
+	border: 1px solid #B6C0C6;
+	border-radius: 2px;
+	padding: 12px 3px 24px 10px;
+	}
+.av-form-styled-select-checkbox:hover {border-color: #868B8D}
+
+.av-form-styled-select-checkbox.required > label::after
+	{
+	color: #CC0000;
+	content: "*";
+	display: inline-block;
+	margin-left: 3px;
+	}
+.av-form-styled-select-checkbox > div {margin-top: 13px}

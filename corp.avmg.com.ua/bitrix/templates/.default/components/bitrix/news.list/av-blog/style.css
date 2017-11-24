@@ -1,0 +1,101 @@
+/* -------------------------------------------------------------------- */
+/* --------------------------- clear style ---------------------------- */
+/* -------------------------------------------------------------------- */
+.av-news-list-blog a,
+.av-news-list-blog a:hover,
+.av-news-list-blog a:focus,
+.av-news-list-blog a:active,
+.av-news-list-blog a:visited {color: inherit;text-decoration: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- page ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-news-list-blog              {margin: -10px}
+.av-news-list-blog-pager.top    {margin-bottom: 52px}
+.av-news-list-blog-pager.bottom {margin-top:    52px}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ items ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-news-list-blog > .item
+	{
+	cursor: pointer;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 10px;
+	transition: .3s;
+	}
+.av-news-list-blog > .item:hover,
+.av-news-list-blog > .item:active,
+.av-news-list-blog > .item:focus            {box-shadow: 0 4px 8px rgba(76, 82, 85, 0.25)}
+.av-news-list-blog > .item:not(:last-child) {margin-bottom:  32px}
+
+.av-news-list-blog > .item > .image-link
+	{
+	margin-right: 13px;
+	overflow: hidden;
+	width: 230px;
+	height: 230px;
+	}
+.av-news-list-blog > .item > .image-link > img
+	{
+	height: 100%;
+	margin-left: 50%;
+	transform: translateX(-50%);
+	}
+.av-news-list-blog > .item > .content-block                      {width: calc(100% - 230px - 13px)}
+.av-news-list-blog > .item > .content-block > *:not(:last-child) {margin-bottom: 12px}
+
+.av-news-list-blog > .item > .content-block > .rating-row
+	{
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	}
+.av-news-list-blog > .item > .content-block > .rating-row > .date
+	{
+	color: #B6C0C6;
+	font-size: calc(1em - 2px);
+	line-height: normal;
+	}
+
+.av-news-list-blog > .item > .content-block > .element-title
+	{
+	display: block;
+	font-weight: bold;
+	}
+.av-news-list-blog > .item:hover  > .content-block > .element-title,
+.av-news-list-blog > .item:active > .content-block > .element-title,
+.av-news-list-blog > .item:focus  > .content-block > .element-title {color: #CC0000}
+
+.av-news-list-blog > .item > .content-block > .element-text
+	{
+	color: #757575;
+	text-align: justify;
+	}
+.av-news-list-blog > .item > .content-block > .read-more-link
+	{
+	color: #CC0000 !important;
+	display: block;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ media ------------------------------- */
+/* -------------------------------------------------------------------- */
+@media (max-width: 991px)
+	{
+	.av-news-list-blog > .item > .image-link    {margin: 0 auto 13px auto}
+	.av-news-list-blog > .item > .content-block {width: 100%}
+	}
+@media (max-width:767px)
+	{
+	.av-news-list-blog > .item
+		{
+		margin-left:  auto;
+		margin-right: auto;
+		max-width: 400px;
+		}
+	.av-news-list-blog > .item > .image-link
+		{
+		width: 150px;
+		height: 150px;
+		}
+	.av-news-list-blog > .item > .content-block > .element-title {text-align: center}
+	}

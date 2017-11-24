@@ -8,7 +8,7 @@ $APPLICATION->SetPageProperty("title",       "Співпраця з компан
 $APPLICATION->SetPageProperty("description", "Співпраця з компанією АВ метал груп ™ ✓Вигідна партнерська програма ✓Широка регіональна мережа ☎ (056) 790-01-22 Телефонуйте!");
 
 CJSCore::Init(["bootstrap"]);
-Asset::getInstance()->addCss("/bitrix/css/av_site/pages/partners.css");
+Asset::getInstance()->addCss("/bitrix/css/av-site/pages/partners.css");
 ?>
 <div class="row">
 	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 av-parthners-page-block first-column">

@@ -1,27 +1,39 @@
-<?
-if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-
-$inputTitle = $arResult["EMPTY_TITLE"] ? $arResult["EMPTY_TITLE"] : $arResult["TITLE"];
-?>
+<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
 <div
-	class="av-form-select-shop-noscroll<?if($arResult["REQUIRED"]):?> required<?endif?>"
+	data-av-form-item="select"
+	data-av-form-library="av-shop-noscroll"
+	class="
+		av-form-select-shop-noscroll
+		<?if($arResult["REQUIRED"]):?>required<?endif?>
+		<?if($arResult["VALUE"]):?>value-seted<?endif?>
+		"
 >
-	<select name="<?=$arResult["NAME"]?>" title="" <?=$arResult["ATTR"]?>>
-		<option value><?=$inputTitle?></option>
+	<select name="<?=$arResult["NAME"]?>" title="">
+		<option value></option>
 		<?foreach($arResult["LIST"] as $value => $title):?>
 		<option value="<?=$value?>" <?if($value == $arResult["VALUE"]):?>selected<?endif?>><?=$title?></option>
 		<?endforeach?>
 	</select>
 
-	<div class="title-label" title="<?=$arResult["TITLE"]?>">
-		<div><?=$arResult["VALUE"] ? $arResult["LIST"][$arResult["VALUE"]] : $inputTitle?></div>
-		<div></div>
+	<div class="title-block" data-default-title="<?=$arResult["TITLE"]?>" title="<?=$arResult["TITLE"]?>">
+		<div class="title"><?=$arResult["VALUE"] ? $arResult["LIST"][$arResult["VALUE"]] : $arResult["TITLE"]?></div>
+		<i class="arrow fa fa-angle-down"></i>
 	</div>
 
 	<div class="list">
-		<div data-list-value <?if(!$arResult["VALUE"] || !$inputTitle):?>style="display: none"<?endif?>><?=$inputTitle?></div>
+		<?if($arResult["EMPTY_TITLE"] || $arResult["TITLE"]):?>
+		<div class="list-item default">
+			<?=($arResult["EMPTY_TITLE"] ? $arResult["EMPTY_TITLE"] : $arResult["TITLE"])?>
+		</div>
+		<?endif?>
+
 		<?foreach($arResult["LIST"] as $value => $title):?>
-		<div data-list-value="<?=$value?>" <?if($value == $arResult["VALUE"]):?>class="selected"<?endif?>><?=$title?></div>
+		<div
+			data-list-value="<?=$value?>"
+			class="list-item<?if($value == $arResult["VALUE"]):?> selected<?endif?>"
+		>
+			<?=$title?>
+		</div>
 		<?endforeach?>
 	</div>
 </div>

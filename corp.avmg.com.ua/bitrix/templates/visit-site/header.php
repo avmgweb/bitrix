@@ -8,6 +8,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 $currentDirectory = $APPLICATION->GetCurDir();
 $dirProperty      = $APPLICATION->GetDirPropertyList();
 $leftMenu         = "";
+$supportLink      = "";
 $hasLeftColumn    = false;
 
 ob_start();
@@ -31,6 +32,15 @@ if($dirProperty["NOT_SHOW_LEFT_MENU"] != "Y" && $currentDirectory != SITE_DIR &&
 $leftMenu = ob_get_contents();
 ob_end_clean();
 
+ob_start();
+$APPLICATION->IncludeComponent
+	(
+	"bitrix:main.include", "",
+	array("AREA_FILE_SHOW" => "file", "PATH" => "/include/support.php")
+	);
+$supportLink = ob_get_contents();
+ob_end_clean();
+
 $hasLeftColumn = $leftMenu || (file_exists($_SERVER["DOCUMENT_ROOT"].$currentDirectory."sect_inc.php") && $dirProperty["NOT_SHOW_LEFT_MENU"] != "Y") ? true : false;
 /* ============================================================================================= */
 /* ========================================== DOCUMENT ========================================= */
@@ -51,7 +61,7 @@ $hasLeftColumn = $leftMenu || (file_exists($_SERVER["DOCUMENT_ROOT"].$currentDir
 		<link rel="icon" type="image/x-icon" href="/favicon.ico">
 
 		<?$APPLICATION->ShowHead()?>
-		<?CJSCore::Init(["av_site"])?>
+		<?CJSCore::Init(["av"])?>
 		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/scripts/main.js")?>
 		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/scripts/".LANGUAGE_ID."/google_analytics.js")?>
 		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/scripts/".LANGUAGE_ID."/yandex_metrika.js")?>
@@ -125,15 +135,9 @@ $hasLeftColumn = $leftMenu || (file_exists($_SERVER["DOCUMENT_ROOT"].$currentDir
 							?>
 						</div>
 
-						<div class="support-cell">
-							<?
-							$APPLICATION->IncludeComponent
-								(
-								"bitrix:main.include", "",
-								array("AREA_FILE_SHOW" => "file", "PATH" => "/include/support.php")
-								);
-							?>
-						</div>
+						<?if($supportLink):?>
+						<div class="support-cell"><?=$supportLink?></div>
+						<?endif?>
 
 						<div class="phone-cell">
 							<?
@@ -163,6 +167,7 @@ $hasLeftColumn = $leftMenu || (file_exists($_SERVER["DOCUMENT_ROOT"].$currentDir
 									array(
 									"USER_MENU_TYPE" => "user",
 
+									"FORGOT_PASSWORD_URL"              => "/personal/forgot_password/",
 									"REGISTRATION_SHOW_FIELDS"         => array("EMAIL", "NAME", "LAST_NAME", "PERSONAL_MOBILE"),
 									"REGISTRATION_SHOW_USER_PROPS"     => array(),
 									"REGISTRATION_REQUIRED_FIELDS"     => array(),

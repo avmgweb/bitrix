@@ -18,8 +18,8 @@ if(is_array($arResult["ATTR"]))
 	{
 	$attrArray = [];
 	foreach($arResult["ATTR"] as $index => $value)
-		$attrArray[] = $index.'="'.str_replace('\"', '\'', $value).'"';
-	$arResult["ATTR"] = implode(' ', $attrArray);
+		$attrArray[] = $index."=\"".str_replace("\"", "'", $value)."\"";
+	$arResult["ATTR"] = implode(" ", $attrArray);
 	}
 /* --------------------------------------------------------------------- */
 /* ------------------------------- output ------------------------------ */

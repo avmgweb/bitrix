@@ -32,17 +32,14 @@
 	}
 .av-menu-vertical-one-level a .arrow
 	{
-	background: url(images/arrow.svg) center center no-repeat;
-	background-size: 10px;
-	content: "";
-	cursor: pointer;
-	display: block;
-	transform: rotate(-90deg);
+	line-height: 24px;
+	font-size: 18px;
+	text-align: center;
 	transition: .3s;
-	width:  24px;
+	width: 24px;
 	height: 24px;
 	}
 .av-menu-vertical-one-level a.selected .arrow,
 .av-menu-vertical-one-level a:hover    .arrow,
-.av-menu-vertical-one-level a:focus    .arrow {background-image: url(images/arrow_hover.svg)}
-.av-menu-vertical-one-level a:active   .arrow {background-image: url(images/arrow_active.svg)}
+.av-menu-vertical-one-level a:focus    .arrow {color: #CC0000}
+.av-menu-vertical-one-level a:active   .arrow {color: #FFF}

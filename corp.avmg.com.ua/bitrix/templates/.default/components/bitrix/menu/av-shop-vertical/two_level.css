@@ -38,15 +38,17 @@
 
 .av-shop-menu-vertical-two-level .head .arrow
 	{
-	background: url(images/close.svg) center center no-repeat;
-	background-size: 10px;
+	color: #868B8D;
 	cursor: pointer;
+	line-height: 24px;
+	font-size: 16px;
+	text-align: center;
 	transition: .3s;
-	width:  24px;
+	width: 24px;
 	height: 24px;
 	}
-.av-shop-menu-vertical-two-level:not(.active) .head .arrow       {transform: rotate(45deg)}
-.av-shop-menu-vertical-two-level              .head .arrow:hover {background-image: url(images/close_active.svg);}
+.av-shop-menu-vertical-two-level.active .head .arrow       {transform: rotate(-45deg)}
+.av-shop-menu-vertical-two-level        .head .arrow:hover {color: #CC0000}
 /* ------------------------------------------- */
 /* ------------------ body ------------------- */
 /* ------------------------------------------- */
@@ -71,17 +73,14 @@
 	}
 .av-shop-menu-vertical-two-level .body a .arrow
 	{
-	background: url(images/arrow.svg) center center no-repeat;
-	background-size: 10px;
-	content: "";
-	cursor: pointer;
-	display: block;
-	transform: rotate(-90deg);
+	line-height: 24px;
+	font-size: 18px;
+	text-align: center;
 	transition: .3s;
-	width:  24px;
+	width: 24px;
 	height: 24px;
 	}
 .av-shop-menu-vertical-two-level .body a.selected .arrow,
 .av-shop-menu-vertical-two-level .body a:hover    .arrow,
-.av-shop-menu-vertical-two-level .body a:focus    .arrow {background-image: url(images/arrow_hover.svg)}
-.av-shop-menu-vertical-two-level .body a:active   .arrow {background-image: url(images/arrow_active.svg)}
+.av-shop-menu-vertical-two-level .body a:focus    .arrow {color: #CC0000}
+.av-shop-menu-vertical-two-level .body a:active   .arrow {color: #FFF}

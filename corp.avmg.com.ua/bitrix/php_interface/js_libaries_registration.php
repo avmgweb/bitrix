@@ -1,14 +1,15 @@
 <?
-CJSCore::RegisterExt("bootstrap",           ["css" => '/bitrix/css/av_site/bootstrap.css']);
-CJSCore::RegisterExt("first_on_event",      ["js"  => '/bitrix/js/av_site/first_on_event.js']);
-CJSCore::RegisterExt("jquery_mobile_click", ["js"  => '/bitrix/js/av_site/jquery_mobile_click.js']);
-CJSCore::RegisterExt("jquery_cookie",       ["js"  => '/bitrix/js/av_site/jquery_cookie.js']);
+CJSCore::RegisterExt("bootstrap",           ["css" => "/bitrix/css/av/bootstrap.css"]);
+CJSCore::RegisterExt("font_awesome",        ["css" => "/bitrix/css/av/font-awesome/css/style.css"]);
+CJSCore::RegisterExt("first_on_event",      ["js"  => "/bitrix/js/av/first_on_event.js"]);
+CJSCore::RegisterExt("jquery_mobile_click", ["js"  => "/bitrix/js/av/jquery_mobile_click.js"]);
+CJSCore::RegisterExt("jquery_cookie",       ["js"  => "/bitrix/js/av/jquery_cookie.js"]);
 CJSCore::RegisterExt
 	(
-	"av_site",
+	"av",
 		[
-		"js"  => '/bitrix/js/av_site/main.js',
-		"css" => '/bitrix/css/av_site/main.css',
+		"js"  => "/bitrix/js/av/main.js",
+		"css" => "/bitrix/css/av/main.css",
 		"rel" => ["jquery", "first_on_event", "jquery_mobile_click", "jquery_cookie"]
 		]
 	);
@@ -16,15 +17,15 @@ CJSCore::RegisterExt
 	(
 	"av_form_elements",
 		[
-		"js"  => '/bitrix/js/av_site/form_elements.js',
-		"rel" => ["av_site"]
+		"js"  => "/bitrix/js/av/form_elements.js",
+		"rel" => ["av"]
 		]
 	);
 CJSCore::RegisterExt
 	(
 	"wait_for_images",
 		[
-		"js"  => '/bitrix/js/av_site/wait_for_images.js',
+		"js"  => "/bitrix/js/av/wait_for_images.js",
 		"rel" => ["jquery"]
 		]
 	);
@@ -32,8 +33,8 @@ CJSCore::RegisterExt
 	(
 	"slick_js",
 		[
-		"js"  => '/bitrix/js/av_site/slick.js',
-		"css" => '/bitrix/css/av_site/slick.css',
+		"js"  => "/bitrix/js/av/slick.js",
+		"css" => "/bitrix/css/av/slick.css",
 		"rel" => ["jquery"]
 		]
 	);
@@ -41,8 +42,8 @@ CJSCore::RegisterExt
 	(
 	"js_scrollbar",
 		[
-		"js"  => '/bitrix/js/av_site/js_scrollbar.js',
-		"css" => '/bitrix/css/av_site/js_scrollbar.css',
+		"js"  => "/bitrix/js/av/js_scrollbar.js",
+		"css" => "/bitrix/css/av/js_scrollbar.css",
 		"rel" => ["jquery"]
 		]
 	);

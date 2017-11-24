@@ -1,5 +1,13 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
 <?
+use \Bitrix\Main\Localization\Loc;
+
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
+$filePathExplode = explode(SITE_TEMPLATE_PATH, __FILE__);
+Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/template.php");
+/* -------------------------------------------------------------------- */
+/* ------------------------------- menu ------------------------------- */
+/* -------------------------------------------------------------------- */
 $APPLICATION->IncludeComponent
 	(
 	"bitrix:menu", "av-shop",
@@ -17,4 +25,3 @@ $APPLICATION->IncludeComponent
 		],
 	false, ["HIDE_ICONS" => true]
 	);
-?>

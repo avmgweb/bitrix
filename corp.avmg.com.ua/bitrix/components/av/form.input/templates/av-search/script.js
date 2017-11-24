@@ -10,26 +10,27 @@
 		{
 		this.find(":text").attr("value", value).val(value);
 
-		if(value) this.addClass("active");
-		else      this.removeClass("active");
+		this
+			.removeClass("placeholder-on")
+			.removeClass("placeholder-off")
+			.removeClass("active");
 
-		if(this.hasClass("has-placeholder"))
-			{
-			if(value) this.removeClass("on").addClass("active");
-			else      this.addClass("on").removeClass("active");
-			}
+		if(value)
+			this
+				.addClass("placeholder-off")
+				.addClass("active");
 		};
 	jQuery.fn.getFormElememtRequiredSearchAv = function()      {return this.hasClass("required")};
 	jQuery.fn.setFormElememtRequiredSearchAv = function(value)
 		{
-		if(value == "on")  this.addClass("required");
-		if(value == "off") this.removeClass("required");
+		     if(value == "on")  this.addClass("required");
+		else if(value == "off") this.removeClass("required");
 		};
 	jQuery.fn.getFormElememtAlertSearchAv    = function()      {return this.hasClass("alert-input")};
 	jQuery.fn.setFormElememtAlertSearchAv    = function(value)
 		{
-		if(value == "on")  this.addClass("alert-input");
-		if(value == "off") this.removeClass("alert-input");
+		     if(value == "on")  this.addClass("alert-input");
+		else if(value == "off") this.removeClass("alert-input");
 		};
 	})(jQuery);
 /* -------------------------------------------------------------------- */
@@ -56,14 +57,16 @@ $(function()
 		.on("focus", ".av-form-input-search :text", function()
 			{
 			$(this).parent()
-				.removeClass("on")
+				.removeClass("placeholder-on")
+				.addClass("placeholder-off")
 				.addClass("active");
 			})
-		.on("focusout", ".av-form-input-search.has-placeholder:not(.on) :text", function()
+		.on("focusout", ".av-form-input-search :text", function()
 			{
 			if(!$(this).val())
 				$(this).parent()
-					.addClass("on")
-					.removeClass("active");
+					.removeClass("active")
+					.removeClass("placeholder-off")
+					.addClass("placeholder-on");
 			});
 	});

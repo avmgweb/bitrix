@@ -10,6 +10,6 @@ unset($templateFolderArray[0]);
 unset($templateFolderArray[1]);
 $templateFolder = "/".implode("/", $templateFolderArray);
 
-CJSCore::Init(["av_site"]);
+CJSCore::Init(["av", "font_awesome"]);
 Asset::getInstance()->addString("<script>AvBasketChangeItemUrl = \"".CURRENT_PROTOCOL."://".$_SERVER["SERVER_NAME"].$templateFolder."/ajax/change_item.php\";</script>");
 Asset::getInstance()->addString("<script>AvBasketUpdateUrl     = \"".CURRENT_PROTOCOL."://".$_SERVER["SERVER_NAME"].$templateFolder."/ajax/update_basket.php\";</script>");

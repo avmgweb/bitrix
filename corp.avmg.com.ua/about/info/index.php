@@ -5,7 +5,7 @@ require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Реквизиты");
 
-Asset::getInstance()->addCss("/bitrix/css/av_corp/pages/about_info.css");
+Asset::getInstance()->addCss("/bitrix/css/av-corp/pages/about_info.css");
 ?>
 <table class="av-company-info-table">
 	<colgroup>

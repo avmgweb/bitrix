@@ -1,32 +1,58 @@
 /* -------------------------------------------------------------------- */
 /* --------------------------- clear style ---------------------------- */
 /* -------------------------------------------------------------------- */
-.sitemapWrap a,
-.sitemapWrap a:hover,
-.sitemapWrap a:active,
-.sitemapWrap a:focus,
-.sitemapWrap a:visited {color: inherit;text-decoration: none}
+.av-sitemap a,
+.av-sitemap a:hover,
+.av-sitemap a:active,
+.av-sitemap a:focus,
+.av-sitemap a:visited {color: inherit;text-decoration: none}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ page -------------------------------- */
 /* -------------------------------------------------------------------- */
-.map-level-0 a {
-	font-weight: bold;
-}
+.av-sitemap a
+	{
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+	}
+.av-sitemap a:hover,
+.av-sitemap a:active,
+.av-sitemap a:focus {color: #CC0000;text-decoration: underline}
 
-.sitemapWrap a:hover {color: #CC0000;text-decoration: underline}
+.av-sitemap .first-level-block
+	{
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -10px;
+	}
+.av-sitemap .first-level-block:not(:last-child)
+	{
+	border-bottom: 1px solid #EFEFEF;
+	margin-bottom:  15px;
+	padding-bottom: 5px;
+	}
+.av-sitemap .first-level-block > a {font-weight: bold}
 
-ul.map-level-1 a, ul.map-level-2 a, ul.map-level-3 a {
-	font-weight: normal;
-}
-
-.sitemapWrap .col-md-4 {
-	padding: 5px 0;
-}
-
-.sitemapWrap .col-md-12 {
-	border-top: 1px solid rgba(0,0,0,0.2);
-	padding: 16px 0 4px 0;
-}
-.sitemapWrap .col-md-12:first-child {
-	border-top: 0;
-}
+.av-sitemap .second-level-block
+	{
+	margin: 0 10px 5px 0;
+	width: calc((100% - 10px * 3) / 3);
+	}
+.av-sitemap .third-level-block
+	{
+	font-size: calc(1em - 2px);
+	padding-left: 20px;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ media ------------------------------- */
+/* -------------------------------------------------------------------- */
+@media (max-width: 991px)
+	{
+	.av-sitemap .second-level-block {width: calc((100% - 10px * 2) / 2)}
+	}
+@media (max-width: 767px)
+	{
+	.av-sitemap .second-level-block {width: 100%}
+	}

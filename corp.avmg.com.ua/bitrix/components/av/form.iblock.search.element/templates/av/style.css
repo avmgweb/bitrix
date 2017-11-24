@@ -7,35 +7,50 @@
 	margin:  0;
 	padding: 0;
 	}
-.av-form-iblock-search-element .input-native {display: none}
+.av-form-iblock-search-element .value-input {display: none}
 /* -------------------------------------------------------------------- */
 /* --------------------------- search input --------------------------- */
 /* -------------------------------------------------------------------- */
-.av-form-iblock-search-element .input-label
+.av-form-iblock-search-element .title-block
 	{
 	align-items: center;
 	border: 1px solid #B6C0C6;
 	border-radius: 2px;
 	cursor: text;
 	display: flex;
-	justify-content: space-between;
-	padding: 12px 4px 12px 10px;
+	padding: 12px 2px 12px 10px;
 	}
-.av-form-iblock-search-element .input-label input,
-.av-form-iblock-search-element .input-label .placeholder
+.av-form-iblock-search-element.active .title-block,
+.av-form-iblock-search-element:hover  .title-block,
+.av-form-iblock-search-element:active .title-block,
+.av-form-iblock-search-element:focus  .title-block {border-color: #868B8D}
+
+.av-form-iblock-search-element .title-block .title,
+.av-form-iblock-search-element .title-block .search-input
 	{
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	width: calc(100% - 20px);
+	width: calc(100% - 24px);
 	}
-.av-form-iblock-search-element .input-label .icon
+.av-form-iblock-search-element.value-seted       .title-block .title,
+.av-form-iblock-search-element:not(.value-seted) .title-block .search-input {display: none}
+
+.av-form-iblock-search-element .title-block .icon
 	{
-	background: url(images/search.png) center center no-repeat;
-	background-size: cover;
-	width:  18px;
-	height: 18px;
+	color: #B6C0C6;
+	cursor: text;
+	font-size: 14px;
+	line-height: 24px;
+	text-align: center;
+	transition: .3s;
+	width:  24px;
+	height: 24px;
 	}
+.av-form-iblock-search-element.active .title-block        .icon,
+.av-form-iblock-search-element        .title-block:hover  .icon,
+.av-form-iblock-search-element        .title-block:active .icon,
+.av-form-iblock-search-element        .title-block:focus  .icon {color: #868B8D}
 /* -------------------------------------------------------------------- */
 /* --------------------------- search result -------------------------- */
 /* -------------------------------------------------------------------- */
@@ -58,11 +73,13 @@
 	border-bottom-right-radius: 2px;
 	border-bottom-left-radius:  2px;
 	}
-/* -------------------------------------------------------------------- */
-/* ------------------------- activities/hovers ------------------------ */
-/* -------------------------------------------------------------------- */
-.av-form-iblock-search-element        .input-label:hover,
-.av-form-iblock-search-element.active .input-label,
-.av-form-iblock-search-element.active .list .list-item          {border-color: #868B8D}
-.av-form-iblock-search-element        .list .list-item:hover,
-.av-form-iblock-search-element        .list .list-item.selected {background: #4C5255;border-color: #4C5255;color: #FFF}
+.av-form-iblock-search-element .list .list-item:hover,
+.av-form-iblock-search-element .list .list-item:active,
+.av-form-iblock-search-element .list .list-item:focus,
+.av-form-iblock-search-element .list .list-item.selected
+	{
+	background: #4C5255;
+	border-color: #4C5255;
+	color: #FFF;
+	}
+.av-form-iblock-search-element.active .list .list-item {border-color: #868B8D}

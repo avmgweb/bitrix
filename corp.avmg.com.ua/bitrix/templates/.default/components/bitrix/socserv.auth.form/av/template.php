@@ -4,7 +4,7 @@ use \Bitrix\Main\Page\Asset;
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 if($USER->IsAuthorized())                                       return;
 
-CJSCore::Init(["av_site"]);
+CJSCore::Init(["av"]);
 Asset::getInstance()->addString('<script>AvSocAuthAjaxFile = "'.CURRENT_PROTOCOL.'://'.SITE_SERVER_NAME.$this->GetFolder().'/ajax/user_login.php";</script>');
 Asset::getInstance()->addString('<script>BX.message({"AV_SOC_UNAVAILABLE_RESOURCE"   : "'.GetMessage("AV_SOC_UNAVAILABLE_RESOURCE").'"});   </script>');
 Asset::getInstance()->addString('<script>BX.message({"AV_SOC_AUTH_ERROR_TITLE"       : "'.GetMessage("AV_SOC_AUTH_ERROR_TITLE").'"});       </script>');

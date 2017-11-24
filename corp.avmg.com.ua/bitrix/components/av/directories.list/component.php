@@ -184,4 +184,3 @@ if
 
 	$this->IncludeComponentTemplate();
 	}
-?>

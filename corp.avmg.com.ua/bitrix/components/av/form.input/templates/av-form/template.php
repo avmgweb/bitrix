@@ -5,9 +5,10 @@
 	class="
 		av-form-styled-input
 		<?if($arResult["REQUIRED"]):?>required<?endif?>
-		<?if($arResult["TITLE"] && !$arResult["VALUE"]):?>has-placeholder on<?endif?>
-		<?if($arResult["TITLE"] &&  $arResult["VALUE"]):?>has-placeholder<?endif?>
+		<?if($arResult["TITLE"] && !$arResult["VALUE"]):?>placeholder-on<?endif?>
+		<?if($arResult["TITLE"] &&  $arResult["VALUE"]):?>placeholder-off<?endif?>
 		"
+	<?=$arResult["ATTR"]?>
 >
 	<?if($arResult["TITLE"]):?>
 	<label title="<?=$arResult["TITLE"]?>">
@@ -20,6 +21,5 @@
 		name="<?=$arResult["NAME"]?>"
 		value="<?=$arResult["VALUE"]?>"
 		title="<?=$arResult["TITLE"]?>"
-		<?=$arResult["ATTR"]?>
 	>
 </div>

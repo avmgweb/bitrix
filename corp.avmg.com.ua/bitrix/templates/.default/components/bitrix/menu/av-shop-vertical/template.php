@@ -17,7 +17,7 @@ if(!count($arResult))                                           return;
 				href="<?=$itemInfo["LINK"]?>"
 			>
 				<div class="title"><?=$itemInfo["TEXT"]?></div>
-				<div class="arrow"></div>
+				<i class="arrow fa fa-angle-right"></i>
 			</a>
 		<?endif?>
 	<?endforeach?>
@@ -55,7 +55,7 @@ if(!count($arResult))                                           return;
 					<?endif?>
 
 					<?if($arResult[$nextIndex]["DEPTH_LEVEL"] == 2):?>
-					<div class="arrow"></div>
+					<i class="arrow fa fa-times"></i>
 					<?endif?>
 				</div>
 				<?
@@ -75,7 +75,7 @@ if(!count($arResult))                                           return;
 							href="<?=$arResult[$nextIndex]["LINK"]?>"
 						>
 							<div class="title"><?=$arResult[$nextIndex]["TEXT"]?></div>
-							<div class="arrow"></div>
+							<i class="arrow fa fa-angle-right"></i>
 						</a>
 						<?endif?>
 

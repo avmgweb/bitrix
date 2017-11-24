@@ -6,7 +6,7 @@ $component = $this->__component;
 $arSessionParams = ["PAGE_PARAMS" => ["ELEMENT_ID"]];
 
 foreach($arParams as $index => $value)
-	if(strncmp('~', $index, 1) && !in_array($index, $arSessionParams["PAGE_PARAMS"]))
+	if(strncmp("~", $index, 1) && !in_array($index, $arSessionParams["PAGE_PARAMS"]))
 		$arSessionParams[$index] = $value;
 
 $arSessionParams["COMPONENT_NAME"] = $component->GetName();
@@ -26,7 +26,6 @@ $component->arResult["AJAX"] =
 	"SESSION_KEY"    => $idSessionParams,
 	"SESSION_PARAMS" => $arSessionParams,
 	];
-
 $arResult["~AJAX_PARAMS"] =
 	[
 	"SESSION_PARAMS" => $idSessionParams,
@@ -36,4 +35,3 @@ $arResult["~AJAX_PARAMS"] =
 	];
 
 $arResult["AJAX_PARAMS"] = CUtil::PhpToJSObject($arResult["~AJAX_PARAMS"]);
-?>

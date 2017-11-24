@@ -36,7 +36,7 @@ foreach($arResult["DISPLAY_PROPERTIES"] as $propInfo)
 		$valueType   = 'TEXT';
 		$measure     = '';
 
-		if(is_numeric($nativeValue[0]))
+		if(is_numeric($nativeValue[0]) && $nativeValue[0] !== "0")
 			{
 			$valueType   = 'NUMBER';
 			$nativeValue = str_replace(',', '.', $nativeValue);
@@ -68,7 +68,7 @@ foreach($arResult["OFFERS"] as $index => $offerInfo)
 			$valueType   = 'TEXT';
 			$measure     = '';
 
-			if(is_numeric($nativeValue[0]))
+			if(is_numeric($nativeValue[0]) && $nativeValue[0] !== "0")
 				{
 				$valueType   = 'NUMBER';
 				$nativeValue = str_replace(',', '.', $nativeValue);

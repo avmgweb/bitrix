@@ -1,53 +1,42 @@
-/* -------------------------------------------------------------------- */
-/* -------------------- diactivate select function -------------------- */
-/* -------------------------------------------------------------------- */
-function AvFormLinksListShopDiactivate()
-	{
-	$('.av-links-list-shop')
-		.removeClass("active")
-		.children('.list').slideUp();
-	}
-/* -------------------------------------------------------------------- */
-/* ----------------------------- handlers ----------------------------- */
-/* -------------------------------------------------------------------- */
 $(function()
 	{
-	$('.av-links-list-shop .list').mCustomScrollbar({"theme": 'dark'});
+	$(".av-links-list-shop .list").mCustomScrollbar({"theme": "dark"});
 
 	$(document)
-		/* ------------------------------------------- */
-		/* ------------ select drop down ------------- */
-		/* ------------------------------------------- */
-		.on("vclick", '.av-links-list-shop .title-label', function()
+		.on("vclick", ".av-links-list-shop .title-block", function()
 			{
 			var
-				$select      = $(this).closest('.av-links-list-shop'),
-				$optionsList = $select.find('.list');
+				$selectBlock = $(this).closest(".av-links-list-shop"),
+				$optionsList = $selectBlock.find(".list");
 
-			if($optionsList.is(':visible'))
-				AvFormLinksListShopDiactivate();
+			if($optionsList.is(":visible"))
+				{
+				$selectBlock.removeClass("active");
+				$optionsList.slideUp();
+				}
 			else
 				{
-				AvFormLinksListShopDiactivate();
-				$select.addClass("active");
+				$selectBlock.addClass("active");
 				$optionsList
-					.css("width", $select[0].getBoundingClientRect().width)
-					.slideDown()
-					.focus();
+					.css("width", $selectBlock[0].getBoundingClientRect().width)
+					.slideDown();
 				}
 			})
-		/* ------------------------------------------- */
-		/* -------------- hide selector -------------- */
-		/* ------------------------------------------- */
-		.on("vclick", function(event)
+		.on("vclick", function()
 			{
-			if(!$(event.target).closest('.av-links-list-shop').length)
-				AvFormLinksListShopDiactivate();
+			$(".av-links-list-shop").each(function()
+				{
+				if(!$(this).isClicked())
+					$(this)
+						.removeClass("active")
+						.children(".list").slideUp();
+				});
 			});
 
-	$(window)
-		.resize(function()
-			{
-			AvFormLinksListShopDiactivate();
-			});
+	$(window).resize(function()
+		{
+		$(".av-links-list-shop")
+			.removeClass("active")
+			.children(".list").slideUp();
+		});
 	});

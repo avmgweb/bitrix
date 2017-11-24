@@ -10,7 +10,14 @@ Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/template.php");
 /* -------------------------------------------------------------------- */
 ?>
 <div class="faq-cell">
-	<?=$faqLinkHtml?>
+	<a class="page-active-block" href="<?=$templateVariables["FAQ_LINK"]?>" title="<?=strtolower(Loc::getMessage("AV_SHOP_FAQ"))?>">
+		<img
+			src="<?=SITE_TEMPLATE_PATH?>/images/faq.svg"
+			alt="<?=strtolower(Loc::getMessage("AV_SHOP_FAQ"))?>"
+			title="<?=strtolower(Loc::getMessage("AV_SHOP_FAQ"))?>"
+		>
+		<?=Loc::getMessage("AV_SHOP_FAQ")?>
+	</a>
 </div>
 <?
 /* -------------------------------------------------------------------- */
@@ -18,7 +25,14 @@ Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/template.php");
 /* -------------------------------------------------------------------- */
 ?>
 <div class="support-cell">
-	<?=$supportLinkHtml?>
+	<a class="page-active-block" href="<?=$templateVariables["SUPPORT_LINK"]?>" title="<?=strtolower(Loc::getMessage("AV_SHOP_SUPPORT"))?>">
+		<img
+			src="<?=SITE_TEMPLATE_PATH?>/images/support.svg"
+			alt="<?=strtolower(Loc::getMessage("AV_SHOP_SUPPORT"))?>"
+			title="<?=strtolower(Loc::getMessage("AV_SHOP_SUPPORT"))?>"
+		>
+		<?=Loc::getMessage("AV_SHOP_SUPPORT")?>
+	</a>
 </div>
 <?
 /* -------------------------------------------------------------------- */
@@ -29,11 +43,11 @@ Loc::loadMessages($filePathExplode[0].SITE_TEMPLATE_PATH."/template.php");
 	<div class="page-active-block av-shop-popup-call-block" data-type="geo-block" data-call-type="onclick" tabindex="0">
 		<img
 			src="<?=SITE_TEMPLATE_PATH?>/images/map.svg"
-			alt="<?=Loc::getMessage("AV_SHOP_YOUR_CITY")?>"
-			title="<?=Loc::getMessage("AV_SHOP_YOUR_CITY")?>"
+			alt="<?=strtolower(Loc::getMessage("AV_SHOP_YOUR_CITY"))?>"
+			title="<?=strtolower(Loc::getMessage("AV_SHOP_YOUR_CITY"))?>"
 		>
 		<div class="title">#YOUR CITY#</div>
-		<div class="call-button"></div>
+		<i class="call-button fa fa-angle-down"></i>
 	</div>
 	<div class="av-shop-popup" data-type="geo-block">
 		#GEO BLOCK#

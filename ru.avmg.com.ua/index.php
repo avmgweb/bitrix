@@ -8,22 +8,28 @@ $APPLICATION->SetPageProperty("title",       "АВ металл групп ве�
 $APPLICATION->SetPageProperty("description", "АВ металл групп ™ крупнейший металлотрейдер Украины ✔ г. Днепр, ул. Шолом-Алейхема, 5 Звоните! ☎ +38(056)790-01-22");
 
 CJSCore::Init(["bootstrap"]);
-Asset::getInstance()->addCss("/bitrix/css/av_site/pages/index.css");
+Asset::getInstance()->addCss("/bitrix/css/av-site/pages/index.css");
 /* -------------------------------------------------------------------- */
 /* ------------------------------ banner ------------------------------ */
 /* -------------------------------------------------------------------- */
-$APPLICATION->IncludeComponent
-	(
-	"bitrix:advertising.banner", "av",
-		array(
-		"TYPE"     => "MAIN_CORP_SITE",
-		"NOINDEX"  => "Y",
-		"QUANTITY" => 12,
+?>
+<div class="av-index-banner-wraper">
+	<?
+	$APPLICATION->IncludeComponent
+		(
+		"bitrix:advertising.banner", "av",
+			array(
+			"TYPE"     => "MAIN_CORP_SITE",
+			"NOINDEX"  => "Y",
+			"QUANTITY" => 12,
 
-		"CACHE_TYPE" => "A",
-		"CACHE_TIME" => 360000
-		)
-	);
+			"CACHE_TYPE" => "A",
+			"CACHE_TIME" => 360000
+			)
+		);
+	?>
+</div>
+<?
 /* -------------------------------------------------------------------- */
 /* --------------------------- main streams --------------------------- */
 /* -------------------------------------------------------------------- */

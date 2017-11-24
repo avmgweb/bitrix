@@ -3,64 +3,24 @@ use \Bitrix\Main\Localization\Loc;
 
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* -------------------------------------------------------------------- */
-/* ----------------------------- variables ---------------------------- */
-/* -------------------------------------------------------------------- */
-$iblockPropsFile = [];
-if($arCurrentValues["IBLOCK_ID"])
-	{
-	$queryList = CIBlockProperty::GetList(["SORT" => "ASC"], ["IBLOCK_ID" => $arCurrentValues["IBLOCK_ID"], "ACTIVE" => "Y", "PROPERTY_TYPE" => "F"]);
-	while($queryInfo = $queryList->GetNext()) $iblockPropsFile[$queryInfo["CODE"]] = $queryInfo["NAME"];
-	}
-
-$menuTypes = [];
-$queryList = CSite::GetList();
-while($queryElement = $queryList->GetNext())
-	foreach(GetMenuTypes($queryElement["ID"]) as $menuType => $menuTitle)
-		if(!$menuTypes[$menuType])
-			$menuTypes[$menuType] = $menuTitle;
-/* -------------------------------------------------------------------- */
 /* ------------------------ old params refactor ----------------------- */
 /* -------------------------------------------------------------------- */
 $arTemplateParameters["HIDE_NOT_AVAILABLE"] =
 	[
-	"NAME"   => Loc::getMessage("AV_CATALOG_PARAMS_HIDE_NOT_AVAILABLE"),
+	"NAME"   => Loc::getMessage("AV_CATALOG_INDEX_PARAMS_HIDE_NOT_AVAILABLE"),
 	"TYPE"   => "CHECKBOX",
 	"PARENT" => "BASE"
 	];
 $arTemplateParameters["HIDE_NOT_AVAILABLE_OFFERS"] =
 	[
-	"NAME"   => Loc::getMessage("AV_CATALOG_PARAMS_HIDE_NOT_AVAILABLE_OFFERS"),
+	"NAME"   => Loc::getMessage("AV_CATALOG_INDEX_PARAMS_HIDE_NOT_AVAILABLE_OFFERS"),
 	"TYPE"   => "CHECKBOX",
 	"PARENT" => "BASE"
 	];
 
-$arTemplateParameters["USE_MAIN_ELEMENT_SECTION"] =
-	[
-	"NAME"   => Loc::getMessage("AV_CATALOG_PARAMS_USE_MAIN_ELEMENT_SECTION"),
-	"TYPE"   => "CHECKBOX",
-	"PARENT" => "EXTENDED_SETTINGS"
-	];
-$arTemplateParameters["DETAIL_STRICT_SECTION_CHECK"] =
-	[
-	"NAME"   => Loc::getMessage("AV_CATALOG_PARAMS_DETAIL_STRICT_SECTION_CHECK"),
-	"TYPE"   => "CHECKBOX",
-	"PARENT" => "EXTENDED_SETTINGS"
-	];
 $arTemplateParameters["SET_TITLE"] =
 	[
-	"NAME"   => Loc::getMessage("AV_CATALOG_PARAMS_SET_TITLE"),
-	"TYPE"   => "CHECKBOX",
-	"PARENT" => "EXTENDED_SETTINGS"
-	];
-$arTemplateParameters["ADD_SECTIONS_CHAIN"] =
-	[
-	"NAME"   => Loc::getMessage("AV_CATALOG_PARAMS_ADD_SECTIONS_CHAIN"),
-	"TYPE"   => "CHECKBOX",
-	"PARENT" => "EXTENDED_SETTINGS"
-	];
-$arTemplateParameters["ADD_ELEMENT_CHAIN"] =
-	[
-	"NAME"   => Loc::getMessage("AV_CATALOG_PARAMS_ADD_ELEMENT_CHAIN"),
+	"NAME"   => Loc::getMessage("AV_CATALOG_INDEX_PARAMS_SET_TITLE"),
 	"TYPE"   => "CHECKBOX",
 	"PARENT" => "EXTENDED_SETTINGS"
 	];
@@ -165,6 +125,9 @@ $arTemplateParameters["PAGER_DESC_NUMBERING"]            = ["HIDDEN" => "Y"];
 $arTemplateParameters["PAGER_SHOW_ALL"]                  = ["HIDDEN" => "Y"];
 $arTemplateParameters["PAGER_BASE_LINK_ENABLE"]          = ["HIDDEN" => "Y"];
 $arTemplateParameters["PAGER_DESC_NUMBERING_CACHE_TIME"] = ["HIDDEN" => "Y"];
+$arTemplateParameters["PAGER_TEMPLATE"]                  = ["HIDDEN" => "Y"];
+$arTemplateParameters["DISPLAY_TOP_PAGER"]               = ["HIDDEN" => "Y"];
+$arTemplateParameters["DISPLAY_BOTTOM_PAGER"]            = ["HIDDEN" => "Y"];
 
 $arTemplateParameters["COMPATIBLE_MODE"]                = ["HIDDEN" => "Y"];
 $arTemplateParameters["DISABLE_INIT_JS_IN_COMPONENT"]   = ["HIDDEN" => "Y"];
@@ -174,57 +137,17 @@ $arTemplateParameters["TOP_OFFERS_FIELD_CODE"]    = ["HIDDEN" => "Y"];
 $arTemplateParameters["TOP_OFFERS_PROPERTY_CODE"] = ["HIDDEN" => "Y"];
 $arTemplateParameters["TOP_OFFERS_LIMIT"]         = ["HIDDEN" => "Y"];
 $arTemplateParameters["LIST_OFFERS_LIMIT"]        = ["HIDDEN" => "Y"];
-/* -------------------------------------------------------------------- */
-/* ---------------------------- new params ---------------------------- */
-/* -------------------------------------------------------------------- */
-$arTemplateParameters["CATALOG_MENU_TYPE"] =
-	[
-	"NAME"   => Loc::getMessage("AV_CATALOG_PARAMS_CATALOG_MENU_TYPE"),
-	"TYPE"   => "LIST",
-	"VALUES" => $menuTypes,
-	"PARENT" => "BASE"
-	];
-$arTemplateParameters["PAGE_SIZE_VALUES"] =
-	[
-	"NAME"     => Loc::getMessage("AV_CATALOG_PARAMS_PAGE_SIZE_VALUES"),
-	"TYPE"     => "STRING",
-	"MULTIPLE" => "Y",
-	"PARENT"   => "LIST_SETTINGS"
-	];
 
-if(count($iblockPropsFile))
-	$arTemplateParameters["DETAIL_PICTURES_ALT"] =
-		[
-		"NAME"   => Loc::getMessage("AV_CATALOG_PARAMS_DETAIL_PICTURES_ALT"),
-		"TYPE"   => "LIST",
-		"VALUES" => array_merge([0 => Loc::getMessage("AV_CATALOG_PARAMS_LIST_EMPTY_VALUE")], $iblockPropsFile),
-		"PARENT" => "DETAIL_SETTINGS"
-		];
+$arTemplateParameters["DETAIL_SET_CANONICAL_URL"] = ["HIDDEN" => "Y"];
+$arTemplateParameters["DETAIL_OFFERS_FIELD_CODE"] = ["HIDDEN" => "Y"];
 
-$arTemplateParameters["ASK_FORM_ID"] =
-	[
-	"NAME"   => Loc::getMessage("AV_CATALOG_PARAMS_ASK_FORM_ID"),
-	"TYPE"   => "STRING",
-	"PARENT" => "DETAIL_SETTINGS"
-	];
-if($arCurrentValues["ASK_FORM_ID"])
-	{
-	$arTemplateParameters["ASK_FORM_LINK_FIELD_ID"] =
-		[
-		"NAME"   => Loc::getMessage("AV_CATALOG_PARAMS_ASK_FORM_LINK_FIELD_ID"),
-		"TYPE"   => "STRING",
-		"PARENT" => "DETAIL_SETTINGS"
-		];
-	$arTemplateParameters["ASK_FORM_COUNT_FIELD_ID"] =
-		[
-		"NAME"   => Loc::getMessage("AV_CATALOG_PARAMS_ASK_FORM_COUNT_FIELD_ID"),
-		"TYPE"   => "STRING",
-		"PARENT" => "DETAIL_SETTINGS"
-		];
-	$arTemplateParameters["ASK_FORM_NAME_FIELD_ID"] =
-		[
-		"NAME"   => Loc::getMessage("AV_CATALOG_PARAMS_ASK_FORM_NAME_FIELD_ID"),
-		"TYPE"   => "STRING",
-		"PARENT" => "DETAIL_SETTINGS"
-		];
-	}
+$arTemplateParameters["OFFERS_SORT_FIELD"]  = ["HIDDEN" => "Y"];
+$arTemplateParameters["OFFERS_SORT_ORDER"]  = ["HIDDEN" => "Y"];
+$arTemplateParameters["OFFERS_SORT_FIELD2"] = ["HIDDEN" => "Y"];
+$arTemplateParameters["OFFERS_SORT_ORDER2"] = ["HIDDEN" => "Y"];
+
+$arTemplateParameters["USE_MAIN_ELEMENT_SECTION"]    = ["HIDDEN" => "Y"];
+$arTemplateParameters["DETAIL_STRICT_SECTION_CHECK"] = ["HIDDEN" => "Y"];
+$arTemplateParameters["ADD_SECTIONS_CHAIN"]          = ["HIDDEN" => "Y"];
+$arTemplateParameters["ADD_ELEMENT_CHAIN"]           = ["HIDDEN" => "Y"];
+$arTemplateParameters["USE_ELEMENT_COUNTER"]         = ["HIDDEN" => "Y"];

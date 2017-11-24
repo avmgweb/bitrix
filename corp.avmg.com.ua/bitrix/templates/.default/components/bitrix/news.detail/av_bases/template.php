@@ -145,8 +145,9 @@ if(count($arParams["CATEGORY_APPLIED_FILTER"]))
 		<div>
 			<?foreach($arResult["BASE_STREAMS_INFO"] as $streamInfo):?>
 			<div class="item<?if(!count($streamInfo["PHONES"]) && !$streamInfo["PRICE"]):?> no-info<?endif?>">
-				<h3 class="title" title="<?=$streamInfo["TITLE"]?>">
-					<span><?=$streamInfo["TITLE"]?></span>
+				<h3 class="title-block">
+					<div class="title"><?=$streamInfo["TITLE"]?></div>
+					<i class="icon fa fa-angle-down"></i>
 				</h3>
 				<div class="body">
 					<div>

@@ -12,8 +12,9 @@ if(count($linksArray))
 		(
 		"av:form.links_list", "av-shop",
 			[
-			"TITLE" => $arResult["SECTION_TITLE"],
-			"LIST"  => $linksArray
+			"TITLE"           => $arResult["SECTION_TITLE"],
+			"LIST"            => $linksArray,
+			"OPEN_LINK_BLANK" => $arParams["OPEN_LINK_BLANK"]
 			],
 		false, ["HIDE_ICONS" => "Y"]
 		);

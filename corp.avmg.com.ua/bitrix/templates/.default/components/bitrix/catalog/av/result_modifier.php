@@ -2,6 +2,9 @@
 use \Bitrix\Main\Localization\Loc;
 
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
+$filePathExplode = explode($this->GetFolder(), __FILE__);
+Loc::loadMessages($filePathExplode[0].$this->GetFolder()."/template.php");
 /* -------------------------------------------------------------------- */
 /* ---------------------------- page size ----------------------------- */
 /* -------------------------------------------------------------------- */
@@ -47,5 +50,5 @@ if($arParams["IBLOCK_ID"])
 		}
 	}
 
-$arParams["FILTER_PROPERTY_CODE"]        = $arParams["LIST_PROPERTY_CODE"]        = $arParams["DETAIL_PROPERTY_CODE"]        = $iblockProps;
-$arParams["FILTER_OFFERS_PROPERTY_CODE"] = $arParams["LIST_OFFERS_PROPERTY_CODE"] = $arParams["DETAIL_OFFERS_PROPERTY_CODE"] = $skuIblockProps;
+$arParams["LIST_PROPERTY_CODE"]        = $arParams["DETAIL_PROPERTY_CODE"]        = $iblockProps;
+$arParams["LIST_OFFERS_PROPERTY_CODE"] = $arParams["DETAIL_OFFERS_PROPERTY_CODE"] = $skuIblockProps;

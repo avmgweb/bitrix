@@ -12,10 +12,6 @@
 .av-shop-mobile-menu a:focus,
 .av-shop-mobile-menu a:visited {color: inherit;text-decoration: none}
 /* -------------------------------------------------------------------- */
-/* ------------------------------- menu ------------------------------- */
-/* -------------------------------------------------------------------- */
-
-/* -------------------------------------------------------------------- */
 /* ------------------------ first level items ------------------------- */
 /* -------------------------------------------------------------------- */
 .av-shop-mobile-menu .first-level-item .title-block
@@ -24,7 +20,7 @@
 	cursor: pointer;
 	display: flex;
 	flex-wrap: wrap;
-	padding: 10px calc((100% - 250px) / 2 - 12px) 10px calc((100% - 250px) / 2);
+	padding: 10px calc((100% - 250px) / 2);
 	}
 .av-shop-mobile-menu .first-level-item.active .title-block {background: #FAFAFA}
 
@@ -32,7 +28,7 @@
 	{
 	align-items: center;
 	display: flex;
-	width: calc(100% - 48px);
+	width: calc(100% - 24px);
 	}
 .av-shop-mobile-menu .first-level-item .title-block .link img
 	{
@@ -46,17 +42,15 @@
 	}
 .av-shop-mobile-menu .first-level-item .title-block .arrow
 	{
-	background: url(images/arrow.svg) center center no-repeat;
-	background-size: 10px;
+	cursor: pointer;
+	line-height: 24px;
+	font-size: 18px;
+	text-align: center;
 	transition: .3s;
-	width:  48px;
-	height: 48px;
+	width:  24px;
+	height: 24px;
 	}
-.av-shop-mobile-menu .first-level-item.active .title-block .arrow
-	{
-	background-image: url(images/arrow_active.svg);
-	transform: rotate(-180deg);
-	}
+.av-shop-mobile-menu .first-level-item.active .title-block .arrow {transform: rotate(-180deg)}
 /* -------------------------------------------------------------------- */
 /* ------------------------ second level items ------------------------ */
 /* -------------------------------------------------------------------- */

@@ -11,7 +11,7 @@ unset($templateFolderArray[0]);
 unset($templateFolderArray[1]);
 $templateFolder = '/'.implode('/', $templateFolderArray);
 
-CJSCore::Init(["av_site"]);
+CJSCore::Init(["av"]);
 Asset::getInstance()->addString('<script>AvCatalogSectionChangeViewTypeFile = "'.CURRENT_PROTOCOL.'://'.SITE_SERVER_NAME.$templateFolder.'/ajax/change_view_type.php";</script>');
 
 AvComponentsIncludings::getInstance()

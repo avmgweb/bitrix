@@ -28,7 +28,7 @@
 	color: #B6C0C6;
 	cursor: text;
 	display: block;
-	font-size: calc(100% - 2px);
+	font-size: calc(1em - 2px);
 	line-height: 30px;
 	overflow: hidden;
 	padding: 0 5px;

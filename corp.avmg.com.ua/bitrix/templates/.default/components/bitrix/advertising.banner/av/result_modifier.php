@@ -10,6 +10,7 @@ if($bannersDomObject)
 		$bannerInfo = [];
 		$link       = false;
 		$image      = $domElementObject->getElementsByTagName("img")->item(0);
+		$video      = $domElementObject->getElementsByTagName("iframe")->item(0);
 		$title      = false;
 		$preview    = false;
 		$button     = false;
@@ -41,6 +42,42 @@ if($bannersDomObject)
 				"ALT"   => $image->GetAttribute("alt"),
 				"TITLE" => $image->GetAttribute("title")
 				];
+		if($video)
+			{
+			$link           = $video->GetAttribute("src");
+			$youtubeVideoId = 0;
+
+			if(stripos($link, "youtube"))
+				{
+				$link           = explode("?", $link)[0];
+				$linkExplode    = explode("/", $link);
+				$youtubeVideoId = $linkExplode[count($linkExplode) - 1];
+
+				$params         =
+					[
+					"enablejsapi"    => 1,
+					"autohide"       => 1,
+					"controls"       => 0,
+					"disablekb"      => 1,
+					"fs"             => 0,
+					"iv_load_policy" => 3,
+					"version"        => 3,
+					"modestbranding" => 1,
+					"rel"            => 0,
+					"showinfo"       => 0
+					];
+
+				$paramsString = [];
+				foreach($params as $index => $value) $paramsString[] = $index."=".$value;
+				$link = "https://www.youtube.com/embed/".$youtubeVideoId."?".implode("&", $paramsString);
+				}
+
+			$bannerInfo["VIDEO"] =
+				[
+				"LINK"             => $link,
+				"YOUTUBE_VIDEO_ID" => $youtubeVideoId
+				];
+			}
 		if($title)
 			$bannerInfo["TITLE"] =
 				[

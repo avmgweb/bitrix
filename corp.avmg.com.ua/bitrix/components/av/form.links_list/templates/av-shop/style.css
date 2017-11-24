@@ -9,11 +9,7 @@
 /* -------------------------------------------------------------------- */
 /* ------------------------------- label ------------------------------ */
 /* -------------------------------------------------------------------- */
-.av-links-list-shop
-	{
-	font-size: 12px;
-	}
-.av-links-list-shop .title-label
+.av-links-list-shop .title-block
 	{
 	align-items: center;
 	border: 1px solid #B6C0C6;
@@ -23,27 +19,26 @@
 	justify-content: space-between;
 	padding: 0 3px 0 10px;
 	}
-.av-links-list-shop.active .title-label,
-.av-links-list-shop        .title-label:hover {border-color: #868B8D}
+.av-links-list-shop.active .title-block,
+.av-links-list-shop        .title-block:hover {border-color: #868B8D}
 
-.av-links-list-shop .title-label > *:nth-child(1)
+.av-links-list-shop .title-block .title
 	{
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	width: calc(100% - 24px);
 	}
-.av-links-list-shop .title-label > *:nth-child(2)
+.av-links-list-shop .title-block .arrow
 	{
-	background: url(images/arrow.svg) center center no-repeat;
-	background-size: 8px;
+	line-height: 24px;
+	font-size: 18px;
+	text-align: center;
 	transition: .3s;
 	width:  24px;
 	height: 24px;
 	}
-.av-links-list-shop.active .title-label       > *:nth-child(2) {transform: rotate(-180deg)}
-.av-links-list-shop.active .title-label       > *:nth-child(2),
-.av-links-list-shop        .title-label:hover > *:nth-child(2) {background-image: url(images/arrow_active.svg)}
+.av-links-list-shop.active .title-block .arrow {transform: rotate(-180deg)}
 /* -------------------------------------------------------------------- */
 /* -------------------------- drop-down menu -------------------------- */
 /* -------------------------------------------------------------------- */
@@ -60,8 +55,7 @@
 	position: absolute;
 	z-index: 10;
 	}
-.av-links-list-shop.active .list,
-.av-links-list-shop.active .list .list-item {border-color: #868B8D}
+.av-links-list-shop.active .list {border-color: #868B8D}
 
 .av-links-list-shop .list .list-item
 	{
@@ -72,8 +66,6 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	}
-.av-links-list-shop .list             .list-item:hover,
-.av-links-list-shop .list:not(:hover) .list-item.selected
-	{
-	background: #FAFAFA;
-	}
+.av-links-list-shop.active .list             .list-item          {border-color: #868B8D}
+.av-links-list-shop        .list             .list-item:hover,
+.av-links-list-shop        .list:not(:hover) .list-item.selected {background: #FAFAFA}

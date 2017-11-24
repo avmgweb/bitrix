@@ -4,26 +4,32 @@ use \Bitrix\Main\Page\Asset;
 require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("АВ метал груп - корпоративний сайт компанії");
-$APPLICATION->SetPageProperty("title",       "АВ метал груп провідна компанія України на ринку металопрокату | Офіційний сайт avmg.com.ua ✔ Адрес г. Дніпро, ул. Шолом-Алейхема, 5 ☎ Телефон (056) 790-01-22");
-$APPLICATION->SetPageProperty("description", "АВ метал груп ™ найбільший металотрейдер України ✔ г. Дніпро, ул. Шолом-Алейхема, 5 Телефонуйте! ☎ (056)790-01-22");
+$APPLICATION->SetPageProperty("title",       "АВ метал груп провідна компанія України на ринку металопрокату | Офіційний сайт avmg.com.ua ✔ Адреса м. Дніпро, вул. Шолом-Алейхема, 5 ☎ Телефон (056) 790-01-22");
+$APPLICATION->SetPageProperty("description", "АВ метал груп ™ найбільший металотрейдер України ✔ м. Дніпро, вул. Шолом-Алейхема, 5 Телефонуйте! ☎ (056)790-01-22");
 
 CJSCore::Init(["bootstrap"]);
-Asset::getInstance()->addCss("/bitrix/css/av_site/pages/index.css");
+Asset::getInstance()->addCss("/bitrix/css/av-site/pages/index.css");
 /* -------------------------------------------------------------------- */
 /* ------------------------------ banner ------------------------------ */
 /* -------------------------------------------------------------------- */
-$APPLICATION->IncludeComponent
-	(
-	"bitrix:advertising.banner", "av",
-		array(
-		"TYPE"     => "MAIN_CORP_SITE",
-		"NOINDEX"  => "Y",
-		"QUANTITY" => 12,
+?>
+<div class="av-index-banner-wraper">
+	<?
+	$APPLICATION->IncludeComponent
+		(
+		"bitrix:advertising.banner", "av",
+			array(
+			"TYPE"     => "MAIN_CORP_SITE",
+			"NOINDEX"  => "Y",
+			"QUANTITY" => 12,
 
-		"CACHE_TYPE" => "A",
-		"CACHE_TIME" => 360000
-		)
-	);
+			"CACHE_TYPE" => "A",
+			"CACHE_TIME" => 360000
+			)
+		);
+	?>
+</div>
+<?
 /* -------------------------------------------------------------------- */
 /* --------------------------- main streams --------------------------- */
 /* -------------------------------------------------------------------- */

@@ -11,7 +11,7 @@ unset($templateFolderArray[0]);
 unset($templateFolderArray[1]);
 $templateFolder = '/'.implode('/', $templateFolderArray);
 
-CJSCore::Init(["av_site"]);
+CJSCore::Init(["av"]);
 Asset::getInstance()->addString('<script>AvBasketLineUpdate = "'.CURRENT_PROTOCOL.'://'.$_SERVER["SERVER_NAME"].$templateFolder.'/ajax/update_basket.php";</script>');
 Asset::getInstance()->addString('<script>AvBasketLineDelete = "'.CURRENT_PROTOCOL.'://'.$_SERVER["SERVER_NAME"].$templateFolder.'/ajax/delete_item.php";</script>');
 

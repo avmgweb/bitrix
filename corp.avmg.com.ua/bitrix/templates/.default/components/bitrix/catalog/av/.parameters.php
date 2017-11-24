@@ -11,13 +11,6 @@ if($arCurrentValues["IBLOCK_ID"])
 	$queryList = CIBlockProperty::GetList(["SORT" => "ASC"], ["IBLOCK_ID" => $arCurrentValues["IBLOCK_ID"], "ACTIVE" => "Y", "PROPERTY_TYPE" => "F"]);
 	while($queryInfo = $queryList->GetNext()) $iblockPropsFile[$queryInfo["CODE"]] = $queryInfo["NAME"];
 	}
-
-$menuTypes = [];
-$queryList = CSite::GetList();
-while($queryElement = $queryList->GetNext())
-	foreach(GetMenuTypes($queryElement["ID"]) as $menuType => $menuTitle)
-		if(!$menuTypes[$menuType])
-			$menuTypes[$menuType] = $menuTitle;
 /* -------------------------------------------------------------------- */
 /* ------------------------ old params refactor ----------------------- */
 /* -------------------------------------------------------------------- */
@@ -177,13 +170,6 @@ $arTemplateParameters["LIST_OFFERS_LIMIT"]        = ["HIDDEN" => "Y"];
 /* -------------------------------------------------------------------- */
 /* ---------------------------- new params ---------------------------- */
 /* -------------------------------------------------------------------- */
-$arTemplateParameters["CATALOG_MENU_TYPE"] =
-	[
-	"NAME"   => Loc::getMessage("AV_CATALOG_PARAMS_CATALOG_MENU_TYPE"),
-	"TYPE"   => "LIST",
-	"VALUES" => $menuTypes,
-	"PARENT" => "BASE"
-	];
 $arTemplateParameters["PAGE_SIZE_VALUES"] =
 	[
 	"NAME"     => Loc::getMessage("AV_CATALOG_PARAMS_PAGE_SIZE_VALUES"),
@@ -224,6 +210,18 @@ if($arCurrentValues["ASK_FORM_ID"])
 	$arTemplateParameters["ASK_FORM_NAME_FIELD_ID"] =
 		[
 		"NAME"   => Loc::getMessage("AV_CATALOG_PARAMS_ASK_FORM_NAME_FIELD_ID"),
+		"TYPE"   => "STRING",
+		"PARENT" => "DETAIL_SETTINGS"
+		];
+	$arTemplateParameters["ASK_FORM_USER_NAME_FIELD_ID"] =
+		[
+		"NAME"   => Loc::getMessage("AV_CATALOG_PARAMS_ASK_FORM_USER_NAME_FIELD_ID"),
+		"TYPE"   => "STRING",
+		"PARENT" => "DETAIL_SETTINGS"
+		];
+	$arTemplateParameters["ASK_FORM_USER_PHONE_FIELD_ID"] =
+		[
+		"NAME"   => Loc::getMessage("AV_CATALOG_PARAMS_ASK_FORM_USER_PHONE_FIELD_ID"),
 		"TYPE"   => "STRING",
 		"PARENT" => "DETAIL_SETTINGS"
 		];

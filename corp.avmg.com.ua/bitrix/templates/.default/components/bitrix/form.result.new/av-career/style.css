@@ -14,7 +14,7 @@
 .av-form-career .upload-file-cell .validation-info
 	{
 	color: #A7A7A7;
-	font-size: calc(100% - 4px);
+	font-size: calc(1em - 4px);
 	line-height: 150%;
 	margin-top: 6px;
 	}

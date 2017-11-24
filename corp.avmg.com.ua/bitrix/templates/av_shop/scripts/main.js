@@ -26,23 +26,83 @@ $(function()
 	$(window)
 		.scroll(function()
 			{
-			if($(window).scrollTop() > $header.attr("data-offset-position"))
-				$header.css
-					({
-					"position": "fixed",
-					"top"     : 0
-					});
-			else
-				$header.css
-					({
-					"position": "absolute",
-					"top"     : $header.attr("data-offset-position")+"px"
-					});
+			var
+				headerNativePosition = $header.attr("data-offset-position"),
+			    headerCssParams      =
+				    {
+				    position: "absolute",
+				    top     : headerNativePosition+"px"
+				    };
+
+			if($(window).scrollTop() > headerNativePosition)
+				{
+				headerCssParams.position = "fixed";
+				headerCssParams.top      = 0;
+				}
+
+			$header.css(headerCssParams);
 			})
 		.resize(function()
 			{
 			$headerGhost.height($header.height());
 			});
+	/* -------------------------------------------------------------------- */
+	/* -------------------- header desctop menu hiding -------------------- */
+	/* -------------------------------------------------------------------- */
+	$(window).scroll(function()
+		{
+		var
+			$menuRow        = $header.find(".third-row"),
+			scrollTop       = $(window).scrollTop(),
+			windowWidth     = $(window).width(),
+			lastScrollTop   = $header.data("data-scroll-top") ? $header.data("data-scroll-top") : 0,
+			scrollDirection = scrollTop > lastScrollTop ? "down" : "up",
+		    headerZindex    = parseInt($header.css("z-index")),
+		    menuSlideDown   = function()
+			    {
+			    $header.addClass("in-process");
+			    $menuRow.animate({"margin-top": 0}, 900, function()
+				    {
+				    $menuRow
+					    .css("z-index", "")
+					    .siblings().css
+						    ({
+						    "background": "",
+						    "position"  : "",
+						    "z-index"   : ""
+						    });
+				    $header
+					    .removeClass("minimized")
+					    .removeClass("in-process");
+				    });
+			    };
+
+		if(windowWidth <= 991 || $menuRow.is(":hover") || $menuRow.is(":focus") || $header.hasClass("in-process")) return;
+		$header.data("data-scroll-top", scrollTop);
+
+		if(scrollDirection == "down" && scrollTop > $headerGhost.offset().top + $headerGhost.height() && !$header.hasClass("minimized"))
+			{
+			$header
+				.addClass("in-process")
+				.addClass("minimized");
+			$menuRow.siblings().css
+				({
+				"background": "#FFF",
+				"position"  : "relative",
+				"z-index"   : headerZindex
+				});
+			$menuRow
+				.css("z-index", headerZindex - 10)
+				.animate({"margin-top": "-"+$menuRow.innerHeight()+"px"}, 900, function()
+					{
+					$header.removeClass("in-process");
+					if($header.offset().top + $header.height() < $headerGhost.offset().top + $headerGhost.height())
+						menuSlideDown();
+					});
+			}
+		else if(scrollDirection == "up" && $header.hasClass("minimized"))
+			menuSlideDown();
+		});
 	/* -------------------------------------------------------------------- */
 	/* ------------------------ login/registration ------------------------ */
 	/* -------------------------------------------------------------------- */
@@ -53,11 +113,7 @@ $(function()
 	$(document)
 		.on("vclick", "[data-header-call-back-form-button]", function()
 			{
-			var $callButton = $(this);
-
 			AvBlurScreen("on", 1000);
-			$callButton
-				.addClass("active");
 			$callBackForm
 				.show()
 				.positionCenter(1100, "Y", "Y")
@@ -68,7 +124,6 @@ $(function()
 				.on("vclick", ".close", function()
 					{
 					$callBackForm.hide();
-					$callButton.removeClass("active");
 					AvBlurScreen("off");
 					});
 			})
@@ -82,129 +137,135 @@ $(function()
 	/* -------------------------------------------------------------------- */
 	/* -------------------------- header search --------------------------- */
 	/* -------------------------------------------------------------------- */
-	$(document)
-		.on("avShopSearchTitleOpen avShopSearchTitleClose avShopSearchTitleNormolize", function(event)
-			{
-			var
-				eventType       = event.type,
-				windowMode      = "desktop",
-				speed           = parseInt($(this).data("avShopSearchTitleOpenSpeed")) ? parseInt($(this).data("avShopSearchTitleOpenSpeed")) : 400,
-				windowWidth     = $(window).width(),
-			    $searchRow      = $header.find(".second-row"),
-				$searchCell     = $searchRow.find(".search-cell"),
-			    $hotLine        = $searchRow.find(".hot-line"),
-			    $callBackButton = $searchRow.find("#page-header-call-back-form-button"),
-			    $logoMobile     = $searchRow.find(".logo-cell-mobile");
-
-			     if(windowWidth >= 992 && windowWidth <= 1199) windowMode = "tablet";
-			else if(windowWidth <= 991)                        windowMode = "mobile";
-			/* ------------------------------------------- */
-			/* ------------ search open tablet ----------- */
-			/* ------------------------------------------- */
-			if(eventType == "avShopSearchTitleOpen" && windowMode == "tablet")
+	$(document).on("avShopSearchTitleOpen avShopSearchTitleClose avShopSearchTitleNormolize", function(event)
+		{
+		var
+			eventType       = event.type,
+			speed           = parseInt($(this).data("avShopSearchTitleOpenSpeed")) ? parseInt($(this).data("avShopSearchTitleOpenSpeed")) : 400,
+			windowWidth     = $(window).width(),
+		    $searchRow      = $header.find(".second-row"),
+			$searchCell     = $searchRow.find(".search-cell"),
+		    $hotLine        = $searchRow.find(".hot-line"),
+		    $callBackButton = $searchRow.find(".call-back-form-button"),
+		    $logoMobile     = $searchRow.find(".logo-cell-mobile"),
+			normolizeSearch = function()
 				{
-				var searchCellWidth = $searchCell.offset().left + $searchCell.width() - $hotLine.offset().left;
-
 				$hotLine
-					.add($callBackButton)
-					.hide();
-				$searchCell
-					.width(searchCellWidth)
-					.css("padding-left", (searchCellWidth - 24)+"px")
-					.animate({"padding-left": (searchCellWidth - 400)+"px"}, speed);
-				}
-			/* ------------------------------------------- */
-			/* ------------ search open mobile ----------- */
-			/* ------------------------------------------- */
-			else if(eventType == "avShopSearchTitleOpen" && windowMode == "mobile")
-				{
-				$searchRow
-					.height($searchRow.height());
-				$sidebarCallButton
-					.add($logoMobile)
-					.hide();
-				$searchCell
-					.width($searchRow.width())
-					.css("padding-left", ($searchRow.width() - 24)+"px")
-					.animate({"padding-left": 0}, speed);
-				}
-			/* ------------------------------------------- */
-			/* ----------- search close tablet ----------- */
-			/* ------------------------------------------- */
-			else if(eventType == "avShopSearchTitleClose" && windowMode == "tablet")
-				$searchCell.animate
-					(
-					{"padding-left": (parseInt($searchCell.css("width")) - 24)+"px"},
-					speed,
-					function()
-						{
-						$hotLine
-							.add($callBackButton)
-							.add($searchCell)
-							.removeAttr("style");
-						}
-					);
-			/* ------------------------------------------- */
-			/* ----------- search close mobile ----------- */
-			/* ------------------------------------------- */
-			else if(eventType == "avShopSearchTitleClose" && windowMode == "mobile")
-				$searchCell.animate
-					(
-					{"padding-left": (parseInt($searchCell.css("width")) - 24)+"px"},
-					speed,
-					function()
-						{
-						$searchRow
-							.add($sidebarCallButton)
-							.add($logoMobile)
-							.add($searchCell)
-							.removeAttr("style");
-						}
-					);
-			/* ------------------------------------------- */
-			/* ------------ search normolize ------------- */
-			/* ------------------------------------------- */
-			else if(eventType == "avShopSearchTitleNormolize")
-				$searchRow
-					.add($searchCell)
-					.add($hotLine)
 					.add($callBackButton)
 					.add($sidebarCallButton)
 					.add($logoMobile)
-					.removeAttr("style");
-			});
+					.css("display", "");
+				$searchRow
+					.css("height", "");
+				$searchCell.css
+					({
+					"padding-left": "",
+					"width"       : ""
+					});
+				};
+		/* ------------------------------------------- */
+		/* ---------------- normolize ---------------- */
+		/* ------------------------------------------- */
+		if(eventType == "avShopSearchTitleNormolize")
+			normolizeSearch();
+		/* ------------------------------------------- */
+		/* ------------------ tablet ----------------- */
+		/* ------------------------------------------- */
+		else if(windowWidth >= 992 && windowWidth <= 1199)
+			switch(eventType)
+				{
+				/* ---------------------------- */
+				/* -------- search open ------- */
+				/* ---------------------------- */
+				case "avShopSearchTitleOpen":
+					var searchCellWidth = $searchCell.offset().left + $searchCell.width() - $hotLine.offset().left;
+
+					$hotLine
+						.add($callBackButton)
+						.hide();
+					$searchCell
+						.width(searchCellWidth)
+						.css("padding-left", (searchCellWidth - 24)+"px")
+						.animate({"padding-left": (searchCellWidth - 400)+"px"}, speed);
+					break;
+				/* ---------------------------- */
+				/* ------- search close ------- */
+				/* ---------------------------- */
+				case "avShopSearchTitleClose":
+					$searchCell.animate
+						(
+						{"padding-left": (parseInt($searchCell.css("width")) - 24)+"px"},
+						speed,
+						function() {normolizeSearch()}
+						);
+					break;
+				default: break;
+				}
+		/* ------------------------------------------- */
+		/* ------------------ mobile ----------------- */
+		/* ------------------------------------------- */
+		else if(windowWidth <= 991)
+			switch(eventType)
+				{
+				/* ---------------------------- */
+				/* -------- search open ------- */
+				/* ---------------------------- */
+				case "avShopSearchTitleOpen":
+					$searchRow
+						.height($searchRow.height());
+					$sidebarCallButton
+						.add($logoMobile)
+						.hide();
+					$searchCell
+						.width($searchRow.width())
+						.css("padding-left", ($searchRow.width() - 24)+"px")
+						.animate({"padding-left": 0}, speed);
+					break;
+				/* ---------------------------- */
+				/* ------- search close ------- */
+				/* ---------------------------- */
+				case "avShopSearchTitleClose":
+					$searchCell.animate
+						(
+						{"padding-left": (parseInt($searchCell.css("width")) - 24)+"px"},
+						speed,
+						function() {normolizeSearch()}
+						);
+					break;
+				default: break;
+				}
+		});
 	/* -------------------------------------------------------------------- */
 	/* -------------------------- header sidebar -------------------------- */
 	/* -------------------------------------------------------------------- */
-	$sidebarCallButton
-		.on("vclick", function()
+	$sidebarCallButton.on("vclick", function()
+		{
+		if($sidebar.is(":visible"))
 			{
-			if($sidebar.is(":visible"))
-				{
-				AvBlurScreen("off");
-				$sidebar
-					.animate({"margin-left": "-100%"}, 400, function()
-						{
-						$sidebarCallButton.removeClass("active");
-						$sidebar.hide();
-						});
-				}
-			else
-				{
-				AvBlurScreen("on", 90);
-				$sidebarCallButton
-					.addClass("active");
-				$sidebar
-					.css
-						({
-						"display"    : "block",
-						"position"   : "fixed",
-						"top"        : $header.offset().top + $header.height() - $(window).scrollTop(),
-						"margin-left": "-100%"
-						})
-					.animate({"margin-left": 0}, 400);
-				}
-			});
+			AvBlurScreen("off");
+			$sidebar
+				.animate({"margin-left": "-100%"}, 600, function()
+					{
+					$sidebarCallButton.removeClass("active");
+					$sidebar.hide();
+					});
+			}
+		else
+			{
+			AvBlurScreen("on", 90);
+			$sidebarCallButton
+				.addClass("active");
+			$sidebar
+				.css
+					({
+					"display"    : "block",
+					"position"   : "fixed",
+					"top"        : $header.offset().top + $header.height() - $(window).scrollTop(),
+					"margin-left": "-100%"
+					})
+				.animate({"margin-left": 0}, 600);
+			}
+		});
 	$sidebar
 		.css("z-index", 100)
 		.on("vclick", ".user-block", function()
@@ -216,12 +277,12 @@ $(function()
 			if($menu.is(":visible"))
 				{
 				$callBlock.removeClass("active");
-				$menu.slideUp();
+				$menu.slideUp(600);
 				}
 			else
 				{
 				$callBlock.addClass("active");
-				$menu.slideDown();
+				$menu.slideDown(600);
 				}
 			});
 

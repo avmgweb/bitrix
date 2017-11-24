@@ -9,7 +9,7 @@
 /* -------------------------------------------------------------------- */
 /* ------------------------------- label ------------------------------ */
 /* -------------------------------------------------------------------- */
-.av-links-list .title-label
+.av-links-list .title-block
 	{
 	align-items: center;
 	border: 1px solid #B6C0C6;
@@ -19,21 +19,26 @@
 	justify-content: space-between;
 	padding: 12px 3px 12px 10px;
 	}
-.av-links-list .title-label > *:nth-child(1)
+.av-links-list.active .title-block,
+.av-links-list        .title-block:hover {border-color: #868B8D}
+
+.av-links-list .title-block .title
 	{
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	width: calc(100% - 24px);
 	}
-.av-links-list .title-label > *:nth-child(2)
+.av-links-list .title-block .arrow
 	{
-	background: url(images/arrow.png) center center no-repeat;
-	background-size: cover;
+	line-height: 24px;
+	font-size: 18px;
+	text-align: center;
 	transition: .3s;
 	width:  24px;
 	height: 24px;
 	}
+.av-links-list.active .title-block .arrow {transform: rotate(-180deg)}
 /* -------------------------------------------------------------------- */
 /* -------------------------- drop-down menu -------------------------- */
 /* -------------------------------------------------------------------- */
@@ -50,6 +55,8 @@
 	position: absolute;
 	z-index: 10;
 	}
+.av-links-list.active .list {border-color: #868B8D}
+
 .av-links-list .list .list-item
 	{
 	border-left: 1px solid #B6C0C6;
@@ -59,16 +66,6 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	}
-/* -------------------------------------------------------------------- */
-/* ------------------------- activities/hovers ------------------------ */
-/* -------------------------------------------------------------------- */
-.av-links-list.active            .title-label > *:nth-child(2) {transform: rotate(-180deg)}
-.av-links-list.active            .title-label,
-.av-links-list:not(.alert-input) .title-label:hover,
-.av-links-list.active            .list,
-.av-links-list.active            .list .list-item              {border-color: #868B8D}
-.av-links-list.alert-input       .title-label,
-.av-links-list.alert-input       .list,
-.av-links-list.alert-input       .list .list-item              {border-color: #CC0000}
-.av-links-list .list             .list-item:hover,
-.av-links-list .list:not(:hover) .list-item.selected           {background: #4C5255;border-color: #4C5255;color: #FFF}
+.av-links-list.active .list             .list-item          {border-color: #868B8D}
+.av-links-list        .list             .list-item:hover,
+.av-links-list        .list:not(:hover) .list-item.selected {background: #4C5255;border-color: #4C5255;color: #FFF}

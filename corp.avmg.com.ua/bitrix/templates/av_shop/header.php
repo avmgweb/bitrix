@@ -2,6 +2,8 @@
 use \Bitrix\Main\Page\Asset;
 
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
+include "tools/variables.php";
 /* ============================================================================================= */
 /* ========================================= COUNTINGS ========================================= */
 /* ============================================================================================= */
@@ -11,6 +13,7 @@ $userIsAuthorized      = $USER->IsAuthorized();
 $userName              = "";
 $userPersonalPhoto     = "";
 $registrationAvailable = COption::GetOptionString("main", "new_user_registration") == "Y";
+$templateVariables     = $templateVariablesArray[LANGUAGE_ID];
 
 if($userIsAuthorized)
 	{
@@ -27,85 +30,7 @@ if($userIsAuthorized)
 /* ==================================== CONTENT BLOCKS HTML ==================================== */
 /* ============================================================================================= */
 /* -------------------------------------------------------------------- */
-/* ------------------------ header company link ----------------------- */
-/* -------------------------------------------------------------------- */
-$companyLinkHtml = "";
-ob_start();
-$APPLICATION->IncludeComponent
-	(
-	"bitrix:main.include", "",
-	["AREA_FILE_SHOW" => "file", "PATH" => "/include/link_company_site.php"],
-	false, ["HIDE_ICONS" => "Y"]
-	);
-$companyLinkHtml = ob_get_contents();
-ob_end_clean();
-/* -------------------------------------------------------------------- */
-/* -------------------------- header faq link ------------------------- */
-/* -------------------------------------------------------------------- */
-$faqLinkHtml = "";
-ob_start();
-$APPLICATION->IncludeComponent
-	(
-	"bitrix:main.include", "",
-	["AREA_FILE_SHOW" => "file", "PATH" => "/include/link_faq.php"],
-	false, ["HIDE_ICONS" => "Y"]
-	);
-$faqLinkHtml = ob_get_contents();
-ob_end_clean();
-/* -------------------------------------------------------------------- */
-/* ------------------------ header support link ----------------------- */
-/* -------------------------------------------------------------------- */
-$supportLinkHtml = "";
-ob_start();
-$APPLICATION->IncludeComponent
-	(
-	"bitrix:main.include", "",
-	["AREA_FILE_SHOW" => "file", "PATH" => "/include/link_support.php"],
-	false, ["HIDE_ICONS" => "Y"]
-	);
-$supportLinkHtml = ob_get_contents();
-ob_end_clean();
-/* -------------------------------------------------------------------- */
-/* -------------------------- header hot line ------------------------- */
-/* -------------------------------------------------------------------- */
-$hotLineHtml = "";
-ob_start();
-$APPLICATION->IncludeComponent
-	(
-	"bitrix:main.include", "",
-	["AREA_FILE_SHOW" => "file", "PATH" => "/include/hot_line.php"],
-	false, ["HIDE_ICONS" => "Y"]
-	);
-$hotLineHtml = ob_get_contents();
-ob_end_clean();
-/* -------------------------------------------------------------------- */
-/* ------------------------- header phone list ------------------------ */
-/* -------------------------------------------------------------------- */
-$phoneListHtml = "";
-ob_start();
-$APPLICATION->IncludeComponent
-	(
-	"bitrix:main.include", "",
-	["AREA_FILE_SHOW" => "file", "PATH" => "/include/phone_list.php"],
-	false, ["HIDE_ICONS" => "Y"]
-	);
-$phoneListHtml = ob_get_contents();
-ob_end_clean();
-/* -------------------------------------------------------------------- */
-/* ----------------------- header working houres ---------------------- */
-/* -------------------------------------------------------------------- */
-$workingHouresHtml = "";
-ob_start();
-$APPLICATION->IncludeComponent
-	(
-	"bitrix:main.include", "",
-	["AREA_FILE_SHOW" => "file", "PATH" => "/include/working_houres.php"],
-	false, ["HIDE_ICONS" => "Y"]
-	);
-$workingHouresHtml = ob_get_contents();
-ob_end_clean();
-/* -------------------------------------------------------------------- */
-/* --------------------------- header basket -------------------------- */
+/* ------------------------------ basket ------------------------------ */
 /* -------------------------------------------------------------------- */
 $basketLineHtml = "";
 ob_start();
@@ -145,7 +70,7 @@ $APPLICATION->IncludeComponent
 $basketLineHtml = ob_get_contents();
 ob_end_clean();
 /* -------------------------------------------------------------------- */
-/* ------------------------ workarea left menu ------------------------ */
+/* ---------------------------- left menu ----------------------------- */
 /* -------------------------------------------------------------------- */
 $leftMenuHtml = "";
 ob_start();
@@ -188,7 +113,7 @@ ob_end_clean();
 		<link rel="icon" type="image/x-icon" href="/favicon.ico">
 
 		<?$APPLICATION->ShowHead()?>
-		<?CJSCore::Init(["av_site"])?>
+		<?CJSCore::Init(["av", "font_awesome"])?>
 		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/scripts/main.js")?>
 		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/scripts/popup.js")?>
 		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH."/scripts/".LANGUAGE_ID."/google_analytics.js")?>
@@ -201,6 +126,33 @@ ob_end_clean();
 	?>
 	<body>
 		<?$APPLICATION->ShowPanel()?>
+		<?
+		/* ------------------------------------------- */
+		/* ---------- organization microdata --------- */
+		/* ------------------------------------------- */
+		?>
+		<div itemscope itemtype="http://schema.org/Organization">
+			<span itemprop="name"        content="<?=$templateVariables["COMPANY_INFO"]["NAME"]?>"></span>
+			<span itemprop="description" content="<?=$templateVariables["COMPANY_INFO"]["DESCRIPTION"]?>"></span>
+			<span itemprop="url"         content="<?=$templateVariables["COMPANY_INFO"]["SITE"]?>"></span>
+			<span itemprop="email"       content="<?=$templateVariables["COMPANY_INFO"]["EMAIL"]?>"></span>
+			<?foreach($templateVariables["COMPANY_INFO"]["PHONES"] as $phone):?>
+			<span itemprop="telephone"   content="<?=$phone?>"></span>
+			<?endforeach?>
+
+			<div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+				<span itemprop="addressCountry"  content="<?=$templateVariables["COMPANY_INFO"]["COUNTRY"]?>"></span>
+				<span itemprop="addressLocality" content="<?=$templateVariables["COMPANY_INFO"]["CITY"]?>"></span>
+				<span itemprop="streetAddress"   content="<?=$templateVariables["COMPANY_INFO"]["STREET"]?>"></span>
+			</div>
+
+			<div itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+				<span itemprop="caption" content="<?=$templateVariables["COMPANY_INFO"]["NAME"]?>"></span>
+				<span itemprop="url"     content="<?=CURRENT_PROTOCOL?>://<?=$_SERVER["SERVER_NAME"].$templateVariables["COMPANY_INFO"]["LOGO"]?>"></span>
+				<span itemprop="width"   content="300"></span>
+				<span itemprop="height"  content="50"></span>
+			</div>
+		</div>
 		<?
 		/* ------------------------------------------- */
 		/* ------------------ header ----------------- */
@@ -222,7 +174,7 @@ ob_end_clean();
 		/* ------------------ tools ------------------ */
 		/* ------------------------------------------- */
 		?>
-		<?include "header/tools.php"?>
+		<?include "tools/components.php"?>
 		<?
 		/* ------------------------------------------- */
 		/* --------------- breadcrumb ---------------- */
@@ -267,6 +219,7 @@ ob_end_clean();
 			<?if($leftMenuHtml):?>
 			<div class="menu-col">
 				<div><?=$leftMenuHtml?></div>
+				<div><?$APPLICATION->IncludeFile($APPLICATION->GetCurDir()."sect_inc.php", [], ["MODE" => "php"])?></div>
 			</div>
 
 			<div class="content-col">

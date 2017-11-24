@@ -74,8 +74,12 @@
 						})
 					.animate({"margin-right": 0}, 800, function()
 						{
-						$searchBlock.add($input).removeAttr("style");
-						$input.show().focus();
+						$searchBlock
+							.css("overflow", "");
+						$input
+							.css("display", "")
+							.show()
+							.focus();
 						if(callback) callback.call($searchBlock);
 						});
 				}
@@ -113,8 +117,13 @@
 				$input
 					.animate({"margin-right": "-"+$input.width()}, 800, function()
 						{
-						$searchBlock.removeClass("active").removeClass("run").removeAttr("style");
-						$input.removeAttr("style").hide();
+						$searchBlock
+							.removeClass("active")
+							.removeClass("run")
+							.css("overflow", "");
+						$input
+							.css("margin-right", "")
+							.hide();
 						if(callback) callback.call($searchBlock);
 						});
 				}

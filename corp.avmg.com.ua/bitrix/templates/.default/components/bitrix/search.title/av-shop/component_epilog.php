@@ -10,5 +10,5 @@ unset($templateFolderArray[0]);
 unset($templateFolderArray[1]);
 $templateFolder = '/'.implode('/', $templateFolderArray);
 
-CJSCore::Init(["av_site"]);
+CJSCore::Init(["av"]);
 Asset::getInstance()->addString('<script>AvShopSearchTitleFile = "'.CURRENT_PROTOCOL.'://'.$_SERVER["SERVER_NAME"].$templateFolder.'/ajax/search.php";</script>');

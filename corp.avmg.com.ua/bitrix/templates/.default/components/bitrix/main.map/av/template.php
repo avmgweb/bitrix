@@ -1,38 +1,25 @@
 <?
-if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
-if (!is_array($arResult["arMap"]) || count($arResult["arMap"]) < 1)
-	return;
-$arRootNode = Array();
-foreach($arResult["arMap"] as $index => $arItem)
-{
-	if ($arItem["LEVEL"] == 0)
-		$arRootNode[] = $index;
-}
-$allNum = count($arRootNode);
-$colNum = ceil($allNum / $arParams["COL_NUM"]);
-	$previousLevel = -1;
-	$counter = 0;
-	$column = 1;
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+if(!count($arResult["ITEMS"]))                                  return;
 ?>
-<div class="sitemapWrap">
-<?php foreach($arResult["arMap"] as $index => $arItem):?>
+<div class="av-sitemap">
+	<?foreach($arResult["ITEMS"][1] as $itemInfo):?>
+	<div class="first-level-block">
+		<a href="<?=$itemInfo["FULL_PATH"]?>"><?=$itemInfo["NAME"]?></a>
 
-	<?if (array_key_exists($index+1, $arResult["arMap"]) && $arItem["LEVEL"] < $arResult["arMap"][$index+1]["LEVEL"]):?>
-		<div class="col-md-12"><b><a href="<?=$arItem["FULL_PATH"]?>"><?=$arItem["NAME"]?></a></b></div>
-	<?if ($arParams["SHOW_DESCRIPTION"] == "Y" && strlen($arItem["DESCRIPTION"]) > 0) {?>
-		<div><?=$arItem["DESCRIPTION"]?></div>
-	<?}?>
+		<?foreach($arResult["ITEMS"][2][$itemInfo["FULL_PATH"]] as $subitemInfo):?>
+		<div class="second-level-block">
+			<a href="<?=$subitemInfo["FULL_PATH"]?>"><?=$subitemInfo["NAME"]?></a>
 
-	<?elseif($arItem["LEVEL"] == 0):?>
-		<div class="col-md-12">
-			<b><a href="<?=$arItem["FULL_PATH"]?>"><?=$arItem["NAME"]?></a></b>
+			<?if(count($arResult["ITEMS"][3][$subitemInfo["FULL_PATH"]])):?>
+			<div class="third-level-block">
+				<?foreach($arResult["ITEMS"][3][$subitemInfo["FULL_PATH"]] as $subsubitemInfo):?>
+				<a href="<?=$subsubitemInfo["FULL_PATH"]?>"><?=$subsubitemInfo["NAME"]?></a>
+				<?endforeach?>
+			</div>
+			<?endif?>
 		</div>
-	<?else:?>
-		<div class="col-md-4"><a href="<?=$arItem["FULL_PATH"]?>"><?=$arItem["NAME"]?></a>
-			<?if ($arParams["SHOW_DESCRIPTION"] == "Y" && strlen($arItem["DESCRIPTION"]) > 0) {?>
-				<div><?=$arItem["DESCRIPTION"]?></div>
-			<?}?>
-		</div>
-	<?endif?>
+		<?endforeach?>
+	</div>
 	<?endforeach?>
 </div>

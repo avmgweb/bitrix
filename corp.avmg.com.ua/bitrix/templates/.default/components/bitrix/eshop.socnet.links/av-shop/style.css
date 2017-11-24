@@ -1,0 +1,47 @@
+/* -------------------------------------------------------------------- */
+/* --------------------------- clear style ---------------------------- */
+/* -------------------------------------------------------------------- */
+.av-shop-soc-links a,
+.av-shop-soc-links a:visited,
+.av-shop-soc-links a:hover,
+.av-shop-soc-links a:active,
+.av-shop-soc-links a:focus {text-decoration: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- page ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-shop-soc-links                    {display: flex}
+.av-shop-soc-links a:not(:last-child) {margin-right: 10px}
+
+.av-shop-soc-links a > .icon
+	{
+	background: #CC0000;
+	border-radius: 16px;
+	color: #FFF;
+	display: block;
+	font-size: 18px;
+	line-height: 32px;
+	text-align: center;
+	transition: .9s;
+	width:  32px;
+	height: 32px;
+	}
+.av-shop-soc-links a:hover  > .icon,
+.av-shop-soc-links a:active > .icon,
+.av-shop-soc-links a:focus  > .icon
+	{
+	background: #FFF;
+	color: #CC0000;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ media ------------------------------- */
+/* -------------------------------------------------------------------- */
+@media (max-width: 767px)
+	{
+	.av-shop-soc-links a > .icon
+		{
+		border-radius: 24px;
+		line-height: 48px;
+		width:  48px;
+		height: 48px;
+		}
+	}

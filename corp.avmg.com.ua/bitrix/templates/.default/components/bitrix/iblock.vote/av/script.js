@@ -1,48 +1,41 @@
-/* -------------------------------------------------------------------- */
-/* -------------------------- vote function --------------------------- */
-/* -------------------------------------------------------------------- */
-function AvIblockVote($element, $parentId, arParams)
-	{
-	var arrayInfo = $element.id.match(/^vote_(\d+)_(\d+)$/);
-
-	arParams["vote"]    = 'Y';
-	arParams["vote_id"] = arrayInfo[1];
-	arParams["rating"]  = arrayInfo[2];
-
-	BX.ajax.post
-		(
-		'/bitrix/components/bitrix/iblock.vote/component.php',
-		arParams,
-		function(data)
-			{
-			var
-				obContainer = BX($parentId),
-				obResult    = BX.create("DIV");
-			if(!obContainer) return;
-
-			obResult.innerHTML = data;
-			obContainer.parentNode.replaceChild(obResult.firstChild, obContainer);
-			}
-		);
-	}
-/* -------------------------------------------------------------------- */
-/* ----------------------------- handlers ----------------------------- */
-/* -------------------------------------------------------------------- */
 $(function()
 	{
 	$(document)
-		.on("mouseover", '.av-iblock-rating.vote-available i', function()
+		.on("mouseover", ".av-iblock-rating.vote-available > .item", function()
 			{
 			var inedx = $(this).index();
-			$(this).closest('.av-iblock-rating')
+			$(this).parent()
 				.addClass("hovered")
-				.children('i').each(function()
+				.children(".item").each(function()
 					{
 					if($(this).index() <= inedx) $(this).addClass("hovered");
 					});
 			})
-		.on("mouseout", '.av-iblock-rating', function()
+		.on("mouseout", ".av-iblock-rating", function()
 			{
-			$(this).removeClass("hovered").children('i').removeClass("hovered");
+			$(this).removeClass("hovered")
+				.children(".item").removeClass("hovered");
+			})
+		.on("vclick", ".av-iblock-rating.vote-available > .item", function()
+			{
+			var
+				$voteBlock = $(this).parent(),
+				arParams   = BX.parseJSON($voteBlock.attr("data-ajax-params"));
+
+			arParams.vote    = "Y";
+			arParams.vote_id = $voteBlock.attr("data-vote-id");
+			arParams.rating  = $(this).attr("data-value");
+
+			BX.ajax.post
+				(
+				"/bitrix/components/bitrix/iblock.vote/component.php",
+				arParams,
+				function(data)
+					{
+					$voteBlock
+						.after(data)
+						.remove();
+					}
+				);
 			});
 	});

@@ -26,21 +26,22 @@
 	margin: 0 -10px;
 	overflow-x: scroll;
 	}
-.av-shop-menu a.selected,
-.av-shop-menu a:hover,
-.av-shop-menu a:active,
-.av-shop-menu a:focus {text-decoration: underline}
 /* -------------------------------------------------------------------- */
 /* ------------------------ first level items ------------------------- */
 /* -------------------------------------------------------------------- */
-.av-shop-menu .first-level-item
-	{
-	margin: 0 10px;
-	}
+.av-shop-menu .first-level-item {padding: 0 10px}
 .av-shop-menu .first-level-item > a
 	{
 	align-items: center;
 	display: flex;
+	font-size: calc(1em + 1px);
+	transition: .9s;
+	transform: scale(0.90);
+	}
+.av-shop-menu .first-level-item.active > a
+	{
+	color: #CC0000;
+	transform: scale(1);
 	}
 .av-shop-menu .first-level-item > a img
 	{
@@ -50,6 +51,7 @@
 .av-shop-menu .first-level-item > a .title
 	{
 	font-weight: bold;
+	height: 40px;
 	line-height: 18px;
 	overflow: hidden;
 	}
@@ -60,7 +62,7 @@
 	{
 	background: #FFF;
 	border-top: 1px solid #EFEFEF;
-	box-shadow: 0 5px 10px rgba(225, 228, 230, 0.5);
+	box-shadow: 0 4px 8px rgba(76, 82, 85, 0.2);
 	display: none;
 	flex-direction: column;
 	flex-wrap: wrap;
@@ -86,3 +88,9 @@
 	color: #78909C;
 	padding: 0 50px 0 20px;
 	}
+.av-shop-menu .second-level-item a:hover,
+.av-shop-menu .third-level-item  a:hover,
+.av-shop-menu .second-level-item a:active,
+.av-shop-menu .third-level-item  a:active,
+.av-shop-menu .second-level-item a:focus,
+.av-shop-menu .third-level-item  a:focus {text-decoration: underline}

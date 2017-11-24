@@ -1,6 +1,8 @@
 <?
 if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
-
+/* -------------------------------------------------------------------- */
+/* ----------------------- iblock sections query ---------------------- */
+/* -------------------------------------------------------------------- */
 if(count($arParams["IBLOCK_SECTION_MENU"]))
 	foreach($arResult["arMap"] as $index => $menuInfoArray)
 		foreach($arParams["IBLOCK_SECTION_MENU"] as $iblockInfoArray)
@@ -9,10 +11,10 @@ if(count($arParams["IBLOCK_SECTION_MENU"]))
 				$menuArray = [];
 				$queryList = CIBlockSection::GetList
 					(
-					["NAME" => 'ASC'],
+					["NAME" => "ASC"],
 						[
 						"IBLOCK_ID"  => $iblockInfoArray["iblock_id"],
-						"ACTIVE"     => 'Y',
+						"ACTIVE"     => "Y",
 						"SECTION_ID" => false
 						],
 					false,
@@ -33,3 +35,17 @@ if(count($arParams["IBLOCK_SECTION_MENU"]))
 					array_slice($arResult["arMap"], $index + 1, count($arResult["arMap"]))
 					);
 				}
+/* -------------------------------------------------------------------- */
+/* ----------------------- level blocks forming ----------------------- */
+/* -------------------------------------------------------------------- */
+$arResult["ITEMS"] = [];
+$parentInfo        = [];
+
+foreach($arResult["arMap"] as $index => $itemInfo)
+	{
+	$depthLevel              = $itemInfo["LEVEL"] + 1;
+	$parentInfo[$depthLevel] = $itemInfo;
+
+	if($depthLevel == 1)                        $arResult["ITEMS"][1][] = $itemInfo;
+	elseif(count($parentInfo[$depthLevel - 1])) $arResult["ITEMS"][$depthLevel][$parentInfo[$depthLevel - 1]["FULL_PATH"]][] = $itemInfo;
+	}

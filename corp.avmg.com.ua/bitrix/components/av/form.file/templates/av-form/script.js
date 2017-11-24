@@ -37,7 +37,7 @@ SetFormElementsFunction("av-styled", "file", "setFormElememtAlert",    "setFormE
 $(function()
 	{
 	$(document)
-		.on("vclick", ".av-form-styled-file .default, .av-form-styled-file .new-value .title", function()
+		.on("vclick", ".av-form-styled-file .title, .av-form-styled-file .new-file-name", function()
 			{
 			$(this).closest(".av-form-styled-file").find(":file").click();
 			})
@@ -49,21 +49,17 @@ $(function()
 
 			if(value)
 				$inputBlock
-					.addClass("active")
-					.find(".new-value .title")
+					.addClass("new-file")
+					.find(".new-file-name")
 						.text(value.split("\\").pop());
 			else
-				$inputBlock
-					.removeClass("active");
+				$inputBlock.find(".delete").click();
 			})
-		.on("vclick", ".av-form-styled-file .new-value .delete", function()
-			{
-			$(this).closest(".av-form-styled-file").removeClass("active");
-			})
-		.on("vclick", ".av-form-styled-file .current-value .delete", function()
+		.on("vclick", ".av-form-styled-file .delete", function()
 			{
 			$(this).closest(".av-form-styled-file")
-				.removeClass("uploaded")
+				.removeClass("new-file")
+				.removeClass("uploaded-file")
 				.find(":checkbox")
 					.attr("checked", true)
 					.prop("checked", true);

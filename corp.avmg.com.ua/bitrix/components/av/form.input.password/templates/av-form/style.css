@@ -21,14 +21,14 @@
 	position: relative;
 	}
 .av-form-styled-password.alert-input     {border-color: #CC0000}
-.av-form-styled-password.has-placeholder {margin-top: 30px}
+.av-form-styled-password.placeholder-on,
+.av-form-styled-password.placeholder-off {margin-top: 30px}
 
 .av-form-styled-password input,
 .av-form-styled-password label
 	{
-	cursor: text;
 	display: block;
-	font-size: calc(100% - 2px);
+	font-size: calc(1em - 2px);
 	line-height: 30px;
 	overflow: hidden;
 	padding: 0 5px;
@@ -39,6 +39,7 @@
 .av-form-styled-password label
 	{
 	color: #B6C0C6;
+	cursor: text;
 	position: absolute;
 	top:  -30px;
 	left: -5px;
@@ -53,4 +54,4 @@
 	display: inline-block;
 	margin-left: 3px;
 	}
-.av-form-styled-password.has-placeholder.on label {left: 0;top: 0}
+.av-form-styled-password.placeholder-on label {left: 0;top: 0}

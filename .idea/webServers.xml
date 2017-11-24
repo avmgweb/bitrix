@@ -18,6 +18,14 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
+      <webServer id="766811e0-828d-4ae7-ab5a-6c63ef5533a2" name="TEST140" url="http://10.10.1.140">
+        <fileTransfer host="10.10.1.140" port="22" rootFolder="/home/bitrix/ext_www" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

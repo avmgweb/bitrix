@@ -84,8 +84,11 @@
 			{
 			$slider
 				.removeClass("in-process");
-			$sliderBlock
-				.removeAttr("style");
+			$sliderBlock.css
+				({
+				"position": "",
+				"width"   : ""
+				});
 			$slides
 				.css("position", "")
 				.css("left",     "")

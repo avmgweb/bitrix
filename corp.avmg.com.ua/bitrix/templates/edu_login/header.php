@@ -27,7 +27,7 @@ if(isset($APPLICATION->arAuthResult) && $APPLICATION->arAuthResult !== true)
 		<link rel="icon" type="image/x-icon" href="/favicon.ico">
 
 		<?$APPLICATION->ShowHead()?>
-		<?CJSCore::Init(["av_site", "wait_for_images"])?>
+		<?CJSCore::Init(["av", "wait_for_images"])?>
 		<?Asset::getInstance()->addJs(SITE_TEMPLATE_PATH.'/script.js')?>
 	</head>
 	<?

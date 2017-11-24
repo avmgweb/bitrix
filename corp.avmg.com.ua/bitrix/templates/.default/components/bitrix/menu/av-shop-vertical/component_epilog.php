@@ -19,4 +19,4 @@ elseif($arParams["MAX_LEVEL"] == 2)
 	Asset::getInstance()->addJs ($templateFolder."/two_level.js");
 	}
 
-CJSCore::Init(["av_site"]);
+CJSCore::Init(["av", "font_awesome"]);

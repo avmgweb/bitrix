@@ -9,22 +9,25 @@
 	jQuery.fn.setFormElememtValuePasswordAvStyled    = function(value)
 		{
 		this.find(":password").attr("value", value).val(value);
-		if(!this.hasClass("has-placeholder")) return;
 
-		if(value) this.removeClass("on");
-		else      this.addClass("on");
+		this
+			.removeClass("placeholder-on")
+			.removeClass("placeholder-off");
+		if(value)
+			this
+				.addClass("placeholder-off");
 		};
 	jQuery.fn.getFormElememtRequiredPasswordAvStyled = function()      {return this.hasClass("required")};
 	jQuery.fn.setFormElememtRequiredPasswordAvStyled = function(value)
 		{
-		if(value == "on")  this.addClass("required");
-		if(value == "off") this.removeClass("required");
+		     if(value == "on")  this.addClass("required");
+		else if(value == "off") this.removeClass("required");
 		};
 	jQuery.fn.getFormElememtAlertPasswordAvStyled    = function()      {return this.hasClass("alert-input")};
 	jQuery.fn.setFormElememtAlertPasswordAvStyled    = function(value)
 		{
-		if(value == "on")  this.addClass("alert-input");
-		if(value == "off") this.removeClass("alert-input");
+		     if(value == "on")  this.addClass("alert-input");
+		else if(value == "off") this.removeClass("alert-input");
 		};
 	})(jQuery);
 /* -------------------------------------------------------------------- */
@@ -44,23 +47,25 @@ SetFormElementsFunction("av-styled", "password", "setFormElememtAlert",    "setF
 $(function()
 	{
 	$(document)
-		.on("vclick", ".av-form-styled-password.has-placeholder.on label", function()
+		.on("vclick", ".av-form-styled-password label", function()
 			{
 			var $inputBlock = $(this).parent();
-
-			$inputBlock.removeClass("on");
 			setTimeout(function()
 				{
 				$inputBlock.find(":password").focus();
-				}, 300);
+				}, 50);
 			})
-		.on("focus", ".av-form-styled-password.has-placeholder.on :password", function()
+		.on("focus", ".av-form-styled-password :password", function()
 			{
-			$(this).parent().removeClass("on");
+			$(this).parent()
+				.removeClass("placeholder-on")
+				.addClass("placeholder-off");
 			})
-		.on("focusout", ".av-form-styled-password.has-placeholder:not(.on) :password", function()
+		.on("focusout", ".av-form-styled-password :password", function()
 			{
 			if(!$(this).val())
-				$(this).parent().addClass("on");
+				$(this).parent()
+					.removeClass("placeholder-off")
+					.addClass("placeholder-on");
 			});
 	});

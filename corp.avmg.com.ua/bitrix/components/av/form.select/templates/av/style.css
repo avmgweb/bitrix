@@ -5,32 +5,36 @@
 /* -------------------------------------------------------------------- */
 /* ------------------------------- label ------------------------------ */
 /* -------------------------------------------------------------------- */
-.av-form-select:not(.disabled) {cursor: pointer}
-
-.av-form-select .title-label
+.av-form-select .title-block
 	{
 	align-items: center;
 	border: 1px solid #B6C0C6;
 	border-radius: 2px;
+	cursor: pointer;
 	display: flex;
-	justify-content: space-between;
 	padding: 12px 3px 12px 10px;
 	}
-.av-form-select .title-label > *:nth-child(1)
+.av-form-select.active      .title-block,
+.av-form-select             .title-block:hover {border-color: #868B8D}
+.av-form-select.alert-input .title-block       {border-color: #CC0000}
+
+.av-form-select .title-block .title
 	{
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	width: calc(100% - 24px);
 	}
-.av-form-select .title-label > *:nth-child(2)
+.av-form-select .title-block .arrow
 	{
-	background: url(images/arrow.png) center center no-repeat;
-	background-size: cover;
+	line-height: 24px;
+	font-size: 18px;
+	text-align: center;
 	transition: .3s;
 	width:  24px;
 	height: 24px;
 	}
+.av-form-select.active .title-block .arrow {transform: rotate(-180deg)}
 /* -------------------------------------------------------------------- */
 /* -------------------------- drop-down menu -------------------------- */
 /* -------------------------------------------------------------------- */
@@ -47,24 +51,20 @@
 	position: absolute;
 	z-index: 10;
 	}
-.av-form-select .list [data-list-value]
+.av-form-select.active      .list {border-color: #868B8D}
+.av-form-select.alert-input .list {border-color: #CC0000}
+
+.av-form-select .list .list-item
 	{
 	border-left: 1px solid #B6C0C6;
+	cursor: pointer;
 	overflow: hidden;
 	padding: 12px 10px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	}
-/* -------------------------------------------------------------------- */
-/* ------------------------- activities/hovers ------------------------ */
-/* -------------------------------------------------------------------- */
-.av-form-select.active            .title-label > *:nth-child(2) {transform: rotate(-180deg)}
-.av-form-select.active            .title-label,
-.av-form-select.active            .list,
-.av-form-select.active            .list [data-list-value],
-.av-form-select:not(.alert-input) .title-label:hover            {border-color: #868B8D}
-.av-form-select.alert-input       .title-label,
-.av-form-select.alert-input       .list,
-.av-form-select.alert-input       .list [data-list-value]       {border-color: #CC0000}
-.av-form-select .list             [data-list-value]:hover,
-.av-form-select .list:not(:hover) [data-list-value].selected    {background: #4C5255;border-color: #4C5255;color: #FFF}
+.av-form-select.active            .list             .list-item          {border-color: #868B8D}
+.av-form-select.alert-input       .list             .list-item          {border-color: #CC0000}
+.av-form-select                   .list             .list-item:hover,
+.av-form-select                   .list:not(:hover) .list-item.selected {background: #4C5255;border-color: #4C5255;color: #FFF}
+.av-form-select:not(.value-seted) .list             .list-item.default  {display: none}

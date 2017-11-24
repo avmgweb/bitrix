@@ -1,4 +1,8 @@
-<?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die()?>
+<?
+if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
+$fieldTitle = $arResult["PLACEHOLDER"] ? $arResult["PLACEHOLDER"] : $arResult["TITLE"];
+?>
 <div
 	data-av-form-item="search"
 	data-av-form-library="av"
@@ -6,13 +10,14 @@
 		av-form-input-search
 		<?if($arResult["REQUIRED"]):?>required<?endif?>
 		<?if($arResult["VALUE"]):?>active<?endif?>
-		<?if($arResult["PLACEHOLDER"] && !$arResult["VALUE"]):?>has-placeholder on<?endif?>
-		<?if($arResult["PLACEHOLDER"] &&  $arResult["VALUE"]):?>has-placeholder<?endif?>
+		<?if($fieldTitle && !$arResult["VALUE"]):?>placeholder-on<?endif?>
+		<?if($fieldTitle &&  $arResult["VALUE"]):?>placeholder-off<?endif?>
 		"
+	<?=$arResult["ATTR"]?>
 >
-	<?if($arResult["PLACEHOLDER"]):?>
+	<?if($fieldTitle):?>
 	<label title="<?=$arResult["TITLE"]?>">
-		<?=$arResult["PLACEHOLDER"]?>
+		<?=$fieldTitle?>
 	</label>
 	<?endif?>
 
@@ -22,8 +27,7 @@
 		name="<?=$arResult["NAME"]?>"
 		value="<?=$arResult["VALUE"]?>"
 		title="<?=$arResult["TITLE"]?>"
-		<?=$arResult["ATTR"]?>
 	>
 
-	<div class="icon"></div>
+	<i class="icon fa fa-search"></i>
 </div>

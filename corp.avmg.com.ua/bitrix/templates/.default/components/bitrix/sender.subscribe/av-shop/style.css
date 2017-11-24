@@ -1,0 +1,29 @@
+.av-shop-subscribe-form
+	{
+	align-items: center;
+	display: flex;
+	}
+.av-shop-subscribe-form .title
+	{
+	width: calc(100% - 32px);
+	}
+.av-shop-subscribe-form input
+	{
+	display: none;
+	width: calc(100% - 32px);
+	}
+.av-shop-subscribe-form button
+	{
+	color: inherit;
+	cursor: pointer;
+	font-size: 20px;
+	line-height: 32px;
+	text-align: center;
+	transition: .9s;
+	transform: scale(0.8);
+	width:  32px;
+	height: 32px;
+	}
+.av-shop-subscribe-form button:hover,
+.av-shop-subscribe-form button:active,
+.av-shop-subscribe-form button:focus {transform: scale(1)}

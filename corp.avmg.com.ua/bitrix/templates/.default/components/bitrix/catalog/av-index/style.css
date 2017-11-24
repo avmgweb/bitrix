@@ -1,10 +1,17 @@
 .av-catalog-index > .title
 	{
+	display: block;
 	font-size:   20px;
 	font-weight: bold;
 	line-height: 20px;
 	margin-bottom: 30px;
 	}
+.av-catalog-index > .title,
+.av-catalog-index > .title:visited {color: inherit}
+.av-catalog-index > .title:hover,
+.av-catalog-index > .title:active,
+.av-catalog-index > .title:focus   {color: #CC0000;text-decoration: none}
+
 .av-catalog-index > .body
 	{
 	box-shadow: 0 3px 8px -1px rgba(76, 82, 85, 0.1);

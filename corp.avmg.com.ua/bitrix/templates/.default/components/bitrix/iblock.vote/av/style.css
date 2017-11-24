@@ -1,12 +1,15 @@
 .av-iblock-rating {display: flex}
 
-.av-iblock-rating > i
+.av-iblock-rating > .item
 	{
-	background: url(images/star_unactive.png) center center no-repeat;
-	display: inline-block;
+	color: #DADFE2;
+	cursor: default;
+	font-size: 12px;
+	line-height: 18px;
+	text-align: center;
 	width:  18px;
 	height: 18px;
 	}
-.av-iblock-rating.vote-available > i         {cursor: pointer}
-.av-iblock-rating:not(.hovered)  > i.active,
-.av-iblock-rating.hovered        > i.hovered {background-image: url(images/star_active.png)}
+.av-iblock-rating.vote-available > .item         {cursor: pointer}
+.av-iblock-rating:not(.hovered)  > .item.active,
+.av-iblock-rating.hovered        > .item.hovered {color: #CC0000}

@@ -34,7 +34,7 @@ if(!count($arResult))                                           return;
 					<div><?=$itemInfo["TEXT"]?></div>
 				</div>
 			<?endif?>
-			<div class="arrow"></div>
+			<i class="arrow fa fa-angle-down"></i>
 		</div>
 		<?
 		/* ------------------------------------------- */

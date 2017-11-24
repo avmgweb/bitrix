@@ -8,7 +8,7 @@ require $_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php";
 
 $APPLICATION->SetTitle("Сторінка не знайдена");
 
-Asset::getInstance()->addCss("/bitrix/css/av_site/pages/404.css");
+Asset::getInstance()->addCss("/bitrix/css/av-site/pages/404.css");
 ?>
 <div class="av-404-page">
 	<b>404</b>

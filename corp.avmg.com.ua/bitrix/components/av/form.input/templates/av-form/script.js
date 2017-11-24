@@ -9,22 +9,25 @@
 	jQuery.fn.setFormElememtValueInputAvStyled    = function(value)
 		{
 		this.find(":text").attr("value", value).val(value);
-		if(!this.hasClass("has-placeholder")) return;
 
-		if(value) this.removeClass("on");
-		else      this.addClass("on");
+		this
+			.removeClass("placeholder-on")
+			.removeClass("placeholder-off");
+		if(value)
+			this
+				.addClass("placeholder-off");
 		};
 	jQuery.fn.getFormElememtRequiredInputAvStyled = function()      {return this.hasClass("required")};
 	jQuery.fn.setFormElememtRequiredInputAvStyled = function(value)
 		{
-		if(value == "on")  this.addClass("required");
-		if(value == "off") this.removeClass("required");
+		     if(value == "on")  this.addClass("required");
+		else if(value == "off") this.removeClass("required");
 		};
 	jQuery.fn.getFormElememtAlertInputAvStyled    = function()      {return this.hasClass("alert-input")};
 	jQuery.fn.setFormElememtAlertInputAvStyled    = function(value)
 		{
-		if(value == "on")  this.addClass("alert-input");
-		if(value == "off") this.removeClass("alert-input");
+		     if(value == "on")  this.addClass("alert-input");
+		else if(value == "off") this.removeClass("alert-input");
 		};
 	})(jQuery);
 /* -------------------------------------------------------------------- */
@@ -44,23 +47,25 @@ SetFormElementsFunction("av-styled", "input", "setFormElememtAlert",    "setForm
 $(function()
 	{
 	$(document)
-		.on("vclick", ".av-form-styled-input.has-placeholder.on label", function()
+		.on("vclick", ".av-form-styled-input label", function()
 			{
 			var $inputBlock = $(this).parent();
-
-			$inputBlock.removeClass("on");
 			setTimeout(function()
 				{
 				$inputBlock.find(":text").focus();
-				}, 300);
+				}, 50);
 			})
-		.on("focus", ".av-form-styled-input.has-placeholder.on :text", function()
+		.on("focus", ".av-form-styled-input :text", function()
 			{
-			$(this).parent().removeClass("on");
+			$(this).parent()
+				.removeClass("placeholder-on")
+				.addClass("placeholder-off");
 			})
-		.on("focusout", ".av-form-styled-input.has-placeholder:not(.on) :text", function()
+		.on("focusout", ".av-form-styled-input :text", function()
 			{
 			if(!$(this).val())
-				$(this).parent().addClass("on");
+				$(this).parent()
+					.removeClass("placeholder-off")
+					.addClass("placeholder-on");
 			});
 	});

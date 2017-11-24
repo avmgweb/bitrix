@@ -5,21 +5,20 @@
 	class="
 		av-form-styled-phone
 		<?if($arResult["REQUIRED"]):?>required<?endif?>
-		<?if($arResult["TITLE"] && !$arResult["VALUE"]):?>has-placeholder on<?endif?>
-		<?if($arResult["TITLE"] &&  $arResult["VALUE"]):?>has-placeholder<?endif?>
+		<?if($arResult["TITLE"] && !$arResult["VALUE"]):?>placeholder-on<?endif?>
+		<?if($arResult["TITLE"] &&  $arResult["VALUE"]):?>placeholder-off<?endif?>
 		"
+	title="<?=$arResult["TITLE"]?>"
+	<?=$arResult["ATTR"]?>
 >
 	<?if($arResult["TITLE"]):?>
-	<label title="<?=$arResult["TITLE"]?>">
-		<?=$arResult["TITLE"]?>
-	</label>
+	<label><?=$arResult["TITLE"]?></label>
 	<?endif?>
 
 	<input
 		type="text"
 		name="<?=$arResult["NAME"]?>"
 		value="<?=$arResult["VALUE"]?>"
-		title="<?=$arResult["TITLE"]?>"
-		<?=$arResult["ATTR"]?>
+		title=""
 	>
 </div>

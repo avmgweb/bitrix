@@ -24,7 +24,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		if($fieldInfo["TYPE"] == 'IBLOCK_ELEMENT')
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.iblock.search.element", 'av',
+				"av:form.iblock.search.element", $arParams["FIELDS_TEMPLATES"][$field] ? $arParams["FIELDS_TEMPLATES"][$field] : 'av',
 					[
 					"NAME"              => $fieldInfo["INPUT_NAME"],
 					"VALUE"             => $fieldInfo["INPUT_VALUE"],
@@ -37,7 +37,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		elseif($fieldInfo["TYPE"] == 'SELECT')
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.select", 'av',
+				"av:form.select", $arParams["FIELDS_TEMPLATES"][$field] ? $arParams["FIELDS_TEMPLATES"][$field] : 'av',
 					[
 					"NAME"  => $fieldInfo["INPUT_NAME"],
 					"VALUE" => $fieldInfo["INPUT_VALUE"],
@@ -49,10 +49,10 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		elseif($fieldInfo["TYPE"] == 'SELECT_MULTIPLE')
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.select.multiple", 'av',
+				"av:form.select", $arParams["FIELDS_TEMPLATES"][$field] ? $arParams["FIELDS_TEMPLATES"][$field] : 'av-form-checkbox-styled',
 					[
 					"NAME"  => $fieldInfo["INPUT_NAME"],
-					"VALUE" => $fieldInfo["INPUT_VALUE"],
+					"VALUE" => is_array($fieldInfo["INPUT_VALUE"]) ? $fieldInfo["INPUT_VALUE"] : [$fieldInfo["INPUT_VALUE"]],
 					"TITLE" => $fieldInfo["NAME"],
 					"LIST"  => $fieldInfo["VALUE_LIST"]
 					],
@@ -61,7 +61,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		elseif($fieldInfo["TYPE"] == 'RADIO')
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.select", 'av-alt',
+				"av:form.select", $arParams["FIELDS_TEMPLATES"][$field] ? $arParams["FIELDS_TEMPLATES"][$field] : 'av-alt',
 					[
 					"NAME"  => $fieldInfo["INPUT_NAME"],
 					"VALUE" => $fieldInfo["INPUT_VALUE"],
@@ -73,7 +73,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		elseif($fieldInfo["TYPE"] == 'LINKS_LIST')
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.links_list", 'av',
+				"av:form.links_list", $arParams["FIELDS_TEMPLATES"][$field] ? $arParams["FIELDS_TEMPLATES"][$field] : 'av',
 					[
 					"VALUE" => $fieldInfo["INPUT_VALUE"],
 					"TITLE" => $fieldInfo["NAME"],
@@ -84,7 +84,7 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 		elseif($fieldInfo["TYPE"] == 'SEARCH')
 			$APPLICATION->IncludeComponent
 				(
-				"av:form.input", 'av-search',
+				"av:form.input", $arParams["FIELDS_TEMPLATES"][$field] ? $arParams["FIELDS_TEMPLATES"][$field] : 'av-search',
 					[
 					"NAME"        => $fieldInfo["INPUT_NAME"],
 					"VALUE"       => $fieldInfo["INPUT_VALUE"],

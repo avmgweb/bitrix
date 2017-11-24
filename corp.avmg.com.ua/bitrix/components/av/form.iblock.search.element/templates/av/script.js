@@ -3,9 +3,9 @@
 /* -------------------------------------------------------------------- */
 (function($)
 	{
-	jQuery.fn.getFormElememtNameIblockElementSearchAv     = function()      {return this.find('.input-native').attr("name")};
-	jQuery.fn.setFormElememtNameIblockElementSearchAv     = function(value) {this.find('.input-native').attr("name", value)};
-	jQuery.fn.getFormElememtValueIblockElementSearchAv    = function()      {return this.find('.input-native').val()};
+	jQuery.fn.getFormElememtNameIblockElementSearchAv     = function()      {return this.find(".value-input").attr("name")};
+	jQuery.fn.setFormElememtNameIblockElementSearchAv     = function(value) {this.find(".value-input").attr("name", value)};
+	jQuery.fn.getFormElememtValueIblockElementSearchAv    = function()      {return this.find(".value-input").val()};
 	jQuery.fn.setFormElememtValueIblockElementSearchAv    = function(value)
 		{
 
@@ -13,14 +13,14 @@
 	jQuery.fn.getFormElememtRequiredIblockElementSearchAv = function()      {return this.hasClass("required")};
 	jQuery.fn.setFormElememtRequiredIblockElementSearchAv = function(value)
 		{
-		if(value == 'on')  this.addClass("required");
-		if(value == 'off') this.removeClass("required");
+		     if(value == "on")  this.addClass("required");
+		else if(value == "off") this.removeClass("required");
 		};
 	jQuery.fn.getFormElememtAlertIblockElementSearchAv    = function()      {return this.hasClass("alert-input")};
 	jQuery.fn.setFormElememtAlertIblockElementSearchAv    = function(value)
 		{
-		if(value == 'on')  this.addClass("alert-input");
-		if(value == 'off') this.removeClass("alert-input");
+		     if(value == "on")  this.addClass("alert-input");
+		else if(value == "off") this.removeClass("alert-input");
 		};
 	})(jQuery);
 /* -------------------------------------------------------------------- */
@@ -43,95 +43,96 @@ $(function()
 		/* ------------------------------------------- */
 		/* ----------- input focus/focusout ---------- */
 		/* ------------------------------------------- */
-		.on("vclick", '.av-form-iblock-search-element .input-label', function()
+		.on("vclick", ".av-form-iblock-search-element .title-block", function()
 			{
-			$(this).find('input').focus();
+			$(this).find(".search-input").focus();
 			})
-		.on("focus", '.av-form-iblock-search-element .input-label input', function()
+		.on("focus", ".av-form-iblock-search-element .title-block .search-input", function()
 			{
 			var
-				$inputBlock        = $(this).closest('.av-form-iblock-search-element'),
-				$seacrhResultBlock = $inputBlock.find('.list');
+				$inputBlock        = $(this).closest(".av-form-iblock-search-element"),
+				$seacrhResultBlock = $inputBlock.find(".list");
 
 			$(this).show()
-				.parent().find('.placeholder').hide();
+				.parent().find(".title")
+					.hide();
 
 			$inputBlock.controlFormSubmit("off").addClass("active");
 			if($seacrhResultBlock.children().length) $seacrhResultBlock.slideDown();
 			})
-		.on("focusout", '.av-form-iblock-search-element .input-label input', function()
+		.on("focusout", ".av-form-iblock-search-element .title-block .search-input", function()
 			{
-			$(this).closest('.av-form-iblock-search-element')
+			$(this).closest(".av-form-iblock-search-element")
 				.controlFormSubmit("on")
 				.removeClass("active")
-					.find('.list').slideUp()
-					.find('.list-item').removeClass("selected");
+					.find(".list").slideUp()
+					.find(".list-item").removeClass("selected");
 
 			if(!$(this).val())
 				$(this).hide()
-					.parent().find('.placeholder').show();
+					.parent().find(".title").show();
 			})
 		/* ------------------------------------------- */
 		/* --------------- input keyup --------------- */
 		/* ------------------------------------------- */
-		.on("keyup", '.av-form-iblock-search-element .input-label input', function(event)
+		.on("keyup", ".av-form-iblock-search-element .title-block .search-input", function(event)
 			{
 			var
 				$searchInput       = $(this),
 				keyCode            = event.keyCode,
-				$inputBlock        = $searchInput.closest('.av-form-iblock-search-element'),
-				$nativeInput       = $inputBlock.find('.input-native'),
-				$seacrhResultBlock = $inputBlock.find('.list'),
-				$selectedElement   = $seacrhResultBlock.find('.list-item.selected'),
-				elementsValue = [], selectIndex = '', $newSelectedElement = '';
+				$inputBlock        = $searchInput.closest(".av-form-iblock-search-element"),
+				$valueInput        = $inputBlock.find(".value-input"),
+				$seacrhResultBlock = $inputBlock.find(".list"),
+				$selectedItem      = $seacrhResultBlock.find(".list-item.selected"),
+				itemsValueArray = [], selectIndex = "", $newSelectedItem = "";
 			/* ------------------------------------------- */
 			/* ------------- no search value ------------- */
 			/* ------------------------------------------- */
 			if(!$searchInput.val())
-				$seacrhResultBlock.slideUp().find('.list-item').remove();
+				$seacrhResultBlock.slideUp().find(".list-item").remove();
 			/* ------------------------------------------- */
 			/* ------------------ submit ----------------- */
 			/* ------------------------------------------- */
-			else if(keyCode == 13 && $nativeInput.attr("value"))
+			else if(keyCode == 13 && $valueInput.val())
 				$searchInput.submitForm();
 			/* ------------------------------------------- */
 			/* ---------------- navigation --------------- */
 			/* ------------------------------------------- */
 			else if(keyCode == 38 || keyCode == 40)
 				{
-				$selectedElement.removeClass("selected");
-				$seacrhResultBlock.find('.list-item').each(function()
+				$selectedItem.removeClass("selected");
+				$seacrhResultBlock.find(".list-item").each(function()
 					{
-					var value = $(this).attr("value");
-					if(value) elementsValue.push(value);
+					var value = $(this).attr("data-value");
+					if(value) itemsValueArray.push(value);
 					});
-				if(!elementsValue.length) return;
+				if(!itemsValueArray.length) return;
 
-				selectIndex = elementsValue.indexOf($selectedElement.attr("value"));
+				selectIndex = itemsValueArray.indexOf($selectedItem.attr("data-value"));
 				if(selectIndex != -1)
 					{
 					if(keyCode == 40) selectIndex++;
 					if(keyCode == 38) selectIndex--;
 					}
-				if(!elementsValue[selectIndex])
+				if(!itemsValueArray[selectIndex])
 					{
 					if(keyCode == 40) selectIndex = 0;
-					if(keyCode == 38) selectIndex = elementsValue.length - 1;
+					if(keyCode == 38) selectIndex = itemsValueArray.length - 1;
 					}
 
-				$newSelectedElement = $seacrhResultBlock.find('[value="'+elementsValue[selectIndex]+'"]');
-				if(!$newSelectedElement.length) return;
+				$newSelectedItem = $seacrhResultBlock.find(".list-item[data-value=\""+itemsValueArray[selectIndex]+"\"]");
+				if(!$newSelectedItem.length) return;
 
-				$newSelectedElement.addClass("selected");
-				$searchInput.val($newSelectedElement.text());
-				$nativeInput.attr("value", $newSelectedElement.attr("value"));
+				$newSelectedItem.addClass("selected");
+				$searchInput.val($newSelectedItem.text());
+				$valueInput.attr("value", $newSelectedItem.attr("data-value"));
 				}
 			/* ------------------------------------------- */
 			/* ------------------ search ----------------- */
 			/* ------------------------------------------- */
 			else if(keyCode != 37 && keyCode != 39 && keyCode != 13)
 				{
-				$nativeInput.attr("value", '');
+				$valueInput.attr("value", "");
 				setTimeout(function()
 					{
 					var searchString = $searchInput.val();
@@ -139,7 +140,7 @@ $(function()
 					$searchInput.attr("searching", searchString);
 					$.ajax
 						({
-						type    : 'POST',
+						type    : "POST",
 						url     : AvFormIblockSearchElement,
 						data    :
 							{
@@ -150,7 +151,7 @@ $(function()
 						success : function(result)
 							{
 							$seacrhResultBlock.html(result);
-							if(!$seacrhResultBlock.is(':visible'))
+							if(!$seacrhResultBlock.is(":visible"))
 								$seacrhResultBlock.slideDown();
 							},
 						complete: function() {AvWaitingScreen("off")}
@@ -162,14 +163,14 @@ $(function()
 		/* -------------------------------------------------------------------- */
 		/* ----------------------- select item by click ----------------------- */
 		/* -------------------------------------------------------------------- */
-		.on("vclick", '.av-form-iblock-search-element .list .list-item', function()
+		.on("vclick", ".av-form-iblock-search-element .list .list-item", function()
 			{
 			var
-				value        = $(this).attr("value"),
-				$inputBlock  = $(this).closest('.av-form-iblock-search-element');
+				value        = $(this).attr("data-value"),
+				$inputBlock  = $(this).closest(".av-form-iblock-search-element");
 
 			if(!value) return;
-			$inputBlock.find('.input-native')     .attr("value", value);
-			$inputBlock.find('.input-label input').val($(this).text()).submitForm();
+			$inputBlock.find(".value-input")              .attr("value", value);
+			$inputBlock.find(".title-block .search-input").val($(this).text()).submitForm();
 			});
 	});

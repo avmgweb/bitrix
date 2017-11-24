@@ -20,14 +20,18 @@
 				callButtonLeft = $callButton.length ? $callButton.offset().left : 0,
 				formWidth      = 0,
 				arrowWidth     = 0,
-				formLeft       = 10,
-			    formVisible    = $form.is(":visible");
+				formLeft       = 10;
 			if(!$callBlock.length) return;
 			/* ---------------------------- */
 			/* ------ form width calc ----- */
 			/* ---------------------------- */
-			$form.removeAttr("style");
-			if(formVisible)
+			$form.css
+				({
+				"top"  : "",
+				"left" : "",
+				"width": ""
+				});
+			if($form.is(":visible"))
 				{
 				formWidth  = $form.width();
 				arrowWidth = parseInt($formArrow.css("width"));
@@ -76,7 +80,7 @@
 		return this.each(function()
 			{
 			$(".av-shop-popup-call-block[data-type=\""+$(this).attr("data-type")+"\"]").addClass("checked");
-			$(this).slideDown(400, function()
+			$(this).slideDown(600, function()
 				{
 				$(this).css("overflow", "visible").show();
 				});
@@ -89,7 +93,7 @@
 		{
 		return this.each(function()
 			{
-			$(this).slideUp(400);
+			$(this).slideUp(600);
 			$(".av-shop-popup-call-block[data-type=\""+$(this).attr("data-type")+"\"]").removeClass("checked");
 			});
 		};

@@ -1,0 +1,28 @@
+.av-shop-menu-bottom-two-level
+	{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	}
+.av-shop-menu-bottom-two-level.columns-1 .first-level-block {width: 100%}
+.av-shop-menu-bottom-two-level.columns-2 .first-level-block {width: calc((100% - 25px)     / 2)}
+.av-shop-menu-bottom-two-level.columns-3 .first-level-block {width: calc((100% - 25px * 2) / 3)}
+
+.av-shop-menu-bottom-two-level .first-level-block > a
+	{
+	font-size: calc(1em + 2px);
+	font-weight: bold;
+	}
+.av-shop-menu-bottom-two-level .second-level-block
+	{
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ media ------------------------------- */
+/* -------------------------------------------------------------------- */
+@media (max-width: 991px)
+	{
+	.av-shop-menu-bottom-two-level .second-level-block {display: none}
+	}
