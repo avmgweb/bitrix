@@ -19,15 +19,19 @@
 /* -------------------------------------------------------------------- */
 $(function()
 	{
-	$(document)
-		.on("vclick", '.av-search-title:not(.active)', function()
+	$(".av-search-title")
+		.on("vclick", ".text, .icon", function()
 			{
-			$(this).find('input[type="text"]')
-				.controlFormSubmit("off")
-				.focus()
-				.closest('.av-search-title').activateAvSearchField();
+			$(this).parent().find(":text").focus();
 			})
-		.on("keyup", '.av-search-title input[type="text"]', function(event)
+		.on("focus", ":text", function()
+			{
+			$(this)
+				.controlFormSubmit("off")
+				.parent()
+					.activateAvSearchField();
+			})
+		.on("keyup", ":text", function(event)
 			{
 			var
 				keyCode            = event.keyCode,

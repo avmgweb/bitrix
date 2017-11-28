@@ -34,7 +34,7 @@ function AvSiteSearchFieldBehavior(workType)
 	var
 		$gadgetsRow       = $('#page-header').find('.second-row-desktop .gadgets-row'),
         $searchInput      = $gadgetsRow.find('.search-cell input[type=text]'),
-		$hideElements     = $gadgetsRow.find('.phone-cell, .lang-twister-cell, .support-cell'),
+		$hideElements     = $gadgetsRow.children().filter(":not(.search-cell):not(.user-cell)"),
         searchInputActive = !!$searchInput.attr("activate"),
 		workSpeed         = 400;
 
@@ -138,7 +138,7 @@ $(function()
 			else
 				AvSiteSearchFieldBehavior("diactivate");
 			})
-		.on("focusout", '#page-header .second-row-mobile  .search-cell input', function()
+		.on("focusout", '.second-row-mobile  .search-cell input', function()
 			{
 			var $input = $(this);
 

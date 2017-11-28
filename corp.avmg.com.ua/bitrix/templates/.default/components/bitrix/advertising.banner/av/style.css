@@ -87,6 +87,7 @@
 	}
 .av-banner .item .text-block h2
 	{
+	height:      50px;
 	font-size:   45px;
 	line-height: 45px;
 	margin-bottom: 10px;
@@ -96,7 +97,7 @@
 	{
 	font-size:   25px;
 	line-height: 25px;
-	height: calc(100% - 45px - 10px - 45px - 15px);
+	max-height: calc(100% - 50px - 10px - 45px - 15px);
 	margin-bottom: 15px;
 	}
 /* -------------------------------------------------------------------- */
@@ -132,13 +133,14 @@
 	{
 	.av-banner .item .text-block
 		{
-		top: calc((100% - 30px - 10px - 45px) / 2);
+		top: calc((100% - 35px - 10px - 45px) / 2);
 		left: 5%;
 		width: 90%;
 		height: calc(30px + 10px + 45px);
 		}
 	.av-banner .item .text-block h2
 		{
+		height:      35px;
 		font-size:   30px;
 		line-height: 30px;
 		}

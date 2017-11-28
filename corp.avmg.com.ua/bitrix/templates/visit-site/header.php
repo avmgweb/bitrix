@@ -9,6 +9,7 @@ $currentDirectory = $APPLICATION->GetCurDir();
 $dirProperty      = $APPLICATION->GetDirPropertyList();
 $leftMenu         = "";
 $supportLink      = "";
+$shopLink         = "";
 $hasLeftColumn    = false;
 
 ob_start();
@@ -39,6 +40,15 @@ $APPLICATION->IncludeComponent
 	array("AREA_FILE_SHOW" => "file", "PATH" => "/include/support.php")
 	);
 $supportLink = ob_get_contents();
+ob_end_clean();
+
+ob_start();
+$APPLICATION->IncludeComponent
+	(
+	"bitrix:main.include", "",
+	array("AREA_FILE_SHOW" => "file", "PATH" => "/include/shop.php")
+	);
+$shopLink = ob_get_contents();
 ob_end_clean();
 
 $hasLeftColumn = $leftMenu || (file_exists($_SERVER["DOCUMENT_ROOT"].$currentDirectory."sect_inc.php") && $dirProperty["NOT_SHOW_LEFT_MENU"] != "Y") ? true : false;
@@ -135,6 +145,10 @@ $hasLeftColumn = $leftMenu || (file_exists($_SERVER["DOCUMENT_ROOT"].$currentDir
 							?>
 						</div>
 
+						<?if($shopLink):?>
+						<div class="shop-cell"><?=$shopLink?></div>
+						<?endif?>
+
 						<?if($supportLink):?>
 						<div class="support-cell"><?=$supportLink?></div>
 						<?endif?>
@@ -159,7 +173,7 @@ $hasLeftColumn = $leftMenu || (file_exists($_SERVER["DOCUMENT_ROOT"].$currentDir
 							?>
 						</div>
 
-						<div>
+						<div class="user-cell">
 							<?
 							$APPLICATION->IncludeComponent
 								(

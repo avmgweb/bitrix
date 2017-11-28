@@ -119,7 +119,7 @@ foreach($arResult["ITEMS"] as $field => $fieldInfo)
 		if($fieldInfo["TYPE"] == 'SELECT')
 			foreach($fieldInfo["LIST"] as $index => $value)
 				if($index)
-					$fieldInfo["VALUE_LIST"][$index] = str_replace(['.', ' '], '', $value);
+					$fieldInfo["VALUE_LIST"][$index] = str_replace(['.', '. '], '', $value);
 
 		$arResult["ITEMS"][$field] = $fieldInfo;
 		}

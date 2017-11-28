@@ -65,7 +65,7 @@ $APPLICATION->IncludeComponent
 
 		"DETAIL_SET_CANONICAL_URL"            => "N",
 		"DETAIL_FIELD_CODE"                   => array("NAME","DETAIL_TEXT","DETAIL_PICTURE"),
-		"DETAIL_PROPERTY_CODE"                => array(),
+		"DETAIL_PROPERTY_CODE"                => array("LINKSHOP"),
 		"DETAIL_TEMPLATE"                     => "av_products",
 		"DETAIL_PAGE_ADDITIONAL_LINKS"        => array("/metallobaza/"),
 		"DETAIL_PAGE_ADDITIONAL_LINKS_TITLES" => array("Металобази у вашому місті"),

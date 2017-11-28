@@ -1,26 +1,64 @@
-.av-products-detail .buttons-cell {margin-top: 52px}
+.av-news-detail-products > .main-image
+	{
+	display: block;
+	float: left;
+	width: calc((100% - 26px) / 3);
+	}
+.av-news-detail-products > .web-form
+	{
+	float: left;
+	margin-top: 52px;
+	width: calc((100% - 26px) / 3);
+	}
+.av-news-detail-products > .info-block
+	{
+	float: right;
+	width: calc((100% - 26px) / 3 * 2);
+	}
+.av-news-detail-products > .info-block > .buttons-cell
+	{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 52px 0 -13px 0;
+	}
+.av-news-detail-products > .info-block > .buttons-cell > *
+	{
+	margin-bottom: 13px;
+	width: calc((100% - 13px) / 2);
+	}
 /* -------------------------------------------------------------------- */
 /* ------------------------------ media ------------------------------- */
 /* -------------------------------------------------------------------- */
-@media (min-width: 992px)
+@media (max-width: 991px)
 	{
-	.av-products-detail .web-form,
-	.av-products-detail > img                              {width: 33.33%}
-	.av-products-detail .web-form                          {margin-top: 52px}
-	.av-products-detail .info-block                        {float: right;padding-left: 26px;width: 66.66%}
-	.av-products-detail .buttons-cell > *:not(:last-child) {margin-right: 13px}
-	}
-@media (min-width: 768px) and (max-width: 991px)
-	{
-	.av-products-detail > img                              {display: block;margin: 0 auto 26px auto;max-width: 350px}
-	.av-products-detail .web-form                          {margin-top: 52px}
-	.av-products-detail .buttons-cell                      {text-align: center}
-	.av-products-detail .buttons-cell > *:not(:last-child) {margin-right: 13px}
+	.av-news-detail-products > .main-image
+		{
+		float: none;
+		margin: 0 auto 26px auto;
+		max-width: 350px;
+		}
+	.av-news-detail-products > .web-form,
+	.av-news-detail-products > .info-block
+		{
+		float: none;
+		width: 100%;
+		}
 	}
 @media (max-width: 767px)
 	{
-	.av-products-detail > img                              {display: block;margin: 0 auto 26px auto;max-width: 250px}
-	.av-products-detail .web-form                          {margin-top: 52px}
-	.av-products-detail .buttons-cell > *                  {display: block;margin-left: auto;margin-right: auto;max-width: 250px}
-	.av-products-detail .buttons-cell > *:not(:last-child) {margin-bottom: 13px}
+	.av-news-detail-products > .main-image
+		{
+		max-width: 250px;
+		}
+	.av-news-detail-products > .info-block > .buttons-cell
+		{
+		align-items: center;
+		flex-direction: column;
+		}
+	.av-news-detail-products > .info-block > .buttons-cell > *
+		{
+		width: 100%;
+		max-width: 250px;
+		}
 	}

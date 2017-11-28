@@ -1,3 +1,4 @@
 <?
-$MESS["AV_PRODUCTS_VIEW_BACK_LINK"]     = 'Go to products list';
-$MESS["AV_PRODUCTS_VIEW_FEADBACK_FORM"] = 'Upload price';
+$MESS["AV_NEWS_DETAIL_PRODUCTS_BACK_LINK"]     = "Go to products list";
+$MESS["AV_NEWS_DETAIL_PRODUCTS_FEADBACK_FORM"] = "Upload price";
+$MESS["AV_NEWS_DETAIL_PRODUCTS_SHOP_LINK"]     = "To shop";

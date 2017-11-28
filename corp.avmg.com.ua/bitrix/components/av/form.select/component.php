@@ -3,8 +3,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 /* --------------------------------------------------------------------- */
 /* ------------------------------- params ------------------------------ */
 /* --------------------------------------------------------------------- */
-$arResult["REQUIRED"] = $arParams["REQUIRED"] == 'Y' ? true : false;
-$arResult["DISABLED"] = $arParams["DISABLED"] == 'Y' ? true : false;
+$arResult["REQUIRED"] = $arParams["REQUIRED"] == "Y" ? true : false;
+$arResult["DISABLED"] = $arParams["DISABLED"] == "Y" ? true : false;
 
 $arResult["NAME"]        = $arParams["NAME"];
 $arResult["VALUE"]       = $arParams["VALUE"];
@@ -18,7 +18,7 @@ if(is_array($arResult["ATTR"]))
 	{
 	$attrArray = [];
 	foreach($arResult["ATTR"] as $index => $value)
-		$attrArray[] = $index."=\"".str_replace("\"", "'", $value)."\"";
+		$attrArray[] = $index."=\"".str_replace("\"", "''", $value)."\"";
 	$arResult["ATTR"] = implode(" ", $attrArray);
 	}
 /* --------------------------------------------------------------------- */
