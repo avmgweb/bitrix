@@ -1,0 +1,55 @@
+/* -------------------------------------------------------------------- */
+/* --------------------------- clear styles --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-select-shop-noscroll select {display: none !important}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- label ------------------------------ */
+/* -------------------------------------------------------------------- */
+.av-form-select-shop-noscroll .title-block
+	{
+	align-items: center;
+	cursor: pointer;
+	display: flex;
+	}
+.av-form-select-shop-noscroll .title-block .title
+	{
+	margin-right: 5px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: calc(100% - 24px - 5px);
+	}
+.av-form-select-shop-noscroll .title-block .arrow
+	{
+	line-height: 24px;
+	font-size: 14px;
+	text-align: center;
+	transition: .3s;
+	width:  24px;
+	height: 24px;
+	}
+.av-form-select-shop-noscroll.active .title-block .arrow {transform: rotate(-180deg)}
+/* -------------------------------------------------------------------- */
+/* -------------------------- drop-down menu -------------------------- */
+/* -------------------------------------------------------------------- */
+.av-form-select-shop-noscroll .list
+	{
+	background: #FFF;
+	border: 1px solid #868B8D;
+	border-radius: 2px;
+	cursor: pointer;
+	display: none;
+	max-height: 200px;
+	position: absolute;
+	z-index: 10;
+	}
+.av-form-select-shop-noscroll .list .list-item
+	{
+	overflow: hidden;
+	padding: 3px 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	}
+.av-form-select-shop-noscroll                   .list             .list-item:hover,
+.av-form-select-shop-noscroll                   .list:not(:hover) .list-item.selected {background: #FAFAFA}
+.av-form-select-shop-noscroll:not(.value-seted) .list             .list-item.default  {display: none}

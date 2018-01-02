@@ -1,0 +1,90 @@
+/* -------------------------------------------------------------------- */
+/* --------------------------- clear style ---------------------------- */
+/* -------------------------------------------------------------------- */
+.av-catalog-section-list-slider a,
+.av-catalog-section-list-slider a:visited,
+.av-catalog-section-list-slider a:hover,
+.av-catalog-section-list-slider a:active,
+.av-catalog-section-list-slider a:focus {color: inherit !important;text-decoration: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- list ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-catalog-section-list-slider
+	{
+	align-items: center;
+	display: flex;
+	margin: -5px -24px;
+	}
+.av-catalog-section-list-slider .navigation
+	{
+	color: #999;
+	line-height: 24px;
+	font-size: 32px;
+	text-align: center;
+	transition: .3s;
+	width:  24px;
+	height: 24px;
+	}
+.av-catalog-section-list-slider .navigation:hover,
+.av-catalog-section-list-slider .navigation:active,
+.av-catalog-section-list-slider .navigation:focus    {color: #CC0000}
+.av-catalog-section-list-slider .navigation.unactive {visibility: hidden}
+
+.av-catalog-section-list-slider .slider-block
+	{
+	align-items: center;
+	display: flex;
+	width: calc(100% - 24px * 2);
+	height: 115px;
+	}
+.av-catalog-section-list-slider .slider-block .item
+	{
+	align-items: center;
+	cursor: pointer;
+	display: flex;
+	padding: 5px;
+	margin: 0 3px;
+	overflow: hidden;
+	width:  calc((100% - 3px * 6) / 3);
+	height: 100px;
+	}
+.av-catalog-section-list-slider .slider-block .item:hover {box-shadow: 0 4px 8px rgba(76, 82, 85, 0.25)}
+
+.av-catalog-section-list-slider .slider-block .item .image-link
+	{
+	align-items: center;
+	display: flex;
+	margin-right: 10px;
+	overflow: hidden;
+	width:  calc((100% - 10px) / 10 * 4);
+	height: 100%;
+	}
+.av-catalog-section-list-slider .slider-block .item .image-link img {width: 100%}
+
+.av-catalog-section-list-slider .slider-block .item .title
+	{
+	align-items: center;
+	display: flex;
+	font-weight: bold;
+	line-height: 1.3;
+	overflow: hidden;
+	width:  calc((100% - 10px) / 10 * 6);
+	height: 100%;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ media ------------------------------- */
+/* -------------------------------------------------------------------- */
+@media (max-width: 767px)
+	{
+	.av-catalog-section-list-slider .navigation
+		{
+		line-height: 48px;
+		font-size: 40px;
+		width:  48px;
+		height: 48px;
+		}
+	.av-catalog-section-list-slider .slider-block
+		{
+		width: calc(100% - 48px * 2);
+		}
+	}

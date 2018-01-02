@@ -1,0 +1,210 @@
+/* -------------------------------------------------------------------- */
+/* ---------------------------- clear style --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-bases-detail .streams-info-col a,
+.av-bases-detail .streams-info-col a:visited,
+.av-bases-detail .streams-info-col a:hover,
+.av-bases-detail .streams-info-col a:active,
+.av-bases-detail .streams-info-col a:focus {color: inherit;text-decoration: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- base ------------------------------- */
+/* -------------------------------------------------------------------- */
+.av-bases-detail                            {align-items: flex-start;display: flex;flex-wrap: wrap;justify-content: space-between}
+.av-bases-detail.closed                     {opacity: 0.5}
+.av-bases-detail > *:not(:last-child)       {margin-bottom: 52px}
+
+.av-bases-detail > *                        {width: 100%}
+.av-bases-detail:not(.no-map) .info-col,
+.av-bases-detail              .map-col,
+.av-bases-detail .detail-col  .detail-image,
+.av-bases-detail .action-col  .detail-image {width: calc(50% - 20px)}
+.av-bases-detail .detail-col  .detail-image {float: left; margin-right: 40px}
+.av-bases-detail .action-col  .detail-image {float: right;margin-left:  40px}
+/* -------------------------------------------------------------------- */
+/* ----------------------------- main info ---------------------------- */
+/* -------------------------------------------------------------------- */
+.av-bases-detail .info-col > div                      {padding-left: 13px}
+.av-bases-detail .info-col > div > *:not(:last-child) {padding-bottom: 13px}
+
+.av-bases-detail .info-col .price-links-list [data-price-link-multiple] .icon
+	{
+	font-size: 18px;
+	margin-left: 5px;
+	transition: .3s;
+	}
+.av-bases-detail .info-col .price-links-list [data-price-link-multiple].active .icon {transform: rotate(-180deg)}
+
+.av-bases-detail .info-col .price-links-list .list
+	{
+	background: #FFF;
+	box-shadow: 0 4px 8px rgba(76, 82, 85, 0.25);
+	display: none;
+	margin-top: 13px;
+	padding: 19px 19px 9px 19px;
+	position: absolute;
+	max-width: 250px;
+	z-index: 10;
+	}
+.av-bases-detail .info-col .price-links-list .list > a
+	{
+	color: inherit;
+	display: block;
+	padding-bottom: 9px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	}
+.av-bases-detail .info-col .price-links-list .list > a:hover,
+.av-bases-detail .info-col .price-links-list .list > a:active,
+.av-bases-detail .info-col .price-links-list .list > a:focus {color: #CC0000}
+
+.av-bases-detail .map-col .google-map {width: 100%;height: 300px}
+/* -------------------------------------------------------------------- */
+/* --------------------------- streams info --------------------------- */
+/* -------------------------------------------------------------------- */
+.av-bases-detail .streams-info-col > .title .mobile {display: none}
+.av-bases-detail .streams-info-col > .item-list
+	{
+	display: flex;
+	flex-wrap: wrap;
+	margin: -20px;
+	}
+.av-bases-detail .streams-info-col .item
+	{
+	margin:  10px;
+	padding: 10px 10px 20px 10px;
+	width: calc((100% - 10px * 8) / 4);
+	}
+.av-bases-detail .streams-info-col .item:hover,
+.av-bases-detail .streams-info-col .item:active,
+.av-bases-detail .streams-info-col .item:focus {box-shadow: 0 4px 8px rgba(76, 82, 85, 0.25)}
+
+.av-bases-detail .streams-info-col .item > .title-block
+	{
+	align-items: center;
+	display: flex;
+	margin-bottom: 13px;
+	width: 100%;
+	}
+.av-bases-detail .streams-info-col .item > .title-block > .title
+	{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+	}
+.av-bases-detail .streams-info-col .item > .title-block > .icon
+	{
+	display: none;
+	line-height: 24px;
+	font-size: 18px;
+	text-align: center;
+	transition: .3s;
+	width: 24px;
+	height: 24px;
+	}
+.av-bases-detail .streams-info-col .item > .body
+	{
+	display: flex;
+	justify-content: space-between;
+	}
+.av-bases-detail .streams-info-col .item > .body > .icon
+	{
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	float: left;
+	justify-content: space-between;
+	width: calc((100% - 13px) / 2);
+	}
+.av-bases-detail .streams-info-col .item > .body > .phones
+	{
+	float: right;
+	text-align: right;
+	width: calc((100% - 13px) / 2);
+	}
+/* -------------------------------------------------------------------- */
+/* --------------------------- detail info ---------------------------- */
+/* -------------------------------------------------------------------- */
+.av-bases-detail .detail-col .share-block
+	{
+	align-items: center;
+	display: flex;
+	justify-content: flex-end;
+	margin-top: 6px;
+	}
+.av-bases-detail .detail-col .share-block > span
+	{
+	font-weight: bold;
+	margin-right: 10px;
+	text-transform: uppercase;
+	}
+/* -------------------------------------------------------------------- */
+/* ----------------------------- buttons ------------------------------ */
+/* -------------------------------------------------------------------- */
+.av-bases-detail .buttons-col                      {text-align: center}
+.av-bases-detail .buttons-col > *                  {width: 250px}
+.av-bases-detail .buttons-col > *:not(:last-child) {margin-right: 13px}
+/* -------------------------------------------------------------------- */
+/* ------------------------------- media ------------------------------ */
+/* -------------------------------------------------------------------- */
+@media (max-width: 1199px)
+	{
+	.av-bases-detail .streams-info-col .item {width: calc((100% - 10px * 6) / 3)}
+	}
+@media (max-width: 991px)
+	{
+	.av-bases-detail > *                       {width: 100% !important}
+	.av-bases-detail .streams-info-col .item   {width: calc((100% - 10px * 4) / 2)}
+	.av-bases-detail .detail-col .detail-image,
+	.av-bases-detail .action-col .detail-image {margin: 0 0 26px 0;width: 100%}
+	}
+@media (max-width: 767px)
+	{
+	.av-bases-detail .streams-info-col                   {border: 1px solid #E1E4E6;border-radius: 2px}
+	.av-bases-detail .streams-info-col > .item-list      {margin: 0}
+	.av-bases-detail .streams-info-col > .title .desktop {display: none}
+	.av-bases-detail .streams-info-col > .title .mobile  {display: inline}
+
+	.av-bases-detail .streams-info-col .item
+		{
+		margin: 0;
+		padding: 10px;
+		width: 100%;
+		}
+	.av-bases-detail .streams-info-col .item:not(:last-child) {border-bottom: 1px solid #E1E4E6}
+
+	.av-bases-detail .streams-info-col > .title,
+	.av-bases-detail .streams-info-col .item > .title-block
+		{
+		background: transparent;
+		border: none;
+		font-size: 100%;
+		margin: 0;
+		}
+	.av-bases-detail .streams-info-col > .title
+		{
+		border-bottom: 1px solid #E1E4E6;
+		font-weight: bold;
+		padding: 6px 13px;
+		}
+	.av-bases-detail .streams-info-col .item > .title-block
+		{
+		cursor: pointer;
+		padding: 6px 9px 6px 26px;
+		}
+	.av-bases-detail .streams-info-col .item:not(.no-info) > .title-block > .title
+		{
+		width: calc(100% - 20px);
+		}
+	.av-bases-detail .streams-info-col .item:not(.no-info)      > .title-block > .icon  {display: block}
+	.av-bases-detail .streams-info-col .item:not(.no-info).open > .title-block > .title {font-weight: bold}
+	.av-bases-detail .streams-info-col .item:not(.no-info).open > .title-block > .icon  {transform: rotate(180deg)}
+	.av-bases-detail .streams-info-col .item .body                                      {display: none}
+	.av-bases-detail .streams-info-col .item .body > *                                  {padding: 13px 6px}
+
+	.av-bases-detail .detail-col .share-block          {justify-content: flex-start}
+	.av-bases-detail .detail-col .share-block > span   {display: none}
+	.av-bases-detail .buttons-col                      {align-items: center;display: flex;flex-direction: column}
+	.av-bases-detail .buttons-col > *:not(:last-child) {margin: 0 0 13px 0}
+	}

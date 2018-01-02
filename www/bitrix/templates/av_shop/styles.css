@@ -1,0 +1,182 @@
+body, html
+	{
+	color: #4C5255;
+	font-family: "robotoregular", sans-serif;
+	font-size:   14px;
+	line-height: 26px;
+	margin:  0;
+	padding: 0;
+	}
+*
+	{
+	box-sizing: border-box;
+	outline: none;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ fonts ------------------------------- */
+/* -------------------------------------------------------------------- */
+@font-face
+	{
+	font-family: "robotoregular";
+	src:
+		url("fonts/RobotoRegular/roboto-regular-webfont.eot?#iefix")        format("embedded-opentype"),
+		url("fonts/RobotoRegular/roboto-regular-webfont.woff")              format("woff"),
+		url("fonts/RobotoRegular/roboto-regular-webfont.svg#robotoregular") format("svg");
+	font-style:  normal;
+	font-weight: normal;
+	}
+/* -------------------------------------------------------------------- */
+/* ----------------------------- headers ------------------------------ */
+/* -------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6
+	{
+	font-weight: normal;
+	margin:  0;
+	padding: 0;
+	}
+h1
+	{
+	font-size: 28px;
+	}
+h2, h3
+	{
+	background: #FAFAFA;
+	border-bottom: 2px solid #CC0000;
+	font-size: 16px;
+	padding: 10px;
+	margin-bottom: 20px;
+	}
+h4 {font-weight: bold}
+h5 {font-size: 12px}
+h6 {font-size: 10px}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ links ------------------------------- */
+/* -------------------------------------------------------------------- */
+a,
+a:visited
+	{
+	color: #CC0000;
+	text-decoration: none;
+	transition: .6s;
+	}
+a:hover,
+a:active,
+a:focus   {outline: none;text-decoration: underline}
+a:visited {color: #800080}
+/* -------------------------------------------------------------------- */
+/* -------------------------- form elements --------------------------- */
+/* -------------------------------------------------------------------- */
+input, select, textarea, button
+	{
+	background-color: transparent;
+	border: none;
+	border-radius: 0;
+	line-height: inherit;
+	padding: 0;
+	margin:  0;
+	}
+label
+	{
+	font-weight: normal;
+	line-height: inherit;
+	padding: 0;
+	margin:  0;
+	}
+input[type=hidden],
+::-ms-clear,
+::-ms-reveal           {display: none}
+textarea               {resize: none}
+input:-webkit-autofill {-webkit-box-shadow: 0 0 0 1000px white inset !important}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ tables ------------------------------ */
+/* -------------------------------------------------------------------- */
+table
+	{
+	border-collapse: collapse;
+	padding: 0;
+	margin:  0;
+	}
+table td,
+table th
+	{
+	border-top:    1px solid #B6C0C6;
+	border-bottom: 1px solid #B6C0C6;
+	padding: 5px 10px;
+	margin: 0;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ others ------------------------------ */
+/* -------------------------------------------------------------------- */
+ul
+	{
+	padding: 0;
+	margin:  0 0 0 20px;
+	}
+li
+	{
+	list-style-type: none;
+	padding: 0;
+	margin:  0;
+	}
+li:before
+	{
+	color: #CC0000;
+	content: "\2022";
+	display: inline-block;
+	margin: 0 5px 0 -15px;
+	}
+p
+	{
+	padding: 0 0 20px 0;
+	margin:  0;
+	text-align: justify;
+	}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ classes ----------------------------- */
+/* -------------------------------------------------------------------- */
+.av-responsive-block
+	{
+	margin: auto;
+	width: 1130px;
+	}
+
+.av-spoiler-header:not(.disabled)
+	{
+	align-items: center;
+	display: flex;
+	padding-right: 10px;
+	}
+.av-spoiler-header:not(.disabled) > .title
+	{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: calc(100% - 14px);
+	}
+.av-spoiler-header:not(.disabled) > .icon
+	{
+	color: #B6C0C6;
+	line-height: 14px;
+	text-align: center;
+	transition: .3s;
+	width:  14px;
+	height: 14px;
+	}
+.av-spoiler-header:not(.disabled):not(.open) > .icon {transform: rotate(45deg)}
+.av-spoiler-body:not(.disabled)                      {display: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ media ------------------------------- */
+/* -------------------------------------------------------------------- */
+@media (max-width: 1199px)
+	{
+	.av-responsive-block {width: 930px}
+	}
+@media (max-width: 991px)
+	{
+	.av-responsive-block {width: 710px}
+	}
+@media (max-width: 767px)
+	{
+	.av-responsive-block {width: calc(100% - 40px)}
+	input, textarea      {font-size: 16px !important}
+	}

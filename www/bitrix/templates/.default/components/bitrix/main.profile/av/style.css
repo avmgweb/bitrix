@@ -1,0 +1,59 @@
+.av-user-profile
+	{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	}
+.av-user-profile .error-block,
+.av-user-profile .notes-block   {width: 100%}
+.av-user-profile .form-block    {width: calc(100% - 26px - 150px)}
+.av-user-profile .image-block   {width: 150px}
+.av-user-profile .buttons-block {margin-top: 26px;width: 100%}
+
+.av-user-profile .image-block [data-upload-photo-button]
+	{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 100%;
+	}
+.av-user-profile .image-block .user-photo,
+.av-user-profile .image-block .user-guest
+	{
+	margin-top: 13px;
+	width: 100%;
+	}
+.av-user-profile .image-block .user-guest
+	{
+	color: #B6C0C6;
+	font-size: 150px;
+	line-height: 150px;
+	height: 150px;
+	}
+.av-user-profile .image-block .delete-link
+	{
+	color: #CC0000;
+	cursor: pointer;
+	display: block;
+	margin-top: 13px;
+	text-align: center;
+	}
+.av-user-profile .image-block .delete-link:hover,
+.av-user-profile .image-block .delete-link:active,
+.av-user-profile .image-block .delete-link:focus {text-decoration: underline}
+
+.av-user-profile .image-block .photo-upload-input,
+.av-user-profile .image-block .photo-delete-input {display: none}
+/* -------------------------------------------------------------------- */
+/* ------------------------------ media ------------------------------- */
+/* -------------------------------------------------------------------- */
+@media (max-width: 991px)
+	{
+	.av-user-profile .form-block  {width: 100%}
+	.av-user-profile .image-block
+		{
+		margin: 26px auto 0 auto;
+		width: 100%;
+		max-width: 300px;
+		}
+	}

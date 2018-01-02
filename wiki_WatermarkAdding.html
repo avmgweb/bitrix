@@ -1,0 +1,201 @@
+[[Категория:PHP классы]]
+<p>Класс для работы с нанесением водных знаков на изображение.</p>
+<p>Полное имя класса - <b>\av\image_processing\watermarks\WatermarkAdding</b>.</p>
+<p>Открытые методы:</p>
+<ul>
+	<li>
+		<b>WatermarkAdding::__construct</b> (string <i>$imageUrl</i>) : <i>WatermarkAdding</i><br>
+		Создание нового WatermarkAdding объекта.<br>
+		<u>список параметров</u>:
+		<ul>
+			<li><i>$imageUrl</i> - путь к файлу с изображением от корня сайта, не обязательный параметр</li>
+		</ul>
+		<u>возвращаемые значения</u>:
+		<ul>
+			<li>объект типа <i>WatermarkAdding</i></li>
+		</ul>
+		<u>ошибки</u>:
+		<ul>
+			<li>исключение типа Exception в случае получения не корректного параметра <i>$imageUrl</i></li>
+		</ul><br>
+	</li>
+	<li>
+		<b>WatermarkAdding::setImageUrl</b> (string <i>$imageUrl</i>) : <i>void</i><br>
+		Задает путь к файлу с изображением.<br>
+		<u>список параметров</u>:
+		<ul>
+			<li><i>$imageUrl</i> - путь к файлу с изображением от корня сайта</li>
+		</ul>
+		<u>ошибки</u>:
+		<ul>
+			<li>исключение типа Exception в случае получения не корректного параметра <i>$imageUrl</i></li>
+		</ul><br>
+	</li>
+	<li>
+		<b>WatermarkAdding::setWatermarkImageUrl</b> (string <i>$imageUrl</i>) : <i>void</i><br>
+		Задает путь к файлу с изображением водного знака.<br>
+		<u>важно</u>:
+		<ul>
+			<li>по умолчанию используется изображение, путь к которому зашит в класс и указан в закрытом статическом свойстве <i>$watermarkImageDefault</i></li>
+			<li>значение по умолчанию на момент написания документации равно <i>/bitrix/images/av/images_watermark/water_mark.png</i></li>
+		</ul>
+		<u>список параметров</u>:
+		<ul>
+			<li><i>$imageUrl</i> - путь к файлу с изображением водного знака от корня сайта</li>
+		</ul>
+		<u>ошибки</u>:
+		<ul>
+			<li>исключение типа Exception в случае получения не корректного параметра <i>$imageUrl</i></li>
+		</ul><br>
+	</li>
+	<li>
+		<b>WatermarkAdding::getImageUrl</b> () : <i>string</i><br>
+		Возвращает путь к указанному файлу с изображением.<br>
+		<u>возвращаемые значения</u>:
+		<ul>
+			<li>путь к указанному файлу с изображением от корня сайта</li>
+		</ul><br>
+	</li>
+	<li>
+		<b>WatermarkAdding::getWatermarkImageUrl</b> () : <i>string</i><br>
+		Возвращает путь к файлу с изображением водного знака.<br>
+		<u>возвращаемые значения</u>:
+		<ul>
+			<li>путь к файлу с изображением водного знака от корня сайта</li>
+		</ul><br>
+	</li>
+	<li>
+		<b>WatermarkAdding::setImagesProcessedFolder</b> (string <i>$folderUrl</i>) : <i>void</i><br>
+		Задает путь к каталогу, в котором будут сохранены файлы с нанесенным водным знаком.<br>
+		<u>важно</u>:
+		<ul>
+			<li>по умолчанию используется каталог, путь к которому зашит в класс и указан в закрытом статическом свойстве <i>$imagesProcessedFolderDefault</i></li>
+			<li>каталог по умолчанию на момент написания документации находится по адресу <i>/upload/images_watermark/</i></li>
+			<li>при указании не существующего каталога метод попытается создать его самостоятельно</li>
+		</ul>
+		<u>список параметров</u>:
+		<ul>
+			<li><i>$folderUrl</i> - путь к каталогу от корня сайта, в котором будут сохранены файлы с нанесенным водным знаком</li>
+		</ul>
+		<u>ошибки</u>:
+		<ul>
+			<li>исключение типа Exception в случае получения не корректного параметра <i>$folderUrl</i> либо ошибки при попытки создания не существующего каталога</li>
+		</ul><br>
+	</li>
+	<li>
+		<b>WatermarkAdding::getImagesProcessedFolder</b> () : <i>string</i><br>
+		Возвращает путь к каталогу, в котором будут сохранены файлы с нанесенным водным знаком.<br>
+		<u>возвращаемые значения</u>:
+		<ul>
+			<li>путь к каталогу от корня сайта, в котором будут сохранены файлы с нанесенным водным знаком</li>
+		</ul><br>
+	</li>
+	<li>
+		<b>WatermarkAdding::setWatermarkOpacity</b> (float <i>$opacity</i>) : <i>void</i><br>
+		Задает размытость водного знака.<br>
+		<u>важно</u>:
+		<ul>
+			<li>по умолчанию задано значение 0.5</li>
+		</ul>
+		<u>список параметров</u>:
+		<ul>
+			<li><i>$opacity</i> - размытость водного знака от 1(без размытия) до 0(полная прозрачность)</li>
+		</ul><br>
+	</li>
+	<li>
+		<b>WatermarkAdding::setWatermarkSpaceX</b> (int <i>$watermarkSpaceX</i>) : <i>void</i><br>
+		Задает межстрочное растояние между водными знаками на преобразовываемом изображении.<br>
+		<u>важно</u>:
+		<ul>
+			<li>по умолчанию при преобразовании изображения будет использовано значение, равное трети ширины водного знака (width / 3)</li>
+		</ul>
+		<u>список параметров</u>:
+		<ul>
+			<li><i>$watermarkSpaceX</i> - межстрочное растояние между водными знаками(по оси X) в пикселях на преобразовываемом изображении</li>
+		</ul><br>
+	</li>
+	<li>
+		<b>WatermarkAdding::setWatermarkSpaceY</b> (int <i>$watermarkSpaceY</i>) : <i>void</i><br>
+		Задает межстрокового растояние между водными знаками на преобразовываемом изображении.<br>
+		<u>важно</u>:
+		<ul>
+			<li>по умолчанию при преобразовании изображения будет использовано значение, равное трем высотам водного знака (height * 3)</li>
+		</ul>
+		<u>список параметров</u>:
+		<ul>
+			<li><i>$watermarkSpaceY</i> - межстрокового растояние между водными знаками(по оси Y) в пикселях на преобразовываемом изображении</li>
+		</ul><br>
+	</li>
+	<li>
+		<b>WatermarkAdding::getWatermarkOpacity</b> () : <i>float</i><br>
+		Возвращает значение размытости водного знака.<br>
+		<u>возвращаемые значения</u>:
+		<ul>
+			<li>значение размытости водного знака от 1(без размытия) до 0(полная прозрачность)</li>
+		</ul><br>
+	</li>
+	<li>
+		<b>WatermarkAdding::getWatermarkSpaceX</b> () : <i>int</i><br>
+		Задает значение межстрочного растояния между водными знаками на преобразовываемом изображении.<br>
+		<u>возвращаемые значения</u>:
+		<ul>
+			<li>значение межстрочного растояния между водными знаками(по оси X) на преобразовываемом изображении</li>
+		</ul><br>
+	</li>
+	<li>
+		<b>WatermarkAdding::getWatermarkSpaceY</b> () : <i>int</i><br>
+		Задает значение межстрокового растояния между водными знаками на преобразовываемом изображении.<br>
+		<u>возвращаемые значения</u>:
+		<ul>
+			<li>значение межстрокового растояния между водными знаками(по оси Y) на преобразовываемом изображении</li>
+		</ul><br>
+	</li>
+	<li>
+		<b>WatermarkAdding::getImageProcessedUrl</b> () : <i>string</i><br>
+		Создает преобразованное изображение с нанесенными водными знаками согласно указанным параметрам, сохраняет его в указанный каталог и возвращает ссылку на него<br>
+		<u>возвращаемые значения</u>:
+		<ul>
+			<li>путь к сохраненному преобразованному изображению</li>
+		</ul>
+	</li>
+</ul>
+Примеры использования:
+<ul>
+	<li><br>
+		use \av\image_processing\watermarks\WatermarkAdding;<br><br>
+		$imagesArray =
+			[
+			"/folder/image01.png",
+			"/folder/image02.jpg"
+			];<br><br>
+		foreach($imagesArray as $index => $imageLink)
+			{
+			$imageLinkProcessed = "";
+
+			try                         {$imageLinkProcessed = (new WatermarkAdding($imageLink))->getImageProcessedUrl();}
+			catch(Exception $exception) {}
+
+			if(strlen($imageLinkProcessed) > 0) $imagesArray[$index] = $imageLinkProcessed;
+			}
+	</li>
+	<li><br>
+		use \av\image_processing\watermarks\WatermarkAdding;<br><br>
+		$watermarkProcessorObject = new WatermarkAdding();
+		$imageLinkProcessed       = "";
+
+		try
+			{
+			$watermarkProcessorObject->setImageUrl("folder/image.png");
+			$watermarkProcessorObject->setWatermarkImageUrl("folder/watermark.png");
+			$watermarkProcessorObject->setImagesProcessedFolder("folder/watermarks_folder");
+			$watermarkProcessorObject->setWatermarkOpacity(0.8);
+			$watermarkProcessorObject->setWatermarkSpaceX(50);
+			$watermarkProcessorObject->setWatermarkSpaceY(300);
+			$imageLinkProcessed = $watermarkProcessorObject->getImageProcessedUrl();
+			}
+		catch(Exception $exception)
+			{
+
+			}
+	</li>
+</ul>

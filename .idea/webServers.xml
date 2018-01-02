@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="93f1a4f8-915e-47e9-9c4b-4840ffcdf56c" name="PROD - PRIME" url="http://10.10.1.130">
-        <fileTransfer host="10.10.1.130" port="22" rootFolder="/home/bitrix/ext_www" accessType="SFTP">
+      <webServer id="93f1a4f8-915e-47e9-9c4b-4840ffcdf56c" name="PROD" url="http://10.10.1.130">
+        <fileTransfer host="10.10.1.130" port="22" rootFolder="/home/bitrix" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
@@ -18,8 +18,16 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
-      <webServer id="766811e0-828d-4ae7-ab5a-6c63ef5533a2" name="TEST140" url="http://10.10.1.140">
-        <fileTransfer host="10.10.1.140" port="22" rootFolder="/home/bitrix/ext_www" accessType="SFTP">
+      <webServer id="c43db304-9bc5-4e64-b56d-0602e290573c" name="Alfasintez" url="http://10.10.1.131">
+        <fileTransfer host="10.10.1.131" port="22" rootFolder="/home/bitrix/www" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="132ff31b-030a-496f-a620-2c5cbb7ec7b0" name="TEST NEW" url="http://10.10.1.136">
+        <fileTransfer host="10.10.1.136" port="22" rootFolder="/home/bitrix" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
